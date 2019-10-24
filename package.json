@@ -16,6 +16,7 @@
     "test": "lerna run test"
   },
   "devDependencies": {
+    "typescript": "3.6.4",
     "@types/mocha": "5.2.7",
     "@types/chai": "4.2.3",
     "chai": "^4.2.0",
