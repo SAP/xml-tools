@@ -1,0 +1,39 @@
+{
+  "name": "@xml-tools/ast",
+  "version": "0.0.1",
+  "description": "XML Ast and Utilities",
+  "keywords": [
+    "xml",
+    "ast"
+  ],
+  "main": "lib/api.js",
+  "repository": "https://github.com/sap/xml-tools/",
+  "license": "Apache-2.0",
+  "typings": "./api.d.ts",
+  "dependencies": {
+    "lodash": "4.17.15",
+    "@xml-tools/parser": "0.0.1"
+  },
+  "devDependencies": {
+    "klaw-sync": "6.0.0"
+  },
+  "scripts": {
+    "ci": "npm-run-all type-check test",
+    "test": "mocha ./test/**/*spec.js",
+    "coverage": "nyc mocha ./test/**/*spec.js",
+    "type-check": "tsc api.d.ts",
+    "snapshots:update": "node ./scripts/update-snapshots.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
+}

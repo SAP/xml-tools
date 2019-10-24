@@ -1,0 +1,36 @@
+{
+  "name": "@xml-tools/content-assist",
+  "version": "0.0.1",
+  "description": "XML Content Assist related logic",
+  "keywords": [
+    "xml",
+    "parser"
+  ],
+  "main": "lib/api.js",
+  "repository": "https://github.com/sap/xml-tools/",
+  "license": "Apache-2.0",
+  "typings": "./api.d.ts",
+  "dependencies": {
+    "@xml-tools/parser": "0.0.1",
+    "@xml-tools/ast": "0.0.1",
+    "lodash": "4.17.15"
+  },
+  "scripts": {
+    "ci": "npm-run-all type-check test",
+    "test": "mocha ./test/**/*spec.js",
+    "coverage": "nyc mocha ./test/**/*spec.js",
+    "type-check": "tsc api.d.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
+}
