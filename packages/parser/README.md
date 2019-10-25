@@ -1,4 +1,4 @@
-[![npm (scoped)](https://img.shields.io/npm/v/@ui5/dts-generator.svg)](https://www.npmjs.com/package/@ui5/dts-generator)
+[![npm (scoped)](https://img.shields.io/npm/v/@xml-tools/parser.svg)](https://www.npmjs.com/package/@xml-tools/parser)
 
 # @xml-tools/parser
 
