@@ -114,11 +114,6 @@ declare type XMLAstNode =
   | XMLAttribute
   | XMLTextContent;
 
-// TODO: add this data directly on XML Element
-declare function accessibleNamespaces(
-  node: XMLElement
-): { prefix: string; uri: string }[];
-
 /**
  * Will Traverse as XML AST and activate the relevant visitor method on each node.
  * There is no guarantee on the order in which the nodes will be visited.
