@@ -1,6 +1,6 @@
 # Contribution Guide
 
-Please see the top level [Contribution Guide](../../CONTIBUTING.md) for common dev flows.
+Please see the top level [Contribution Guide](../../CONTRIBUTING.md) for common dev flows.
 
 ## SnapShot Testing
 
