@@ -52,7 +52,7 @@ This monorepo uses Lerna's [Fixed/Locked][lerna-fixed] mode to link sub packages
 
 ### Release Process
 
-This instructions require push permissions to the repository.
+Performing a release requires push permissions to the repository.
 
 - Update the CHANGELOG.md files for all changed packages.
   - Include a version number and date.
