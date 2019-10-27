@@ -10,8 +10,7 @@ There are two things which distinguish this AST from most others ASTs:
    the AST are optional and may have undefined values.
 2. This AST contains **additional syntactic information** to enable additional linting & formatting flows, for example:
    - the original position and value of an attribute's value (including the quotes).
-   - The original positions and values of an XMLElement's open/close names.  
-
+   - The original positions and values of an XMLElement's open/close names.
 
 The input for constructing the AST is a CST which is created by the [@xml-tools/parser](../parser) package.
 
