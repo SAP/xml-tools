@@ -13,15 +13,15 @@ declare function getSuggestions(options: {
 
 interface CompletionSuggestion {
   text: string;
-  label: string;
-  docs: string;
+  label?: string;
+  docs?: string;
   /**
    * A measure of how certain we are about this suggestion's relevance.
    * This value could be used to:
    * - Filter out less relevant suggestions when there are too many possible suggestions.
    * - Sort the suggestions by relevance.
    */
-  confidence: number;
+  confidence?: number;
 }
 
 /**
