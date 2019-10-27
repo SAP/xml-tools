@@ -1,5 +1,14 @@
 version: 2
 jobs:
+  build-node13:
+    docker:
+      - image: circleci/node:13-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn run ci
+
   build-node12:
     docker:
       - image: circleci/node:12-browsers
