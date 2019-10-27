@@ -1,4 +1,4 @@
-const { forEach } = require("lodash");
+const { forEach, isFunction } = require("lodash");
 const { getAstChildrenReflective } = require("./utils");
 
 /**
@@ -10,23 +10,33 @@ const { getAstChildrenReflective } = require("./utils");
 function accept(node, visitor) {
   switch (node.type) {
     case "XMLDocument": {
-      visitor.visitXMLDocument(node);
+      if (isFunction(visitor.visitXMLDocument)) {
+        visitor.visitXMLDocument(node);
+      }
       break;
     }
     case "XMLProlog": {
-      visitor.visitXMLProlog(node);
+      if (isFunction(visitor.visitXMLProlog)) {
+        visitor.visitXMLProlog(node);
+      }
       break;
     }
     case "XMLElement": {
-      visitor.visitXMLElement(node);
+      if (isFunction(visitor.visitXMLElement)) {
+        visitor.visitXMLElement(node);
+      }
       break;
     }
     case "XMLAttribute": {
-      visitor.visitXMLAttribute(node);
+      if (isFunction(visitor.visitXMLAttribute)) {
+        visitor.visitXMLAttribute(node);
+      }
       break;
     }
     case "XMLTextContent": {
-      visitor.visitXMLTextContent(node);
+      if (isFunction(visitor.visitXMLTextContent)) {
+        visitor.visitXMLTextContent(node);
+      }
       break;
     }
     default:

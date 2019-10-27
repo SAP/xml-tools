@@ -127,11 +127,11 @@ declare function accept(node: XMLAstNode, visitor: XMLAstVisitor): void;
  * Which
  */
 declare interface XMLAstVisitor {
-  visitXMLDocument(node: XMLDocument): void;
-  visitXMLProlog(node: XMLProlog): void;
-  visitXMLElement(node: XMLElement): void;
-  visitXMLAttribute(node: XMLAttribute): void;
-  visitXMLTextContent(node: XMLTextContent): void;
+  visitXMLDocument?(node: XMLDocument): void;
+  visitXMLProlog?(node: XMLProlog): void;
+  visitXMLElement?(node: XMLElement): void;
+  visitXMLAttribute?(node: XMLAttribute): void;
+  visitXMLTextContent?(node: XMLTextContent): void;
 }
 
 export type InvalidSyntax = null;
