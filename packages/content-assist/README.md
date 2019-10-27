@@ -2,6 +2,29 @@
 
 # @xml-tools/content-assist
 
+APIs which assist in implementing content assist (auto-complete) logic for XML.
+This package handles the identification of the specific content assist **scenario and context**.
+Given this scenario & context information a user of this package can then implement
+their custom content assist logic.
+
+For example:
+
+Given the following XML and a content assist request at the `⇶` sign:
+
+```xml
+<note>
+    <address city="New ⇶"></address>
+    <to>Bill</to>
+    <from>Tim</from>
+</note>
+```
+
+A **Attribute Value** content assist scenario would be identified.
+With a **prefix** `New` and references to the ASTNodes
+of the relevant attribute(city) and the containing element (address).
+
+- Note that an ASTNode possesses a `parent` property, so the full structure is accessible.
+
 ## Installation
 
 With npm:
@@ -31,7 +54,8 @@ const suggestions = getSuggestions({
   text: xmlText,
   offset: 66, // Right after the '<ad` element start.
   providers: {
-    // There are more types of suggestions providers (see api.d.ts)
+    // 1. There are more types(scenarios) of suggestions providers (see api.d.ts)
+    // 2. Multiple providers may be supplied for a single scenario.
     elementName: [
       ({ element, prefix }) => {
         const suggestions = [];
