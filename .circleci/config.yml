@@ -58,6 +58,7 @@ workflows:
   version: 2
   build:
     jobs:
+      - build-node13
       - build-node12
       - build-node10
       - build-node8
