@@ -13,7 +13,8 @@
     "format:fix": "prettier --write \"**/*.@(ts|js|json|md)\"",
     "format:validate": "prettier --check \"**/*.@(ts|js|json|md)\"",
     "ci:subpackages": "lerna run ci",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "coverage": "lerna run coverage"
   },
   "devDependencies": {
     "typescript": "3.6.4",

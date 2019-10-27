@@ -80,7 +80,7 @@ Please open [issues](https://github.com/SAP/xml-tols/issues) on github.
 
 ## Contributing
 
-See [CONTRIBUTING.md](../../CONTRIBUTING.md).
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
