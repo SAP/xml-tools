@@ -4,10 +4,10 @@ declare function getSuggestions(options: {
   text: string;
   offset: number;
   providers: {
-    elementContent: ElementContentCompletion[];
-    elementName: ElementNameCompletion[];
-    attributeName: AttributeNameCompletion[];
-    attributeValue: AttributeValueCompletion[];
+    elementContent?: ElementContentCompletion[];
+    elementName?: ElementNameCompletion[];
+    attributeName?: AttributeNameCompletion[];
+    attributeValue?: AttributeValueCompletion[];
   };
 }): CompletionSuggestion[];
 
