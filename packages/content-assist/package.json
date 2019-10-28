@@ -1,10 +1,11 @@
 {
   "name": "@xml-tools/content-assist",
   "version": "0.0.1",
-  "description": "XML Content Assist related logic",
+  "description": "XML Content Assist APIs",
   "keywords": [
     "xml",
-    "parser"
+    "auto-complete",
+    "content-assist"
   ],
   "main": "lib/api.js",
   "repository": "https://github.com/sap/xml-tools/",
