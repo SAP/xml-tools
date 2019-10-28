@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/ast",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "XML Ast and Utilities",
   "keywords": [
     "xml",
@@ -11,8 +11,8 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "lodash": "4.17.15",
-    "@xml-tools/parser": "0.0.1"
+    "@xml-tools/parser": "^0.1.0",
+    "lodash": "4.17.15"
   },
   "devDependencies": {
     "klaw-sync": "6.0.0"
