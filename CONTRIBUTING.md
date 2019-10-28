@@ -20,6 +20,7 @@ This is managed automatically via https://cla-assistant.io/ pull request voter.
 - A [maintained version](https://nodejs.org/en/about/releases/) of node.js
   - This package is targeted and tested on modern/supported versions of node.js only.
     Which means 8/10/12/13 at the time of writing this document.
+- [commitizen](https://github.com/commitizen/cz-cli#installing-the-command-line-tool) for managing commit messages.
 
 ### Initial Setup
 
@@ -27,6 +28,12 @@ The initial setup is trivial:
 
 - clone this repo
 - `yarn`
+
+## Commiting Changes
+
+Use `git cz` to build conventional commit messages.
+
+- requires [commitizen](https://github.com/commitizen/cz-cli#installing-the-command-line-tool) to be installed.
 
 ### Formatting.
 
