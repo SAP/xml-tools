@@ -12,6 +12,7 @@ It currently contains the following packages:
 - [![npm-xml-tools-parser][npm-xml-tools-parser-image]][npm-xml-tools-parser-url] [@xml-tools/parser](./packages/parser) A Fault Tolerant XML Parser which outputs a [Concrete Syntax Tree][cst].
 - [![npm-xml-tools-ast][npm-xml-tools-ast-image]][npm-xml-tools-ast-url] [@xml-tools/ast](./packages/ast) XML [Abstract Syntax Tree][ast].
 - [![npm-xml-tools-content-assist][npm-xml-tools-content-assist-image]][npm-xml-tools-content-assist-url] [@xml-tools/content-assist](./packages/content-assist) Extensible Content Assist APIs for XML.
+- [![npm-xml-tools-validation][npm-xml-tools-validation-image]][npm-xml-tools-validation-url] [@xml-tools/validation](./packages/validation) Extensible Content Assist APIs for XML.
 
 [npm-xml-tools-parser-image]: https://img.shields.io/npm/v/@xml-tools/parser.svg
 [npm-xml-tools-parser-url]: https://www.npmjs.com/package/@xml-tools/parser
@@ -19,6 +20,8 @@ It currently contains the following packages:
 [npm-xml-tools-ast-url]: https://www.npmjs.com/package/@xml-tools/ast
 [npm-xml-tools-content-assist-image]: https://img.shields.io/npm/v/@xml-tools/content-assist.svg
 [npm-xml-tools-content-assist-url]: https://www.npmjs.com/package/@xml-tools/content-assist
+[npm-xml-tools-validation-image]: https://img.shields.io/npm/v/@xml-tools/validation.svg
+[npm-xml-tools-validation-url]: https://www.npmjs.com/package/@xml-tools/validation
 
 ## Support
 

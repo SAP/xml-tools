@@ -3,8 +3,8 @@ import { XMLAstNode, XMLAttribute, XMLElement } from "@xml-tools/ast";
 declare function validate(options: {
   doc: XMLDocument;
   validators: {
-    attribute: ((node: XMLAttribute) => ValidationIssue[])[];
-    element: ((node: XMLElement) => ValidationIssue[])[];
+    attribute?: ((node: XMLAttribute) => ValidationIssue[])[];
+    element?: ((node: XMLElement) => ValidationIssue[])[];
   };
 }): ValidationIssue[];
 

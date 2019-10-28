@@ -18,7 +18,7 @@ describe("The XML Validations APIs", () => {
       validators: {
         element: [
           node => {
-            return { msg: node.name };
+            return [{ msg: node.name }];
           }
         ]
       }
@@ -43,7 +43,7 @@ describe("The XML Validations APIs", () => {
       validators: {
         attribute: [
           node => {
-            return { msg: node.key };
+            return [{ msg: node.key }];
           }
         ]
       }
