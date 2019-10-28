@@ -27,15 +27,6 @@ jobs:
       - run: yarn
       - run: yarn run ci
 
-  build-node8:
-    docker:
-      - image: circleci/node:8-browsers
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: yarn
-      - run: yarn run ci
-
   deploy:
     docker:
       - image: circleci/node:10-browsers
@@ -49,7 +40,6 @@ jobs:
       - run: git status
       # the yarn.lock and some other generated files may change due to running
       # the build with the newly commited version numbers
-      # e.g: https://circleci.com/gh/SAP/chevrotain/159
       # resetting the working tree avoids lerna errors due to unclean working trees
       - run: git reset --hard
       - run: yarn run lerna:publish
@@ -61,10 +51,9 @@ workflows:
       - build-node13
       - build-node12
       - build-node10
-      - build-node8
       - deploy:
           filters:
             tags:
-              only: /^v[0-9]+(\.[0-9]+)*/
+              only: /^RELEASE/
             branches:
               ignore: /.*/

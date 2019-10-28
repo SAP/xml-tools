@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lerna:version": "lerna version",
-    "lerna:publish": "lerna publish from-git --yes",
+    "lerna:publish": "lerna publish from-git --yes && git tag -d RELEASE && git tag RELEASE && git push --tags",
     "ci": "npm-run-all format:validate ci:subpackages",
     "format:fix": "prettier --write \"**/*.@(ts|js|json|md)\"",
     "format:validate": "prettier --check \"**/*.@(ts|js|json|md)\"",
