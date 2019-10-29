@@ -29,7 +29,7 @@ The initial setup is trivial:
 - clone this repo
 - `yarn`
 
-## Commiting Changes
+### Committing Changes
 
 Use `git cz` to build conventional commit messages.
 
