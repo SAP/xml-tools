@@ -63,22 +63,20 @@ is drastically different than simply running the tests.
 
 ### Release Life-Cycle.
 
-This monorepo uses Lerna's [Fixed/Locked][lerna-fixed] mode to link sub packages versions.
+This monorepo uses Lerna's [independent][lerna-mode] mode support a separate life-cycle (version number)
+for each package and automatically generate the changelog by adhering to [Conventional Commits][cc]
 
-[lerna-fixed]: https://github.com/lerna/lerna#fixedlocked-mode-default
+[lerna-mode]: https://github.com/lerna/lerna#independent-mode
+[cc]: https://www.conventionalcommits.org/en/v1.0.0/
 
 ### Release Process
 
 Performing a release requires push permissions to the repository.
 
-- Update the CHANGELOG.md files for all changed packages.
-  - Include a version number and date.
-- Commit pre release changes to master.
 - `yarn run lerna:version`
-- Follow the lerna CLI instruction and choose a new version mode matching the version number
-  chosen in step one (CHANGELOG.md).
-- Track the relevant tag build on circle-ci.
+- Follow the lerna CLI instructions.
+- Track the `RELEASE` tag build on circle-ci.
   - https://circleci.com/gh/SAP/xml-tools.
-- Once the tag build has finished successfully inspect the npm registry to see the new version
+- Once the tag build has finished successfully inspect the npm registry to see the new versions
   for all the changed packages of this mono-repo.
   - `npm view [package-name] version`
