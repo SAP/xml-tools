@@ -4,6 +4,23 @@ const { getSuggestions } = require("../");
 describe("The XML Content Assist Capabilities", () => {
   describe("Can provide suggestion for", () => {
     context("element Content", () => {
+      it("in middle of text content", () => {
+        const sample = `<person gender="female">hello ⇶world</person>`;
+
+        let providerCalled = false;
+        getSampleSuggestions(sample, {
+          elementContent: [
+            ({ element, prefix, textContent }) => {
+              expect(prefix).to.eql("hello ");
+              expect(textContent.text).to.eql("hello world");
+              expect(element.name).to.eql("person");
+              providerCalled = true;
+            }
+          ]
+        });
+        expect(providerCalled).to.be.true;
+      });
+
       it("With other elements", () => {
         const sample =
           `<person gender="female">\n` +
@@ -15,7 +32,9 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
-            ({ element }) => {
+            ({ element, prefix, textContent }) => {
+              expect(prefix).to.eql("\n\t");
+              expect(textContent.text).to.eql("\n\t\n\t");
               expect(element.name).to.eql("person");
               providerCalled = true;
             }
@@ -30,7 +49,9 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
-            ({ element }) => {
+            ({ element, prefix, textContent }) => {
+              expect(prefix).to.be.undefined;
+              expect(textContent).to.be.undefined;
               expect(element.name).to.eql("person");
               providerCalled = true;
             }
@@ -48,13 +69,32 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
-            ({ element }) => {
+            ({ element, prefix, textContent }) => {
+              expect(prefix).to.eql("\n\t");
+              expect(textContent.text).to.eql("\n\t");
               expect(element.name).to.eql("person");
               providerCalled = true;
             }
           ]
         });
         expect(providerCalled).to.be.true;
+      });
+
+      it("inside comment - will not trigger", () => {
+        const sample =
+          `<person gender="female">\n` +
+          `\t<!-- to be commented ⇶xml block goes here -->\n` +
+          `</person>`;
+
+        let providerCalled = false;
+        getSampleSuggestions(sample, {
+          elementContent: [
+            ({ element }) => {
+              providerCalled = true;
+            }
+          ]
+        });
+        expect(providerCalled).to.be.false;
       });
     });
 

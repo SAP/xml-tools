@@ -1,4 +1,4 @@
-import { XMLAttribute, XMLElement } from "@xml-tools/ast";
+import { XMLAttribute, XMLElement, XMLTextContent } from "@xml-tools/ast";
 
 declare function getSuggestions(options: {
   text: string;
@@ -48,6 +48,18 @@ declare type ElementContentCompletion = (options: {
    * - ...
    */
   element: XMLElement;
+
+  /**
+   * The pre-existing part of the name at the content assist request offset.
+   * This would normally be used to filter out suggestions that do not match the prefix.
+   */
+  prefix: string | undefined;
+
+  /**
+   * TextContent ASTNode in which content assist was requested
+   * Note that this property may be undefined if no prefix was provided.
+   */
+  textContent: XMLTextContent | undefined;
 }) => CompletionSuggestion[];
 
 /**

@@ -1,4 +1,11 @@
-const { forEach, isArray, find } = require("lodash");
+const {
+  forEach,
+  isArray,
+  find,
+  findIndex,
+  flatMap,
+  identity
+} = require("lodash");
 const { BaseXmlCstVisitor } = require("@xml-tools/parser");
 
 /**
@@ -41,7 +48,6 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
     forEach(ctx.element, (elem, idx) => {
       this.visit(elem, astNode.subElements[idx]);
     });
-    // TODO: visit chardata for element context or compare sub children?
   }
 
   /**
@@ -239,23 +245,46 @@ function handleElementContentScenario(ctx, astNode, visitor) {
     visitor.targetOffset <= contentRange.to &&
     contentRange.from <= visitor.targetOffset
   ) {
-    const isNotInExistingContentPart =
-      find(ctx.content.children, subContent => {
-        // Handling either CSTNodes or Tokens
-        const subContentLoc = subContent.location
-          ? subContent.location
-          : subContent;
-        return (
-          visitor.targetOffset >= subContentLoc.startOffset &&
-          visitor.targetOffset <= subContentLoc.endOffset
-        );
-      }) === undefined;
+    const allContentChildren = flatMap(ctx.content[0].children, identity);
+    const innerContentPart = find(allContentChildren, subContent => {
+      // Handling either CSTNodes or Tokens
+      const subContentLoc = subContent.location
+        ? subContent.location
+        : subContent;
 
-    // inside attribute area but not contained in any existing attribute
-    if (isNotInExistingContentPart) {
+      // Our offset ranges are Inclusive to Exclusive
+      // <person>abc⇶</person> --> Not inside the CharData Location, but uses `abc` as prefix
+      // <person>⇶abc</person> --> Inside the CharData Location, but does not have any prefix
+      const targetOffsetForPrefix = visitor.targetOffset - 1;
+
+      return (
+        targetOffsetForPrefix >= subContentLoc.startOffset &&
+        targetOffsetForPrefix <= subContentLoc.endOffset
+      );
+    });
+
+    // ElementContent without prefix
+    if (innerContentPart === undefined) {
       visitor.result.providerType = "elementContent";
       visitor.result.providerArgs = {
-        element: astNode
+        element: astNode,
+        textContent: undefined,
+        prefix: undefined
+      };
+      visitor.found = true;
+    } else if (innerContentPart.name === "chardata") {
+      const textNodeIdx = findIndex(
+        ctx.content[0].children.chardata,
+        innerContentPart
+      );
+      const textContentsAstNode = astNode.textContents[textNodeIdx];
+      const prefixEnd =
+        visitor.targetOffset - textContentsAstNode.position.startOffset;
+      visitor.result.providerType = "elementContent";
+      visitor.result.providerArgs = {
+        element: astNode,
+        textContent: textContentsAstNode,
+        prefix: textContentsAstNode.text.substring(0, prefixEnd)
       };
       visitor.found = true;
     }
