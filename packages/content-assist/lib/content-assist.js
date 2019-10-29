@@ -30,6 +30,7 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
   /**
    * @param {DocumentCtx} ctx
    */
+  /* istanbul ignore next - place holder*/
   document(ctx) {
     this.visit(ctx.element, this.docAst.rootElement);
   }
@@ -37,6 +38,7 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
   /**
    * @param {PrologCtx} ctx
    */
+  /* istanbul ignore next - place holder*/
   prolog(ctx, astNode) {}
 
   /**
@@ -83,6 +85,7 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
   /**
    * @param {ReferenceCtx} ctx
    */
+  /* istanbul ignore next - place holder*/
   reference(ctx, astNode) {}
 
   /**
@@ -135,11 +138,13 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
   /**
    * @param {ChardataCtx} ctx
    */
+  /* istanbul ignore next - place holder*/
   chardata(ctx, astNode) {}
 
   /**
    * @param {MiscCtx} ctx
    */
+  /* istanbul ignore next - place holder*/
   misc(ctx, astNode) {}
 }
 
@@ -211,6 +216,7 @@ function handleNewAttributeKeyScenario(ctx, astNode, visitor) {
       }) === undefined;
 
     // inside attribute area but not contained in any existing attribute
+    /* istanbul ignore else - else branch is handled inside the attributes themselves and can never occur here */
     if (isNotInExistingAttribute) {
       visitor.result.providerType = "attributeName";
       visitor.result.providerArgs = {
