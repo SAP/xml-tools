@@ -16,14 +16,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 16 },
+              position: { startOffset: 15 },
               text: "bobi"
             }
           ],
-          position: { startOffset: 12 },
+          position: { startOffset: 11 },
           syntax: {
-            openName: { image: "to", startOffset: 13 },
-            closeName: { image: "to", startOffset: 22 }
+            openName: { image: "to", startOffset: 12 },
+            closeName: { image: "to", startOffset: 21 }
           }
         },
         {
@@ -35,14 +35,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 37 },
+              position: { startOffset: 35 },
               text: "john"
             }
           ],
-          position: { startOffset: 31 },
+          position: { startOffset: 29 },
           syntax: {
-            openName: { image: "from", startOffset: 32 },
-            closeName: { image: "from", startOffset: 43 }
+            openName: { image: "from", startOffset: 30 },
+            closeName: { image: "from", startOffset: 41 }
           }
         },
         {
@@ -52,31 +52,31 @@ module.exports = {
           attributes: [],
           subElements: [],
           textContents: [],
-          position: { startOffset: 54 },
-          syntax: { openName: { image: "ad", startOffset: 55 } }
+          position: { startOffset: 51 },
+          syntax: { openName: { image: "ad", startOffset: 52 } }
         }
       ],
       textContents: [
         {
           type: "XMLTextContent",
           position: { startOffset: 6 },
-          text: "\r\n    "
+          text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 25 },
-          text: "\r\n    "
+          position: { startOffset: 24 },
+          text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 48 },
-          text: "\r\n    "
+          position: { startOffset: 46 },
+          text: "\n    "
         }
       ],
       position: { startOffset: 0 },
       syntax: {
         openName: { image: "note", startOffset: 1 },
-        closeName: { image: "note", startOffset: 61 }
+        closeName: { image: "note", startOffset: 57 }
       }
     },
     position: { startOffset: 0 }

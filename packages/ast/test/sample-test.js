@@ -14,7 +14,8 @@ function executeSampleTest(dirPath, assertNoErrors) {
   it("Can build an AST for a valid XML", () => {
     const inputPath = resolve(dirPath, "input.xml");
     const inputText = readFileSync(inputPath).toString("utf8");
-    const { cst, lexErrors, parseErrors } = parse(inputText);
+    const simpleNewLinesInput = inputText.replace(/\r\n/g, "\n");
+    const { cst, lexErrors, parseErrors } = parse(simpleNewLinesInput);
     if (assertNoErrors === true) {
       expect(lexErrors).to.be.empty;
       expect(parseErrors).to.be.empty;

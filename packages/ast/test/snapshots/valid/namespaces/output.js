@@ -8,12 +8,12 @@ module.exports = {
       attributes: [
         {
           type: "XMLAttribute",
-          position: { startOffset: 11 },
+          position: { startOffset: 10 },
           key: "xmlns:f",
           value: "https://blah.com/furniture",
           syntax: {
-            key: { image: "xmlns:f", startOffset: 11 },
-            value: { image: '"https://blah.com/furniture"', startOffset: 19 }
+            key: { image: "xmlns:f", startOffset: 10 },
+            value: { image: '"https://blah.com/furniture"', startOffset: 18 }
           }
         }
       ],
@@ -27,14 +27,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 62 },
+              position: { startOffset: 60 },
               text: "Some Chair"
             }
           ],
-          position: { startOffset: 54 },
+          position: { startOffset: 52 },
           syntax: {
-            openName: { image: "f:name", startOffset: 55 },
-            closeName: { image: "f:name", startOffset: 74 }
+            openName: { image: "f:name", startOffset: 53 },
+            closeName: { image: "f:name", startOffset: 72 }
           },
           ns: "f"
         },
@@ -47,14 +47,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 96 },
+              position: { startOffset: 93 },
               text: "50"
             }
           ],
-          position: { startOffset: 87 },
+          position: { startOffset: 84 },
           syntax: {
-            openName: { image: "f:width", startOffset: 88 },
-            closeName: { image: "f:width", startOffset: 100 }
+            openName: { image: "f:width", startOffset: 85 },
+            closeName: { image: "f:width", startOffset: 97 }
           },
           ns: "f"
         },
@@ -67,14 +67,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 124 },
+              position: { startOffset: 120 },
               text: "67"
             }
           ],
-          position: { startOffset: 114 },
+          position: { startOffset: 110 },
           syntax: {
-            openName: { image: "f:length", startOffset: 115 },
-            closeName: { image: "f:length", startOffset: 128 }
+            openName: { image: "f:length", startOffset: 111 },
+            closeName: { image: "f:length", startOffset: 124 }
           },
           ns: "f"
         }
@@ -82,25 +82,25 @@ module.exports = {
       textContents: [
         {
           type: "XMLTextContent",
-          position: { startOffset: 48 },
-          text: "\r\n    "
+          position: { startOffset: 47 },
+          text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 81 },
-          text: "\r\n    "
+          position: { startOffset: 79 },
+          text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 108 },
-          text: "\r\n    "
+          position: { startOffset: 105 },
+          text: "\n    "
         },
-        { type: "XMLTextContent", position: { startOffset: 137 }, text: "\r\n" }
+        { type: "XMLTextContent", position: { startOffset: 133 }, text: "\n" }
       ],
-      position: { startOffset: 2 },
+      position: { startOffset: 1 },
       syntax: {
-        openName: { image: "f:table", startOffset: 3 },
-        closeName: { image: "f:table", startOffset: 141 }
+        openName: { image: "f:table", startOffset: 2 },
+        closeName: { image: "f:table", startOffset: 136 }
       },
       ns: "f"
     },

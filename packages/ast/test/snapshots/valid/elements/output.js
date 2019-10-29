@@ -16,14 +16,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 16 },
+              position: { startOffset: 15 },
               text: "Bill"
             }
           ],
-          position: { startOffset: 12 },
+          position: { startOffset: 11 },
           syntax: {
-            openName: { image: "to", startOffset: 13 },
-            closeName: { image: "to", startOffset: 22 }
+            openName: { image: "to", startOffset: 12 },
+            closeName: { image: "to", startOffset: 21 }
           }
         },
         {
@@ -35,14 +35,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 37 },
+              position: { startOffset: 35 },
               text: "Tim"
             }
           ],
-          position: { startOffset: 31 },
+          position: { startOffset: 29 },
           syntax: {
-            openName: { image: "from", startOffset: 32 },
-            closeName: { image: "from", startOffset: 42 }
+            openName: { image: "from", startOffset: 30 },
+            closeName: { image: "from", startOffset: 40 }
           }
         }
       ],
@@ -50,19 +50,19 @@ module.exports = {
         {
           type: "XMLTextContent",
           position: { startOffset: 6 },
-          text: "\r\n    "
+          text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 25 },
-          text: "\r\n    "
+          position: { startOffset: 24 },
+          text: "\n    "
         },
-        { type: "XMLTextContent", position: { startOffset: 47 }, text: "\r\n" }
+        { type: "XMLTextContent", position: { startOffset: 45 }, text: "\n" }
       ],
       position: { startOffset: 0 },
       syntax: {
         openName: { image: "note", startOffset: 1 },
-        closeName: { image: "note", startOffset: 51 }
+        closeName: { image: "note", startOffset: 48 }
       }
     },
     position: { startOffset: 0 }

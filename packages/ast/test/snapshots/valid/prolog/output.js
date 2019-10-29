@@ -8,10 +8,10 @@ module.exports = {
       attributes: [],
       subElements: [],
       textContents: [],
-      position: { startOffset: 40 },
+      position: { startOffset: 39 },
       syntax: {
-        openName: { image: "note", startOffset: 41 },
-        closeName: { image: "note", startOffset: 48 }
+        openName: { image: "note", startOffset: 40 },
+        closeName: { image: "note", startOffset: 47 }
       }
     },
     position: { startOffset: 0 },

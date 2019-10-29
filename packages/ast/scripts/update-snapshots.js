@@ -10,17 +10,18 @@ const testsDir = resolve(__dirname, "..", "test");
 const { buildAst } = require("../");
 
 const sampleFiles = klawSync(testsDir, { nodir: true });
-const javaSampleFiles = sampleFiles.filter(fileDesc => {
+const xmlSampleFiles = sampleFiles.filter(fileDesc => {
   if (fileDesc.path.includes("node_modules")) {
     return false;
   }
   return fileDesc.path.endsWith("input.xml");
 });
 
-javaSampleFiles.forEach(fileDesc => {
+xmlSampleFiles.forEach(fileDesc => {
   const xmlInput = readFileSync(fileDesc.path, "utf8");
+  const simpleNewLinesInput = xmlInput.replace(/\r\n/g, "\n");
   console.log(`Reading <${fileDesc.path}>`);
-  const { cst } = parse(xmlInput);
+  const { cst } = parse(simpleNewLinesInput);
   const ast = buildAst(cst);
   modifyAstForAssertions(ast);
   const snapshotOutput = `module.exports = { ast : ${JSON.stringify(ast)}}`;

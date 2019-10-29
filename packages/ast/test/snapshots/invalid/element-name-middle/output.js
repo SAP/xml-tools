@@ -16,14 +16,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 16 },
+              position: { startOffset: 15 },
               text: "bobi"
             }
           ],
-          position: { startOffset: 12 },
+          position: { startOffset: 11 },
           syntax: {
-            openName: { image: "to", startOffset: 13 },
-            closeName: { image: "to", startOffset: 22 }
+            openName: { image: "to", startOffset: 12 },
+            closeName: { image: "to", startOffset: 21 }
           }
         },
         {
@@ -33,8 +33,8 @@ module.exports = {
           attributes: [],
           subElements: [],
           textContents: [],
-          position: { startOffset: 31 },
-          syntax: { openName: { image: "ad", startOffset: 32 } }
+          position: { startOffset: 29 },
+          syntax: { openName: { image: "ad", startOffset: 30 } }
         },
         {
           type: "XMLElement",
@@ -45,14 +45,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 46 },
+              position: { startOffset: 43 },
               text: "john"
             }
           ],
-          position: { startOffset: 40 },
+          position: { startOffset: 37 },
           syntax: {
-            openName: { image: "from", startOffset: 41 },
-            closeName: { image: "from", startOffset: 52 }
+            openName: { image: "from", startOffset: 38 },
+            closeName: { image: "from", startOffset: 49 }
           }
         },
         {
@@ -64,14 +64,14 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 69 },
+              position: { startOffset: 65 },
               text: "ny"
             }
           ],
-          position: { startOffset: 63 },
+          position: { startOffset: 59 },
           syntax: {
-            openName: { image: "city", startOffset: 64 },
-            closeName: { image: "city", startOffset: 73 }
+            openName: { image: "city", startOffset: 60 },
+            closeName: { image: "city", startOffset: 69 }
           }
         }
       ],
@@ -79,24 +79,24 @@ module.exports = {
         {
           type: "XMLTextContent",
           position: { startOffset: 6 },
-          text: "\r\n    "
+          text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 25 },
-          text: "\r\n    "
+          position: { startOffset: 24 },
+          text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 57 },
-          text: "\r\n    "
+          position: { startOffset: 54 },
+          text: "\n    "
         },
-        { type: "XMLTextContent", position: { startOffset: 78 }, text: "\r\n" }
+        { type: "XMLTextContent", position: { startOffset: 74 }, text: "\n" }
       ],
       position: { startOffset: 0 },
       syntax: {
         openName: { image: "note", startOffset: 1 },
-        closeName: { image: "note", startOffset: 82 }
+        closeName: { image: "note", startOffset: 77 }
       }
     },
     position: { startOffset: 0 }
