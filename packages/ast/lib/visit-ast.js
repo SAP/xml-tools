@@ -39,6 +39,7 @@ function accept(node, visitor) {
       }
       break;
     }
+    /* istanbul ignore next  defensive programming */
     default:
       throw Error("None Exhaustive Match");
   }

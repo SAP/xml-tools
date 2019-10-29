@@ -1,5 +1,5 @@
 const { BaseXmlCstVisitor } = require("@xml-tools/parser");
-const { forEach, reduce, map, pick, sortBy } = require("lodash");
+const { forEach, reduce, map, pick, sortBy, isEmpty } = require("lodash");
 
 const { getAstChildrenReflective } = require("./utils");
 
@@ -42,7 +42,10 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       astNode.prolog = this.visit(ctx.prolog[0]);
     }
 
-    if (ctx.element !== undefined) {
+    if (
+      ctx.element !== undefined &&
+      isEmpty(ctx.element[0].children) === false
+    ) {
       astNode.rootElement = this.visit(ctx.element[0]);
     }
 
@@ -145,6 +148,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
    * @param ctx {ReferenceCtx}
    * @param location {SourcePosition}
    */
+  /* istanbul ignore next - place holder*/
   reference(ctx, location) {
     // Irrelevant for the AST at this time
   }
@@ -162,6 +166,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       syntax: {}
     };
 
+    /* istanbul ignore else - Defensive Coding, not actually possible branch */
     if (ctx.Name !== undefined && ctx.Name[0].isInsertedInRecovery !== true) {
       const keyToken = ctx.Name[0];
       astNode.key = keyToken.image;
@@ -211,6 +216,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
    * @param ctx {MiscCtx}
    * @param location {SourcePosition}
    */
+  /* istanbul ignore next - place holder*/
   misc(ctx, location) {
     // Irrelevant for the AST at this time
   }
@@ -231,6 +237,7 @@ function updateNamespaces(element, prevNamespaces = []) {
   const currElemNamespaces = reduce(
     element.attributes,
     (result, attrib) => {
+      /* istanbul ignore else - Defensive Coding, not actually possible branch */
       if (attrib.key !== invalidSyntax) {
         const nsMatch = /^xmlns:([^:]+)$/.exec(attrib.key);
         if (nsMatch !== null) {

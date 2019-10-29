@@ -1,6 +1,0 @@
-
-<f:table xmlns:f="https://blah.com/furniture">
-    <f:name>Some Chair</f:name>
-    <f:width>50</f:width>
-    <f:length>67</f:length>
-</f:table>
