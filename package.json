@@ -18,7 +18,7 @@
     "coverage": "lerna run coverage"
   },
   "devDependencies": {
-    "@types/chai": "4.2.3",
+    "@types/chai": "4.2.4",
     "@types/mocha": "5.2.7",
     "chai": "^4.2.0",
     "husky": "^3.0.5",
