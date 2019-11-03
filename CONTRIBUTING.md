@@ -73,6 +73,7 @@ for each package and automatically generate the changelog by adhering to [Conven
 
 Performing a release requires push permissions to the repository.
 
+- Ensure you are on `master` branch and synced with origin.
 - `yarn run lerna:version`
 - Follow the lerna CLI instructions.
 - Track the `RELEASE` tag build on circle-ci.
