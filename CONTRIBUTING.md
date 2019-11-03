@@ -57,7 +57,7 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 ### Full Build
 
 This project does not use any compilation step (Babel/TypeScript), this means that the full build
-is drastically different than simply running the tests.
+does not generate any artifacts for runtime.
 
 - To run the full **C**ontinuous **I**ntegration build run `yarn ci` in in either the top level package or a specific subpackage.
 
