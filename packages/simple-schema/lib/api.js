@@ -1,5 +1,7 @@
-const { validate } = require("./validate");
+const { getSchemaValidators } = require("./get-validators");
+const { getSchemaSuggestionsProviders } = require("./get-content-assist");
 
 module.exports = {
-  validate: validate
+  getSchemaValidators: getSchemaValidators,
+  getSchemaSuggestionsProviders: getSchemaSuggestionsProviders
 };

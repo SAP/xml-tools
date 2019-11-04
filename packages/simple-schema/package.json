@@ -12,12 +12,12 @@
   "typings": "./api.d.ts",
   "dependencies": {
     "@xml-tools/ast": "^0.3.0",
-    "@xml-tools/validation": "^0.3.0",
     "@xml-tools/content-assist": "^0.3.0",
     "lodash": "4.17.15"
   },
   "devDependencies": {
-    "@xml-tools/parser": "^0.3.0"
+    "@xml-tools/parser": "^0.3.0",
+    "@xml-tools/validation": "^0.3.0"
   },
   "scripts": {
     "ci": "npm-run-all type-check coverage:*",

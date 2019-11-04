@@ -19,49 +19,38 @@ declare type XSSElement = {
   required: boolean;
   cardinality: "many" | "single";
   name: string;
-  attributesDef: XSSSubAttributesDefinition;
-  subElementsDef: XSSSubElementsDefinition;
-};
 
-declare type XSSSubAttributesDefinition = {
-  /**
-   * Are other (unknown) attributes allowed other then those defined here.
-   */
-  type: "open" | "closed";
-  attributes: XSSAttribute[];
+  attributesType?: "open" | "closed";
+  attributes: Record<string, XSSAttribute>;
+
+  elementsType?: "open" | "closed";
+  elements: Record<string, XSSElement>[];
+  // TODO: textValue definition (for simple pure text only?)
 };
 
 declare type XSSAttribute = {
   required: boolean;
   key: string;
-  value: XSSValue;
+  value?: XSSValue;
 };
 
 // TODO: could be expended to support more primitive types and also complex types such as `union type`
-declare type XSSValue = string | RegExp | XSSValueEnum;
+declare type XSSValue = RegExp | XSSValueEnum;
 
-declare type XSSValueEnum = string[];
-
-declare type XSSSubElementsDefinition = {
-  /**
-   * Are other (unknown) elements allowed other then those defined here.
-   */
-  type: "open" | "closed";
-
-  elements: XSSElement[];
-};
+declare type XSSValueEnum = Record<string, string>;
 
 declare function getSchemaValidators(
   schema: SimpleSchema
 ): {
-  attribute: (node: XMLAttribute) => ValidationIssue[];
-  element: (node: XMLElement) => ValidationIssue[];
+  attribute: ((node: XMLAttribute) => ValidationIssue[])[];
+  element: ((node: XMLElement) => ValidationIssue[])[];
 };
 
 declare function getSchemaSuggestionsProviders(
   schema: SimpleSchema
 ): {
-  schemaElementContentCompletion: ElementContentCompletion;
+  // TBD in the future...
+  // schemaElementContentCompletion: ElementContentCompletion;
   schemaElementNameCompletion: ElementNameCompletion;
   schemaAttributeNameCompletion: AttributeNameCompletion;
   schemaAttributeValueCompletion: AttributeValueCompletion;

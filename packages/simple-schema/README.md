@@ -1,8 +1,13 @@
-[![npm (scoped)](https://img.shields.io/npm/v/@xml-tools/validation.svg)](https://www.npmjs.com/package/@xml-tools/validation)
+[![npm (scoped)](https://img.shields.io/npm/v/@xml-tools/simple-schema.svg)](https://www.npmjs.com/package/@xml-tools/simple-schema)
 
 # @xml-tools/simple-schema
 
-TBD: introduction
+This package includes three elements:
+
+- Data structure definition for a basic XML schema represented as a JavaScript object literal.
+- Validation logic to inspect a given XML conforms to a Schema.
+  This
+- Content Assist logic that provides suggestions using the Schema information.
 
 ## Installation
 
@@ -18,10 +23,93 @@ With Yarn
 
 Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 
-TBD: usage examples
+- Defining a Schema:
+  ```javascript
+  const schema = {
+    name: "people",
+    required: true,
+    cardinality: "single",
+    attributes: {},
+    elements: {
+      person: {
+        name: "person",
+        required: false,
+        cardinality: "many",
+        attributes: {
+          eyeColor: {
+            key: "eyeColor",
+            required: false,
+            value: ["grey", "blue", "green", "red"]
+          }
+        },
+        elements: {
+          name: {
+            cardinality: "single",
+            required: true,
+            name: "name",
+            attributes: {},
+            elements: {}
+          }
+        }
+      }
+    }
+  };
+  ```
+- A Simple XML Text
+  ```javascript
+  // A Sample XML Text
+  const xmlText = `<people>
+                         <person eyeColor="violet">
+                           <name>Daenerys Targaryen</name>
+                         </person>
+                      </people>`;
+  ```
+- Performing Validations
 
-```javascript
-```
+  ```javascript
+  const { parse } = require("@xml-tools/parser");
+  const { buildAst } = require("@xml-tools/ast");
+  const { validate } = require("@xml-tools/validation");
+  const { getSchemaValidators } = require("./");
+
+  const { cst } = parse(xmlText);
+  const xmlDoc = buildAst(cst);
+  const schemaValidators = getSchemaValidators(schema);
+  const issues = validate({
+    doc: xmlDoc,
+    validators: {
+      attribute: [schemaValidators.attribute],
+      element: [schemaValidators.element]
+    }
+  });
+
+  console.log(issues[0].msg); // Expecting one of <grey,blue,green,red> but found <violet>
+  console.log(issues[0].position); // { startOffset: 46, endOffset: 53 }
+  ```
+
+- Using Content Assist APIs
+
+  ```javascript
+  const { getSuggestions } = require("@xml-tools/content-assist");
+  const { getSchemaSuggestionsProviders } = require("./");
+
+  const schemaSuggestionsProviders = getSchemaSuggestionsProviders(schema);
+
+  const suggestions = getSuggestions({
+    text: xmlText,
+    offset: 47, // within the eyeColor quoted value
+    providers: {
+      attributeValue: [
+        schemaSuggestionsProviders.schemaAttributeValueCompletion
+      ],
+      attributeName: [schemaSuggestionsProviders.schemaAttributeNameCompletion],
+      elementName: [schemaSuggestionsProviders.schemaElementNameCompletion]
+    }
+  });
+
+  console.log(suggestions[0]); // { text: 'grey', label: 'grey' }
+  console.log(suggestions[1]); // { text: 'blue', label: 'blue' }
+  ```
 
 ## Support
 
