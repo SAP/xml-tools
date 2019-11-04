@@ -1,4 +1,4 @@
-import { XMLAstNode } from "@xml-tools/ast";
+import { XMLAstNode, XMLAttribute, XMLElement } from "@xml-tools/ast";
 import { ValidationIssue } from "@xml-tools/validation";
 import {
   AttributeNameCompletion,
@@ -38,7 +38,7 @@ declare type XSSAttribute = {
 };
 
 // TODO: could be expended to support more primitive types and also complex types such as `union type`
-declare type XSSValue = string | number | RegExp | XSSValueEnum;
+declare type XSSValue = string | RegExp | XSSValueEnum;
 
 declare type XSSValueEnum = string[];
 
@@ -51,12 +51,18 @@ declare type XSSSubElementsDefinition = {
   elements: XSSElement[];
 };
 
-declare function validateSchema(
-  node: XMLAstNode,
+declare function getSchemaValidators(
   schema: SimpleSchema
-): ValidationIssue[];
+): {
+  attribute: (node: XMLAttribute) => ValidationIssue[];
+  element: (node: XMLElement) => ValidationIssue[];
+};
 
-declare const schemaElementContentCompletion: ElementContentCompletion;
-declare const schemaElementNameCompletion: ElementNameCompletion;
-declare const schemaAttributeNameCompletion: AttributeNameCompletion;
-declare const schemaAttributeValueCompletion: AttributeValueCompletion;
+declare function getSchemaSuggestionsProviders(
+  schema: SimpleSchema
+): {
+  schemaElementContentCompletion: ElementContentCompletion;
+  schemaElementNameCompletion: ElementNameCompletion;
+  schemaAttributeNameCompletion: AttributeNameCompletion;
+  schemaAttributeValueCompletion: AttributeValueCompletion;
+};
