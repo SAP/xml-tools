@@ -8,10 +8,10 @@ module.exports = {
       attributes: [
         {
           type: "XMLAttribute",
-          position: { startOffset: 10 },
+          position: { startOffset: 10, endOffset: 17 },
           key: "xmlns:f",
           value: null,
-          syntax: { key: { image: "xmlns:f", startOffset: 10 } }
+          syntax: { key: { image: "xmlns:f", startOffset: 10, endOffset: 16 } }
         }
       ],
       subElements: [
@@ -24,14 +24,15 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 32 },
+              position: { startOffset: 32, endOffset: 41 },
               text: "Some Chair"
             }
           ],
-          position: { startOffset: 24 },
+          position: { startOffset: 24, endOffset: 50 },
           syntax: {
-            openName: { image: "f:name", startOffset: 25 },
-            closeName: { image: "f:name", startOffset: 44 }
+            openName: { image: "f:name", startOffset: 25, endOffset: 30 },
+            openBody: { startOffset: 24, endOffset: 31 },
+            closeName: { image: "f:name", startOffset: 44, endOffset: 49 }
           },
           ns: "f"
         },
@@ -44,14 +45,15 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 65 },
+              position: { startOffset: 65, endOffset: 66 },
               text: "50"
             }
           ],
-          position: { startOffset: 56 },
+          position: { startOffset: 56, endOffset: 76 },
           syntax: {
-            openName: { image: "f:width", startOffset: 57 },
-            closeName: { image: "f:width", startOffset: 69 }
+            openName: { image: "f:width", startOffset: 57, endOffset: 63 },
+            openBody: { startOffset: 56, endOffset: 64 },
+            closeName: { image: "f:width", startOffset: 69, endOffset: 75 }
           },
           ns: "f"
         },
@@ -64,14 +66,15 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 92 },
+              position: { startOffset: 92, endOffset: 93 },
               text: "67"
             }
           ],
-          position: { startOffset: 82 },
+          position: { startOffset: 82, endOffset: 104 },
           syntax: {
-            openName: { image: "f:length", startOffset: 83 },
-            closeName: { image: "f:length", startOffset: 96 }
+            openName: { image: "f:length", startOffset: 83, endOffset: 90 },
+            openBody: { startOffset: 82, endOffset: 91 },
+            closeName: { image: "f:length", startOffset: 96, endOffset: 103 }
           },
           ns: "f"
         }
@@ -79,28 +82,33 @@ module.exports = {
       textContents: [
         {
           type: "XMLTextContent",
-          position: { startOffset: 19 },
+          position: { startOffset: 19, endOffset: 23 },
           text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 51 },
+          position: { startOffset: 51, endOffset: 55 },
           text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 77 },
+          position: { startOffset: 77, endOffset: 81 },
           text: "\n    "
         },
-        { type: "XMLTextContent", position: { startOffset: 105 }, text: "\n" }
+        {
+          type: "XMLTextContent",
+          position: { startOffset: 105, endOffset: 105 },
+          text: "\n"
+        }
       ],
-      position: { startOffset: 1 },
+      position: { startOffset: 1, endOffset: 115 },
       syntax: {
-        openName: { image: "f:table", startOffset: 2 },
-        closeName: { image: "f:table", startOffset: 108 }
+        openName: { image: "f:table", startOffset: 2, endOffset: 8 },
+        openBody: { startOffset: 1, endOffset: 18 },
+        closeName: { image: "f:table", startOffset: 108, endOffset: 114 }
       },
       ns: "f"
     },
-    position: { startOffset: 0 }
+    position: { startOffset: 0, endOffset: 116 }
   }
 };

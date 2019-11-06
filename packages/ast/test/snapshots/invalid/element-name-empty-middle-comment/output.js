@@ -16,14 +16,15 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 15 },
+              position: { startOffset: 15, endOffset: 18 },
               text: "bobi"
             }
           ],
-          position: { startOffset: 11 },
+          position: { startOffset: 11, endOffset: 23 },
           syntax: {
-            openName: { image: "to", startOffset: 12 },
-            closeName: { image: "to", startOffset: 21 }
+            openName: { image: "to", startOffset: 12, endOffset: 13 },
+            openBody: { startOffset: 11, endOffset: 14 },
+            closeName: { image: "to", startOffset: 21, endOffset: 22 }
           }
         },
         {
@@ -33,7 +34,7 @@ module.exports = {
           attributes: [],
           subElements: [],
           textContents: [],
-          position: { startOffset: 29 },
+          position: { startOffset: 29, endOffset: 29 },
           syntax: {}
         },
         {
@@ -45,36 +46,42 @@ module.exports = {
           textContents: [
             {
               type: "XMLTextContent",
-              position: { startOffset: 70 },
+              position: { startOffset: 70, endOffset: 73 },
               text: "john"
             }
           ],
-          position: { startOffset: 64 },
+          position: { startOffset: 64, endOffset: 80 },
           syntax: {
-            openName: { image: "from", startOffset: 65 },
-            closeName: { image: "from", startOffset: 76 }
+            openName: { image: "from", startOffset: 65, endOffset: 68 },
+            openBody: { startOffset: 64, endOffset: 69 },
+            closeName: { image: "from", startOffset: 76, endOffset: 79 }
           }
         }
       ],
       textContents: [
         {
           type: "XMLTextContent",
-          position: { startOffset: 6 },
+          position: { startOffset: 6, endOffset: 10 },
           text: "\n    "
         },
         {
           type: "XMLTextContent",
-          position: { startOffset: 24 },
+          position: { startOffset: 24, endOffset: 28 },
           text: "\n    "
         },
-        { type: "XMLTextContent", position: { startOffset: 81 }, text: "\n" }
+        {
+          type: "XMLTextContent",
+          position: { startOffset: 81, endOffset: 81 },
+          text: "\n"
+        }
       ],
-      position: { startOffset: 0 },
+      position: { startOffset: 0, endOffset: 88 },
       syntax: {
-        openName: { image: "note", startOffset: 1 },
-        closeName: { image: "note", startOffset: 84 }
+        openName: { image: "note", startOffset: 1, endOffset: 4 },
+        openBody: { startOffset: 0, endOffset: 5 },
+        closeName: { image: "note", startOffset: 84, endOffset: 87 }
       }
     },
-    position: { startOffset: 0 }
+    position: { startOffset: 0, endOffset: 89 }
   }
 };
