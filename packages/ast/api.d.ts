@@ -62,12 +62,20 @@ declare interface XMLElement {
     // Will only exist if there is a valid "Start Name" for the XML Element
     // - Note this would always exist in a valid XML.
     readonly openName?: XMLToken;
+
     // Will only exist if there is a valid "Closing Name" for the XML Element
     // - Note that this is an **optional** syntax in a valid XML.
     readonly closeName?: XMLToken;
+
     // Will only exist if there is a valid "Start Name" for the XML Element
     // and valid "Closing Name" or XMLElement is self-closing.
     // - Note this would always exist in a valid XML.
+    // - openBody.image is always undefined
+    // Examples:
+    // <SomeTag attribute="value" >Some content</SomeTag>
+    // <===== openBody range =====>
+    // <SelfClosingTag attribute="value" />
+    // <======= openBody range ===========>
     readonly openBody?: XMLToken;
   };
   readonly position: SourcePosition;
