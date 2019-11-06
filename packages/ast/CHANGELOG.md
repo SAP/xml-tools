@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/sap/xml-tools/compare/@xml-tools/ast@0.4.0...@xml-tools/ast@0.4.1) (2019-11-06)
+
+### Bug Fixes
+
+- new property added to ast interface ([#35](https://github.com/sap/xml-tools/issues/35)) ([d7fd672](https://github.com/sap/xml-tools/commit/d7fd672))
+
 # [0.4.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@0.3.0...@xml-tools/ast@0.4.0) (2019-11-06)
 
 ### Features

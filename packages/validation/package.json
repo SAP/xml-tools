@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/validation",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "XML validation APIs",
   "keywords": [
     "xml",
@@ -11,7 +11,7 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "^0.4.0",
+    "@xml-tools/ast": "^0.4.1",
     "lodash": "4.17.15"
   },
   "devDependencies": {
