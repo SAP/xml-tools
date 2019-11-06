@@ -1,5 +1,13 @@
 const { BaseXmlCstVisitor } = require("@xml-tools/parser");
-const { forEach, reduce, map, pick, sortBy, isEmpty } = require("lodash");
+const {
+  forEach,
+  reduce,
+  map,
+  pick,
+  sortBy,
+  isEmpty,
+  isArray
+} = require("lodash");
 
 const { getAstChildrenReflective } = require("./utils");
 
@@ -130,6 +138,18 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
         astNode.name = nsParts.name;
       } else {
         astNode.name = openNameToken.image;
+      }
+
+      if (exists(ctx.START_CLOSE)) {
+        astNode.syntax.openBody = {
+          ...toXMLToken(location),
+          ...endOfXMLToken(ctx.START_CLOSE[0])
+        };
+      } else if (exists(ctx.SLASH_CLOSE)) {
+        astNode.syntax.openBody = {
+          ...toXMLToken(location),
+          ...endOfXMLToken(ctx.SLASH_CLOSE[0])
+        };
       }
     }
 
@@ -276,6 +296,18 @@ function toXMLToken(token) {
     "startColumn",
     "endColumn"
   ]);
+}
+
+function endOfXMLToken(token) {
+  return pick(token, ["endOffset", "endLine", "endColumn"]);
+}
+
+function exists(tokArr) {
+  return (
+    isArray(tokArr) &&
+    tokArr.length === 1 &&
+    tokArr[0].isInsertedInRecovery !== true
+  );
 }
 
 function stripQuotes(quotedText) {

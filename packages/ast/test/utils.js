@@ -65,7 +65,6 @@ function reduceNodePoseInfo(node) {
 }
 
 function reducePositionInfo(pos) {
-  delete pos.endOffset;
   delete pos.startColumn;
   delete pos.endColumn;
   delete pos.startLine;
