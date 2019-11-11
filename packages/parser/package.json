@@ -13,10 +13,14 @@
   "dependencies": {
     "chevrotain": "6.5.0"
   },
+  "devDependencies": {
+    "klaw-sync": "6.0.0"
+  },
   "scripts": {
     "ci": "npm-run-all type-check test",
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage": "nyc mocha \"./test/**/*spec.js\"",
+    "snapshots:update": "node ./scripts/update-snapshots.js",
     "type-check": "tsc api.d.ts"
   },
   "publishConfig": {
