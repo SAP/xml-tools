@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.3.1...@xml-tools/parser@0.3.2) (2019-11-11)
+
+### Bug Fixes
+
+- cST Visitor method's Params Type fix ([a0a0e2d](https://github.com/sap/xml-tools/commit/a0a0e2d))
+
 ## [0.3.1](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.3.0...@xml-tools/parser@0.3.1) (2019-11-06)
 
 **Note:** Version bump only for package @xml-tools/parser
