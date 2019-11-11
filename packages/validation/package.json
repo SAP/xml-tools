@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/validation",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "XML validation APIs",
   "keywords": [
     "xml",
@@ -11,11 +11,11 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "^0.4.2",
+    "@xml-tools/ast": "^0.4.3",
     "lodash": "4.17.15"
   },
   "devDependencies": {
-    "@xml-tools/parser": "^0.3.2"
+    "@xml-tools/parser": "^0.3.3"
   },
   "scripts": {
     "ci": "npm-run-all type-check coverage:*",
