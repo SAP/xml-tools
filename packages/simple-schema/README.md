@@ -6,7 +6,6 @@ This package includes three elements:
 
 - Data structure definition for a basic XML schema represented as a JavaScript object literal.
 - Validation logic to inspect a given XML conforms to a Schema.
-  This
 - Content Assist logic that provides suggestions using the Schema information.
 
 ## Installation
