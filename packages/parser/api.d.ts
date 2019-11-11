@@ -50,13 +50,13 @@ export abstract class XmlCstVisitorWithDefaults<IN, OUT>
   validateVisitor(): void;
 
   document(ctx: DocumentCtx, param?: IN): OUT;
-  prolog(ctx: PrologCstNode, param?: IN): OUT;
-  content(ctx: ContentCstNode, param?: IN): OUT;
-  element(ctx: ElementCstNode, param?: IN): OUT;
-  reference(ctx: ReferenceCstNode, param?: IN): OUT;
-  attribute(ctx: AttributeCstNode, param?: IN): OUT;
-  chardata(ctx: ChardataCstNode, param?: IN): OUT;
-  misc(ctx: MiscCstNode, param?: IN): OUT;
+  prolog(ctx: PrologCtx, param?: IN): OUT;
+  content(ctx: ContentCtx, param?: IN): OUT;
+  element(ctx: ElementCtx, param?: IN): OUT;
+  reference(ctx: ReferenceCtx, param?: IN): OUT;
+  attribute(ctx: AttributeCtx, param?: IN): OUT;
+  chardata(ctx: ChardataCtx, param?: IN): OUT;
+  misc(ctx: MiscCtx, param?: IN): OUT;
 }
 
 interface XmlCstVisitorWithDefaultsConstructor<IN, OUT> {
