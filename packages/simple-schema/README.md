@@ -69,7 +69,7 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
   const { parse } = require("@xml-tools/parser");
   const { buildAst } = require("@xml-tools/ast");
   const { validate } = require("@xml-tools/validation");
-  const { getSchemaValidators } = require("./");
+  const { getSchemaValidators } = require("@xml-tools/simple-schema");
 
   const { cst } = parse(xmlText);
   const xmlDoc = buildAst(cst);
@@ -90,7 +90,7 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 
   ```javascript
   const { getSuggestions } = require("@xml-tools/content-assist");
-  const { getSchemaSuggestionsProviders } = require("./");
+  const { getSchemaSuggestionsProviders } = require("@xml-tools/simple-schema");
 
   const schemaSuggestionsProviders = getSchemaSuggestionsProviders(schema);
 
