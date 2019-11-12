@@ -91,6 +91,11 @@ const INVALID_SLASH_OPEN = createToken({
   categories: [SLASH_OPEN]
 });
 
+const PROCESSING_INSTRUCTION = createToken({
+  name: "PROCESSING_INSTRUCTION",
+  pattern: makePattern`<\\?${f.Name}.*\\?>`
+});
+
 const OPEN = createToken({ name: "OPEN", pattern: /</, push_mode: "INSIDE" });
 // Meant to avoid skipping '<' token in a partial sequence of elements.
 // Example of the problem this solves:
@@ -102,11 +107,6 @@ const INVALID_OPEN_INSIDE = createToken({
   name: "INVALID_OPEN_INSIDE",
   pattern: /</,
   categories: [OPEN]
-});
-
-const PROCESSING_INSTRUCTION = createToken({
-  name: "PROCESSING_INSTRUCTION",
-  pattern: makePattern`<\\?${f.Name}.*\\?>`
 });
 
 const TEXT = createToken({ name: "TEXT", pattern: /[^<&]+/ });
@@ -155,8 +155,8 @@ const xmlLexerDefinition = {
       SEA_WS,
       XMLDeclOpen,
       SLASH_OPEN,
-      OPEN,
       PROCESSING_INSTRUCTION,
+      OPEN,
       TEXT
     ],
     INSIDE: [
