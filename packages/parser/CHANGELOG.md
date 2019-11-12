@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.3.3...@xml-tools/parser@0.3.4) (2019-11-12)
+
+### Bug Fixes
+
+- **parser:** fix Lexing of XML processing instructions ([2c503b4](https://github.com/sap/xml-tools/commit/2c503b4))
+
 ## [0.3.3](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.3.2...@xml-tools/parser@0.3.3) (2019-11-11)
 
 ### Bug Fixes
