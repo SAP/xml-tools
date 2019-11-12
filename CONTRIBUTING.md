@@ -54,6 +54,26 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 - To run the tests run `yarn test` in either the top level package or a specific subpackage.
 - To run the tests with a coverage report run `yarn coverage:run` in either the top level package or a specific subpackage.
 
+### Test Coverage
+
+100%\* Test Coverage is enforced for all productive code in this mono repo.
+
+- Specific statements/functions may be [excluded][ignore_coverage] from the report but the reason for that must
+  specified in the source code.
+
+For example:
+
+```javascript
+/* istanbul ignore else - Defensive Coding, not actually possible else branch */
+if (ctx.Name !== undefined && ctx.Name[0].isInsertedInRecovery !== true) {
+  const keyToken = ctx.Name[0];
+  astNode.key = keyToken.image;
+  astNode.syntax.key = toXMLToken(keyToken);
+}
+```
+
+[ignore_coverage]: https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md
+
 ### Full Build
 
 This project does not use any compilation step (Babel/TypeScript), this means that the full build

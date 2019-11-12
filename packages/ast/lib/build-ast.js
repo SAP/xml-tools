@@ -186,7 +186,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       syntax: {}
     };
 
-    /* istanbul ignore else - Defensive Coding, not actually possible branch */
+    /* istanbul ignore else - Defensive Coding, not actually possible else branch */
     if (ctx.Name !== undefined && ctx.Name[0].isInsertedInRecovery !== true) {
       const keyToken = ctx.Name[0];
       astNode.key = keyToken.image;

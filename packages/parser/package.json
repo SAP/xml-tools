@@ -17,9 +17,10 @@
     "klaw-sync": "6.0.0"
   },
   "scripts": {
-    "ci": "npm-run-all type-check test",
+    "ci": "npm-run-all type-check coverage:*",
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage": "nyc mocha \"./test/**/*spec.js\"",
+    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
     "snapshots:update": "node ./scripts/update-snapshots.js",
     "type-check": "tsc api.d.ts"
   },
