@@ -37,7 +37,7 @@ declare type XSSAttribute = {
 // TODO: could be expended to support more primitive types and also complex types such as `union type`
 declare type XSSValue = RegExp | XSSValueEnum;
 
-declare type XSSValueEnum = Record<string, string>;
+declare type XSSValueEnum = string[];
 
 declare function getSchemaValidators(
   schema: SimpleSchema
