@@ -98,7 +98,7 @@ class Parser extends CstParser {
         this.deletionRecoveryEnabled = false;
         // disabling single token deletion here
         // because `attrib1 attrib2="666`
-        // will be parsed as: `attrib1 attrib2="666`
+        // will be parsed as: `attrib1="666`
         $.CONSUME(t.EQUALS);
         // disabling single token deletion here
         // to avoid new elementName being
@@ -135,6 +135,7 @@ class Parser extends CstParser {
 
   // TODO: provide this fix upstream to chevrotain
   // https://github.com/SAP/chevrotain/issues/1055
+  /* istanbul ignore next - should be tested as part of Chevrotain */
   findReSyncTokenType() {
     var allPossibleReSyncTokTypes = this.flattenFollowSet();
     // this loop will always terminate as EOF is always in the follow stack and also always (virtually) in the input

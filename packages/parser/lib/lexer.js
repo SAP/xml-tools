@@ -14,15 +14,9 @@ function makePattern(strings, ...args) {
     combined += strings[i];
     if (i < args.length) {
       let pattern = args[i];
-      // if a TokenType was passed
-      if (args[i].PATTERN) {
-        pattern = args[i].PATTERN;
-      }
-      const patternSource =
-        typeof pattern === "string" ? pattern : pattern.source;
       // By wrapping in a RegExp (none) capturing group
       // We enabled the safe usage of qualifiers and assertions.
-      combined += `(?:${patternSource})`;
+      combined += `(?:${pattern})`;
     }
   }
   return new RegExp(combined);
