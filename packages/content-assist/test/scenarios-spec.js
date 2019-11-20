@@ -295,67 +295,181 @@ describe("The XML Content Assist Capabilities", () => {
         expect(providerCalled).to.be.true;
       });
 
-      it("With empty prefix which is a subset of an existing key", () => {
-        const sample =
-          `<person ⇶gen>\n` +
-          `\t<firstname>Anna</firstname>\n` +
-          `\t<lastname>Smith</lastname>\n` +
-          `</person>`;
+      context("with empty prefix", () => {
+        it("With empty prefix which is a subset of an existing key", () => {
+          const sample =
+            `<person ⇶gen>\n` +
+            `\t<firstname>Anna</firstname>\n` +
+            `\t<lastname>Smith</lastname>\n` +
+            `</person>`;
 
-        let providerCalled = false;
-        getSampleSuggestions(sample, {
-          attributeName: [
-            ({ element, attribute, prefix }) => {
-              expect(element.name).to.eql("person");
-              expect(attribute.key).to.eql("gen");
-              expect(prefix).to.be.undefined;
-              providerCalled = true;
-            }
-          ]
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute.key).to.eql("gen");
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
         });
-        expect(providerCalled).to.be.true;
-      });
 
-      it("With empty prefix without key", () => {
-        const sample =
-          `<person ⇶ address="NY">\n` +
-          `\t<firstname>Anna</firstname>\n` +
-          `\t<lastname>Smith</lastname>\n` +
-          `</person>`;
+        it("without key", () => {
+          const sample =
+            `<person ⇶ address="NY">\n` +
+            `\t<firstname>Anna</firstname>\n` +
+            `\t<lastname>Smith</lastname>\n` +
+            `</person>`;
 
-        let providerCalled = false;
-        getSampleSuggestions(sample, {
-          attributeName: [
-            ({ element, attribute, prefix }) => {
-              expect(element.name).to.eql("person");
-              expect(attribute).to.be.undefined;
-              expect(prefix).to.be.undefined;
-              providerCalled = true;
-            }
-          ]
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
         });
-        expect(providerCalled).to.be.true;
-      });
 
-      it("With empty prefix without key - end", () => {
-        const sample =
-          `<person address="NY" ⇶>\n` +
-          `\t<firstname>Anna</firstname>\n` +
-          `\t<lastname>Smith</lastname>\n` +
-          `</person>`;
+        it("without key - short ElementForm", () => {
+          const sample = `<person ⇶ address="NY"/>`;
 
-        let providerCalled = false;
-        getSampleSuggestions(sample, {
-          attributeName: [
-            ({ element, attribute, prefix }) => {
-              expect(element.name).to.eql("person");
-              expect(attribute).to.be.undefined;
-              expect(prefix).to.be.undefined;
-              providerCalled = true;
-            }
-          ]
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
         });
-        expect(providerCalled).to.be.true;
+
+        it("without key - end", () => {
+          const sample =
+            `<person address="NY" ⇶>\n` +
+            `\t<firstname>Anna</firstname>\n` +
+            `\t<lastname>Smith</lastname>\n` +
+            `</person>`;
+
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
+        });
+
+        it("without attributes section close", () => {
+          const sample = `<people>
+               <evilPerson
+               <person ⇶  
+             </people>`;
+
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
+        });
+
+        it("without attributes section close with prior attributes", () => {
+          const sample = `<people>
+               <person age="5" ⇶
+             </people>`;
+
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
+        });
+
+        it("without attributes section close with following  attributes", () => {
+          const sample = `<people>
+               <person ⇶ age="5"
+             </people>`;
+
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
+        });
+
+        it("without attributes section close with following and prior attributes", () => {
+          const sample = `<people>
+               <person name="Foo" ⇶ age="5"
+             </people>`;
+
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
+        });
+
+        it("without attributes section close - no following tokens", () => {
+          const sample = `<people>
+               <person ⇶`;
+
+          let providerCalled = false;
+          getSampleSuggestions(sample, {
+            attributeName: [
+              ({ element, attribute, prefix }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute).to.be.undefined;
+                expect(prefix).to.be.undefined;
+                providerCalled = true;
+              }
+            ]
+          });
+          expect(providerCalled).to.be.true;
+        });
       });
     });
   });

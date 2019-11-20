@@ -13,11 +13,12 @@ function getSuggestions(options) {
       attributeValue: []
     }
   });
-  const { cst } = parse(actualOptions.text);
+  const { cst, tokenVector } = parse(actualOptions.text);
   const ast = buildAst(cst);
 
   const { providerType, providerArgs } = computeCompletionContext({
     cst: cst,
+    tokenVector: tokenVector,
     ast: ast,
     offset: actualOptions.offset
   });
