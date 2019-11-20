@@ -4,7 +4,9 @@ const {
   find,
   findIndex,
   flatMap,
-  identity
+  identity,
+  last,
+  isEmpty
 } = require("lodash");
 const { BaseXmlCstVisitor } = require("@xml-tools/parser");
 
@@ -12,17 +14,22 @@ const { BaseXmlCstVisitor } = require("@xml-tools/parser");
  *
  * @return {{providerType:string, providerArgs: {prefix?:string, element:XMLElement, attribute?:XMLAttribute}}}
  */
-function computeCompletionContext({ cst, ast: docAst, offset }) {
-  const contextVisitor = new SuggestionContextVisitor(docAst, offset);
+function computeCompletionContext({ cst, ast: docAst, offset, tokenVector }) {
+  const contextVisitor = new SuggestionContextVisitor(
+    docAst,
+    offset,
+    tokenVector
+  );
   contextVisitor.visit(cst);
   return contextVisitor.result;
 }
 
 class SuggestionContextVisitor extends BaseXmlCstVisitor {
-  constructor(docAst, offset) {
+  constructor(docAst, offset, tokenVector) {
     super();
     this.docAst = docAst;
     this.targetOffset = offset;
+    this.tokenVector = tokenVector;
     this.result = { providerType: null, providerArgs: {} };
     this.found = false;
   }
@@ -30,7 +37,6 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
   /**
    * @param {DocumentCtx} ctx
    */
-  /* istanbul ignore next - place holder*/
   document(ctx) {
     this.visit(ctx.element, this.docAst.rootElement);
   }
@@ -74,7 +80,7 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
     }
 
     if (this.found === false) {
-      handleNewAttributeKeyScenario(ctx, astNode, this);
+      handleNewAttributeKeyScenario(ctx, astNode, this.tokenVector, this);
     }
 
     if (this.found === false) {
@@ -177,7 +183,7 @@ function handleElementNameWithPrefixScenario(ctx, astNode, visitor) {
   }
 }
 
-function handleNewAttributeKeyScenario(ctx, astNode, visitor) {
+function handleNewAttributeKeyScenario(ctx, astNode, tokenVector, visitor) {
   // Potential AttributeKey scenario in a completely new attribute
   // Note the guard condition (in caller) to avoid this branch if one of the attributes scenarios was already detected.
   // This means the order of checking the scenarios is meaningful!
@@ -187,16 +193,22 @@ function handleNewAttributeKeyScenario(ctx, astNode, visitor) {
   // But the logic below cannot distinguish these, so it must only be executed if the attribute handler failed.
   const attributesRange = { from: undefined, to: undefined };
   let hasTerminatedAttribRange = false;
+  let hasAttributeCloseToken = false;
   /* istanbul ignore else - Very difficult to reproduce specific partial CSTs */
   if (exists(ctx.Name)) {
     attributesRange.from = ctx.Name[0].endOffset + 1;
-    // visitor logic only works when the attribute section is properly terminated
-    /* istanbul ignore else - Very difficult to reproduce specific partial CSTs */
+    // Figure where does the attributes area end
     if (exists(ctx.START_CLOSE)) {
       attributesRange.to = ctx.START_CLOSE[0].startOffset;
       hasTerminatedAttribRange = true;
+      hasAttributeCloseToken = true;
     } else if (exists(ctx.SLASH_CLOSE)) {
       attributesRange.to = ctx.SLASH_CLOSE[0].startOffset;
+      hasTerminatedAttribRange = true;
+      hasAttributeCloseToken = true;
+      // If we do not have a proper Attribute Section closing mark we use the last attribute instead
+    } else if (isEmpty(ctx.attribute) === false) {
+      attributesRange.to = last(ctx.attribute).location.endOffset;
       hasTerminatedAttribRange = true;
     }
   }
@@ -226,6 +238,63 @@ function handleNewAttributeKeyScenario(ctx, astNode, visitor) {
       };
       visitor.found = true;
     }
+  } else if (
+    /**
+     * Heuristic when we some attributes but no proper attribute Range
+     * and we request the assist after the last attribute.
+     * <people>
+     *     <person age="66" ⇶
+     * </people>
+     */
+    hasTerminatedAttribRange &&
+    visitor.targetOffset > attributesRange.to &&
+    hasAttributeCloseToken === false
+  ) {
+    handleNewAttributeKeyForPartialElement(
+      // dummy pesudo token a we are searching the following token using the endOffset
+      { endOffset: attributesRange.to },
+      tokenVector,
+      visitor,
+      astNode
+    );
+    /**
+     * Heuristic when we have no attribute range, e.g:
+     * <people>
+     *     <person ⇶
+     * </people>
+     */
+  } else if (hasTerminatedAttribRange === false) {
+    handleNewAttributeKeyForPartialElement(
+      ctx.Name[0],
+      tokenVector,
+      visitor,
+      astNode
+    );
+  }
+}
+
+function handleNewAttributeKeyForPartialElement(
+  possibleAttribKeyRangeStartTok,
+  tokenVector,
+  visitor,
+  astNode
+) {
+  const nextAfterElemNameTok = findNextTextualToken(
+    tokenVector,
+    possibleAttribKeyRangeStartTok
+  );
+  if (
+    visitor.targetOffset > possibleAttribKeyRangeStartTok.endOffset &&
+    (nextAfterElemNameTok === null || // `null`` means there are no more textual tokens in the input
+      visitor.targetOffset <= nextAfterElemNameTok.startOffset)
+  ) {
+    visitor.result.providerType = "attributeName";
+    visitor.result.providerArgs = {
+      element: astNode,
+      attribute: undefined,
+      prefix: undefined
+    };
+    visitor.found = true;
   }
 }
 
@@ -303,6 +372,34 @@ function exists(tokArr) {
     tokArr.length === 1 &&
     tokArr[0].isInsertedInRecovery !== true
   );
+}
+
+function findNextTextualToken(tokenVector, prevToken) {
+  // The TokenVector is sorted, so we could use a BinarySearch to optimize performance
+  const prevTokenIdx = findIndex(
+    tokenVector,
+    tok => tok.endOffset === prevToken.endOffset
+  );
+  let nextTokenIdx = prevTokenIdx;
+  let found = false;
+  while (found === false) {
+    nextTokenIdx++;
+    const nextPossibleToken = tokenVector[nextTokenIdx];
+    // No Next textualToken
+    if (nextPossibleToken === undefined) {
+      return null;
+    }
+    /* istanbul ignore next
+     * I don't think this scenario can be created, however defensive coding never killed anyone...
+     * Basically SEA_WS can only only appear in "OUTSIDE" mode, and we need a CLOSE/SLASH_CLOSE to get back to outside
+     * mode, however if we had those  this function would never have been called...
+     */
+    if (nextPossibleToken.tokenType.name === "SEA_WS") {
+      // skip pure WS tokens as they do not contain any actual text
+    } else {
+      return nextPossibleToken;
+    }
+  }
 }
 
 module.exports = {
