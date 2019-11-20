@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@0.3.6...@xml-tools/content-assist@0.4.0) (2019-11-20)
+
+### Features
+
+- **content assist:** improved attributes keys content assist ([3d3b7c2](https://github.com/sap/xml-tools/commit/3d3b7c2)), closes [#42](https://github.com/sap/xml-tools/issues/42)
+
 ## [0.3.6](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@0.3.5...@xml-tools/content-assist@0.3.6) (2019-11-12)
 
 **Note:** Version bump only for package @xml-tools/content-assist

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.3.4...@xml-tools/parser@0.4.0) (2019-11-20)
+
+### Bug Fixes
+
+- **parser:** parsing for multi-line comments ([#46](https://github.com/sap/xml-tools/issues/46)) ([4970e9a](https://github.com/sap/xml-tools/commit/4970e9a))
+
+### Features
+
+- **parser:** expose The Token Vector on the parse result ([31d50f3](https://github.com/sap/xml-tools/commit/31d50f3))
+
 ## [0.3.4](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.3.3...@xml-tools/parser@0.3.4) (2019-11-12)
 
 ### Bug Fixes
