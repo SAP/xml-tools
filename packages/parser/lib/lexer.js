@@ -45,7 +45,7 @@ FRAGMENT("Name", makePattern`${f.NameStartChar}(${f.NameChar})*`);
 
 const Comment = createToken({
   name: "Comment",
-  pattern: /<!--.*?-->/,
+  pattern: /<!--(.|\r?\n)*?-->/,
   // A Comment may span multiple lines.
   line_breaks: true
 });
