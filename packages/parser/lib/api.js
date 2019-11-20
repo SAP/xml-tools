@@ -11,6 +11,7 @@ module.exports = {
 
     return {
       cst: cst,
+      tokenVector: lexResult.tokens,
       lexErrors: lexResult.errors,
       parseErrors: xmlParser.errors
     };
