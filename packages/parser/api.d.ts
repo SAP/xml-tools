@@ -11,6 +11,7 @@ export function parse(
   startProduction?: string
 ): {
   cst: CstNode;
+  tokenVector: IToken[];
   // TODO: decouple from Chevrotain APIs?
   lexErrors: ILexingError[];
   parseErrors: IRecognitionException[];
