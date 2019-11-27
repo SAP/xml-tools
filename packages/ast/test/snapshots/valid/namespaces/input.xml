@@ -1,6 +1,7 @@
 
-<f:table xmlns:f="https://blah.com/furniture">
+<f:table xmlns:f="https://blah.com/furniture" xmlns="https://blah.com/default">
     <f:name>Some Chair</f:name>
     <f:width>50</f:width>
     <f:length>67</f:length>
+    <description>Awsome Chair</description>
 </f:table>

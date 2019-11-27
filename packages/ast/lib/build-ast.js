@@ -259,7 +259,7 @@ function updateNamespaces(element, prevNamespaces = []) {
     (result, attrib) => {
       /* istanbul ignore else - Defensive Coding, not actually possible branch */
       if (attrib.key !== invalidSyntax) {
-        const nsMatch = /^xmlns:([^:]+)$/.exec(attrib.key);
+        const nsMatch = /^xmlns(?::([^:]+))?$/.exec(attrib.key);
         if (nsMatch !== null) {
           const prefix = nsMatch[1];
           if (attrib.value) {
