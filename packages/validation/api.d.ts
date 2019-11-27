@@ -1,10 +1,17 @@
-import { XMLAstNode, XMLAttribute, XMLElement } from "@xml-tools/ast";
+import {
+  XMLAstNode,
+  XMLAttribute,
+  XMLElement,
+  XMLDocument
+} from "@xml-tools/ast";
 
+declare type AttributeValidator = (node: XMLAttribute) => ValidationIssue[];
+declare type ElementValidator = (node: XMLElement) => ValidationIssue[];
 declare function validate(options: {
   doc: XMLDocument;
   validators: {
-    attribute?: ((node: XMLAttribute) => ValidationIssue[])[];
-    element?: ((node: XMLElement) => ValidationIssue[])[];
+    attribute?: AttributeValidator[];
+    element?: ElementValidator[];
   };
 }): ValidationIssue[];
 

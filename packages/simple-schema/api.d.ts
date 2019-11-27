@@ -1,5 +1,9 @@
 import { XMLAstNode, XMLAttribute, XMLElement } from "@xml-tools/ast";
-import { ValidationIssue } from "@xml-tools/validation";
+import {
+  ValidationIssue,
+  AttributeValidator,
+  ElementValidator
+} from "@xml-tools/validation";
 import {
   AttributeNameCompletion,
   AttributeValueCompletion,
@@ -19,12 +23,13 @@ declare type XSSElement = {
   required: boolean;
   cardinality: "many" | "single";
   name: string;
+  namespace?: string;
 
   attributesType?: "open" | "closed";
-  attributes: Record<string, XSSAttribute>;
+  attributes?: Record<string, XSSAttribute>;
 
   elementsType?: "open" | "closed";
-  elements: Record<string, XSSElement>[];
+  elements?: Record<string, XSSElement>;
   // TODO: textValue definition (for simple pure text only?)
 };
 
@@ -42,8 +47,8 @@ declare type XSSValueEnum = string[];
 declare function getSchemaValidators(
   schema: SimpleSchema
 ): {
-  attribute: ((node: XMLAttribute) => ValidationIssue[])[];
-  element: ((node: XMLElement) => ValidationIssue[])[];
+  attribute: AttributeValidator;
+  element: ElementValidator;
 };
 
 declare function getSchemaSuggestionsProviders(
