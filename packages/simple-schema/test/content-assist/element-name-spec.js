@@ -188,6 +188,62 @@ describe("The XML Simple Schema", () => {
           }
         ]);
       });
+      it("allows multiple sub-elements with `multiple` cardinality", () => {
+        const xmlText = `<people>
+                    <person>
+                      <age>66</age>
+                    </person>
+                    <⇶
+                  </people>`;
+
+        const schema = {
+          required: true,
+          cardinality: "single",
+          name: "people",
+          attributes: {},
+
+          elements: {
+            person: {
+              name: "person",
+              required: false,
+              cardinality: "many",
+              attributes: {},
+              elements: {
+                name: {
+                  cardinality: "single",
+                  required: false,
+                  name: "name",
+                  attributes: {},
+                  elements: {}
+                },
+                age: {
+                  cardinality: "single",
+                  required: false,
+                  name: "age",
+                  attributes: {},
+                  elements: {}
+                },
+                address: {
+                  cardinality: "many",
+                  required: false,
+                  name: "address",
+                  attributes: {},
+                  elements: {}
+                }
+              }
+            }
+          }
+        };
+
+        const suggestions = suggestionsBySchema(xmlText, schema);
+        expect(suggestions).to.deep.include.members([
+          {
+            label: "person",
+            text: "person"
+          }
+        ]);
+        expect(suggestions).to.have.lengthOf(1);
+      });
     });
   });
 });

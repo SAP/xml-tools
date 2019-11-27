@@ -12,9 +12,9 @@ const { difference, map, filter } = require("lodash");
  */
 function elementNameCompletion(elementNode, xssElement, prefix = "") {
   const allPossibleSuggestions = map(xssElement.elements, _ => _.name);
-  const notSingularElemNames = filter(
-    xssElement.elements,
-    _ => _.cardinality === "many"
+  const notSingularElemNames = map(
+    filter(xssElement.elements, _ => _.cardinality === "many"),
+    _ => _.name
   );
   const existingElemNames = map(elementNode.subElements, _ => _.name);
   const existingSingular = difference(existingElemNames, notSingularElemNames);
