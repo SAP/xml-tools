@@ -1,5 +1,6 @@
-const { difference, map, filter } = require("lodash");
+const { difference, map, filter, find } = require("lodash");
 
+const NAMESPACE_PATTERN = /^(?:([^:]*):)?(.*)$/;
 /**
  *
  * Note that the Element (XML/XSS) are of the parent node of the element
@@ -11,7 +12,22 @@ const { difference, map, filter } = require("lodash");
  * @returns {CompletionSuggestion[]}
  */
 function elementNameCompletion(elementNode, xssElement, prefix = "") {
-  const allPossibleSuggestions = map(xssElement.elements, _ => _.name);
+  const match = prefix.match(NAMESPACE_PATTERN);
+  if (!match) {
+    return [];
+  }
+  const namespacePrefix = match[1];
+  const namespace = find(
+    elementNode.namespaces,
+    _ => _.prefix === namespacePrefix
+  );
+  const possibleElements = filter(
+    xssElement.elements,
+    _ =>
+      !_.namespace ||
+      (_.namespace && namespace && _.namespace === namespace.uri)
+  );
+  const allPossibleSuggestions = map(possibleElements, _ => _.name);
   const notSingularElem = filter(
     xssElement.elements,
     _ => _.cardinality === "many"
@@ -24,18 +40,23 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
     existingSingular
   );
 
-  const possibleNewSuggestionsMatchingPrefix = filter(
-    possibleSuggestionsWithoutExistingSingular,
-    _ => _.startsWith(prefix)
-  );
-
-  const suggestions = map(possibleNewSuggestionsMatchingPrefix, _ => {
+  const suggestions = map(possibleSuggestionsWithoutExistingSingular, _ => {
     return {
-      text: _.substring(prefix.length),
+      text: _,
       label: _
     };
   });
 
+  if (!namespacePrefix) {
+    const namespaces = filter(elementNode.namespaces, _ => !!_.prefix);
+    const namespaceSuggestions = map(namespaces, _ => ({
+      text: _.prefix,
+      label: _.prefix,
+      commitCharacter: ":",
+      isNamespace: true
+    }));
+    return [...namespaceSuggestions, ...suggestions];
+  }
   return suggestions;
 }
 

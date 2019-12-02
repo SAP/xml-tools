@@ -15,6 +15,8 @@ interface CompletionSuggestion {
   text: string;
   label?: string;
   docs?: string;
+  commitCharacter?: string;
+  isNamespace?: boolean;
   /**
    * A measure of how certain we are about this suggestion's relevance.
    * This value could be used to:

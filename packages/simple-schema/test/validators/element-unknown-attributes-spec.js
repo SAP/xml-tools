@@ -119,6 +119,77 @@ describe("The XML Simple Schema", () => {
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;
       });
+
+      it("Default namespace attribute is always known", () => {
+        const xmlText = `<people xmlns="http://people.com">
+                 <person name="Donald" age="1"></person>
+             </people>`;
+
+        const schema = {
+          required: true,
+          name: "people",
+          cardinality: "single",
+          attributesType: "closed",
+          attributes: {
+            description: {
+              key: "description",
+              required: false
+            }
+          },
+
+          elements: {
+            person: {
+              name: "person",
+              required: false,
+              cardinality: "many",
+              attributes: {
+                age: {
+                  required: true,
+                  key: "age"
+                }
+              },
+              elements: {}
+            }
+          }
+        };
+        const issues = validateBySchema(xmlText, schema);
+        expect(issues).to.have.lengthOf(0);
+      });
+      it("Namespace attribute with prefix is always known", () => {
+        const xmlText = `<people xmlns:people="http://people.com">
+                 <person name="Donald" age="1"></person>
+             </people>`;
+
+        const schema = {
+          required: true,
+          name: "people",
+          cardinality: "single",
+          attributesType: "closed",
+          attributes: {
+            description: {
+              key: "description",
+              required: false
+            }
+          },
+
+          elements: {
+            person: {
+              name: "person",
+              required: false,
+              cardinality: "many",
+              attributes: {
+                age: {
+                  required: true,
+                  key: "age"
+                }
+              },
+              elements: {}
+            }
+          }
+        };
+        const issues = validateBySchema(xmlText, schema);
+        expect(issues).to.have.lengthOf(0);
+      });
     });
   });
 });

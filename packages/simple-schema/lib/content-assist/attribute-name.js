@@ -13,15 +13,12 @@ function attributeNameCompletion(elementNode, xssElement, prefix = "") {
     possibleSuggestions,
     existingAttribNames
   );
-  const possibleNewSuggestionsMatchingPrefix = filter(
-    possibleNewSuggestions,
-    _ => _.startsWith(prefix)
-  );
 
-  const suggestions = map(possibleNewSuggestionsMatchingPrefix, _ => {
+  const suggestions = map(possibleNewSuggestions, _ => {
     return {
-      text: _.substring(prefix.length),
-      label: _
+      text: _,
+      label: _,
+      commitCharacter: "="
     };
   });
 
