@@ -1,6 +1,7 @@
 const { difference, map, filter, find } = require("lodash");
 
-const NAMESPACE_PATTERN = /^(?:([^:]*):)?(.*)$/;
+// https://www.w3.org/TR/2009/REC-xml-names-20091208/#NT-PrefixedName
+const NAMESPACE_PATTERN = /^(?:([^:]*):)?([^:]*)$/;
 /**
  *
  * Note that the Element (XML/XSS) are of the parent node of the element

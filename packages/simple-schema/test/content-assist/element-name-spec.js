@@ -320,7 +320,6 @@ describe("The XML Simple Schema", () => {
       };
 
       const suggestions = suggestionsBySchema(xmlText, schema);
-      console.log(suggestions);
       expect(suggestions).to.deep.include.members([
         {
           text: "abc",
@@ -342,6 +341,123 @@ describe("The XML Simple Schema", () => {
         }
       ]);
       expect(suggestions).to.have.lengthOf(4);
+    });
+    it("with namespace prefix", () => {
+      const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
+                    <person xmlns="http://namespace.com/2">
+                      <abc:⇶
+                    </person>
+                  </abc:people>`;
+
+      const schema = {
+        required: true,
+        cardinality: "single",
+        name: "people",
+        namespace: "http://namespace.com/1",
+        attributes: {},
+        elements: {
+          person: {
+            name: "person",
+            namespace: "http://namespace.com/2",
+            required: false,
+            cardinality: "many",
+            attributes: {},
+            elements: {
+              name: {
+                cardinality: "single",
+                required: false,
+                name: "name",
+                namespace: "http://namespace.com/1",
+                attributes: {},
+                elements: {}
+              },
+              age: {
+                cardinality: "single",
+                required: false,
+                name: "age",
+                namespace: "http://namespace.com/1",
+                attributes: {},
+                elements: {}
+              },
+              address: {
+                cardinality: "many",
+                required: false,
+                name: "address",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              }
+            }
+          }
+        }
+      };
+
+      const suggestions = suggestionsBySchema(xmlText, schema);
+      expect(suggestions).to.deep.include.members([
+        {
+          label: "name",
+          text: "name"
+        },
+        {
+          label: "age",
+          text: "age"
+        }
+      ]);
+      expect(suggestions).to.have.lengthOf(2);
+    });
+    it("should not crash with invalid prefix", () => {
+      const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
+                    <person xmlns="http://namespace.com/2">
+                      <:::⇶
+                    </person>
+                  </abc:people>`;
+
+      const schema = {
+        required: true,
+        cardinality: "single",
+        name: "people",
+        namespace: "http://namespace.com/1",
+        attributes: {},
+        elements: {
+          person: {
+            name: "person",
+            namespace: "http://namespace.com/2",
+            required: false,
+            cardinality: "many",
+            attributes: {},
+            elements: {
+              name: {
+                cardinality: "single",
+                required: false,
+                name: "name",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              },
+              age: {
+                cardinality: "single",
+                required: false,
+                name: "age",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              },
+              address: {
+                cardinality: "many",
+                required: false,
+                name: "address",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              }
+            }
+          }
+        }
+      };
+
+      const suggestions = suggestionsBySchema(xmlText, schema);
+      expect(suggestions).to.deep.include.members([]);
+      expect(suggestions).to.have.lengthOf(0);
     });
   });
 });
