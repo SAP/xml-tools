@@ -23,7 +23,7 @@ function validateUnknownAttributes(elem, schema) {
     if (attrib.key !== null) {
       if (
         includes(allowedAttribNames, attrib.key) === false &&
-        !NAMESPACE_ATTRRIBUTE_PATTERN.test(attrib.key)
+        NAMESPACE_ATTRRIBUTE_PATTERN.test(attrib.key) === false
       ) {
         issues.push({
           msg: `Unknown Attribute: <${

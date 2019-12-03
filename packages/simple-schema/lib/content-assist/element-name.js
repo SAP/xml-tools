@@ -1,4 +1,4 @@
-const { difference, map, filter, find } = require("lodash");
+const { difference, map, filter, find, has } = require("lodash");
 
 // https://www.w3.org/TR/2009/REC-xml-names-20091208/#NT-PrefixedName
 const NAMESPACE_PATTERN = /^(?:([^:]*):)?([^:]*)$/;
@@ -14,19 +14,21 @@ const NAMESPACE_PATTERN = /^(?:([^:]*):)?([^:]*)$/;
  */
 function elementNameCompletion(elementNode, xssElement, prefix = "") {
   const match = prefix.match(NAMESPACE_PATTERN);
-  if (!match) {
+  if (match === null) {
     return [];
   }
   const namespacePrefix = match[1];
-  const namespace = find(
+  const elementNamespace = find(
     elementNode.namespaces,
     _ => _.prefix === namespacePrefix
   );
   const possibleElements = filter(
     xssElement.elements,
     _ =>
-      !_.namespace ||
-      (_.namespace && namespace && _.namespace === namespace.uri)
+      has(_, "namespace") === false ||
+      (_.namespace &&
+        elementNamespace !== undefined &&
+        _.namespace === elementNamespace.uri)
   );
   const allPossibleSuggestions = map(possibleElements, _ => _.name);
   const notSingularElem = filter(
@@ -48,7 +50,7 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
     };
   });
 
-  if (!namespacePrefix) {
+  if (namespacePrefix === undefined) {
     const namespaces = filter(elementNode.namespaces, _ => !!_.prefix);
     const namespaceSuggestions = map(namespaces, _ => ({
       text: _.prefix,

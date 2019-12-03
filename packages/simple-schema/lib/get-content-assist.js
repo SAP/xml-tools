@@ -23,7 +23,7 @@ function getSchemaSuggestionsProviders(schema) {
 function buildAttributeNameProvider(schema) {
   return ({ element, prefix }) => {
     const xssElementDef = findElementXssDef(element, schema);
-    if (xssElementDef) {
+    if (xssElementDef !== undefined) {
       return attributeNameCompletion(element, xssElementDef, prefix);
     } else {
       return [];
@@ -39,7 +39,7 @@ function buildElementNameProvider(schema) {
     // Note we are finding the definition for the element's parent
     // Because the information on possible sibling elements exists there...
     const xssElementDef = findElementXssDef(element.parent, schema);
-    if (xssElementDef) {
+    if (xssElementDef !== undefined) {
       return elementNameCompletion(element.parent, xssElementDef, prefix);
     } else {
       return [];
