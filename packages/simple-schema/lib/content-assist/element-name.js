@@ -1,5 +1,7 @@
-const { difference, map, filter } = require("lodash");
+const { difference, map, filter, find, has } = require("lodash");
 
+// https://www.w3.org/TR/2009/REC-xml-names-20091208/#NT-PrefixedName
+const NAMESPACE_PATTERN = /^(?:([^:]*):)?([^:]*)$/;
 /**
  *
  * Note that the Element (XML/XSS) are of the parent node of the element
@@ -11,7 +13,24 @@ const { difference, map, filter } = require("lodash");
  * @returns {CompletionSuggestion[]}
  */
 function elementNameCompletion(elementNode, xssElement, prefix = "") {
-  const allPossibleSuggestions = map(xssElement.elements, _ => _.name);
+  const match = prefix.match(NAMESPACE_PATTERN);
+  if (match === null) {
+    return [];
+  }
+  const namespacePrefix = match[1];
+  const elementNamespace = find(
+    elementNode.namespaces,
+    _ => _.prefix === namespacePrefix
+  );
+  const possibleElements = filter(
+    xssElement.elements,
+    _ =>
+      has(_, "namespace") === false ||
+      (_.namespace &&
+        elementNamespace !== undefined &&
+        _.namespace === elementNamespace.uri)
+  );
+  const allPossibleSuggestions = map(possibleElements, _ => _.name);
   const notSingularElem = filter(
     xssElement.elements,
     _ => _.cardinality === "many"
@@ -24,18 +43,23 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
     existingSingular
   );
 
-  const possibleNewSuggestionsMatchingPrefix = filter(
-    possibleSuggestionsWithoutExistingSingular,
-    _ => _.startsWith(prefix)
-  );
-
-  const suggestions = map(possibleNewSuggestionsMatchingPrefix, _ => {
+  const suggestions = map(possibleSuggestionsWithoutExistingSingular, _ => {
     return {
-      text: _.substring(prefix.length),
+      text: _,
       label: _
     };
   });
 
+  if (namespacePrefix === undefined) {
+    const namespaces = filter(elementNode.namespaces, _ => !!_.prefix);
+    const namespaceSuggestions = map(namespaces, _ => ({
+      text: _.prefix,
+      label: _.prefix,
+      commitCharacter: ":",
+      isNamespace: true
+    }));
+    return [...namespaceSuggestions, ...suggestions];
+  }
   return suggestions;
 }
 

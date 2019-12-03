@@ -1,6 +1,7 @@
 const { map, includes, forEach } = require("lodash");
 const { tokenToOffsetPosition } = require("./utils");
 
+const NAMESPACE_ATTRRIBUTE_PATTERN = /^xmlns(:[^=]*)?$/;
 /**
  * @param {XMLElement} elem
  * @param {XSSElement} schema
@@ -20,7 +21,10 @@ function validateUnknownAttributes(elem, schema) {
      * reproduce this branch with current error recovery heuristics
      */
     if (attrib.key !== null) {
-      if (includes(allowedAttribNames, attrib.key) === false) {
+      if (
+        includes(allowedAttribNames, attrib.key) === false &&
+        NAMESPACE_ATTRRIBUTE_PATTERN.test(attrib.key) === false
+      ) {
         issues.push({
           msg: `Unknown Attribute: <${
             attrib.key

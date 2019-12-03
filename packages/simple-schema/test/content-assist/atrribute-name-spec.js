@@ -40,21 +40,24 @@ describe("The XML Simple Schema", () => {
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
-        expect(suggestions).to.have.lengthOf(3);
         expect(suggestions).to.deep.include.members([
           {
             label: "name",
-            text: "name"
+            text: "name",
+            commitCharacter: "="
           },
           {
             label: "age",
-            text: "age"
+            text: "age",
+            commitCharacter: "="
           },
           {
             label: "address",
-            text: "address"
+            text: "address",
+            commitCharacter: "="
           }
         ]);
+        expect(suggestions).to.have.lengthOf(3);
       });
 
       it("provides suggestion: with prefix", () => {
@@ -93,17 +96,42 @@ describe("The XML Simple Schema", () => {
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
-        expect(suggestions).to.have.lengthOf(2);
         expect(suggestions).to.deep.include.members([
           {
+            label: "name",
+            text: "name",
+            commitCharacter: "="
+          },
+          {
             label: "age",
-            text: "ge"
+            text: "age",
+            commitCharacter: "="
           },
           {
             label: "address",
-            text: "ddress"
+            text: "address",
+            commitCharacter: "="
           }
         ]);
+        expect(suggestions).to.have.lengthOf(3);
+      });
+      it("does not crash wehen xss element does not exist", () => {
+        const xmlText = `<people>
+                    <person a⇶></person>
+                  </people>`;
+
+        const schema = {
+          required: true,
+          cardinality: "single",
+          name: "people",
+          attributes: {},
+
+          elements: {}
+        };
+
+        const suggestions = suggestionsBySchema(xmlText, schema);
+        expect(suggestions).to.deep.include.members([]);
+        expect(suggestions).to.have.lengthOf(0);
       });
 
       it("filters suggestions by existing attributes", () => {
@@ -142,17 +170,19 @@ describe("The XML Simple Schema", () => {
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
-        expect(suggestions).to.have.lengthOf(2);
         expect(suggestions).to.deep.include.members([
           {
             label: "name",
-            text: "name"
+            text: "name",
+            commitCharacter: "="
           },
           {
             label: "address",
-            text: "address"
+            text: "address",
+            commitCharacter: "="
           }
         ]);
+        expect(suggestions).to.have.lengthOf(2);
       });
     });
   });

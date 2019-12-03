@@ -26,10 +26,10 @@ declare type XSSElement = {
   namespace?: string;
 
   attributesType?: "open" | "closed";
-  attributes?: Record<string, XSSAttribute>;
+  attributes: Record<string, XSSAttribute>;
 
   elementsType?: "open" | "closed";
-  elements?: Record<string, XSSElement>;
+  elements: Record<string, XSSElement>;
   // TODO: textValue definition (for simple pure text only?)
 };
 

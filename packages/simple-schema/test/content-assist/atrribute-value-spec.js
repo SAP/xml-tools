@@ -158,6 +158,24 @@ describe("The XML Simple Schema", () => {
         const suggestions = suggestionsBySchema(xmlText, schema);
         expect(suggestions).to.have.lengthOf(0);
       });
+
+      it("Does not crash if there is no XSS value definition", () => {
+        const xmlText = `<people>
+                    <person age="⇶"></person>
+                  </people>`;
+
+        const schema = {
+          required: true,
+          cardinality: "single",
+          name: "people",
+          attributes: {},
+
+          elements: {}
+        };
+
+        const suggestions = suggestionsBySchema(xmlText, schema);
+        expect(suggestions).to.have.lengthOf(0);
+      });
     });
   });
 });
