@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@0.4.0...@xml-tools/content-assist@0.4.1) (2019-12-03)
+
+### Bug Fixes
+
+- simple schema with xml namespaces ([#52](https://github.com/sap/xml-tools/issues/52)) ([bb0163e](https://github.com/sap/xml-tools/commit/bb0163e))
+
 # [0.4.0](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@0.3.6...@xml-tools/content-assist@0.4.0) (2019-11-20)
 
 ### Features
