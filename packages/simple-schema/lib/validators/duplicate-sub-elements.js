@@ -15,9 +15,10 @@ function validateDuplicateSubElements(elem, schema) {
   const issues = [];
   forEach(actualSubElemByName, (dupElements, dupElementsName) => {
     const allowedDup = includes(allowedDupElemNames, dupElementsName);
+    const hasConfiguration = schema.elements[dupElementsName] !== undefined;
     const hasDuplicates = dupElements.length > 1;
 
-    if (allowedDup === false && hasDuplicates) {
+    if (allowedDup === false && hasDuplicates && hasConfiguration) {
       forEach(dupElements, dupElem => {
         issues.push({
           msg: `Duplicate Sub-Element: <${dupElem.name}> only a single occurrence of this Sub-Element is allowed here.`,

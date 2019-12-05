@@ -154,6 +154,36 @@ describe("The XML Simple Schema", () => {
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;
       });
+
+      it.only("Won't complain when no sub elements are defined", () => {
+        const xmlText = `<people>
+                 <person>
+                   <name>Donald</name>
+                   <age>85</age>
+                   <address>NY</address>
+                   <address>IL</address>
+                 </person>
+              </people>`;
+
+        const schema = {
+          required: true,
+          cardinality: "single",
+          name: "people",
+          attributes: {},
+
+          elements: {
+            person: {
+              name: "person",
+              required: false,
+              cardinality: "many",
+              attributes: {},
+              elements: {}
+            }
+          }
+        };
+        const issues = validateBySchema(xmlText, schema);
+        expect(issues).to.be.empty;
+      });
     });
   });
 });
