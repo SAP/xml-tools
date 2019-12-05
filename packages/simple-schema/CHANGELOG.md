@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.6](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@0.0.5...@xml-tools/simple-schema@0.0.6) (2019-12-05)
+
+### Bug Fixes
+
+- **simple-schema:** duplicate element error ([f434af8](https://github.com/sap/xml-tools/commit/f434af8))
+
 ## [0.0.5](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@0.0.4...@xml-tools/simple-schema@0.0.5) (2019-12-03)
 
 ### Bug Fixes
