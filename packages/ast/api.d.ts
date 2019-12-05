@@ -46,7 +46,7 @@ declare interface XMLElement {
   readonly type: "XMLElement";
   readonly parent: XMLElement | XMLDocument;
 
-  readonly namespaces: { prefix: string; uri: string }[];
+  readonly namespaces: { prefix?: string; uri: string }[];
 
   // namespace prefix used by this XML Element.
   // - Note that this is an optional syntax.

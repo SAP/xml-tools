@@ -277,8 +277,11 @@ function updateNamespaces(element, prevNamespaces = []) {
           const prefix = nsMatch[1];
           if (attrib.value) {
             const uri = attrib.value;
-            // Only add a namespace is
-            result.push({ prefix: prefix, uri: uri });
+            const namespace = { uri: uri };
+            if (prefix !== undefined) {
+              namespace.prefix = prefix;
+            }
+            result.push(namespace);
           }
         }
       }

@@ -4,8 +4,8 @@ module.exports = {
     rootElement: {
       type: "XMLElement",
       namespaces: [
-        { prefix: "f", uri: "https://blah.com/furniture" },
-        { prefix: undefined, uri: "https://blah.com/default" }
+        { uri: "https://blah.com/furniture", prefix: "f" },
+        { uri: "https://blah.com/default" }
       ],
       name: "table",
       attributes: [
@@ -42,7 +42,7 @@ module.exports = {
         {
           type: "XMLElement",
           namespaces: [
-            { prefix: "f", uri: "https://blah.com/furniture" },
+            { uri: "https://blah.com/furniture", prefix: "f" },
             { uri: "https://blah.com/default" }
           ],
           name: "name",
@@ -67,7 +67,7 @@ module.exports = {
         {
           type: "XMLElement",
           namespaces: [
-            { prefix: "f", uri: "https://blah.com/furniture" },
+            { uri: "https://blah.com/furniture", prefix: "f" },
             { uri: "https://blah.com/default" }
           ],
           name: "width",
@@ -92,7 +92,7 @@ module.exports = {
         {
           type: "XMLElement",
           namespaces: [
-            { prefix: "f", uri: "https://blah.com/furniture" },
+            { uri: "https://blah.com/furniture", prefix: "f" },
             { uri: "https://blah.com/default" }
           ],
           name: "length",
@@ -117,7 +117,7 @@ module.exports = {
         {
           type: "XMLElement",
           namespaces: [
-            { prefix: "f", uri: "https://blah.com/furniture" },
+            { uri: "https://blah.com/furniture", prefix: "f" },
             { uri: "https://blah.com/default" }
           ],
           name: "description",
