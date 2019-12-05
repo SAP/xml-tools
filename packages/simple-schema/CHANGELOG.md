@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@0.0.6...@xml-tools/simple-schema@0.0.7) (2019-12-05)
+
+**Note:** Version bump only for package @xml-tools/simple-schema
+
 ## [0.0.6](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@0.0.5...@xml-tools/simple-schema@0.0.6) (2019-12-05)
 
 ### Bug Fixes

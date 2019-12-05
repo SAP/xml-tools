@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@0.4.6...@xml-tools/ast@0.5.0) (2019-12-05)
+
+### Features
+
+- better Handling of Open/Close Body ranges ([0751a7e](https://github.com/sap/xml-tools/commit/0751a7e))
+
 ## [0.4.6](https://github.com/sap/xml-tools/compare/@xml-tools/ast@0.4.5...@xml-tools/ast@0.4.6) (2019-12-03)
 
 **Note:** Version bump only for package @xml-tools/ast
