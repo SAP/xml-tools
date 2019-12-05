@@ -1,21 +1,20 @@
 {
-  "name": "@xml-tools/content-assist",
-  "version": "0.4.1",
-  "description": "XML Content Assist APIs",
+  "name": "@xml-tools/common",
+  "version": "0.0.0",
+  "description": "XML-Tools Common Utilities",
   "keywords": [
     "xml",
-    "auto-complete",
-    "content-assist"
+    "validation"
   ],
   "main": "lib/api.js",
   "repository": "https://github.com/sap/xml-tools/",
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "^0.4.6",
-    "@xml-tools/parser": "^0.4.0",
-    "@xml-tools/common": "^0.0.0",
     "lodash": "4.17.15"
+  },
+  "devDependencies": {
+    "@xml-tools/parser": "^0.4.0"
   },
   "scripts": {
     "ci": "npm-run-all type-check coverage:*",

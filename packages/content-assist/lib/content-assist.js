@@ -9,6 +9,7 @@ const {
   isEmpty
 } = require("lodash");
 const { BaseXmlCstVisitor } = require("@xml-tools/parser");
+const { findNextTextualToken } = require("@xml-tools/common");
 
 /**
  *
@@ -281,7 +282,7 @@ function handleNewAttributeKeyForPartialElement(
 ) {
   const nextAfterElemNameTok = findNextTextualToken(
     tokenVector,
-    possibleAttribKeyRangeStartTok
+    possibleAttribKeyRangeStartTok.endOffset
   );
   if (
     visitor.targetOffset > possibleAttribKeyRangeStartTok.endOffset &&
@@ -372,34 +373,6 @@ function exists(tokArr) {
     tokArr.length === 1 &&
     tokArr[0].isInsertedInRecovery !== true
   );
-}
-
-function findNextTextualToken(tokenVector, prevToken) {
-  // The TokenVector is sorted, so we could use a BinarySearch to optimize performance
-  const prevTokenIdx = findIndex(
-    tokenVector,
-    tok => tok.endOffset === prevToken.endOffset
-  );
-  let nextTokenIdx = prevTokenIdx;
-  let found = false;
-  while (found === false) {
-    nextTokenIdx++;
-    const nextPossibleToken = tokenVector[nextTokenIdx];
-    // No Next textualToken
-    if (nextPossibleToken === undefined) {
-      return null;
-    }
-    /* istanbul ignore next
-     * I don't think this scenario can be created, however defensive coding never killed anyone...
-     * Basically SEA_WS can only only appear in "OUTSIDE" mode, and we need a CLOSE/SLASH_CLOSE to get back to outside
-     * mode, however if we had those  this function would never have been called...
-     */
-    if (nextPossibleToken.tokenType.name === "SEA_WS") {
-      // skip pure WS tokens as they do not contain any actual text
-    } else {
-      return nextPossibleToken;
-    }
-  }
 }
 
 module.exports = {
