@@ -31,8 +31,9 @@ module.exports = {
           position: { startOffset: 24, endOffset: 50 },
           syntax: {
             openName: { image: "f:name", startOffset: 25, endOffset: 30 },
+            closeName: { image: "f:name", startOffset: 44, endOffset: 49 },
             openBody: { startOffset: 24, endOffset: 31 },
-            closeName: { image: "f:name", startOffset: 44, endOffset: 49 }
+            closeBody: { startOffset: 42, endOffset: 50 }
           },
           ns: "f"
         },
@@ -52,8 +53,9 @@ module.exports = {
           position: { startOffset: 56, endOffset: 76 },
           syntax: {
             openName: { image: "f:width", startOffset: 57, endOffset: 63 },
+            closeName: { image: "f:width", startOffset: 69, endOffset: 75 },
             openBody: { startOffset: 56, endOffset: 64 },
-            closeName: { image: "f:width", startOffset: 69, endOffset: 75 }
+            closeBody: { startOffset: 67, endOffset: 76 }
           },
           ns: "f"
         },
@@ -73,8 +75,9 @@ module.exports = {
           position: { startOffset: 82, endOffset: 104 },
           syntax: {
             openName: { image: "f:length", startOffset: 83, endOffset: 90 },
+            closeName: { image: "f:length", startOffset: 96, endOffset: 103 },
             openBody: { startOffset: 82, endOffset: 91 },
-            closeName: { image: "f:length", startOffset: 96, endOffset: 103 }
+            closeBody: { startOffset: 94, endOffset: 104 }
           },
           ns: "f"
         }
@@ -104,8 +107,9 @@ module.exports = {
       position: { startOffset: 1, endOffset: 115 },
       syntax: {
         openName: { image: "f:table", startOffset: 2, endOffset: 8 },
+        closeName: { image: "f:table", startOffset: 108, endOffset: 114 },
         openBody: { startOffset: 1, endOffset: 18 },
-        closeName: { image: "f:table", startOffset: 108, endOffset: 114 }
+        closeBody: { startOffset: 106, endOffset: 115 }
       },
       ns: "f"
     },

@@ -23,8 +23,9 @@ module.exports = {
           position: { startOffset: 11, endOffset: 23 },
           syntax: {
             openName: { image: "to", startOffset: 12, endOffset: 13 },
+            closeName: { image: "to", startOffset: 21, endOffset: 22 },
             openBody: { startOffset: 11, endOffset: 14 },
-            closeName: { image: "to", startOffset: 21, endOffset: 22 }
+            closeBody: { startOffset: 19, endOffset: 23 }
           }
         },
         {
@@ -53,8 +54,9 @@ module.exports = {
           position: { startOffset: 64, endOffset: 80 },
           syntax: {
             openName: { image: "from", startOffset: 65, endOffset: 68 },
+            closeName: { image: "from", startOffset: 76, endOffset: 79 },
             openBody: { startOffset: 64, endOffset: 69 },
-            closeName: { image: "from", startOffset: 76, endOffset: 79 }
+            closeBody: { startOffset: 74, endOffset: 80 }
           }
         }
       ],
@@ -78,8 +80,9 @@ module.exports = {
       position: { startOffset: 0, endOffset: 88 },
       syntax: {
         openName: { image: "note", startOffset: 1, endOffset: 4 },
+        closeName: { image: "note", startOffset: 84, endOffset: 87 },
         openBody: { startOffset: 0, endOffset: 5 },
-        closeName: { image: "note", startOffset: 84, endOffset: 87 }
+        closeBody: { startOffset: 82, endOffset: 88 }
       }
     },
     position: { startOffset: 0, endOffset: 89 }

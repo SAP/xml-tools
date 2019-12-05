@@ -39,8 +39,9 @@ module.exports = {
       position: { startOffset: 0, endOffset: 44 },
       syntax: {
         openName: { image: "note", startOffset: 1, endOffset: 4 },
+        closeName: { image: "note", startOffset: 40, endOffset: 43 },
         openBody: { startOffset: 0, endOffset: 37 },
-        closeName: { image: "note", startOffset: 40, endOffset: 43 }
+        closeBody: { startOffset: 38, endOffset: 44 }
       }
     },
     position: { startOffset: 0, endOffset: 45 }

@@ -5,7 +5,7 @@ module.exports = {
       type: "XMLElement",
       namespaces: [
         { prefix: "f", uri: "https://blah.com/furniture" },
-        { prefix: undefined, uri: "https://blah.com/default" }
+        { uri: "https://blah.com/default" }
       ],
       name: "table",
       attributes: [
@@ -43,7 +43,7 @@ module.exports = {
           type: "XMLElement",
           namespaces: [
             { prefix: "f", uri: "https://blah.com/furniture" },
-            { prefix: undefined, uri: "https://blah.com/default" }
+            { uri: "https://blah.com/default" }
           ],
           name: "name",
           attributes: [],
@@ -58,8 +58,9 @@ module.exports = {
           position: { startOffset: 85, endOffset: 111 },
           syntax: {
             openName: { image: "f:name", startOffset: 86, endOffset: 91 },
+            closeName: { image: "f:name", startOffset: 105, endOffset: 110 },
             openBody: { startOffset: 85, endOffset: 92 },
-            closeName: { image: "f:name", startOffset: 105, endOffset: 110 }
+            closeBody: { startOffset: 103, endOffset: 111 }
           },
           ns: "f"
         },
@@ -67,7 +68,7 @@ module.exports = {
           type: "XMLElement",
           namespaces: [
             { prefix: "f", uri: "https://blah.com/furniture" },
-            { prefix: undefined, uri: "https://blah.com/default" }
+            { uri: "https://blah.com/default" }
           ],
           name: "width",
           attributes: [],
@@ -82,8 +83,9 @@ module.exports = {
           position: { startOffset: 117, endOffset: 137 },
           syntax: {
             openName: { image: "f:width", startOffset: 118, endOffset: 124 },
+            closeName: { image: "f:width", startOffset: 130, endOffset: 136 },
             openBody: { startOffset: 117, endOffset: 125 },
-            closeName: { image: "f:width", startOffset: 130, endOffset: 136 }
+            closeBody: { startOffset: 128, endOffset: 137 }
           },
           ns: "f"
         },
@@ -91,7 +93,7 @@ module.exports = {
           type: "XMLElement",
           namespaces: [
             { prefix: "f", uri: "https://blah.com/furniture" },
-            { prefix: undefined, uri: "https://blah.com/default" }
+            { uri: "https://blah.com/default" }
           ],
           name: "length",
           attributes: [],
@@ -106,8 +108,9 @@ module.exports = {
           position: { startOffset: 143, endOffset: 165 },
           syntax: {
             openName: { image: "f:length", startOffset: 144, endOffset: 151 },
+            closeName: { image: "f:length", startOffset: 157, endOffset: 164 },
             openBody: { startOffset: 143, endOffset: 152 },
-            closeName: { image: "f:length", startOffset: 157, endOffset: 164 }
+            closeBody: { startOffset: 155, endOffset: 165 }
           },
           ns: "f"
         },
@@ -115,7 +118,7 @@ module.exports = {
           type: "XMLElement",
           namespaces: [
             { prefix: "f", uri: "https://blah.com/furniture" },
-            { prefix: undefined, uri: "https://blah.com/default" }
+            { uri: "https://blah.com/default" }
           ],
           name: "description",
           attributes: [],
@@ -134,12 +137,13 @@ module.exports = {
               startOffset: 172,
               endOffset: 182
             },
-            openBody: { startOffset: 171, endOffset: 183 },
             closeName: {
               image: "description",
               startOffset: 198,
               endOffset: 208
-            }
+            },
+            openBody: { startOffset: 171, endOffset: 183 },
+            closeBody: { startOffset: 196, endOffset: 209 }
           }
         }
       ],
@@ -173,8 +177,9 @@ module.exports = {
       position: { startOffset: 1, endOffset: 220 },
       syntax: {
         openName: { image: "f:table", startOffset: 2, endOffset: 8 },
+        closeName: { image: "f:table", startOffset: 213, endOffset: 219 },
         openBody: { startOffset: 1, endOffset: 79 },
-        closeName: { image: "f:table", startOffset: 213, endOffset: 219 }
+        closeBody: { startOffset: 211, endOffset: 220 }
       },
       ns: "f"
     },

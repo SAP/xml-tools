@@ -139,18 +139,6 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       } else {
         astNode.name = openNameToken.image;
       }
-
-      if (exists(ctx.START_CLOSE)) {
-        astNode.syntax.openBody = {
-          ...toXMLToken(location),
-          ...endOfXMLToken(ctx.START_CLOSE[0])
-        };
-      } else if (exists(ctx.SLASH_CLOSE)) {
-        astNode.syntax.openBody = {
-          ...toXMLToken(location),
-          ...endOfXMLToken(ctx.SLASH_CLOSE[0])
-        };
-      }
     }
 
     if (
@@ -158,6 +146,31 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       ctx.END_NAME[0].isInsertedInRecovery !== true
     ) {
       astNode.syntax.closeName = toXMLToken(ctx.END_NAME[0]);
+    }
+
+    /* istanbul ignore else - Defensive Coding */
+    if (exists(ctx.OPEN)) {
+      let openBodyCloseTok = undefined;
+      /* istanbul ignore else - Defensive Coding */
+      if (exists(ctx.START_CLOSE)) {
+        openBodyCloseTok = ctx.START_CLOSE[0];
+      } else if (exists(ctx.SLASH_CLOSE)) {
+        openBodyCloseTok = ctx.SLASH_CLOSE[0];
+      }
+
+      if (openBodyCloseTok !== undefined) {
+        astNode.syntax.openBody = {
+          ...startOfXMLToken(ctx.OPEN[0]),
+          ...endOfXMLToken(openBodyCloseTok)
+        };
+      }
+    }
+
+    if (exists(ctx.SLASH_OPEN) && exists(ctx.END)) {
+      astNode.syntax.closeBody = {
+        ...startOfXMLToken(ctx.SLASH_OPEN[0]),
+        ...endOfXMLToken(ctx.END[0])
+      };
     }
     setChildrenParent(astNode);
 
@@ -296,6 +309,10 @@ function toXMLToken(token) {
     "startColumn",
     "endColumn"
   ]);
+}
+
+function startOfXMLToken(token) {
+  return pick(token, ["startOffset", "startLine", "startColumn"]);
 }
 
 function endOfXMLToken(token) {
