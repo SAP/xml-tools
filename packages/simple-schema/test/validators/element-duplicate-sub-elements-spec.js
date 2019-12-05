@@ -155,7 +155,7 @@ describe("The XML Simple Schema", () => {
         expect(issues).to.be.empty;
       });
 
-      it.only("Won't complain when no sub elements are defined", () => {
+      it("Won't complain when no sub elements are defined", () => {
         const xmlText = `<people>
                  <person>
                    <name>Donald</name>
