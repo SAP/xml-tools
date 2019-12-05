@@ -5,7 +5,7 @@ module.exports = {
       type: "XMLElement",
       namespaces: [
         { prefix: "f", uri: "https://blah.com/furniture" },
-        { uri: "https://blah.com/default" }
+        { prefix: undefined, uri: "https://blah.com/default" }
       ],
       name: "table",
       attributes: [
