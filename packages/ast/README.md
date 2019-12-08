@@ -42,8 +42,8 @@ const xmlText = `<note>
                  </note>
 `;
 
-const { cst } = parse(xmlText);
-const xmlDocAst = buildAst(cst);
+const { cst, tokenVector } = parse(xmlText);
+const xmlDocAst = buildAst(cst, tokenVector);
 console.log(xmlDocAst.rootElement.name); // -> note
 
 // A Visitor allows us to invoke actions on the XML ASTNodes without worrying about

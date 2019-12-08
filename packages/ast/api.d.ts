@@ -1,12 +1,14 @@
+import { IToken } from "chevrotain";
 import { DocumentCstNode } from "@xml-tools/parser";
 
 /**
  * Builds an XML Ast from an XML Cst.
  * Can process even partial CSTs...
- *
- * @param docCst
  */
-export function buildAst(docCst: DocumentCstNode): XMLDocument;
+export function buildAst(
+  docCst: DocumentCstNode,
+  tokenVector: IToken[]
+): XMLDocument;
 
 /**
  * An Abstract Syntax Tree structure
@@ -85,6 +87,23 @@ declare interface XMLElement {
     // Will not exist if any of the closing "brackets" are missing
     // - e.g in a self closing element.
     readonly closeBody?: XMLToken;
+
+    // Describes the range of the attributes section:
+    // This starts one character **after** the opening name token
+    // and ends one character before the open body closing '>' or self closing '/>
+    // Examples:
+    // <SomeTag attribute1="value1" attrib2="666" >Some content</SomeTag>
+    //          <===== attributesRange      =====>
+    // <SomeTag attribute1="value1" attrib2="666" />
+    //          <===== attributesRange      =====>
+    readonly attributesRange?: SourceRange;
+
+    // Same as attributesRange except this property will be used for partially valid
+    // XMLElements when the AstBuilder cannot be certain what is the exact attributes range.
+    // - Only one of the attributeRanges properties may exist at the same time.
+    // - It is possible that in some cases it won't be possible to even guess the attributes range.
+    //   In that scenario neither of the properties will exist.
+    readonly guessedAttributesRange?: SourceRange;
   };
   readonly position: SourcePosition;
 }
@@ -112,6 +131,11 @@ declare interface XMLAttribute {
     readonly value?: XMLToken;
   };
   readonly position: SourcePosition;
+}
+
+declare interface SourceRange {
+  readonly startOffset: number;
+  readonly endOffset: number;
 }
 
 declare interface SourcePosition {

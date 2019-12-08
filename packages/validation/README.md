@@ -30,8 +30,8 @@ const xmlText = `<note>
                  </note>
 `;
 
-const { cst } = parse(xmlText);
-const xmlDocAst = buildAst(cst);
+const { cst, tokenVector } = parse(xmlText);
+const xmlDocAst = buildAst(cst, tokenVector);
 const issues = validate({
   doc: xmlDocAst,
   validators: {

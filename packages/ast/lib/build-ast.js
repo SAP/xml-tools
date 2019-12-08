@@ -1,5 +1,6 @@
 const { BaseXmlCstVisitor } = require("@xml-tools/parser");
 const {
+  last,
   forEach,
   reduce,
   map,
@@ -8,14 +9,16 @@ const {
   isEmpty,
   isArray
 } = require("lodash");
-
+const { findNextTextualToken } = require("@xml-tools/common");
 const { getAstChildrenReflective } = require("./utils");
 
 /**
  * @param {DocumentCstNode} docCst
+ * @param {IToken[]} tokenVector
  * @returns {XMLDocument}
  */
-function buildAst(docCst) {
+function buildAst(docCst, tokenVector) {
+  AstBuilder.setState({ tokenVector });
   const xmlDocAst = AstBuilder.visit(docCst);
 
   if (xmlDocAst.rootElement !== invalidSyntax) {
@@ -27,6 +30,10 @@ function buildAst(docCst) {
 class CstToAstVisitor extends BaseXmlCstVisitor {
   constructor() {
     super();
+  }
+
+  setState({ tokenVector }) {
+    this.tokenVector = tokenVector;
   }
 
   visit(cstNode) {
@@ -104,7 +111,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
   }
 
   /**
-   * @param ctx {ElementCstNode}
+   * @param ctx {ElementCtx}
    * @param location {SourcePosition}
    */
   element(ctx, location) {
@@ -129,49 +136,10 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       astNode.textContents = textContents;
     }
 
-    if (ctx.Name !== undefined && ctx.Name[0].isInsertedInRecovery !== true) {
-      const openNameToken = ctx.Name[0];
-      astNode.syntax.openName = toXMLToken(openNameToken);
-      const nsParts = nsToParts(openNameToken.image);
-      if (nsParts !== null) {
-        astNode.ns = nsParts.ns;
-        astNode.name = nsParts.name;
-      } else {
-        astNode.name = openNameToken.image;
-      }
-    }
+    handleElementOpenCloseNameRanges(astNode, ctx);
+    handleElementOpenCloseBodyRanges(astNode, ctx);
+    handleElementAttributeRanges(astNode, ctx, this.tokenVector);
 
-    if (
-      ctx.END_NAME !== undefined &&
-      ctx.END_NAME[0].isInsertedInRecovery !== true
-    ) {
-      astNode.syntax.closeName = toXMLToken(ctx.END_NAME[0]);
-    }
-
-    /* istanbul ignore else - Defensive Coding */
-    if (exists(ctx.OPEN)) {
-      let openBodyCloseTok = undefined;
-      /* istanbul ignore else - Defensive Coding */
-      if (exists(ctx.START_CLOSE)) {
-        openBodyCloseTok = ctx.START_CLOSE[0];
-      } else if (exists(ctx.SLASH_CLOSE)) {
-        openBodyCloseTok = ctx.SLASH_CLOSE[0];
-      }
-
-      if (openBodyCloseTok !== undefined) {
-        astNode.syntax.openBody = {
-          ...startOfXMLToken(ctx.OPEN[0]),
-          ...endOfXMLToken(openBodyCloseTok)
-        };
-      }
-    }
-
-    if (exists(ctx.SLASH_OPEN) && exists(ctx.END)) {
-      astNode.syntax.closeBody = {
-        ...startOfXMLToken(ctx.SLASH_OPEN[0]),
-        ...endOfXMLToken(ctx.END[0])
-      };
-    }
     setChildrenParent(astNode);
 
     return astNode;
@@ -299,7 +267,6 @@ function updateNamespaces(element, prevNamespaces = []) {
 }
 
 /**
- *
  * @param {chevrotain.IToken} token
  */
 function toXMLToken(token) {
@@ -351,6 +318,98 @@ function nsToParts(text) {
  * @type {InvalidSyntax}
  */
 const invalidSyntax = null;
+
+/**
+ * @param {XMLElement} astNode
+ * @param {ElementCtx} ctx
+ */
+function handleElementOpenCloseNameRanges(astNode, ctx) {
+  if (ctx.Name !== undefined && ctx.Name[0].isInsertedInRecovery !== true) {
+    const openNameToken = ctx.Name[0];
+    astNode.syntax.openName = toXMLToken(openNameToken);
+    const nsParts = nsToParts(openNameToken.image);
+    if (nsParts !== null) {
+      astNode.ns = nsParts.ns;
+      astNode.name = nsParts.name;
+    } else {
+      astNode.name = openNameToken.image;
+    }
+  }
+
+  if (
+    ctx.END_NAME !== undefined &&
+    ctx.END_NAME[0].isInsertedInRecovery !== true
+  ) {
+    astNode.syntax.closeName = toXMLToken(ctx.END_NAME[0]);
+  }
+}
+
+/**
+ * @param {XMLElement} astNode
+ * @param {ElementCtx} ctx
+ */
+function handleElementOpenCloseBodyRanges(astNode, ctx) {
+  /* istanbul ignore else - Defensive Coding */
+  if (exists(ctx.OPEN)) {
+    let openBodyCloseTok = undefined;
+    /* istanbul ignore else - Defensive Coding */
+    if (exists(ctx.START_CLOSE)) {
+      openBodyCloseTok = ctx.START_CLOSE[0];
+    } else if (exists(ctx.SLASH_CLOSE)) {
+      openBodyCloseTok = ctx.SLASH_CLOSE[0];
+    }
+
+    if (openBodyCloseTok !== undefined) {
+      astNode.syntax.openBody = {
+        ...startOfXMLToken(ctx.OPEN[0]),
+        ...endOfXMLToken(openBodyCloseTok)
+      };
+    }
+
+    if (exists(ctx.SLASH_OPEN) && exists(ctx.END)) {
+      astNode.syntax.closeBody = {
+        ...startOfXMLToken(ctx.SLASH_OPEN[0]),
+        ...endOfXMLToken(ctx.END[0])
+      };
+    }
+  }
+}
+
+/**
+ * @param {XMLElement} astNode
+ * @param {ElementCtx} ctx
+ * @param {IToken[]} tokenVector
+ */
+function handleElementAttributeRanges(astNode, ctx, tokenVector) {
+  if (exists(ctx.Name)) {
+    const startOffset = ctx.Name[0].endOffset + 2;
+    // Valid `attributesRange` exists
+    if (exists(ctx.START_CLOSE) || exists(ctx.SLASH_CLOSE)) {
+      const endOffset =
+        (exists(ctx.START_CLOSE)
+          ? ctx.START_CLOSE[0].startOffset
+          : ctx.SLASH_CLOSE[0].startOffset) - 1;
+      astNode.syntax.attributesRange = { startOffset, endOffset };
+    }
+    // Have to scan-ahead and guess where the attributes range ends
+    else {
+      const hasAttributes = isArray(ctx.attribute);
+      const lastKnownAttribRangeTokenEnd = hasAttributes
+        ? last(ctx.attribute).location.endOffset
+        : ctx.Name[0].endOffset;
+      const nextTextualToken = findNextTextualToken(
+        tokenVector,
+        lastKnownAttribRangeTokenEnd
+      );
+      if (nextTextualToken !== null) {
+        astNode.syntax.guessedAttributesRange = {
+          startOffset,
+          endOffset: nextTextualToken.endOffset - 1
+        };
+      }
+    }
+  }
+}
 
 module.exports = {
   buildAst: buildAst

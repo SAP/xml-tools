@@ -36,7 +36,8 @@ module.exports = {
           textContents: [],
           position: { startOffset: 10, endOffset: 35 },
           syntax: {
-            openName: { image: "nested", startOffset: 11, endOffset: 16 }
+            openName: { image: "nested", startOffset: 11, endOffset: 16 },
+            guessedAttributesRange: { startOffset: 18, endOffset: 40 }
           }
         },
         {
@@ -57,7 +58,8 @@ module.exports = {
             openName: { image: "nest2", startOffset: 42, endOffset: 46 },
             closeName: { image: "nest2", startOffset: 61, endOffset: 65 },
             openBody: { startOffset: 41, endOffset: 47 },
-            closeBody: { startOffset: 59, endOffset: 66 }
+            closeBody: { startOffset: 59, endOffset: 66 },
+            attributesRange: { startOffset: 48, endOffset: 46 }
           }
         },
         {
@@ -89,7 +91,8 @@ module.exports = {
             openName: { image: "nested3", startOffset: 73, endOffset: 79 },
             closeName: { image: "nested3", startOffset: 94, endOffset: 100 },
             openBody: { startOffset: 72, endOffset: 90 },
-            closeBody: { startOffset: 92, endOffset: 101 }
+            closeBody: { startOffset: 92, endOffset: 101 },
+            attributesRange: { startOffset: 81, endOffset: 89 }
           }
         }
       ],
@@ -115,7 +118,8 @@ module.exports = {
         openName: { image: "top", startOffset: 1, endOffset: 3 },
         closeName: { image: "top", startOffset: 105, endOffset: 107 },
         openBody: { startOffset: 0, endOffset: 4 },
-        closeBody: { startOffset: 103, endOffset: 108 }
+        closeBody: { startOffset: 103, endOffset: 108 },
+        attributesRange: { startOffset: 5, endOffset: 3 }
       }
     },
     position: { startOffset: 0, endOffset: 109 }

@@ -110,7 +110,7 @@ describe("The XML AST Visitor", () => {
 });
 
 function getAst(text) {
-  const { cst } = parse(text);
-  const ast = buildAst(cst);
+  const { cst, tokenVector } = parse(text);
+  const ast = buildAst(cst, tokenVector);
   return ast;
 }

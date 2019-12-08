@@ -56,7 +56,7 @@ describe("The XML Validations APIs", () => {
 });
 
 function xmlTextToAst(text) {
-  const { cst } = parse(text);
-  const ast = buildAst(cst);
+  const { cst, tokenVector } = parse(text);
+  const ast = buildAst(cst, tokenVector);
   return ast;
 }

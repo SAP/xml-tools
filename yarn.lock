@@ -1108,21 +1108,6 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.2.0.tgz#d688d574400d96c5b0114968705366f431831e1a"
   integrity sha512-1OzrNb4RuAzIT7wHSsgZRlMBlNsJl+do6UblR7JMW4oB7bbR+uBEYtUh7gEc/jM84GGilh68lSOokyM/zNUlBA==
 
-"@xml-tools/ast@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@xml-tools/ast/-/ast-0.3.0.tgz#aa67175443eece11fb0c00507f07570cb2ac3078"
-  integrity sha512-qpOQg2mhEgOp8BNVVZgAoTQwAHgZJgneCFN7yB6NSMqXUvdpLYJQzqRo1+qe8ATqEAFqLh3eG98oFJW2isinaA==
-  dependencies:
-    "@xml-tools/parser" "^0.3.0"
-    lodash "4.17.15"
-
-"@xml-tools/parser@^0.3.0":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@xml-tools/parser/-/parser-0.3.4.tgz#709087bedca42ad11942a2632979e13b548dbfad"
-  integrity sha512-cw20poVHMQNN6KldoTdjybUE8uoXmlmA9OYfukcIZhhV+B2nHMoEGP9u+UDYelsmUnng80YwlRQiGHd7/5aXew==
-  dependencies:
-    chevrotain "6.5.0"
-
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"

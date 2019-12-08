@@ -15,12 +15,14 @@ function executeSampleTest(dirPath, assertNoErrors) {
     const inputPath = resolve(dirPath, "input.xml");
     const inputText = readFileSync(inputPath).toString("utf8");
     const simpleNewLinesInput = inputText.replace(/\r\n/g, "\n");
-    const { cst, lexErrors, parseErrors } = parse(simpleNewLinesInput);
+    const { cst, tokenVector, lexErrors, parseErrors } = parse(
+      simpleNewLinesInput
+    );
     if (assertNoErrors === true) {
       expect(lexErrors).to.be.empty;
       expect(parseErrors).to.be.empty;
     }
-    const ast = buildAst(cst);
+    const ast = buildAst(cst, tokenVector);
     assertParentPropsAreValid(ast);
     modifyAstForAssertions(ast);
     const expectedOutput = require(resolve(dirPath, "output.js")).ast;

@@ -11,7 +11,7 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "^0.3.0",
+    "@xml-tools/ast": "^0.5.0",
     "@xml-tools/content-assist": "^0.4.2",
     "lodash": "4.17.15"
   },

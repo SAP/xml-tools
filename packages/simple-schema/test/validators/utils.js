@@ -10,8 +10,8 @@ const { getSchemaValidators } = require("../../");
  * @returns {ValidationIssue[] | *}
  */
 function validateBySchema(xmlText, schema) {
-  const { cst } = parse(xmlText);
-  const xmlDoc = buildAst(cst);
+  const { cst, tokenVector } = parse(xmlText);
+  const xmlDoc = buildAst(cst, tokenVector);
   const schemaValidators = getSchemaValidators(schema);
   const issues = validate({
     doc: xmlDoc,

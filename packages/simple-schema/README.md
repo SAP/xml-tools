@@ -71,8 +71,8 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
   const { validate } = require("@xml-tools/validation");
   const { getSchemaValidators } = require("@xml-tools/simple-schema");
 
-  const { cst } = parse(xmlText);
-  const xmlDoc = buildAst(cst);
+  const { cst, tokenVector } = parse(xmlText);
+  const xmlDoc = buildAst(cst, tokenVector);
   const schemaValidators = getSchemaValidators(schema);
   const issues = validate({
     doc: xmlDoc,

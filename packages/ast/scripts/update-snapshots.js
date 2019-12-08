@@ -21,8 +21,8 @@ xmlSampleFiles.forEach(fileDesc => {
   const xmlInput = readFileSync(fileDesc.path, "utf8");
   const simpleNewLinesInput = xmlInput.replace(/\r\n/g, "\n");
   console.log(`Reading <${fileDesc.path}>`);
-  const { cst } = parse(simpleNewLinesInput);
-  const ast = buildAst(cst);
+  const { cst, tokenVector } = parse(simpleNewLinesInput);
+  const ast = buildAst(cst, tokenVector);
   modifyAstForAssertions(ast);
   const snapshotOutput = `module.exports = { ast : ${JSON.stringify(ast)}}`;
   const formattedSnapshotOutput = format(snapshotOutput, { parser: "babel" });
