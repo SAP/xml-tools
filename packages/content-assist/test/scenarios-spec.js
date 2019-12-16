@@ -60,6 +60,23 @@ describe("The XML Content Assist Capabilities", () => {
         expect(providerCalled).to.be.true;
       });
 
+      it("Before invalid element", () => {
+        const sample = `<person gender="female">` + `⇶` + `<\n</person>`;
+
+        let providerCalled = false;
+        getSampleSuggestions(sample, {
+          elementContent: [
+            ({ element, prefix, textContent }) => {
+              expect(prefix).to.be.undefined;
+              expect(textContent).to.be.undefined;
+              expect(element.name).to.eql("person");
+              providerCalled = true;
+            }
+          ]
+        });
+        expect(providerCalled).to.be.true;
+      });
+
       it("before comment", () => {
         const sample =
           `<person gender="female">\n` +
