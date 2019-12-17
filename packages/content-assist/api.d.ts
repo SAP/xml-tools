@@ -1,4 +1,30 @@
-import { XMLAttribute, XMLElement, XMLTextContent } from "@xml-tools/ast";
+import { CstNode } from "chevrotain";
+import {
+  XMLAttribute,
+  XMLElement,
+  XMLTextContent,
+  XMLDocument
+} from "@xml-tools/ast";
+
+declare function computeCompletionContext(params: {
+  cst: CstNode;
+  ast: XMLDocument;
+  offset: number;
+  tokenVector: IToken[];
+}): {
+  providerType: ProviderType;
+  providerArgs: {
+    prefix?: string;
+    element: XMLElement;
+    attribute?: XMLAttribute;
+  };
+};
+
+type ProviderType =
+  | "elementContent"
+  | "elementName"
+  | "attributeName"
+  | "attributeValue";
 
 declare function getSuggestions(options: {
   text: string;

@@ -36,5 +36,6 @@ function getSuggestions(options) {
 }
 
 module.exports = {
-  getSuggestions: getSuggestions
+  getSuggestions: getSuggestions,
+  computeCompletionContext: computeCompletionContext
 };
