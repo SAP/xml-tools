@@ -266,7 +266,7 @@ function handleNewAttributeKeyScenario(ctx, astNode, tokenVector, visitor) {
      */
   } else if (hasTerminatedAttribRange === false) {
     handleNewAttributeKeyForPartialElement(
-      ctx.Name[0],
+      ctx.Name ? ctx.Name[0] : ctx.OPEN[0],
       tokenVector,
       visitor,
       astNode
