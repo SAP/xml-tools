@@ -1,3 +1,5 @@
+const { parse } = require("@xml-tools/parser");
+const { buildAst } = require("@xml-tools/ast");
 const { getSuggestions } = require("@xml-tools/content-assist");
 const { getSchemaSuggestionsProviders } = require("../../");
 
@@ -11,8 +13,12 @@ function suggestionsBySchema(xmlText, schema) {
   const schemaSuggestionsProviders = getSchemaSuggestionsProviders(schema);
   const realXmlText = xmlText.replace("⇶", "");
   const offset = xmlText.indexOf("⇶");
+  const { cst, tokenVector } = parse(realXmlText);
+  const ast = buildAst(cst, tokenVector);
   const suggestions = getSuggestions({
-    text: realXmlText,
+    cst,
+    tokenVector,
+    ast,
     offset: offset,
     providers: {
       attributeValue: [

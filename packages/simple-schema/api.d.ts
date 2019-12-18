@@ -51,12 +51,29 @@ declare function getSchemaValidators(
   element: ElementValidator;
 };
 
+interface CompletionSuggestion {
+  text: string;
+  label?: string;
+  docs?: string;
+  commitCharacter?: string;
+  isNamespace?: boolean;
+  /**
+   * A measure of how certain we are about this suggestion's relevance.
+   * This value could be used to:
+   * - Filter out less relevant suggestions when there are too many possible suggestions.
+   * - Sort the suggestions by relevance.
+   */
+  confidence?: number;
+}
+
 declare function getSchemaSuggestionsProviders(
   schema: SimpleSchema
 ): {
   // TBD in the future...
   // schemaElementContentCompletion: ElementContentCompletion;
-  schemaElementNameCompletion: ElementNameCompletion;
-  schemaAttributeNameCompletion: AttributeNameCompletion;
-  schemaAttributeValueCompletion: AttributeValueCompletion;
+  schemaElementNameCompletion: ElementNameCompletion<CompletionSuggestion>;
+  schemaAttributeNameCompletion: AttributeNameCompletion<CompletionSuggestion>;
+  schemaAttributeValueCompletion: AttributeValueCompletion<
+    CompletionSuggestion
+  >;
 };
