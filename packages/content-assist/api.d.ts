@@ -6,68 +6,32 @@ import {
   XMLDocument
 } from "@xml-tools/ast";
 
-declare function computeCompletionContext(params: {
+declare function getSuggestions<T>(options: {
   cst: CstNode;
   ast: XMLDocument;
   offset: number;
   tokenVector: IToken[];
-}): {
-  providerType: ProviderType;
-  providerArgs: {
-    prefix?: string;
-    element: XMLElement;
-    attribute?: XMLAttribute;
-  };
+  providers: SuggestionProviders<T>;
+}): T[];
+
+declare type SuggestionProviders<T> = {
+  elementContent?: ElementContentCompletion<T>[];
+  elementName?: ElementNameCompletion<T>[];
+  attributeName?: AttributeNameCompletion<T>[];
+  attributeValue?: AttributeValueCompletion<T>[];
 };
 
-type ProviderType =
-  | "elementContent"
-  | "elementName"
-  | "attributeName"
-  | "attributeValue";
+declare type ProviderOptions =
+  | ElementContentCompletionOptions
+  | ElementNameCompletionOptions
+  | AttributeNameCompletionOptions
+  | AttributeValueCompletionOptions;
 
-declare function getSuggestions(options: {
-  text: string;
-  offset: number;
-  providers: {
-    elementContent?: ElementContentCompletion[];
-    elementName?: ElementNameCompletion[];
-    attributeName?: AttributeNameCompletion[];
-    attributeValue?: AttributeValueCompletion[];
-  };
-}): CompletionSuggestion[];
+declare type SuggestionProvider<O extends ProviderOptions, T> = (
+  options: O
+) => T[];
 
-interface CompletionSuggestion {
-  text: string;
-  label?: string;
-  docs?: string;
-  commitCharacter?: string;
-  isNamespace?: boolean;
-  /**
-   * A measure of how certain we are about this suggestion's relevance.
-   * This value could be used to:
-   * - Filter out less relevant suggestions when there are too many possible suggestions.
-   * - Sort the suggestions by relevance.
-   */
-  confidence?: number;
-}
-
-/**
- *  Suggestions provider for element's contents.
- *  This is triggered when content assist is requested:
- *  1. **inside** an element's contents.
- *  2. And **outside** any of the element's sub-parts
- *
- *  For example: ('⇶' marks the content assist position):
- *  - <note>
- *     <to>bobi</to>
- *     ⇶
- *     <!-- I am a comment! -->
- *    </note>
- *
- *  - <name>⇶</name>
- */
-declare type ElementContentCompletion = (options: {
+declare type ElementContentCompletionOptions = {
   /**
    * Element ASTNode for which the name content assist was requested.
    * This ASTNode may be used to:
@@ -88,8 +52,38 @@ declare type ElementContentCompletion = (options: {
    * Note that this property may be undefined if no prefix was provided.
    */
   textContent: XMLTextContent | undefined;
-}) => CompletionSuggestion[];
+};
+/**
+ *  Suggestions provider for element's contents.
+ *  This is triggered when content assist is requested:
+ *  1. **inside** an element's contents.
+ *  2. And **outside** any of the element's sub-parts
+ *
+ *  For example: ('⇶' marks the content assist position):
+ *  - <note>
+ *     <to>bobi</to>
+ *     ⇶
+ *     <!-- I am a comment! -->
+ *    </note>
+ *
+ *  - <name>⇶</name>
+ */
+declare type ElementContentCompletion<T> = SuggestionProvider<
+  ElementContentCompletionOptions,
+  T
+>;
 
+declare type ElementNameCompletionOptions = {
+  /**
+   * Element ASTNode for which the name content assist was requested
+   */
+  element: XMLElement;
+  /**
+   * The pre-existing part of the name at the content assist request offset.
+   * This would normally be used to filter out suggestions that do not match the prefix.
+   */
+  prefix: string | undefined;
+};
 /**
  *  Suggestions provider for element names.
  *  This is triggered when content assist is requested:
@@ -101,26 +95,12 @@ declare type ElementContentCompletion = (options: {
  *  - <pers⇶
  *  - <⇶
  */
-declare type ElementNameCompletion = (options: {
-  /**
-   * Element ASTNode for which the name content assist was requested
-   */
-  element: XMLElement;
-  /**
-   * The pre-existing part of the name at the content assist request offset.
-   * This would normally be used to filter out suggestions that do not match the prefix.
-   */
-  prefix: string | undefined;
-}) => CompletionSuggestion[];
+declare type ElementNameCompletion<T> = SuggestionProvider<
+  ElementNameCompletionOptions,
+  T
+>;
 
-/**
- *  Suggestions provider for attribute names.
- *  This is triggered when content assist is requested **inside** an element opening name block
- *  in a position where an attribute is valid e.g ('⇶' marks the content assist position):
- *  - <person age='45' nam⇶  >
- *  - <person age='45' ⇶  >
- */
-declare type AttributeNameCompletion = (options: {
+declare type AttributeNameCompletionOptions = {
   /**
    * Element ASTNode in which content assist was requested
    * This ASTNode may be used to:
@@ -139,17 +119,21 @@ declare type AttributeNameCompletion = (options: {
    * This would normally be used to filter out suggestions that do not match the prefix.
    */
   prefix: string | undefined;
-}) => CompletionSuggestion[];
+};
 
 /**
- *  Suggestions provider for attribute values.
- *  This is triggered when content assist is requested **inside** the quotes
- *  d.g: ('⇶' marks the content assist position):
- *  - <meeting day='wednes⇶' >
- *  - <meeting day='⇶' >
- *  - ...
+ *  Suggestions provider for attribute names.
+ *  This is triggered when content assist is requested **inside** an element opening name block
+ *  in a position where an attribute is valid e.g ('⇶' marks the content assist position):
+ *  - <person age='45' nam⇶  >
+ *  - <person age='45' ⇶  >
  */
-declare type AttributeValueCompletion = (options: {
+declare type AttributeNameCompletion<T> = SuggestionProvider<
+  AttributeNameCompletionOptions,
+  T
+>;
+
+declare type AttributeValueCompletionOptions = {
   /**
    * Element ASTNode in which content assist was requested
    */
@@ -169,4 +153,17 @@ declare type AttributeValueCompletion = (options: {
    * Note that the prefix does not include any quotes.
    */
   prefix: string | undefined;
-}) => CompletionSuggestion[];
+};
+
+/**
+ *  Suggestions provider for attribute values.
+ *  This is triggered when content assist is requested **inside** the quotes
+ *  d.g: ('⇶' marks the content assist position):
+ *  - <meeting day='wednes⇶' >
+ *  - <meeting day='⇶' >
+ *  - ...
+ */
+declare type AttributeValueCompletion<T> = SuggestionProvider<
+  AttributeValueCompletionOptions,
+  T
+>;

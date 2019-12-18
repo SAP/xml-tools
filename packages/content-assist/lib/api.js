@@ -1,5 +1,3 @@
-const { parse } = require("@xml-tools/parser");
-const { buildAst, tokenVector } = require("@xml-tools/ast");
 const { defaultsDeep, flatMap } = require("lodash");
 
 const { computeCompletionContext } = require("./content-assist");
@@ -13,13 +11,11 @@ function getSuggestions(options) {
       attributeValue: []
     }
   });
-  const { cst, tokenVector } = parse(actualOptions.text);
-  const ast = buildAst(cst, tokenVector);
 
   const { providerType, providerArgs } = computeCompletionContext({
-    cst: cst,
-    tokenVector: tokenVector,
-    ast: ast,
+    cst: actualOptions.cst,
+    tokenVector: actualOptions.tokenVector,
+    ast: actualOptions.ast,
     offset: actualOptions.offset
   });
 
@@ -36,6 +32,5 @@ function getSuggestions(options) {
 }
 
 module.exports = {
-  getSuggestions: getSuggestions,
-  computeCompletionContext: computeCompletionContext
+  getSuggestions: getSuggestions
 };

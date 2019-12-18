@@ -1,3 +1,5 @@
+const { parse } = require("@xml-tools/parser");
+const { buildAst } = require("@xml-tools/ast");
 const { expect } = require("chai");
 const { getSuggestions } = require("../");
 
@@ -499,8 +501,13 @@ describe("The XML Content Assist Capabilities", () => {
 function getSampleSuggestions(sample, providers) {
   const realSample = sample.replace("⇶", "");
   const offset = sample.indexOf("⇶");
+  const { cst, tokenVector } = parse(realSample);
+  const ast = buildAst(cst, tokenVector);
+
   return getSuggestions({
-    text: realSample,
+    cst,
+    ast,
+    tokenVector,
     offset: offset,
     providers: providers
   });
