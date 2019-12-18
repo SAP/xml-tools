@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@1.0.0...@xml-tools/simple-schema@2.0.0) (2019-12-18)
+
+### Features
+
+- **content-assist:** decouple content assist from parsing ([#58](https://github.com/sap/xml-tools/issues/58)) ([3688da8](https://github.com/sap/xml-tools/commit/3688da8))
+
+### BREAKING CHANGES
+
+- **content-assist:** getSuggestions now uses ast, cst and tokenVector instead of text
+
 # [1.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@0.0.7...@xml-tools/simple-schema@1.0.0) (2019-12-08)
 
 ### Features
