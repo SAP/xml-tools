@@ -31,7 +31,7 @@
     "typescript": "3.7.4",
     "cz-conventional-changelog": "3.0.2",
     "@commitlint/cli": "8.3.4",
-    "@commitlint/config-conventional": "8.2.0"
+    "@commitlint/config-conventional": "8.3.4"
   },
   "husky": {
     "hooks": {
