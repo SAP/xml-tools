@@ -5,4 +5,5 @@ xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc">
 id="dynamicPageId" toggleHeaderOnTitleClick="false"
     class="master-page"
   >  </f:DynamicPage>
+  <Label text="A text"/>
 </mvc:View>

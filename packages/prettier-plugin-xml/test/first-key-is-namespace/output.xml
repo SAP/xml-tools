@@ -1,13 +1,9 @@
 <mvc:View
+  xmlns:f="sap.f"
   displayBlock="true"
   controllerName="com.sap.controller.Master"
   height="100%"
   xmlns="sap.m"
-  xmlns:f="sap.f"
   xmlns:mvc="sap.ui.core.mvc">
-  <f:DynamicPage
-    id="dynamicPageId"
-    toggleHeaderOnTitleClick="false"
-    class="master-page"/>
   <Label text="A text"/>
 </mvc:View>

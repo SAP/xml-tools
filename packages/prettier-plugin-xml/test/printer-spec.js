@@ -1,5 +1,6 @@
-const prettier = require("prettier");
+const { expect } = require("chai");
 const { readFileSync, readdirSync } = require("fs");
+const prettier = require("prettier");
 
 const rootTestDirectory = "test";
 
@@ -14,7 +15,7 @@ describe("Running scenarios against sample input/output", () => {
   for (let i = 0; i < scenarioDirectories.length; i++) {
     const scenario = scenarioDirectories[i];
     const testPath = `${rootTestDirectory}/${scenario}`;
-    test(scenario, () => {
+    it(scenario, () => {
       const inputContent = readFileSync(`${testPath}/input.xml`, "utf-8");
       const outputContent = readFileSync(`${testPath}/output.xml`, "utf-8");
 
@@ -23,7 +24,7 @@ describe("Running scenarios against sample input/output", () => {
         plugins: ["."]
       });
 
-      expect(formatted).toBe(outputContent);
+      expect(formatted).to.eql(outputContent);
     });
   }
 });

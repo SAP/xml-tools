@@ -2,7 +2,6 @@ const {
   concat,
   hardline,
   line,
-  softline,
   indent,
   group,
   join
@@ -26,7 +25,7 @@ const printAttributes = attributes => {
       }
     } else if (key.startsWith("xmlns")) {
       parts.push(hardline);
-    } else if (i !== 0) {
+    } else {
       parts.push(line);
     }
     parts.push(key, "=", '"', value, '"');
@@ -57,17 +56,11 @@ const getTagName = (ns, name) => {
 };
 
 const genericPrint = (path, opts, print) => {
-  let value;
-  if (path.getValue) {
-    value = path.getValue();
-  }
-  const type = value.type || "XMLElement";
+  const type = path.getValue().type;
 
   switch (type) {
     case "XMLDocument":
       return concat([path.call(print, "rootElement"), hardline]);
-    case "XMLAttribute":
-      return printAttribute(value);
     case "XMLElement":
       const { ns, name, attributes, subElements } = path.getValue();
 
@@ -79,17 +72,12 @@ const genericPrint = (path, opts, print) => {
       const openingTag = getOpeningTab(tagName, attributes);
       const closingTag = getClosingTag(tagName);
 
-      let inner;
-      if (subElements.length === 0) {
-        inner = softline;
-      } else {
-        inner = concat([
-          indent(
-            concat([hardline, join(hardline, path.map(print, "subElements"))])
-          ),
-          hardline
-        ]);
-      }
+      const inner = concat([
+        indent(
+          concat([hardline, join(hardline, path.map(print, "subElements"))])
+        ),
+        hardline
+      ]);
       return group(concat([openingTag, inner, closingTag]));
   }
 };
