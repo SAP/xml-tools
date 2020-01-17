@@ -1,0 +1,6 @@
+<mvc:View 
+xmlns:f="sap.f" displayBlock="true" 
+controllerName="com.sap.controller.Master" height="100%" xmlns="sap.m" 
+ xmlns:mvc="sap.ui.core.mvc">
+  <Label text="A text"/>
+</mvc:View>
