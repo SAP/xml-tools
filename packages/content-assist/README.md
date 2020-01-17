@@ -13,9 +13,9 @@ Given the following XML and a content assist request at the `⇶` sign:
 
 ```xml
 <note>
-    <address city="New ⇶"></address>
-    <to>Bill</to>
-    <from>Tim</from>
+  <address city="New ⇶"/>
+  <to/>
+  <from/>
 </note>
 ```
 
