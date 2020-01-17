@@ -16,8 +16,8 @@
   },
   "scripts": {
     "ci": "npm-run-all coverage:*",
-    "test": "mocha \"./test/*.js\"",
-    "coverage:run": "nyc mocha \"./test/*.js\"",
+    "test": "mocha \"./test/**/index.js\"",
+    "coverage:run": "nyc mocha \"./test/**/index.js\"",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100"
   }
 }
