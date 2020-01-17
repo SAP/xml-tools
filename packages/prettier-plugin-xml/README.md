@@ -2,7 +2,7 @@
 
 A plugin for [Prettier](https://github.com/prettier/prettier) that offer an opinionated code formatter for UI5 views.
 
-These are the options supported by the plugin, see the [documentation](https://prettier.io/docs/en/options.html) if you're not familiar:
+These are the options supported by the plugin, see the [Prettier documentation](https://prettier.io/docs/en/options.html) if you're not familiar:
 
 | Name        | Default | Description                                                               | CLI Override          | API Override        |
 | ----------- | ------- | ------------------------------------------------------------------------- | --------------------- | ------------------- |
@@ -13,19 +13,24 @@ These are the options supported by the plugin, see the [documentation](https://p
 
 With npm:
 
-- `npm install @xml-tools/prettier-plugin-xml`
+- `npm install @xml-tools/prettier-plugin-xml --save-dev`
 
 With Yarn
 
-- `yarn add @xml-tools/prettier-plugin-xml`
+- `yarn add @xml-tools/prettier-plugin-xml --dev`
 
 ## Usage
 
-The plugin is automatically detected by prettier. It can be invoqued using the Command Line:
+### CLI
 
-- `node_modules/.bin/prettier --write *.xml`
+Installed Plugins are automatically detected by the prettier CLI.
 
-The [VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) also supports plugins so it loads `@xml-tools\prettier-plugin-xml` automatically.
+- See [Relevant Documentation](https://prettier.io/docs/en/plugins.html#using-plugins)
+
+### VSCode
+
+The [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+also automatically loads installed plugins.
 
 ## Support
 
