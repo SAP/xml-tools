@@ -18,6 +18,7 @@
     "ci": "npm-run-all coverage:*",
     "test": "mocha \"./test/**/index.js\"",
     "coverage:run": "nyc mocha \"./test/**/index.js\"",
-    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100"
+    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
+    "snapshots:update": "node ./scripts/update-snapshots.js"
   }
 }

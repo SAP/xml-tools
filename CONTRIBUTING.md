@@ -54,6 +54,24 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 - To run the tests run `yarn test` in either the top level package or a specific subpackage.
 - To run the tests with a coverage report run `yarn coverage:run` in either the top level package or a specific subpackage.
 
+### Test Snapshots Updating
+
+Several packages in this mono-repo use a snapshot testing methodology similar to the one used [in Jest](https://jestjs.io/docs/en/snapshot-testing).
+Except that in our use case we test serialized data structures related to XML rather then the DOM, e.g:
+
+- Expected Serialized XML CST.
+- Expected Serialized XML AST.
+- Expected Formatted XML Text.
+
+Packages which utilize the snapshot testing methodoly will have a `snapshots:update` script in their package.json
+
+- To update all the snapshots run: `yarn snapshots:update`.
+- The above script is also needed when adding a new test case input and creating it initial expected value.
+
+Obviously we should not blindly update the snapshots to make the tests pass.
+Instead every change(diff) in the snapshots must be **manually reviewed** to assert that no unexpected changes
+have occurred to the expected output...
+
 ### Test Coverage
 
 100%\* Test Coverage is enforced for all productive code in this mono repo.
