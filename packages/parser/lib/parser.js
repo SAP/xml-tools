@@ -22,10 +22,18 @@ class Parser extends CstParser {
         $.SUBRULE($.misc);
       });
 
-      $.SUBRULE($.element);
+      $.OPTION2(() => {
+        $.SUBRULE($.docTypeDecl);
+      });
 
       $.MANY2(() => {
         $.SUBRULE2($.misc);
+      });
+
+      $.SUBRULE($.element);
+
+      $.MANY3(() => {
+        $.SUBRULE3($.misc);
       });
     });
 
@@ -35,6 +43,45 @@ class Parser extends CstParser {
         $.SUBRULE($.attribute);
       });
       $.CONSUME(t.SPECIAL_CLOSE);
+    });
+
+    // https://www.w3.org/TR/xml/#NT-doctypedecl
+    $.RULE("docTypeDecl", () => {
+      $.CONSUME(t.DocType);
+      $.CONSUME(t.Name);
+
+      $.OPTION(() => {
+        $.SUBRULE($.externalID);
+      });
+
+      // The internal subSet part is intentionally not implemented because we do not at this
+      // time wish to implement a full DTD Parser as part of this project...
+      // https://www.w3.org/TR/xml/#NT-intSubset
+
+      $.CONSUME(t.CLOSE);
+    });
+
+    $.RULE("externalID", () => {
+      // Using gates to assert the value of the "Name" Identifiers.
+      // We could use Categories to model un-reserved keywords, however I am not sure
+      // The added complexity is needed at this time...
+      $.OR([
+        {
+          GATE: () => $.LA(1).image === "SYSTEM",
+          ALT: () => {
+            $.CONSUME2(t.Name, { LABEL: "System" });
+            $.CONSUME(t.STRING, { LABEL: "SystemLiteral" });
+          }
+        },
+        {
+          GATE: () => $.LA(1).image === "PUBLIC",
+          ALT: () => {
+            $.CONSUME3(t.Name, { LABEL: "Public" });
+            $.CONSUME2(t.STRING, { LABEL: "PubIDLiteral" });
+            $.CONSUME3(t.STRING, { LABEL: "SystemLiteral" });
+          }
+        }
+      ]);
     });
 
     $.RULE("content", () => {

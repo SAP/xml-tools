@@ -31,6 +31,8 @@ export abstract class XmlCstVisitor<IN, OUT> implements ICstVisitor<IN, OUT> {
 
   document(ctx: DocumentCtx, param?: IN): OUT;
   prolog(ctx: PrologCtx, param?: IN): OUT;
+  docTypeDecl(ctx: DocTypeDeclCtx, param?: IN): OUT;
+  externalID(ctx: ExternalIDCtx, param?: IN): OUT;
   content(ctx: ContentCtx, param?: IN): OUT;
   element(ctx: ElementCtx, param?: IN): OUT;
   reference(ctx: ReferenceCtx, param?: IN): OUT;
@@ -52,6 +54,8 @@ export abstract class XmlCstVisitorWithDefaults<IN, OUT>
 
   document(ctx: DocumentCtx, param?: IN): OUT;
   prolog(ctx: PrologCtx, param?: IN): OUT;
+  docTypeDecl(ctx: DocTypeDeclCtx, param?: IN): OUT;
+  externalID(ctx: ExternalIDCtx, param?: IN): OUT;
   content(ctx: ContentCtx, param?: IN): OUT;
   element(ctx: ElementCtx, param?: IN): OUT;
   reference(ctx: ReferenceCtx, param?: IN): OUT;
@@ -70,6 +74,7 @@ export interface DocumentCstNode extends CstNode {
 }
 export type DocumentCtx = {
   prolog: PrologCstNode[];
+  docTypeDecl: DocTypeDeclNode[];
   misc: MiscCstNode[];
   element: ElementCstNode[];
 };
@@ -78,16 +83,41 @@ export interface PrologCstNode extends CstNode {
   name: "prolog";
   children: PrologCtx;
 }
+
 export type PrologCtx = {
   XMLDeclOpen: IToken[];
   attribute: AttributeCstNode[];
   SPECIAL_CLOSE: IToken[];
 };
 
+export interface DocTypeDeclNode extends CstNode {
+  name: "docTypeDecl";
+  children: DocTypeDeclCtx;
+}
+
+export type DocTypeDeclCtx = {
+  DocType: IToken[];
+  Name: IToken[];
+  externalID: ExternalIDNode[];
+};
+
+export interface ExternalIDNode extends CstNode {
+  name: "ExternalIDNode";
+  children: ExternalIDCtx;
+}
+
+export type ExternalIDCtx = {
+  System: IToken[];
+  Public: IToken[];
+  PubIDLiteral: IToken[];
+  SystemLiteral: IToken[];
+};
+
 export interface ContentCstNode extends CstNode {
   name: "content";
   children: ContentCtx;
 }
+
 export type ContentCtx = {
   chardata: ChardataCstNode[];
   element: ElementCstNode[];

@@ -49,6 +49,18 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
   prolog(ctx, astNode) {}
 
   /**
+   * @param {docTypeDeclCtx} ctx
+   */
+  /* istanbul ignore next - place holder*/
+  docTypeDecl(ctx, astNode) {}
+
+  /**
+   * @param {ExternalIDCtx} ctx
+   */
+  /* istanbul ignore next - place holder*/
+  externalID(ctx, astNode) {}
+
+  /**
    * @param {ContentCtx} ctx
    * @param {XMLElement} astNode
    *

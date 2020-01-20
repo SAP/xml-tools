@@ -90,6 +90,18 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
   }
 
   /**
+   * @param {docTypeDeclCtx} ctx
+   */
+  /* istanbul ignore next - place holder*/
+  docTypeDecl(ctx, astNode) {}
+
+  /**
+   * @param {ExternalIDCtx} ctx
+   */
+  /* istanbul ignore next - place holder*/
+  externalID(ctx, astNode) {}
+
+  /**
    * @param ctx {ContentCtx}
    * @param location {SourcePosition}
    *

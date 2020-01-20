@@ -52,7 +52,13 @@ const Comment = createToken({
 
 const CData = createToken({ name: "CData", pattern: /<!\[CDATA\[.*?]]>/ });
 
-const DTD = createToken({
+const DocType = createToken({
+  name: "DocType",
+  pattern: /<!DOCTYPE/,
+  push_mode: "INSIDE"
+});
+
+const IgnoredDTD = createToken({
   name: "DTD",
   pattern: /<!.*?>/,
   group: Lexer.SKIPPED
@@ -149,7 +155,8 @@ const xmlLexerDefinition = {
     OUTSIDE: [
       Comment,
       CData,
-      DTD,
+      DocType,
+      IgnoredDTD,
       EntityRef,
       CharRef,
       SEA_WS,
