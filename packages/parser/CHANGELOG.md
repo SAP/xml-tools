@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.4.0...@xml-tools/parser@1.0.0) (2020-01-20)
+
+### Features
+
+- **parser:** support Basic DocType Declarations ([5b4db21](https://github.com/sap/xml-tools/commit/5b4db21))
+
+### BREAKING CHANGES
+
+- **parser:** Implementing XmlCstVisitor now requires implementing two additional methods:
+  (docTypeDecl and externalID)
+
 # [0.4.0](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.3.4...@xml-tools/parser@0.4.0) (2019-11-20)
 
 ### Bug Fixes
