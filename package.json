@@ -21,7 +21,7 @@
     "@types/chai": "4.2.7",
     "@types/mocha": "5.2.7",
     "chai": "4.2.0",
-    "husky": "4.0.10",
+    "husky": "4.2.0",
     "lerna": "3.20.2",
     "lint-staged": "10.0.1",
     "mocha": "7.0.0",
