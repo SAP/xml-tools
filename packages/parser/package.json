@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "XML Parser Implemented in JavaScript",
   "keywords": [
     "xml",

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/sap/xml-tools/compare/@xml-tools/parser@1.0.0...@xml-tools/parser@1.0.1) (2020-01-28)
+
+### Bug Fixes
+
+- **parser:** allow CData nodes to be multi-line ([#89](https://github.com/sap/xml-tools/issues/89)) ([2b2fbfb](https://github.com/sap/xml-tools/commit/2b2fbfb))
+
 # [1.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/parser@0.4.0...@xml-tools/parser@1.0.0) (2020-01-20)
 
 ### Features

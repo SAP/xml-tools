@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/content-assist",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "XML Content Assist APIs",
   "keywords": [
     "xml",
@@ -12,9 +12,9 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "^2.0.0",
-    "@xml-tools/common": "^0.0.2",
-    "@xml-tools/parser": "^1.0.0",
+    "@xml-tools/ast": "^2.0.1",
+    "@xml-tools/common": "^0.0.3",
+    "@xml-tools/parser": "^1.0.1",
     "lodash": "4.17.15"
   },
   "scripts": {
