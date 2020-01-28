@@ -50,7 +50,11 @@ const Comment = createToken({
   line_breaks: true
 });
 
-const CData = createToken({ name: "CData", pattern: /<!\[CDATA\[.*?]]>/ });
+const CData = createToken({
+  name: "CData",
+  pattern: /<!\[CDATA\[(.|\r?\n)*?]]>/,
+  line_breaks: true
+});
 
 const DocType = createToken({
   name: "DocType",
