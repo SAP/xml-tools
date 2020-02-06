@@ -12,7 +12,7 @@ declare function getSuggestions<OUT>(options: {
   ast: XMLDocument;
   offset: number;
   tokenVector: IToken[];
-  providers: SuggestionProviders<OUT, void>;
+  providers: SuggestionProviders<OUT>;
 }): OUT[];
 
 /**
@@ -29,14 +29,14 @@ declare function getSuggestions<OUT, CONTEXT>(options: {
   context: CONTEXT;
 }): OUT[];
 
-declare type SuggestionProviders<OUT, CONTEXT> = {
+declare type SuggestionProviders<OUT, CONTEXT = undefined> = {
   elementContent?: ElementContentCompletion<OUT, CONTEXT>[];
   elementName?: ElementNameCompletion<OUT, CONTEXT>[];
   attributeName?: AttributeNameCompletion<OUT, CONTEXT>[];
   attributeValue?: AttributeValueCompletion<OUT, CONTEXT>[];
 };
 
-declare type ProviderOptions<CONTEXT> =
+declare type ProviderOptions<CONTEXT = undefined> =
   | ElementContentCompletionOptions<CONTEXT>
   | ElementNameCompletionOptions<CONTEXT>
   | AttributeNameCompletionOptions<CONTEXT>
@@ -45,10 +45,10 @@ declare type ProviderOptions<CONTEXT> =
 declare type SuggestionProvider<
   IN extends ProviderOptions<CONTEXT>,
   OUT,
-  CONTEXT
+  CONTEXT = undefined
 > = (options: IN) => OUT[];
 
-declare type ElementContentCompletionOptions<CONTEXT> = {
+declare type ElementContentCompletionOptions<CONTEXT = undefined> = {
   /**
    * Element ASTNode for which the name content assist was requested.
    * This ASTNode may be used to:
@@ -87,13 +87,12 @@ declare type ElementContentCompletionOptions<CONTEXT> = {
  *
  *  - <name>⇶</name>
  */
-declare type ElementContentCompletion<OUT, CONTEXT> = SuggestionProvider<
-  ElementContentCompletionOptions<CONTEXT>,
+declare type ElementContentCompletion<
   OUT,
-  CONTEXT
->;
+  CONTEXT = undefined
+> = SuggestionProvider<ElementContentCompletionOptions<CONTEXT>, OUT, CONTEXT>;
 
-declare type ElementNameCompletionOptions<CONTEXT> = {
+declare type ElementNameCompletionOptions<CONTEXT = undefined> = {
   /**
    * Element ASTNode for which the name content assist was requested
    */
@@ -117,13 +116,12 @@ declare type ElementNameCompletionOptions<CONTEXT> = {
  *  - <pers⇶
  *  - <⇶
  */
-declare type ElementNameCompletion<OUT, CONTEXT> = SuggestionProvider<
-  ElementNameCompletionOptions<CONTEXT>,
+declare type ElementNameCompletion<
   OUT,
-  CONTEXT
->;
+  CONTEXT = undefined
+> = SuggestionProvider<ElementNameCompletionOptions<CONTEXT>, OUT, CONTEXT>;
 
-declare type AttributeNameCompletionOptions<CONTEXT> = {
+declare type AttributeNameCompletionOptions<CONTEXT = undefined> = {
   /**
    * Element ASTNode in which content assist was requested
    * This ASTNode may be used to:
@@ -153,13 +151,12 @@ declare type AttributeNameCompletionOptions<CONTEXT> = {
  *  - <person age='45' nam⇶  >
  *  - <person age='45' ⇶  >
  */
-declare type AttributeNameCompletion<OUT, CONTEXT> = SuggestionProvider<
-  AttributeNameCompletionOptions<CONTEXT>,
+declare type AttributeNameCompletion<
   OUT,
-  CONTEXT
->;
+  CONTEXT = undefined
+> = SuggestionProvider<AttributeNameCompletionOptions<CONTEXT>, OUT, CONTEXT>;
 
-declare type AttributeValueCompletionOptions<CONTEXT> = {
+declare type AttributeValueCompletionOptions<CONTEXT = undefined> = {
   /**
    * Element ASTNode in which content assist was requested
    */
@@ -191,8 +188,7 @@ declare type AttributeValueCompletionOptions<CONTEXT> = {
  *  - <meeting day='⇶' >
  *  - ...
  */
-declare type AttributeValueCompletion<OUT, CONTEXT> = SuggestionProvider<
-  AttributeValueCompletionOptions<CONTEXT>,
+declare type AttributeValueCompletion<
   OUT,
-  CONTEXT
->;
+  CONTEXT = undefined
+> = SuggestionProvider<AttributeValueCompletionOptions<CONTEXT>, OUT, CONTEXT>;
