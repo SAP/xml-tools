@@ -1,4 +1,5 @@
-import { CstNode, IToken } from "chevrotain";
+import { IToken } from "chevrotain";
+import { DocumentCstNode } from "@xml-tools/parser";
 import {
   XMLAttribute,
   XMLElement,
@@ -7,7 +8,7 @@ import {
 } from "@xml-tools/ast";
 
 declare function getSuggestions<T>(options: {
-  cst: CstNode;
+  cst: DocumentCstNode;
   ast: XMLDocument;
   offset: number;
   tokenVector: IToken[];
