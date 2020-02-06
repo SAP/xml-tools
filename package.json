@@ -11,8 +11,8 @@
     "cirlce:release": "git tag -d RELEASE && git tag RELEASE && git push --delete origin RELEASE && git push --tags",
     "lerna:publish": "lerna publish from-git --yes",
     "ci": "npm-run-all format:validate ci:subpackages",
-    "format:fix": "prettier --write \"**/*.@(ts|js|json|md)\"",
-    "format:validate": "prettier --check \"**/*.@(ts|js|json|md)\"",
+    "format:fix": "prettier --write --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
+    "format:validate": "prettier --check --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
     "ci:subpackages": "lerna run ci",
     "test": "lerna run test",
     "coverage": "lerna run coverage"
