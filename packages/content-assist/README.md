@@ -42,6 +42,8 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 A simple usage example:
 
 ```javascript
+const { parse } = require("xml-tools/parser");
+const { buildAst } = require("xml-tools/ast");
 const { getSuggestions } = require("xml-tools/content-assist");
 
 const xmlText = `<note>
@@ -50,8 +52,15 @@ const xmlText = `<note>
                      <from>Bill</to>
                  </note>
 `;
+
+// A-lot of contextual information is needed to compute the content assist context.
+const { cst, tokenVector } = parse(xmlText);
+const xmlDocAst = buildAst(cst, tokenVector);
+
 const suggestions = getSuggestions({
-  text: xmlText,
+  ast: xmlDocAst,
+  cst: cst,
+  tokVector: tokenVector,
   offset: 66, // Right after the '<ad` element start.
   providers: {
     // 1. There are more types(scenarios) of suggestions providers (see api.d.ts)
