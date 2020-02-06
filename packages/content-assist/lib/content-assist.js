@@ -15,7 +15,12 @@ const { findNextTextualToken } = require("@xml-tools/common");
  *
  * @return {{providerType:string, providerArgs: {prefix?:string, element:XMLElement, attribute?:XMLAttribute}}}
  */
-function computeCompletionContext({ cst, ast: docAst, offset, tokenVector }) {
+function computeCompletionSyntacticContext({
+  cst,
+  ast: docAst,
+  offset,
+  tokenVector
+}) {
   const contextVisitor = new SuggestionContextVisitor(
     docAst,
     offset,
@@ -388,5 +393,5 @@ function exists(tokArr) {
 }
 
 module.exports = {
-  computeCompletionContext: computeCompletionContext
+  computeCompletionSyntacticContext: computeCompletionSyntacticContext
 };

@@ -10,16 +10,21 @@ describe("The XML Content Assist Capabilities", () => {
         const sample = `<person gender="female">hello ⇶world</person>`;
 
         let providerCalled = false;
-        getSampleSuggestions(sample, {
-          elementContent: [
-            ({ element, prefix, textContent }) => {
-              expect(prefix).to.eql("hello ");
-              expect(textContent.text).to.eql("hello world");
-              expect(element.name).to.eql("person");
-              providerCalled = true;
-            }
-          ]
-        });
+        getSampleSuggestions(
+          sample,
+          {
+            elementContent: [
+              ({ element, prefix, textContent, context }) => {
+                expect(prefix).to.eql("hello ");
+                expect(textContent.text).to.eql("hello world");
+                expect(element.name).to.eql("person");
+                expect(context).to.eql(999);
+                providerCalled = true;
+              }
+            ]
+          },
+          999
+        );
         expect(providerCalled).to.be.true;
       });
 
@@ -34,10 +39,11 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
-            ({ element, prefix, textContent }) => {
+            ({ element, prefix, textContent, context }) => {
               expect(prefix).to.eql("\n\t");
               expect(textContent.text).to.eql("\n\t\n\t");
               expect(element.name).to.eql("person");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -51,10 +57,11 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
-            ({ element, prefix, textContent }) => {
+            ({ element, prefix, textContent, context }) => {
               expect(prefix).to.be.undefined;
               expect(textContent).to.be.undefined;
               expect(element.name).to.eql("person");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -68,10 +75,11 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
-            ({ element, prefix, textContent }) => {
+            ({ element, prefix, textContent, context }) => {
               expect(prefix).to.be.undefined;
               expect(textContent).to.be.undefined;
               expect(element.name).to.eql("person");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -88,10 +96,11 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
-            ({ element, prefix, textContent }) => {
+            ({ element, prefix, textContent, context }) => {
               expect(prefix).to.eql("\n\t");
               expect(textContent.text).to.eql("\n\t");
               expect(element.name).to.eql("person");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -118,7 +127,7 @@ describe("The XML Content Assist Capabilities", () => {
     });
 
     context("element Name", () => {
-      it("With Prefix", () => {
+      it("With Prefix and Context", () => {
         const sample =
           `<person gender="female">\n` +
           `\t<firstname>Anna</firstname>\n` +
@@ -127,15 +136,20 @@ describe("The XML Content Assist Capabilities", () => {
           `</person>`;
 
         let providerCalled = false;
-        getSampleSuggestions(sample, {
-          elementName: [
-            ({ element, prefix }) => {
-              expect(prefix).to.eql("ag");
-              expect(element.name).to.eql("age");
-              providerCalled = true;
-            }
-          ]
-        });
+        getSampleSuggestions(
+          sample,
+          {
+            elementName: [
+              ({ element, prefix, context }) => {
+                expect(prefix).to.eql("ag");
+                expect(element.name).to.eql("age");
+                expect(context).to.eql(666);
+                providerCalled = true;
+              }
+            ]
+          },
+          666
+        );
         expect(providerCalled).to.be.true;
       });
 
@@ -150,9 +164,10 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementName: [
-            ({ element, prefix }) => {
+            ({ element, prefix, context }) => {
               expect(prefix).to.eql("age");
               expect(element.name).to.eql("age");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -171,9 +186,10 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementName: [
-            ({ element, prefix }) => {
+            ({ element, prefix, context }) => {
               expect(prefix).to.be.undefined;
               expect(element.name).to.be.null;
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -183,7 +199,7 @@ describe("The XML Content Assist Capabilities", () => {
     });
 
     context("attribute Value", () => {
-      it("Without prefix and empty value", () => {
+      it("Without prefix and empty value and context", () => {
         const sample =
           `<person gender="⇶">\n` +
           `\t<firstname>Anna</firstname>\n` +
@@ -191,16 +207,21 @@ describe("The XML Content Assist Capabilities", () => {
           `</person>`;
 
         let providerCalled = false;
-        getSampleSuggestions(sample, {
-          attributeValue: [
-            ({ element, attribute, prefix }) => {
-              expect(element.name).to.eql("person");
-              expect(attribute.key).to.eql("gender");
-              expect(prefix).to.be.undefined;
-              providerCalled = true;
-            }
-          ]
-        });
+        getSampleSuggestions(
+          sample,
+          {
+            attributeValue: [
+              ({ element, attribute, prefix, context }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute.key).to.eql("gender");
+                expect(prefix).to.be.undefined;
+                expect(context).to.eql(123);
+                providerCalled = true;
+              }
+            ]
+          },
+          123
+        );
         expect(providerCalled).to.be.true;
       });
 
@@ -214,11 +235,12 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           attributeValue: [
-            ({ element, attribute, prefix }) => {
+            ({ element, attribute, prefix, context }) => {
               expect(element.name).to.eql("lastname");
               expect(attribute.key).to.eql("language");
               expect(attribute.value).to.eql("english");
               expect(prefix).to.be.undefined;
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -236,11 +258,12 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           attributeValue: [
-            ({ element, attribute, prefix }) => {
+            ({ element, attribute, prefix, context }) => {
               expect(element.name).to.eql("lastname");
               expect(attribute.key).to.eql("language");
               expect(attribute.value).to.eql("eng");
               expect(prefix).to.eql("eng");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -258,11 +281,12 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           attributeValue: [
-            ({ element, attribute, prefix }) => {
+            ({ element, attribute, prefix, context }) => {
               expect(element.name).to.eql("lastname");
               expect(attribute.key).to.eql("language");
               expect(attribute.value).to.eql("english");
               expect(prefix).to.eql("eng");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -272,7 +296,7 @@ describe("The XML Content Assist Capabilities", () => {
     });
 
     context("attribute name", () => {
-      it("With prefix identical to existing key", () => {
+      it("With prefix identical to existing key and context", () => {
         const sample =
           `<person gen⇶>\n` +
           `\t<firstname>Anna</firstname>\n` +
@@ -280,16 +304,21 @@ describe("The XML Content Assist Capabilities", () => {
           `</person>`;
 
         let providerCalled = false;
-        getSampleSuggestions(sample, {
-          attributeName: [
-            ({ element, attribute, prefix }) => {
-              expect(element.name).to.eql("person");
-              expect(attribute.key).to.eql("gen");
-              expect(prefix).to.eql("gen");
-              providerCalled = true;
-            }
-          ]
-        });
+        getSampleSuggestions(
+          sample,
+          {
+            attributeName: [
+              ({ element, attribute, prefix, context }) => {
+                expect(element.name).to.eql("person");
+                expect(attribute.key).to.eql("gen");
+                expect(prefix).to.eql("gen");
+                expect(context).to.eql(333);
+                providerCalled = true;
+              }
+            ]
+          },
+          333
+        );
         expect(providerCalled).to.be.true;
       });
 
@@ -303,10 +332,11 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           attributeName: [
-            ({ element, attribute, prefix }) => {
+            ({ element, attribute, prefix, context }) => {
               expect(element.name).to.eql("person");
               expect(attribute.key).to.eql("gender");
               expect(prefix).to.eql("gen");
+              expect(context).to.be.undefined;
               providerCalled = true;
             }
           ]
@@ -325,10 +355,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute.key).to.eql("gen");
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -346,10 +377,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -363,10 +395,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -384,10 +417,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -404,10 +438,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -423,10 +458,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -442,10 +478,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -461,10 +498,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -479,10 +517,11 @@ describe("The XML Content Assist Capabilities", () => {
           let providerCalled = false;
           getSampleSuggestions(sample, {
             attributeName: [
-              ({ element, attribute, prefix }) => {
+              ({ element, attribute, prefix, context }) => {
                 expect(element.name).to.eql("person");
                 expect(attribute).to.be.undefined;
                 expect(prefix).to.be.undefined;
+                expect(context).to.be.undefined;
                 providerCalled = true;
               }
             ]
@@ -498,7 +537,7 @@ describe("The XML Content Assist Capabilities", () => {
  * Get Content Assist Suggestions from a sample which marks the offset
  * with unicode triple arrow: " ⇶ "
  */
-function getSampleSuggestions(sample, providers) {
+function getSampleSuggestions(sample, providers, context) {
   const realSample = sample.replace("⇶", "");
   const offset = sample.indexOf("⇶");
   const { cst, tokenVector } = parse(realSample);
@@ -509,6 +548,7 @@ function getSampleSuggestions(sample, providers) {
     ast,
     tokenVector,
     offset: offset,
-    providers: providers
+    providers: providers,
+    context: context
   });
 }

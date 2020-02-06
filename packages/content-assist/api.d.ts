@@ -7,32 +7,48 @@ import {
   XMLDocument
 } from "@xml-tools/ast";
 
-declare function getSuggestions<T>(options: {
+declare function getSuggestions<OUT>(options: {
   cst: DocumentCstNode;
   ast: XMLDocument;
   offset: number;
   tokenVector: IToken[];
-  providers: SuggestionProviders<T>;
-}): T[];
+  providers: SuggestionProviders<OUT, void>;
+}): OUT[];
 
-declare type SuggestionProviders<T> = {
-  elementContent?: ElementContentCompletion<T>[];
-  elementName?: ElementNameCompletion<T>[];
-  attributeName?: AttributeNameCompletion<T>[];
-  attributeValue?: AttributeValueCompletion<T>[];
+/**
+ * The `context` argument can be used to inject state/data
+ * to the be used in the implementation of the suggestionsProviders.
+ * For example a Symbol Table of known Attributes / Tags.
+ */
+declare function getSuggestions<OUT, CONTEXT>(options: {
+  cst: DocumentCstNode;
+  ast: XMLDocument;
+  offset: number;
+  tokenVector: IToken[];
+  providers: SuggestionProviders<OUT, CONTEXT>;
+  context: CONTEXT;
+}): OUT[];
+
+declare type SuggestionProviders<OUT, CONTEXT> = {
+  elementContent?: ElementContentCompletion<OUT, CONTEXT>[];
+  elementName?: ElementNameCompletion<OUT, CONTEXT>[];
+  attributeName?: AttributeNameCompletion<OUT, CONTEXT>[];
+  attributeValue?: AttributeValueCompletion<OUT, CONTEXT>[];
 };
 
-declare type ProviderOptions =
-  | ElementContentCompletionOptions
-  | ElementNameCompletionOptions
-  | AttributeNameCompletionOptions
-  | AttributeValueCompletionOptions;
+declare type ProviderOptions<CONTEXT> =
+  | ElementContentCompletionOptions<CONTEXT>
+  | ElementNameCompletionOptions<CONTEXT>
+  | AttributeNameCompletionOptions<CONTEXT>
+  | AttributeValueCompletionOptions<CONTEXT>;
 
-declare type SuggestionProvider<O extends ProviderOptions, T> = (
-  options: O
-) => T[];
+declare type SuggestionProvider<
+  IN extends ProviderOptions<CONTEXT>,
+  OUT,
+  CONTEXT
+> = (options: IN) => OUT[];
 
-declare type ElementContentCompletionOptions = {
+declare type ElementContentCompletionOptions<CONTEXT> = {
   /**
    * Element ASTNode for which the name content assist was requested.
    * This ASTNode may be used to:
@@ -53,6 +69,8 @@ declare type ElementContentCompletionOptions = {
    * Note that this property may be undefined if no prefix was provided.
    */
   textContent: XMLTextContent | undefined;
+
+  context: CONTEXT | undefined;
 };
 /**
  *  Suggestions provider for element's contents.
@@ -69,12 +87,13 @@ declare type ElementContentCompletionOptions = {
  *
  *  - <name>⇶</name>
  */
-declare type ElementContentCompletion<T> = SuggestionProvider<
-  ElementContentCompletionOptions,
-  T
+declare type ElementContentCompletion<OUT, CONTEXT> = SuggestionProvider<
+  ElementContentCompletionOptions<CONTEXT>,
+  OUT,
+  CONTEXT
 >;
 
-declare type ElementNameCompletionOptions = {
+declare type ElementNameCompletionOptions<CONTEXT> = {
   /**
    * Element ASTNode for which the name content assist was requested
    */
@@ -84,6 +103,8 @@ declare type ElementNameCompletionOptions = {
    * This would normally be used to filter out suggestions that do not match the prefix.
    */
   prefix: string | undefined;
+
+  context: CONTEXT | undefined;
 };
 /**
  *  Suggestions provider for element names.
@@ -96,12 +117,13 @@ declare type ElementNameCompletionOptions = {
  *  - <pers⇶
  *  - <⇶
  */
-declare type ElementNameCompletion<T> = SuggestionProvider<
-  ElementNameCompletionOptions,
-  T
+declare type ElementNameCompletion<OUT, CONTEXT> = SuggestionProvider<
+  ElementNameCompletionOptions<CONTEXT>,
+  OUT,
+  CONTEXT
 >;
 
-declare type AttributeNameCompletionOptions = {
+declare type AttributeNameCompletionOptions<CONTEXT> = {
   /**
    * Element ASTNode in which content assist was requested
    * This ASTNode may be used to:
@@ -120,6 +142,8 @@ declare type AttributeNameCompletionOptions = {
    * This would normally be used to filter out suggestions that do not match the prefix.
    */
   prefix: string | undefined;
+
+  context: CONTEXT | undefined;
 };
 
 /**
@@ -129,12 +153,13 @@ declare type AttributeNameCompletionOptions = {
  *  - <person age='45' nam⇶  >
  *  - <person age='45' ⇶  >
  */
-declare type AttributeNameCompletion<T> = SuggestionProvider<
-  AttributeNameCompletionOptions,
-  T
+declare type AttributeNameCompletion<OUT, CONTEXT> = SuggestionProvider<
+  AttributeNameCompletionOptions<CONTEXT>,
+  OUT,
+  CONTEXT
 >;
 
-declare type AttributeValueCompletionOptions = {
+declare type AttributeValueCompletionOptions<CONTEXT> = {
   /**
    * Element ASTNode in which content assist was requested
    */
@@ -154,6 +179,8 @@ declare type AttributeValueCompletionOptions = {
    * Note that the prefix does not include any quotes.
    */
   prefix: string | undefined;
+
+  context: CONTEXT | undefined;
 };
 
 /**
@@ -164,7 +191,8 @@ declare type AttributeValueCompletionOptions = {
  *  - <meeting day='⇶' >
  *  - ...
  */
-declare type AttributeValueCompletion<T> = SuggestionProvider<
-  AttributeValueCompletionOptions,
-  T
+declare type AttributeValueCompletion<OUT, CONTEXT> = SuggestionProvider<
+  AttributeValueCompletionOptions<CONTEXT>,
+  OUT,
+  CONTEXT
 >;

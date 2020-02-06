@@ -1,6 +1,6 @@
 const { defaultsDeep, flatMap } = require("lodash");
 
-const { computeCompletionContext } = require("./content-assist");
+const { computeCompletionSyntacticContext } = require("./content-assist");
 
 function getSuggestions(options) {
   const actualOptions = defaultsDeep(options, {
@@ -9,15 +9,19 @@ function getSuggestions(options) {
       elementName: [],
       attributeName: [],
       attributeValue: []
-    }
+    },
+    context: undefined
   });
 
-  const { providerType, providerArgs } = computeCompletionContext({
+  let { providerType, providerArgs } = computeCompletionSyntacticContext({
     cst: actualOptions.cst,
     tokenVector: actualOptions.tokenVector,
     ast: actualOptions.ast,
     offset: actualOptions.offset
   });
+
+  // Inject Additional semantic context for the content assist providers.
+  providerArgs.context = actualOptions.context;
 
   if (providerType === null) {
     return [];
