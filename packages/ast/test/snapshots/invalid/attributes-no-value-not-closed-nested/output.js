@@ -3,13 +3,13 @@ module.exports = {
     type: "XMLDocument",
     rootElement: {
       type: "XMLElement",
-      namespaces: [],
+      namespaces: {},
       name: "top",
       attributes: [],
       subElements: [
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "nested",
           attributes: [
             {
@@ -42,7 +42,7 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "nest2",
           attributes: [],
           subElements: [],
@@ -64,7 +64,7 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "nested3",
           attributes: [
             {

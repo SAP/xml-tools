@@ -1,4 +1,5 @@
-const { difference, map, filter, find, has } = require("lodash");
+const { difference, map, filter, has, pickBy } = require("lodash");
+const { DEFAULT_NS } = require("@xml-tools/ast");
 
 // https://www.w3.org/TR/2009/REC-xml-names-20091208/#NT-PrefixedName
 const NAMESPACE_PATTERN = /^(?:([^:]*):)?([^:]*)$/;
@@ -17,18 +18,14 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
   if (match === null) {
     return [];
   }
-  const namespacePrefix = match[1];
-  const elementNamespace = find(
-    elementNode.namespaces,
-    _ => _.prefix === namespacePrefix
-  );
+  // If there is no prefix, use the default namespace prefix
+  const namespacePrefix = match[1] ? match[1] : DEFAULT_NS;
+  const elementNamespaceUri = elementNode.namespaces[namespacePrefix];
   const possibleElements = filter(
     xssElement.elements,
     _ =>
       has(_, "namespace") === false ||
-      (_.namespace &&
-        elementNamespace !== undefined &&
-        _.namespace === elementNamespace.uri)
+      (_.namespace && _.namespace === elementNamespaceUri)
   );
   const allPossibleSuggestions = map(possibleElements, _ => _.name);
   const notSingularElem = filter(
@@ -50,14 +47,21 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
     };
   });
 
-  if (namespacePrefix === undefined) {
-    const namespaces = filter(elementNode.namespaces, _ => !!_.prefix);
-    const namespaceSuggestions = map(namespaces, _ => ({
-      text: _.prefix,
-      label: _.prefix,
-      commitCharacter: ":",
-      isNamespace: true
-    }));
+  if (namespacePrefix === undefined || namespacePrefix === DEFAULT_NS) {
+    // Can't really suggest anything for the `implicit` default namespace...
+    const namespacesWithoutDefault = pickBy(
+      elementNode.namespaces,
+      (val, key) => key !== DEFAULT_NS
+    );
+    const namespaceSuggestions = map(
+      namespacesWithoutDefault,
+      (uri, prefix) => ({
+        text: prefix,
+        label: prefix,
+        commitCharacter: ":",
+        isNamespace: true
+      })
+    );
     return [...namespaceSuggestions, ...suggestions];
   }
   return suggestions;

@@ -3,13 +3,13 @@ module.exports = {
     type: "XMLDocument",
     rootElement: {
       type: "XMLElement",
-      namespaces: [],
+      namespaces: {},
       name: "note",
       attributes: [],
       subElements: [
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "to",
           attributes: [],
           subElements: [],
@@ -31,7 +31,7 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "ad",
           attributes: [],
           subElements: [],
@@ -44,7 +44,7 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "from",
           attributes: [],
           subElements: [],
@@ -66,7 +66,7 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "city",
           attributes: [],
           subElements: [],

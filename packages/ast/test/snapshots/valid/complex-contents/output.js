@@ -3,7 +3,7 @@ module.exports = {
     type: "XMLDocument",
     rootElement: {
       type: "XMLElement",
-      namespaces: [],
+      namespaces: {},
       name: "note",
       attributes: [],
       subElements: [],

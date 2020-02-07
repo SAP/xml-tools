@@ -3,7 +3,7 @@ module.exports = {
     type: "XMLDocument",
     rootElement: {
       type: "XMLElement",
-      namespaces: [],
+      namespaces: {},
       name: "table",
       attributes: [
         {
@@ -17,7 +17,7 @@ module.exports = {
       subElements: [
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "name",
           attributes: [],
           subElements: [],
@@ -40,7 +40,7 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "width",
           attributes: [],
           subElements: [],
@@ -63,7 +63,7 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [],
+          namespaces: {},
           name: "length",
           attributes: [],
           subElements: [],
