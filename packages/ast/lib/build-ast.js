@@ -7,10 +7,13 @@ const {
   pick,
   sortBy,
   isEmpty,
-  isArray
+  isArray,
+  assign
 } = require("lodash");
 const { findNextTextualToken } = require("@xml-tools/common");
+
 const { getAstChildrenReflective } = require("./utils");
+const { DEFAULT_NS } = require("./constants");
 
 /**
  * @param {DocumentCstNode} docCst
@@ -129,7 +132,8 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
   element(ctx, location) {
     const astNode = {
       type: "XMLElement",
-      namespaces: [],
+      // Avoid Accidental Keys in this map
+      namespaces: Object.create(null),
       name: invalidSyntax,
       attributes: [],
       subElements: [],
@@ -244,7 +248,7 @@ function setChildrenParent(astParent) {
 
 /**
  * @param {XMLElement} element
- * @param {{prefix:string, uri:string}[]} prevNamespaces
+ * @param {Record<Prefix, Uri>} prevNamespaces
  */
 function updateNamespaces(element, prevNamespaces = []) {
   const currElemNamespaces = reduce(
@@ -255,23 +259,27 @@ function updateNamespaces(element, prevNamespaces = []) {
         const nsMatch = /^xmlns(?::([^:]+))?$/.exec(attrib.key);
         if (nsMatch !== null) {
           const prefix = nsMatch[1];
+          // TODO: Support un-defining namespaces (including the default one)
           if (attrib.value) {
             const uri = attrib.value;
-            const namespace = { uri: uri };
             if (prefix !== undefined) {
-              namespace.prefix = prefix;
+              result[prefix] = uri;
+            } else {
+              // default namespace
+              result[DEFAULT_NS] = uri;
             }
-            result.push(namespace);
           }
         }
       }
 
       return result;
     },
-    []
+    {}
   );
 
-  element.namespaces = currElemNamespaces.concat(prevNamespaces);
+  const emptyMap = Object.create(null);
+  // "newer" (closer scope)  namespaces definitions will overwrite "older" ones.
+  element.namespaces = assign(emptyMap, prevNamespaces, currElemNamespaces);
 
   forEach(element.subElements, subElem =>
     updateNamespaces(subElem, element.namespaces)

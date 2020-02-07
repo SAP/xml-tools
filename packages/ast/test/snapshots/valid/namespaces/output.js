@@ -3,10 +3,10 @@ module.exports = {
     type: "XMLDocument",
     rootElement: {
       type: "XMLElement",
-      namespaces: [
-        { uri: "https://blah.com/furniture", prefix: "f" },
-        { uri: "https://blah.com/default" }
-      ],
+      namespaces: {
+        f: "https://blah.com/furniture",
+        "::DEFAULT": "https://blah.com/default"
+      },
       name: "table",
       attributes: [
         {
@@ -41,10 +41,10 @@ module.exports = {
       subElements: [
         {
           type: "XMLElement",
-          namespaces: [
-            { uri: "https://blah.com/furniture", prefix: "f" },
-            { uri: "https://blah.com/default" }
-          ],
+          namespaces: {
+            f: "https://blah.com/furniture",
+            "::DEFAULT": "https://blah.com/default"
+          },
           name: "name",
           attributes: [],
           subElements: [],
@@ -67,10 +67,10 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [
-            { uri: "https://blah.com/furniture", prefix: "f" },
-            { uri: "https://blah.com/default" }
-          ],
+          namespaces: {
+            f: "https://blah.com/furniture",
+            "::DEFAULT": "https://blah.com/default"
+          },
           name: "width",
           attributes: [],
           subElements: [],
@@ -93,10 +93,10 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [
-            { uri: "https://blah.com/furniture", prefix: "f" },
-            { uri: "https://blah.com/default" }
-          ],
+          namespaces: {
+            f: "https://blah.com/furniture",
+            "::DEFAULT": "https://blah.com/default"
+          },
           name: "length",
           attributes: [],
           subElements: [],
@@ -119,10 +119,10 @@ module.exports = {
         },
         {
           type: "XMLElement",
-          namespaces: [
-            { uri: "https://blah.com/furniture", prefix: "f" },
-            { uri: "https://blah.com/default" }
-          ],
+          namespaces: {
+            f: "https://blah.com/furniture",
+            "::DEFAULT": "https://blah.com/default"
+          },
           name: "description",
           attributes: [],
           subElements: [],

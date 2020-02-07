@@ -44,11 +44,18 @@ declare interface XMLProlog {
   readonly position: SourcePosition;
 }
 
+// A Prefix cannot include a colon ":" so the below string will never conflict
+// with a valid namespace prefix.
+declare type DefaultNS = "::DEFAULT";
+declare const DefaultNS: DefaultNS;
+declare type Prefix = string | DefaultNS;
+declare type Uri = string;
+
 declare interface XMLElement {
   readonly type: "XMLElement";
   readonly parent: XMLElement | XMLDocument;
 
-  readonly namespaces: { prefix?: string; uri: string }[];
+  readonly namespaces: Record<Prefix, Uri>;
 
   // namespace prefix used by this XML Element.
   // - Note that this is an optional syntax.
