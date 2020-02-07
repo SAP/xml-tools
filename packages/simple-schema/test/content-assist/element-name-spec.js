@@ -301,6 +301,31 @@ describe("The XML Simple Schema", () => {
                 attributes: {},
                 elements: {}
               },
+              friends: {
+                cardinality: "single",
+                required: false,
+                name: "friends",
+                namespace: "http://namespace.com/1",
+                attributes: {},
+                elements: {
+                  person: {
+                    name: "person",
+                    namespace: "http://namespace.com/2",
+                    required: false,
+                    cardinality: "many",
+                    attributes: {
+                      name: {
+                        cardinality: "single",
+                        required: false,
+                        name: "name",
+                        namespace: "http://namespace.com/2",
+                        attributes: {},
+                        elements: {}
+                      }
+                    }
+                  }
+                }
+              },
               age: {
                 cardinality: "single",
                 required: false,
@@ -463,6 +488,166 @@ describe("The XML Simple Schema", () => {
       const suggestions = suggestionsBySchema(xmlText, schema);
       expect(suggestions).to.deep.include.members([]);
       expect(suggestions).to.have.lengthOf(0);
+    });
+    it("should not provide extraneous namespace prefixes", () => {
+      const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
+                    <person xmlns="http://namespace.com/2">
+                      <⇶
+                    </person>
+                  </abc:people>`;
+
+      const schema = {
+        required: true,
+        cardinality: "single",
+        name: "people",
+        namespace: "http://namespace.com/1",
+        attributes: {},
+        elements: {
+          person: {
+            name: "person",
+            namespace: "http://namespace.com/2",
+            required: false,
+            cardinality: "many",
+            attributes: {},
+            elements: {
+              name: {
+                cardinality: "single",
+                required: false,
+                name: "name",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              },
+              age: {
+                cardinality: "single",
+                required: false,
+                name: "age",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              },
+              address: {
+                cardinality: "many",
+                required: false,
+                name: "address",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              }
+            }
+          }
+        }
+      };
+
+      const suggestions = suggestionsBySchema(xmlText, schema);
+      expect(suggestions).to.deep.include.members([
+        {
+          label: "name",
+          text: "name"
+        },
+        {
+          label: "age",
+          text: "age"
+        },
+        {
+          label: "address",
+          text: "address"
+        }
+      ]);
+      expect(suggestions).to.have.lengthOf(3);
+    });
+    it("should not provide extraneous namespace prefixes for singular items", () => {
+      const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
+                    <person xmlns="http://namespace.com/2">
+                      <friends />
+                      <⇶
+                    </person>
+                  </abc:people>`;
+
+      const schema = {
+        required: true,
+        cardinality: "single",
+        name: "people",
+        namespace: "http://namespace.com/1",
+        attributes: {},
+        elements: {
+          person: {
+            name: "person",
+            namespace: "http://namespace.com/2",
+            required: false,
+            cardinality: "many",
+            attributes: {},
+            elements: {
+              name: {
+                cardinality: "single",
+                required: false,
+                name: "name",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              },
+              age: {
+                cardinality: "single",
+                required: false,
+                name: "age",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              },
+              address: {
+                cardinality: "many",
+                required: false,
+                name: "address",
+                namespace: "http://namespace.com/2",
+                attributes: {},
+                elements: {}
+              },
+              friends: {
+                cardinality: "single",
+                required: false,
+                name: "friends",
+                namespace: "http://namespace.com/1",
+                attributes: {},
+                elements: {
+                  person: {
+                    name: "person",
+                    namespace: "http://namespace.com/2",
+                    required: false,
+                    cardinality: "many",
+                    attributes: {
+                      name: {
+                        cardinality: "single",
+                        required: false,
+                        name: "name",
+                        namespace: "http://namespace.com/2",
+                        attributes: {},
+                        elements: {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      };
+
+      const suggestions = suggestionsBySchema(xmlText, schema);
+      expect(suggestions).to.deep.include.members([
+        {
+          label: "name",
+          text: "name"
+        },
+        {
+          label: "age",
+          text: "age"
+        },
+        {
+          label: "address",
+          text: "address"
+        }
+      ]);
+      expect(suggestions).to.have.lengthOf(3);
     });
   });
 });
