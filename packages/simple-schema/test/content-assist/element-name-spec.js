@@ -192,6 +192,7 @@ describe("The XML Simple Schema", () => {
         ]);
         expect(suggestions).to.have.lengthOf(2);
       });
+
       it("allows multiple sub-elements with `multiple` cardinality", () => {
         const xmlText = `<people>
                     <person>
@@ -249,6 +250,7 @@ describe("The XML Simple Schema", () => {
         expect(suggestions).to.have.lengthOf(1);
       });
     });
+
     it("does not crash if there is no xss element", () => {
       const xmlText = `<people>
                     <person>
@@ -269,7 +271,8 @@ describe("The XML Simple Schema", () => {
       expect(suggestions).to.deep.include.members([]);
       expect(suggestions).to.have.lengthOf(0);
     });
-    it("nested elements with namespces", () => {
+
+    it("nested elements with namespaces", () => {
       const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
                     <person xmlns="http://namespace.com/2">
                       <⇶
@@ -342,6 +345,7 @@ describe("The XML Simple Schema", () => {
       ]);
       expect(suggestions).to.have.lengthOf(4);
     });
+
     it("with namespace prefix", () => {
       const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
                     <person xmlns="http://namespace.com/2">
@@ -405,6 +409,7 @@ describe("The XML Simple Schema", () => {
       ]);
       expect(suggestions).to.have.lengthOf(2);
     });
+
     it("should not crash with invalid prefix", () => {
       const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
                     <person xmlns="http://namespace.com/2">

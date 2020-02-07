@@ -47,7 +47,7 @@ declare interface XMLProlog {
 // A Prefix cannot include a colon ":" so the below string will never conflict
 // with a valid namespace prefix.
 declare type DefaultNS = "::DEFAULT";
-declare const DefaultNS: DefaultNS;
+declare const DEFAULT_NS: DefaultNS;
 declare type Prefix = string | DefaultNS;
 declare type Uri = string;
 
