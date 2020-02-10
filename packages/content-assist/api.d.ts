@@ -70,7 +70,7 @@ declare type ElementContentCompletionOptions<CONTEXT = undefined> = {
    */
   textContent: XMLTextContent | undefined;
 
-  context: CONTEXT | undefined;
+  context: CONTEXT;
 };
 /**
  *  Suggestions provider for element's contents.
@@ -103,7 +103,7 @@ declare type ElementNameCompletionOptions<CONTEXT = undefined> = {
    */
   prefix: string | undefined;
 
-  context: CONTEXT | undefined;
+  context: CONTEXT;
 };
 /**
  *  Suggestions provider for element names.
@@ -141,7 +141,7 @@ declare type AttributeNameCompletionOptions<CONTEXT = undefined> = {
    */
   prefix: string | undefined;
 
-  context: CONTEXT | undefined;
+  context: CONTEXT;
 };
 
 /**
@@ -177,7 +177,7 @@ declare type AttributeValueCompletionOptions<CONTEXT = undefined> = {
    */
   prefix: string | undefined;
 
-  context: CONTEXT | undefined;
+  context: CONTEXT;
 };
 
 /**
