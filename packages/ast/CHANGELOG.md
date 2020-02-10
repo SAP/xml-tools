@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@2.0.1...@xml-tools/ast@4.0.0) (2020-02-10)
+
+### Features
+
+- **ast:** element Namespaces are now represented as Records in a Map ([f9f6fdc](https://github.com/sap/xml-tools/commit/f9f6fdc))
+
+### BREAKING CHANGES
+
+- **ast:** The `namespaces` property of an XMLElement is now a Map/Dictionary not an Array.
+
 # [3.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@2.0.1...@xml-tools/ast@3.0.0) (2020-02-07)
 
 ### Features
