@@ -48,34 +48,34 @@ module.exports = {
                 children: {
                   Name: [
                     {
-                      image: "attr2",
+                      image: "_attr2",
                       startOffset: 18,
-                      endOffset: 22,
+                      endOffset: 23,
                       tokenType: "Name"
                     }
                   ],
                   EQUALS: [
                     {
                       image: "=",
-                      startOffset: 23,
-                      endOffset: 23,
+                      startOffset: 24,
+                      endOffset: 24,
                       tokenType: "EQUALS"
                     }
                   ],
                   STRING: [
                     {
                       image: '"333"',
-                      startOffset: 24,
-                      endOffset: 28,
+                      startOffset: 25,
+                      endOffset: 29,
                       tokenType: "STRING"
                     }
                   ]
                 },
-                location: { startOffset: 18, endOffset: 28 }
+                location: { startOffset: 18, endOffset: 29 }
               }
             ],
             START_CLOSE: [
-              { image: ">", startOffset: 29, endOffset: 29, tokenType: "CLOSE" }
+              { image: ">", startOffset: 30, endOffset: 30, tokenType: "CLOSE" }
             ],
             content: [
               {
@@ -87,24 +87,24 @@ module.exports = {
             SLASH_OPEN: [
               {
                 image: "</",
-                startOffset: 30,
-                endOffset: 31,
+                startOffset: 31,
+                endOffset: 32,
                 tokenType: "SLASH_OPEN"
               }
             ],
             END_NAME: [
               {
                 image: "note",
-                startOffset: 32,
-                endOffset: 35,
+                startOffset: 33,
+                endOffset: 36,
                 tokenType: "Name"
               }
             ],
             END: [
-              { image: ">", startOffset: 36, endOffset: 36, tokenType: "CLOSE" }
+              { image: ">", startOffset: 37, endOffset: 37, tokenType: "CLOSE" }
             ]
           },
-          location: { startOffset: 0, endOffset: 36 }
+          location: { startOffset: 0, endOffset: 37 }
         }
       ],
       misc: [
@@ -114,16 +114,16 @@ module.exports = {
             SEA_WS: [
               {
                 image: "\n",
-                startOffset: 37,
-                endOffset: 37,
+                startOffset: 38,
+                endOffset: 38,
                 tokenType: "SEA_WS"
               }
             ]
           },
-          location: { startOffset: 37, endOffset: 37 }
+          location: { startOffset: 38, endOffset: 38 }
         }
       ]
     },
-    location: { startOffset: 0, endOffset: 37 }
+    location: { startOffset: 0, endOffset: 38 }
   }
 };
