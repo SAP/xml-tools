@@ -13,7 +13,7 @@ import {
 import { ILexingError, IRecognitionException } from "chevrotain";
 import { parse } from "@xml-tools/parser";
 
-const GENERIC_XML_MSG = "XML parsing error";
+const SYNTAX_ERROR_MSG = "Syntax error";
 const diagnosticsCache = new Map<string, Map<string, Diagnostic[]>>();
 
 // Create a connection for the server
@@ -63,6 +63,7 @@ connection.onInitialized(() => {
       connection.console.log("Workspace folder change event received.");
     });
   }
+  documents.all().forEach(validateDocument);
 });
 
 connection.onDidChangeConfiguration(change => {
@@ -82,11 +83,8 @@ async function validateDocument(document: TextDocument): Promise<void> {
     );
     let diagnostics: Diagnostic[] = [
       ...lexErrors.map(lexingErrorToDiagnostic(document)),
-      ...parseErrors.map(parseErrorToDiagnostic(document))
+      ...parseErrors.map(parsingErrorToDiagnostic(document))
     ];
-    if (hasDiagnosticRelatedInformationCapability) {
-      diagnostics = addRelatedInfoToDiagnostic(document, diagnostics);
-    }
     connection.sendDiagnostics({ uri: document.uri, diagnostics });
   }
 }
@@ -100,10 +98,10 @@ const lexingErrorToDiagnostic = (document: TextDocument) => (
     document.positionAt(error.offset + error.length)
   ),
   severity: DiagnosticSeverity.Error,
-  source: "lexer"
+  source: SYNTAX_ERROR_MSG
 });
 
-const parseErrorToDiagnostic = (document: TextDocument) => (
+const parsingErrorToDiagnostic = (document: TextDocument) => (
   error: IRecognitionException
 ): Diagnostic => ({
   message: error.message,
@@ -112,26 +110,8 @@ const parseErrorToDiagnostic = (document: TextDocument) => (
     end: document.positionAt(error.token.endOffset!)
   },
   severity: DiagnosticSeverity.Error,
-  source: "parser"
+  source: SYNTAX_ERROR_MSG
 });
-
-function addRelatedInfoToDiagnostic(
-  document: TextDocument,
-  diagnostics: Diagnostic[]
-): Diagnostic[] {
-  diagnostics.forEach(diagnostic => {
-    diagnostic.relatedInformation = [
-      {
-        location: {
-          uri: document.uri,
-          range: Object.assign({}, diagnostic.range)
-        },
-        message: GENERIC_XML_MSG
-      }
-    ];
-  });
-  return diagnostics;
-}
 
 documents.onDidOpen((event: TextDocumentChangeEvent) => {
   if (event.document.languageId === "xml") {
