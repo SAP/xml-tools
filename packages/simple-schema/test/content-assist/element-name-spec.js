@@ -489,6 +489,7 @@ describe("The XML Simple Schema", () => {
       expect(suggestions).to.deep.include.members([]);
       expect(suggestions).to.have.lengthOf(0);
     });
+
     it("should not provide extraneous namespace prefixes", () => {
       const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
                     <person xmlns="http://namespace.com/2">
@@ -555,7 +556,14 @@ describe("The XML Simple Schema", () => {
         }
       ]);
       expect(suggestions).to.have.lengthOf(3);
+      expect(suggestions).to.not.deep.include.members([
+        {
+          label: "abc",
+          text: "abc"
+        }
+      ]);
     });
+
     it("should not provide extraneous namespace prefixes for singular items", () => {
       const xmlText = `<abc:people xmlns:abc="http://namespace.com/1">
                     <person xmlns="http://namespace.com/2">
@@ -648,6 +656,12 @@ describe("The XML Simple Schema", () => {
         }
       ]);
       expect(suggestions).to.have.lengthOf(3);
+      expect(suggestions).to.not.deep.include.members([
+        {
+          label: "abc",
+          text: "abc"
+        }
+      ]);
     });
   });
 });
