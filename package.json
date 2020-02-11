@@ -7,7 +7,7 @@
     ]
   },
   "scripts": {
-    "lerna:version": "lerna version && yarn run cirlce:release",
+    "lerna:version": "yarn && lerna version && yarn run cirlce:release",
     "cirlce:release": "git tag -d RELEASE && git tag RELEASE && git push --delete origin RELEASE && git push --tags",
     "lerna:publish": "lerna publish from-git --yes",
     "ci": "npm-run-all format:validate ci:subpackages",
