@@ -27,17 +27,10 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
       has(_, "namespace") === false ||
       (_.namespace && _.namespace === elementNamespaceUri)
   );
-  const allPossibleSuggestions = map(possibleElements, _ => _.name);
-  const notSingularElem = filter(
+  const possibleSuggestionsWithoutExistingSingular = applicableElements(
     xssElement.elements,
-    _ => _.cardinality === "many"
-  );
-  const notSingularElemNames = map(notSingularElem, _ => _.name);
-  const existingElemNames = map(elementNode.subElements, _ => _.name);
-  const existingSingular = difference(existingElemNames, notSingularElemNames);
-  const possibleSuggestionsWithoutExistingSingular = difference(
-    allPossibleSuggestions,
-    existingSingular
+    elementNode.subElements,
+    possibleElements
   );
 
   const suggestions = map(possibleSuggestionsWithoutExistingSingular, _ => {
@@ -51,20 +44,50 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
     // Can't really suggest anything for the `implicit` default namespace...
     const namespacesWithoutDefault = pickBy(
       elementNode.namespaces,
-      (val, key) => key !== DEFAULT_NS
+      (uri, prefix) => prefix !== DEFAULT_NS
     );
-    const namespaceSuggestions = map(
+    const applicableNamespaces = pickBy(
       namespacesWithoutDefault,
-      (uri, prefix) => ({
-        text: prefix,
-        label: prefix,
-        commitCharacter: ":",
-        isNamespace: true
-      })
+      (uri, prefix) => {
+        const possibleElements = filter(
+          xssElement.elements,
+          element =>
+            has(element, "namespace") === true && element.namespace === uri
+        );
+        const possibleSuggestionsWithoutExistingSingular = applicableElements(
+          xssElement.elements,
+          elementNode.subElements,
+          possibleElements
+        );
+        const namespaceHasApplicableElements =
+          possibleSuggestionsWithoutExistingSingular.length > 0;
+        return namespaceHasApplicableElements;
+      }
     );
+    const namespaceSuggestions = map(applicableNamespaces, (uri, prefix) => ({
+      text: prefix,
+      label: prefix,
+      commitCharacter: ":",
+      isNamespace: true
+    }));
     return [...namespaceSuggestions, ...suggestions];
   }
   return suggestions;
+}
+
+function applicableElements(xssElements, subElements, possibleElements) {
+  const allPossibleSuggestions = map(possibleElements, element => element.name);
+  const notSingularElem = filter(
+    xssElements,
+    element => element.cardinality === "many"
+  );
+  const notSingularElemNames = map(notSingularElem, element => element.name);
+  const existingElemNames = map(subElements, element => element.name);
+  const existingSingular = difference(existingElemNames, notSingularElemNames);
+  return (possibleSuggestionsWithoutExistingSingular = difference(
+    allPossibleSuggestions,
+    existingSingular
+  ));
 }
 
 module.exports = {
