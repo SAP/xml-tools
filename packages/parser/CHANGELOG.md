@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/sap/xml-tools/compare/@xml-tools/parser@1.0.1...@xml-tools/parser@1.0.2) (2020-02-11)
+
+### Bug Fixes
+
+- **parser:** names may start with an underscore '\_' ([#103](https://github.com/sap/xml-tools/issues/103)) ([63dfd8f](https://github.com/sap/xml-tools/commit/63dfd8f))
+
 ## [1.0.1](https://github.com/sap/xml-tools/compare/@xml-tools/parser@1.0.0...@xml-tools/parser@1.0.1) (2020-01-28)
 
 ### Bug Fixes
