@@ -1,5 +1,5 @@
 {
-  "name": "generic-xml-vscode-ext",
+  "name": "vscode-xml-tools-client",
   "description": "VSCode client part of an xml language server",
   "author": "SAP SE",
   "version": "0.0.1",
@@ -19,7 +19,8 @@
     "vscode:prepublish": "npm run update-vscode && cd .. && npm run compile",
     "postinstall": "vscode-install",
     "compile": "tsc -b",
-    "watch": "tsc -b -w"
+    "watch": "tsc -b -w",
+    "build": "vsce package"
   },
   "dependencies": {
     "vscode-languageclient": "^5.2.1"

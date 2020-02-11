@@ -17,10 +17,10 @@ export function activate(context: ExtensionContext) {
     env,
     "src",
     "github.com",
-    "microsoft",
-    "vscode-extension-samples",
-    "lsp-sample",
-    "server",
+    "SAP",
+    "xml-tools",
+    "packages",
+    "xml-lsp-server",
     "out",
     "server.js"
   );
