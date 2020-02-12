@@ -1,24 +1,23 @@
 {
   "name": "@xml-tools/xml-lsp-server",
-  "description": "Generic xml language server",
+  "description": "XML language server",
   "version": "1.0.0",
-  "author": "SAPSE",
   "license": "Apache-2.0",
   "engines": {
-    "node": "*"
+    "node": "10.19.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/xml-tools/"
   },
   "dependencies": {
-    "vscode-languageserver": "^5.2.1",
-    "@xml-tools/parser": "^1.0.1"
+    "vscode-languageserver": "6.1.0",
+    "@xml-tools/parser": "1.0.2"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.11.7",
-    "typescript": "^3.6.4"
+    "@types/mocha": "7.0.1",
+    "@types/node": "10.17.15",
+    "typescript": "3.7.5"
   },
   "scripts": {
     "compile": "tsc -b"
