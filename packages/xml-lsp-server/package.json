@@ -40,7 +40,6 @@
     "compile": "tsc -b",
     "lint": "eslint . --ext .ts --fix --max-warnings=0",
     "test": "mocha",
-    "coverage": "nyc mocha",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "coverage": "nyc mocha"
   }
 }
