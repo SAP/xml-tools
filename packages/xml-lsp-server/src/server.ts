@@ -1,33 +1,22 @@
 import {
-  createConnection,
-  TextDocuments,
-  TextDocument,
   TextDocumentChangeEvent,
   Diagnostic,
-  DiagnosticSeverity,
-  ProposedFeatures,
   InitializeParams,
-  DidChangeConfigurationNotification,
-  Range
+  DidChangeConfigurationNotification
 } from "vscode-languageserver";
-import { ILexingError, IRecognitionException } from "chevrotain";
-import { parse } from "@xml-tools/parser";
+import { configureSettings, validateDocument } from "./serverHelper";
 
-const SYNTAX_ERROR_MSG = "Syntax error";
 const diagnosticsCache = new Map<string, Map<string, Diagnostic[]>>();
+const settings = configureSettings();
+const connection = settings.connection;
+const documents = settings.documents;
 
-// Create a connection for the server
-let connection = createConnection(ProposedFeatures.all);
-
-// Create a simple text document manager
-let documents: TextDocuments = new TextDocuments();
-
-let hasConfigurationCapability: boolean = false;
-let hasWorkspaceFolderCapability: boolean = false;
-let hasDiagnosticRelatedInformationCapability: boolean = false;
+let hasConfigurationCapability = false;
+let hasWorkspaceFolderCapability = false;
+let hasDiagnosticRelatedInformationCapability = false;
 
 connection.onInitialize((params: InitializeParams) => {
-  let capabilities = params.capabilities;
+  const capabilities = params.capabilities;
 
   // Does the client support the `workspace/configuration` request?
   // If not, we will fall back using global settings
@@ -63,54 +52,11 @@ connection.onInitialized(() => {
       connection.console.log("Workspace folder change event received.");
     });
   }
-  documents.all().forEach(validateDocument);
-});
-
-connection.onDidChangeConfiguration(change => {
-  // Revalidate all open text documents
-  documents.all().forEach(validateDocument);
 });
 
 // The content of a text document has changed
 documents.onDidChangeContent((event: TextDocumentChangeEvent) => {
-  validateDocument(event.document);
-});
-
-async function validateDocument(document: TextDocument): Promise<void> {
-  if (document.languageId === "xml") {
-    const { cst, tokenVector, lexErrors, parseErrors } = parse(
-      document.getText()
-    );
-    let diagnostics: Diagnostic[] = [
-      ...lexErrors.map(lexingErrorToDiagnostic(document)),
-      ...parseErrors.map(parsingErrorToDiagnostic(document))
-    ];
-    connection.sendDiagnostics({ uri: document.uri, diagnostics });
-  }
-}
-
-const lexingErrorToDiagnostic = (document: TextDocument) => (
-  error: ILexingError
-): Diagnostic => ({
-  message: error.message,
-  range: Range.create(
-    document.positionAt(error.offset),
-    document.positionAt(error.offset + error.length)
-  ),
-  severity: DiagnosticSeverity.Error,
-  source: SYNTAX_ERROR_MSG
-});
-
-const parsingErrorToDiagnostic = (document: TextDocument) => (
-  error: IRecognitionException
-): Diagnostic => ({
-  message: error.message,
-  range: {
-    start: document.positionAt(error.token.startOffset),
-    end: document.positionAt(error.token.endOffset!)
-  },
-  severity: DiagnosticSeverity.Error,
-  source: SYNTAX_ERROR_MSG
+  validateDocument(connection, event.document);
 });
 
 documents.onDidOpen((event: TextDocumentChangeEvent) => {
