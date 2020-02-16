@@ -4,22 +4,43 @@
   "version": "1.0.0",
   "license": "Apache-2.0",
   "engines": {
-    "node": "10.19.0"
+    "node": "10.19.0",
+    "vscode": "1.39.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/xml-tools/"
   },
   "dependencies": {
-    "vscode-languageserver": "6.1.0",
+    "vscode-languageserver": "5.2.1",
     "@xml-tools/parser": "1.0.2"
   },
   "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "1.0.1",
     "@types/mocha": "7.0.1",
     "@types/node": "10.17.15",
-    "typescript": "3.7.5"
+    "@types/vscode": "1.32.0",
+    "@typescript-eslint/parser": "2.19.0",
+    "@typescript-eslint/eslint-plugin": "2.19.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "mocha": "7.0.1",
+    "nyc": "15.0.0",
+    "prettier": "1.19.1",
+    "sinon": "7.3.2",
+    "source-map-support": "0.5.16",
+    "ts-node": "8.6.2",
+    "typescript": "3.7.5",
+    "vscode": "^1.1.35",
+    "vscode-test": "1.3.0",
+    "vscode-languageclient": "5.2.1"
   },
   "scripts": {
-    "compile": "tsc -b"
+    "compile": "tsc -b",
+    "lint": "eslint . --ext .ts --fix --max-warnings=0",
+    "test": "mocha",
+    "coverage": "nyc mocha",
+    "postinstall": "node ./node_modules/vscode/bin/install"
   }
 }
