@@ -6,7 +6,8 @@ import {
   Diagnostic,
   DiagnosticSeverity,
   IPCMessageReader,
-  IPCMessageWriter
+  IPCMessageWriter,
+  Range
 } from "vscode-languageserver";
 
 import { ILexingError, IRecognitionException } from "chevrotain";
@@ -34,10 +35,10 @@ const lexingErrorToDiagnostic = (document: TextDocument) => (
   error: ILexingError
 ): Diagnostic => ({
   message: error.message,
-  range: {
-    start: document.positionAt(error.offset),
-    end: document.positionAt(error.offset + error.length)
-  },
+  range: Range.create(
+    document.positionAt(error.offset),
+    document.positionAt(error.offset + error.length)
+  ),
   severity: DiagnosticSeverity.Error,
   source: SYNTAX_ERROR_MSG
 });
@@ -59,9 +60,7 @@ export async function validateDocument(
   document: TextDocument
 ): Promise<void> {
   if (document.languageId === "xml") {
-    const { cst, tokenVector, lexErrors, parseErrors } = parse(
-      document.getText()
-    );
+    const { lexErrors, parseErrors } = parse(document.getText());
     const diagnostics: Diagnostic[] = [
       ...lexErrors.map(lexingErrorToDiagnostic(document)),
       ...parseErrors.map(parsingErrorToDiagnostic(document))
