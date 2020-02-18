@@ -1,6 +1,11 @@
 {
   "name": "@xml-tools/lsp-server",
   "description": "XML language server",
+  "keywords": [
+    "LSP",
+    "language-server",
+    "XML"
+  ],
   "version": "1.0.0",
   "license": "Apache-2.0",
   "engines": {
