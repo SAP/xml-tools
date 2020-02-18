@@ -1,25 +1,23 @@
-import * as path from "path";
-import { expect } from "chai";
-import {
-  TextDocument,
-  Diagnostic,
-  DiagnosticSeverity,
-  Position
-} from "vscode-languageserver";
+const { resolve } = require("path");
+const { expect } = require("chai");
+const { TextDocument, DiagnosticSeverity } = require("vscode-languageserver");
 
-import { validateDocument, SYNTAX_ERROR_MSG } from "../src/language-services";
-import { SERVER_PATH } from "../src/api";
+const {
+  validateDocument,
+  SYNTAX_ERROR_MSG
+} = require("../lib/language-services");
+const { SERVER_PATH } = require("../lib/api");
 
 describe("the XML Language Services", () => {
   it("will get the correct path to server module", async () => {
-    const serverPath = path.resolve(__dirname, "../", "src", "server.js");
+    const serverPath = resolve(__dirname, "../", "lib", "server.js");
     expect(SERVER_PATH).to.deep.equal(serverPath);
   });
 
   it("will detect a parsing error in an xml document", async () => {
-    const doc: TextDocument = createTextDocument("xml", ">");
-    const pos: Position = { line: 0, character: 0 };
-    const expectedDiagnostics: Diagnostic[] = [
+    const doc = createTextDocument("xml", ">");
+    const pos = { line: 0, character: 0 };
+    const expectedDiagnostics = [
       {
         message: "Expecting token of type --> OPEN <-- but found --> '>' <--",
         range: {
@@ -35,11 +33,11 @@ describe("the XML Language Services", () => {
   });
 
   it("will detect a lexing error in an xml document", async () => {
-    const doc: TextDocument = createTextDocument("xml", "<a></!>");
-    const start: Position = { line: 0, character: 5 };
-    const pos: Position = { line: 0, character: 6 };
+    const doc = createTextDocument("xml", "<a></!>");
+    const start = { line: 0, character: 5 };
+    const pos = { line: 0, character: 6 };
 
-    const expectedDiagnostics: Diagnostic[] = [
+    const expectedDiagnostics = [
       {
         message: `unexpected character: ->!<- at offset: 5, skipped 1 characters.`,
         range: {
@@ -64,12 +62,16 @@ describe("the XML Language Services", () => {
   });
 
   it("will not detect any error in a none XML document", async () => {
-    const doc: TextDocument = createTextDocument("txt", ">");
+    const doc = createTextDocument("txt", ">");
     const diagnostics = await validateDocument(doc);
     expect(diagnostics).to.deep.equal([]);
   });
 });
 
-function createTextDocument(languageId: string, content: string): TextDocument {
+/**
+ * @param {string} languageId
+ * @param {string} content
+ */
+function createTextDocument(languageId, content) {
   return TextDocument.create("uri", languageId, 0, content);
 }

@@ -1,30 +1,36 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const vscode_languageserver_1 = require("vscode-languageserver");
-const parser_1 = require("@xml-tools/parser");
-exports.SYNTAX_ERROR_MSG = "Syntax error";
+const { DiagnosticSeverity, Range } = require("vscode-languageserver");
+const { parse } = require("@xml-tools/parser");
+
+const SYNTAX_ERROR_MSG = "Syntax error";
+
 const lexingErrorToDiagnostic = document => error => ({
   message: error.message,
-  range: vscode_languageserver_1.Range.create(
+  range: Range.create(
     document.positionAt(error.offset),
     document.positionAt(error.offset + error.length)
   ),
-  severity: vscode_languageserver_1.DiagnosticSeverity.Error,
-  source: exports.SYNTAX_ERROR_MSG
+  severity: DiagnosticSeverity.Error,
+  source: SYNTAX_ERROR_MSG
 });
+
 const parsingErrorToDiagnostic = document => error => ({
   message: error.message,
   range: {
     start: document.positionAt(error.token.startOffset),
     end: document.positionAt(error.token.endOffset ? error.token.endOffset : 0)
   },
-  severity: vscode_languageserver_1.DiagnosticSeverity.Error,
-  source: exports.SYNTAX_ERROR_MSG
+  severity: DiagnosticSeverity.Error,
+  source: SYNTAX_ERROR_MSG
 });
+
+/**
+ * @param {TextDocument} document
+ * @returns {Diagnostic[]}
+ */
 async function validateDocument(document) {
   let diagnostics = [];
   if (document.languageId === "xml") {
-    const { lexErrors, parseErrors } = parser_1.parse(document.getText());
+    const { lexErrors, parseErrors } = parse(document.getText());
     diagnostics = [
       ...lexErrors.map(lexingErrorToDiagnostic(document)),
       ...parseErrors.map(parsingErrorToDiagnostic(document))
@@ -32,5 +38,8 @@ async function validateDocument(document) {
   }
   return diagnostics;
 }
-exports.validateDocument = validateDocument;
-//# sourceMappingURL=language-services.js.map
+
+module.exports = {
+  validateDocument: validateDocument,
+  SYNTAX_ERROR_MSG: SYNTAX_ERROR_MSG
+};

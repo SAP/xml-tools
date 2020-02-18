@@ -6,11 +6,7 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "main": "out/api.js",
-  "files": [
-    "out",
-    "src"
-  ],
+  "main": "lib/api.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/xml-tools/"
@@ -19,22 +15,10 @@
     "vscode-languageserver": "5.2.1",
     "@xml-tools/parser": "1.0.2"
   },
-  "devDependencies": {
-    "@istanbuljs/nyc-config-typescript": "1.0.1",
-    "@types/node": "10.17.15",
-    "@typescript-eslint/parser": "2.19.0",
-    "@typescript-eslint/eslint-plugin": "2.19.0",
-    "eslint": "6.8.0",
-    "eslint-config-prettier": "6.10.0",
-    "eslint-plugin-prettier": "3.1.2",
-    "source-map-support": "0.5.16",
-    "ts-node": "8.6.2"
-  },
+  "devDependencies": {},
   "scripts": {
-    "ci": "npm-run-all compile lint coverage",
-    "compile": "tsc -b",
-    "lint": "eslint . --ext .ts --fix --max-warnings=0",
-    "test": "mocha",
-    "coverage": "nyc mocha"
+    "ci": "npm-run-all coverage",
+    "test": "mocha \"./test/**/*spec.js\"",
+    "coverage": "nyc mocha \"./test/**/*spec.js\""
   }
 }

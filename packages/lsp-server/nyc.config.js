@@ -1,9 +1,8 @@
-const nycConfigTypeScript = require("@istanbuljs/nyc-config-typescript");
-
+// TODO: extract to top level nyc config.
 module.exports = {
-  ...nycConfigTypeScript,
-  include: ["src/**/*.ts"],
-  exclude: ["src/server.ts"],
+  include: ["lib/**/*.js"],
+  // Not yet sure how to implement an Integration test for the LSP Server
+  exclude: ["lib/server.js"],
   reporter: ["text", "lcov"],
   "check-coverage": true,
   all: true,
