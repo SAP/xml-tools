@@ -1,3 +1,4 @@
+import * as path from "path";
 import { expect } from "chai";
 import {
   TextDocument,
@@ -7,8 +8,14 @@ import {
 } from "vscode-languageserver";
 
 import { validateDocument, SYNTAX_ERROR_MSG } from "../src/language-services";
+import { SERVER_PATH } from "../src/api";
 
 describe("the XML Language Services", () => {
+  it("will get the correct path to server module", async () => {
+    const serverPath = path.resolve(__dirname, "../", "src", "server.js");
+    expect(SERVER_PATH).to.deep.equal(serverPath);
+  });
+
   it("will detect a parsing error in an xml document", async () => {
     const doc: TextDocument = createTextDocument("xml", ">");
     const pos: Position = { line: 0, character: 0 };
