@@ -2,7 +2,11 @@
 
 # @xml-tools/lsp-server
 
-XML Language Server for syntactic validations.
+XML Language Server
+
+Current Features:
+
+- Syntax Diagnostics.
 
 ## Installation
 
@@ -16,12 +20,16 @@ With Yarn
 
 ## Usage
 
+Please see the [TypeScript Definitions](./api.d.ts) for full API details.
+
 A simple usage example:
 
 ```javascript
 const { SERVER_PATH } = require("@xml-tools/lsp-server");
 
-console.log(SERVER_PATH); // --> .../node_module/@xml-tools/lsp-server/out/server.js
+// SERVER_PATH is the only API currently and it is meant to expose the "main" module's absolute
+// path which would then be executed in a different process
+console.log(SERVER_PATH); // --> .../node_module/@xml-tools/lsp-server/lib/server.js
 ```
 
 ## Support
