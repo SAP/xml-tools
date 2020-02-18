@@ -8,7 +8,7 @@ import {
 
 import { validateDocument, SYNTAX_ERROR_MSG } from "../src/language-services";
 
-describe("the XML Language Server", () => {
+describe("the XML Language Services", () => {
   it("will detect a parsing error in an xml document", async () => {
     const doc: TextDocument = createTextDocument("xml", ">");
     const pos: Position = { line: 0, character: 0 };

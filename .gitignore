@@ -69,8 +69,8 @@ typings/
 coverage
 
 #Output
-out
 report
+*.map
 
 # we are using yarn instead of npm
 package-lock.json

@@ -16,6 +16,7 @@ It currently contains the following packages:
 - [![npm-xml-tools-content-assist][npm-xml-tools-content-assist-image]][npm-xml-tools-content-assist-url] [@xml-tools/content-assist](./packages/content-assist) Extensible Content Assist APIs for XML.
 - [![npm-xml-tools-validation][npm-xml-tools-validation-image]][npm-xml-tools-validation-url] [@xml-tools/validation](./packages/validation) Extensible Validation APIs for XML.
 - [![npm-xml-tools-simple-schema][npm-xml-tools-simple-schema-image]][npm-xml-tools-simple-schema-url] [@xml-tools/simple-schema](./packages/simple-schema) Simple XML Schema represented as a JavaScript object literal.
+- [![npm-xml-tools-lsp-server][npm-xml-tools-lsp-server-image]][npm-xml-tools-lsp-server-url] [@xml-tools/lsp-server](./packages/lsp-server) XML Language Server.
 - [![npm-xml-tools-common][npm-xml-tools-common-image]][npm-xml-tools-common-url] [@xml-tools/common](./packages/common) Shared Utilities for xml-tools packages.
 
 [npm-xml-tools-parser-image]: https://img.shields.io/npm/v/@xml-tools/parser.svg
@@ -28,6 +29,8 @@ It currently contains the following packages:
 [npm-xml-tools-validation-url]: https://www.npmjs.com/package/@xml-tools/validation
 [npm-xml-tools-simple-schema-image]: https://img.shields.io/npm/v/@xml-tools/simple-schema.svg
 [npm-xml-tools-simple-schema-url]: https://www.npmjs.com/package/@xml-tools/simple-schema
+[npm-xml-tools-lsp-server-image]: https://img.shields.io/npm/v/@xml-tools/lsp-server.svg
+[npm-xml-tools-lsp-server-url]: https://www.npmjs.com/package/@xml-tools/lsp-server
 [npm-xml-tools-common-image]: https://img.shields.io/npm/v/@xml-tools/common.svg
 [npm-xml-tools-common-url]: https://www.npmjs.com/package/@xml-tools/common
 
