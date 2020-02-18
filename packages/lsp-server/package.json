@@ -1,21 +1,21 @@
 {
   "name": "@xml-tools/lsp-server",
+  "version": "1.0.0",
   "description": "XML language server",
   "keywords": [
     "LSP",
     "language-server",
     "XML"
   ],
-  "version": "1.0.0",
-  "license": "Apache-2.0",
-  "typings": "./api.d.ts",
-  "engines": {
-    "node": ">=10.0.0"
-  },
   "main": "lib/api.js",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/xml-tools/"
+  },
+  "typings": "./api.d.ts",
+  "engines": {
+    "node": ">=10.0.0"
   },
   "dependencies": {
     "vscode-languageserver": "5.2.1",
