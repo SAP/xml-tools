@@ -1,0 +1,36 @@
+{
+  "name": "@xml-tools/lsp-server",
+  "description": "XML language server",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "main": "src/server.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/xml-tools/"
+  },
+  "dependencies": {
+    "vscode-languageserver": "5.2.1",
+    "@xml-tools/parser": "1.0.2"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "1.0.1",
+    "@types/node": "10.17.15",
+    "@typescript-eslint/parser": "2.19.0",
+    "@typescript-eslint/eslint-plugin": "2.19.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "source-map-support": "0.5.16",
+    "ts-node": "8.6.2"
+  },
+  "scripts": {
+    "ci": "npm-run-all compile lint coverage",
+    "compile": "tsc -b",
+    "lint": "eslint . --ext .ts --fix --max-warnings=0",
+    "test": "mocha",
+    "coverage": "nyc mocha"
+  }
+}

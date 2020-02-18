@@ -4,7 +4,7 @@ import {
   TextDocumentChangeEvent,
   ProposedFeatures
 } from "vscode-languageserver";
-import { validateDocument } from "./serverHelper";
+import { validateDocument } from "./language-services";
 
 const connection = createConnection(ProposedFeatures.all);
 const documents = new TextDocuments();
