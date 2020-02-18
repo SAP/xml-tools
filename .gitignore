@@ -67,6 +67,10 @@ typings/
 .nyc_output
 coverage
 
+#Output
+out
+report
+
 # we are using yarn instead of npm
 package-lock.json
 

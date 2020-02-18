@@ -1,12 +1,7 @@
 import {
-  createConnection,
-  TextDocuments,
   TextDocument,
-  IConnection,
   Diagnostic,
   DiagnosticSeverity,
-  IPCMessageReader,
-  IPCMessageWriter,
   Range
 } from "vscode-languageserver";
 
@@ -14,22 +9,6 @@ import { ILexingError, IRecognitionException } from "chevrotain";
 import { parse } from "@xml-tools/parser";
 
 export const SYNTAX_ERROR_MSG = "Syntax error";
-
-export interface Settings {
-  connection: IConnection;
-  documents: TextDocuments;
-}
-
-export function configureSettings(): Settings {
-  const settings: Settings = {
-    connection: createConnection(
-      new IPCMessageReader(process),
-      new IPCMessageWriter(process)
-    ),
-    documents: new TextDocuments()
-  };
-  return settings;
-}
 
 const lexingErrorToDiagnostic = (document: TextDocument) => (
   error: ILexingError
@@ -49,22 +28,22 @@ const parsingErrorToDiagnostic = (document: TextDocument) => (
   message: error.message,
   range: {
     start: document.positionAt(error.token.startOffset),
-    end: document.positionAt(error.token.endOffset)
+    end: document.positionAt(error.token.endOffset ? error.token.endOffset : 0)
   },
   severity: DiagnosticSeverity.Error,
   source: SYNTAX_ERROR_MSG
 });
 
 export async function validateDocument(
-  connection: IConnection,
   document: TextDocument
-): Promise<void> {
+): Promise<Diagnostic[]> {
+  let diagnostics: Diagnostic[] = [];
   if (document.languageId === "xml") {
     const { lexErrors, parseErrors } = parse(document.getText());
-    const diagnostics: Diagnostic[] = [
+    diagnostics = [
       ...lexErrors.map(lexingErrorToDiagnostic(document)),
       ...parseErrors.map(parsingErrorToDiagnostic(document))
     ];
-    connection.sendDiagnostics({ uri: document.uri, diagnostics });
   }
+  return diagnostics;
 }

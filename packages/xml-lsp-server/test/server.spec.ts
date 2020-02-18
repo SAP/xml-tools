@@ -1,47 +1,17 @@
-import * as sinon from "sinon";
-import { assert } from "chai";
+import { expect } from "chai";
 
-import {
-  Settings,
-  configureSettings,
-  validateDocument,
-  SYNTAX_ERROR_MSG
-} from "../src/serverHelper";
+import { validateDocument, SYNTAX_ERROR_MSG } from "../src/serverHelper";
 
 import {
   TextDocument,
-  IConnection,
   Diagnostic,
   DiagnosticSeverity,
   Position
 } from "vscode-languageserver";
 
 describe("Test XML Language Server", () => {
-  let sandbox: any;
-  let doc: TextDocument;
-  let connection: IConnection;
-  let connectionSpy: any;
-
-  before(() => {
-    sandbox = sinon.createSandbox();
-  });
-
-  after(() => {
-    sandbox = sinon.restore();
-  });
-
-  beforeEach(() => {
-    const settings: Settings = configureSettings();
-    connection = settings.connection;
-    connectionSpy = sandbox.spy(connection, "sendDiagnostics");
-  });
-
-  afterEach(() => {
-    connectionSpy.restore();
-  });
-
   it("Test parsing error validation in xml document", async () => {
-    doc = createTextDocument("xml", ">");
+    const doc: TextDocument = createTextDocument("xml", ">");
     const pos: Position = { line: 0, character: 0 };
     const diagnostic: Diagnostic = {
       message: "Expecting token of type --> OPEN <-- but found --> '>' <--",
@@ -53,17 +23,28 @@ describe("Test XML Language Server", () => {
       source: SYNTAX_ERROR_MSG
     };
 
-    const diagnostics: Diagnostic[] = [diagnostic];
-    await validateDocument(connection, doc);
-    assert(connectionSpy.withArgs({ uri: doc.uri, diagnostics }).calledOnce);
+    const expectedDiagnostics: Diagnostic[] = [diagnostic];
+    const diagnostics = await validateDocument(doc);
+    expect(diagnostics).to.deep.equal(expectedDiagnostics);
   });
 
   it("Test lexing error validation in xml document", async () => {
-    doc = createTextDocument("xml", "<Name");
-    const pos: Position = { line: 0, character: NaN };
-    const diagnostic: Diagnostic = {
-      message:
-        "Expecting: one of these possible Token sequences:\n  1. [CLOSE]\n  2. [SLASH_CLOSE]\nbut found: ''",
+    const doc: TextDocument = createTextDocument("xml", "<a></!>");
+    const start: Position = { line: 0, character: 5 };
+    const end: Position = { line: 0, character: 6 };
+    const diagnostic1: Diagnostic = {
+      message: `unexpected character: ->!<- at offset: 5, skipped 1 characters.`,
+      range: {
+        start: start,
+        end: end
+      },
+      severity: DiagnosticSeverity.Error,
+      source: SYNTAX_ERROR_MSG
+    };
+
+    const pos: Position = { line: 0, character: 6 };
+    const diagnostic2: Diagnostic = {
+      message: `Expecting token of type --> Name <-- but found --> '>' <--`,
       range: {
         start: pos,
         end: pos
@@ -72,15 +53,15 @@ describe("Test XML Language Server", () => {
       source: SYNTAX_ERROR_MSG
     };
 
-    const diagnostics: Diagnostic[] = [diagnostic];
-    await validateDocument(connection, doc);
-    assert(connectionSpy.withArgs({ uri: doc.uri, diagnostics }).calledOnce);
+    const expectedDiagnostics: Diagnostic[] = [diagnostic1, diagnostic2];
+    const diagnostics = await validateDocument(doc);
+    expect(diagnostics).to.deep.equal(expectedDiagnostics);
   });
 
   it("Test no syntax validation in non xml document", async () => {
-    doc = createTextDocument("txt", ">");
-    await validateDocument(connection, doc);
-    assert(connectionSpy.notCalled);
+    const doc: TextDocument = createTextDocument("txt", ">");
+    const diagnostics = await validateDocument(doc);
+    expect(diagnostics).to.deep.equal([]);
   });
 });
 
