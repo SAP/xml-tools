@@ -62,10 +62,15 @@ typings/
 
 # IDE
 .idea
+.vscode
 
 # NYC
 .nyc_output
 coverage
+
+#Output
+report
+*.map
 
 # we are using yarn instead of npm
 package-lock.json
