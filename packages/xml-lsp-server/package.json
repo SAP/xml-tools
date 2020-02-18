@@ -26,7 +26,7 @@
     "ts-node": "8.6.2"
   },
   "scripts": {
-    "ci": "npm-run-all lint coverage:*",
+    "ci": "npm-run-all lint coverage",
     "compile": "tsc -b",
     "lint": "eslint . --ext .ts --fix --max-warnings=0",
     "test": "mocha",
