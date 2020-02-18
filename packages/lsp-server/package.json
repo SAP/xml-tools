@@ -15,7 +15,10 @@
     "vscode-languageserver": "5.2.1",
     "@xml-tools/parser": "1.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vscode-languageserver-types": "3.15.1",
+    "chevrotain": "^6.5.0"
+  },
   "scripts": {
     "ci": "npm-run-all coverage",
     "test": "mocha \"./test/**/*spec.js\"",
