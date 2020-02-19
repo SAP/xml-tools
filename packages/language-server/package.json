@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/language-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "XML language server",
   "keywords": [
     "LSP",
@@ -18,13 +18,13 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
+    "@xml-tools/parser": "1.0.2",
     "vscode-languageserver": "6.1.1",
-    "vscode-languageserver-textdocument": "1.0.0",
-    "@xml-tools/parser": "1.0.2"
+    "vscode-languageserver-textdocument": "1.0.0"
   },
   "devDependencies": {
-    "vscode-languageserver-types": "3.15.1",
-    "chevrotain": "^6.5.0"
+    "chevrotain": "^6.5.0",
+    "vscode-languageserver-types": "3.15.1"
   },
   "scripts": {
     "ci": "npm-run-all type-check coverage",
