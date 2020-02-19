@@ -30,5 +30,8 @@
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage": "nyc mocha \"./test/**/*spec.js\"",
     "type-check": "tsc api.d.ts"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
