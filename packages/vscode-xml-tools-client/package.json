@@ -1,9 +1,8 @@
 {
   "name": "vscode-xml-tools-client",
-  "description": "VSCode client part of an xml language server",
-  "author": "SAP SE",
+  "description": "xml-tools for VS Code",
   "version": "0.0.1",
-  "publisher": "vscode",
+  "publisher": "SAP SE",
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/xml-tools"
@@ -20,14 +19,18 @@
     "postinstall": "vscode-install",
     "compile": "tsc -b",
     "watch": "tsc -b -w",
-    "build": "vsce package"
+    "build": "vsce package",
+    "test": "tsc -b && node ./out/test/runTest.js"
   },
   "dependencies": {
+    "@xml-tools/language-server": "1.0.2",
     "vscode-languageclient": "^5.2.1"
   },
   "devDependencies": {
     "@types/node": "^12.11.7",
+    "vscode-test": "^1.3.0",
     "vscode": "^1.1.35",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "vscode-languageserver": "5.2.1"
   }
 }
