@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.3](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@3.1.2...@xml-tools/content-assist@3.1.3) (2020-02-19)
+
+### Bug Fixes
+
+- add npmignore file to each package ([5bbf209](https://github.com/sap/xml-tools/commit/5bbf209))
+
 ## [3.1.2](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@3.1.1...@xml-tools/content-assist@3.1.2) (2020-02-11)
 
 **Note:** Version bump only for package @xml-tools/content-assist

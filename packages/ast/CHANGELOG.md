@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.0.1...@xml-tools/ast@4.0.2) (2020-02-19)
+
+### Bug Fixes
+
+- add npmignore file to each package ([5bbf209](https://github.com/sap/xml-tools/commit/5bbf209))
+
 ## [4.0.1](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.0.0...@xml-tools/ast@4.0.1) (2020-02-11)
 
 **Note:** Version bump only for package @xml-tools/ast

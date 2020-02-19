@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/sap/xml-tools/compare/@xml-tools/validation@1.0.5...@xml-tools/validation@1.0.6) (2020-02-19)
+
+### Bug Fixes
+
+- add npmignore file to each package ([5bbf209](https://github.com/sap/xml-tools/commit/5bbf209))
+
 ## [1.0.5](https://github.com/sap/xml-tools/compare/@xml-tools/validation@1.0.4...@xml-tools/validation@1.0.5) (2020-02-11)
 
 **Note:** Version bump only for package @xml-tools/validation
