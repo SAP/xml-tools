@@ -1,4 +1,4 @@
-[![npm (scoped)](https://img.shields.io/npm/v/@xml-tools/lsp-server.svg)](https://www.npmjs.com/package/@xml-tools/lsp-server)
+[![npm (scoped)](https://img.shields.io/npm/v/@xml-tools/language-server.svg)](https://www.npmjs.com/package/@xml-tools/language-server)
 
 # @xml-tools/language-server
 
