@@ -1,14 +1,15 @@
 const {
   createConnection,
   ProposedFeatures,
+  TextDocuments,
   TextDocumentSyncKind
 } = require("vscode-languageserver");
-const textDocument = require("vscode-languageserver-textdocument");
+const { TextDocument } = require("vscode-languageserver-textdocument");
 
 const { validateDocument } = require("./language-services");
 
 const connection = createConnection(ProposedFeatures.all);
-const documents = new server.TextDocuments(textDocument.TextDocument);
+const documents = new TextDocuments(TextDocument);
 
 connection.onInitialize(() => {
   return {
