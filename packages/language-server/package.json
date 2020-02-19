@@ -1,5 +1,5 @@
 {
-  "name": "@xml-tools/lsp-server",
+  "name": "@xml-tools/language-server",
   "version": "1.0.0",
   "description": "XML language server",
   "keywords": [
