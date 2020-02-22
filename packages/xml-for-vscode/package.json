@@ -1,0 +1,35 @@
+{
+  "name": "vscode-xml-tools-client",
+  "description": "xml-tools for VS Code",
+  "version": "0.0.1",
+  "publisher": "SAPSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/xml-tools"
+  },
+  "engines": {
+    "vscode": "^1.39.0"
+  },
+  "activationEvents": [
+    "onLanguage:xml"
+  ],
+  "main": "./out/extension",
+  "scripts": {
+    "vscode:prepublish": "npm run update-vscode && cd .. && npm run compile",
+    "postinstall": "vscode-install",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "build": "vsce package",
+    "test": "tsc -b && node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "@xml-tools/language-server": "1.0.2",
+    "vscode-languageclient": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.17.15",
+    "vscode-test": "^1.3.0",
+    "vscode": "^1.1.36",
+    "typescript": "^3.7.5"
+  }
+}
