@@ -24,7 +24,6 @@ async function main() {
 
     // The folder containing the Extension Manifest package.json
     // Passed to `--extensionDevelopmentPath`
-
     const extensionTestsPath = path.resolve(__dirname, "suite", "index");
     console.log(extensionTestsPath);
 
