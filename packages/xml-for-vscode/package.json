@@ -16,8 +16,6 @@
   ],
   "main": "lib/extension",
   "scripts": {
-    "vscode:prepublish": "npm run update-vscode && cd .. && npm run compile",
-    "ci": "npm-run-all coverage",
     "test": "node test/runTest.js",
     "build": "vsce package"
   },
