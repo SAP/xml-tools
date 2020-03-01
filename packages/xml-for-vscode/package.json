@@ -17,6 +17,7 @@
   "main": "lib/extension",
   "scripts": {
     "test": "node test/runTest.js",
+    "coverage": "nyc node test/runTest.js",
     "build": "vsce package"
   },
   "dependencies": {

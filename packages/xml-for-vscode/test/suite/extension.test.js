@@ -2,6 +2,7 @@ const { resolve } = require("path");
 const vscode = require("vscode");
 const fs = require("fs").promises;
 const { expect } = require("chai");
+const { deactivate } = require("../../lib/extension");
 
 const SYNTAX_ERROR_MSG = "Syntax error";
 const docPath = resolve(
@@ -25,6 +26,9 @@ describe("XML for VSCode extension", () => {
   after(async function() {
     // Clear the xml document
     await setContent("");
+    // Deactivate extension
+    const extensionStatus = await deactivate();
+    expect(extensionStatus).to.equal(undefined);
   });
 
   it("Will show lexing error in problems view", async function() {
