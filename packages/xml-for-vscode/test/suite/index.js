@@ -1,8 +1,8 @@
-import * as path from "path";
-import * as Mocha from "mocha";
-import * as glob from "glob";
+const { resolve } = require("path");
+const Mocha = require("mocha");
+const glob = require("glob");
 
-export function run(): Promise<void> {
+function run() {
   // Create the mocha test
   const mocha = new Mocha({
     ui: "bdd",
@@ -10,16 +10,16 @@ export function run(): Promise<void> {
   });
   mocha.useColors(true);
 
-  const testsRoot = path.resolve(__dirname);
+  const testsRoot = resolve(__dirname);
 
   return new Promise((c, e) => {
-    glob("**/**.test.js", { cwd: testsRoot }, (err, files) => {
+    glob("**.test.js", { cwd: testsRoot }, (err, files) => {
       if (err) {
         return e(err);
       }
 
       // Add files to the test suite
-      files.forEach(f => mocha.addFile(path.resolve(testsRoot, f)));
+      files.forEach(f => mocha.addFile(resolve(testsRoot, f)));
 
       try {
         // Run the mocha test
@@ -37,3 +37,7 @@ export function run(): Promise<void> {
     });
   });
 }
+
+module.exports = {
+  run: run
+};

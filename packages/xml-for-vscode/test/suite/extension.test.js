@@ -1,15 +1,13 @@
-import * as path from "path";
-import * as vscode from "vscode";
-import { promises as fs } from "fs";
-import { expect } from "chai";
+const { resolve } = require("path");
+const vscode = require("vscode");
+const fs = require("fs").promises;
+const { expect } = require("chai");
 
 const SYNTAX_ERROR_MSG = "Syntax error";
-const docPath = path.resolve(
+const docPath = resolve(
   __dirname,
   "..",
   "..",
-  "..",
-  "src",
   "test",
   "testFixure",
   "test.xml"
@@ -19,6 +17,9 @@ const docUri = vscode.Uri.file(docPath);
 describe("XML for VSCode extension", () => {
   before(async function() {
     await vscode.workspace.openTextDocument(docUri);
+    await vscode.window.showTextDocument(docUri);
+    // We need to explicitly wait for extension to load
+    await sleep(1000);
   });
 
   after(async function() {
@@ -102,29 +103,23 @@ describe("XML for VSCode extension", () => {
     ]);
   });
 
-  function toRange(sLine: number, sChar: number, eLine: number, eChar: number) {
+  function toRange(sLine, sChar, eLine, eChar) {
     const start = new vscode.Position(sLine, sChar);
     const end = new vscode.Position(eLine, eChar);
     return new vscode.Range(start, end);
   }
 
-  async function setContent(content: string) {
+  async function setContent(content) {
     await fs.writeFile(docPath, content);
     await sleep(1000);
-    await vscode.window.showTextDocument(docUri);
   }
 
-  async function sleep(ms: number) {
+  async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function testDiagnostics(
-    docUri: vscode.Uri,
-    expectedDiagnostics: vscode.Diagnostic[]
-  ) {
-    const actualDiagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(
-      docUri
-    );
+  async function testDiagnostics(docUri, expectedDiagnostics) {
+    const actualDiagnostics = vscode.languages.getDiagnostics(docUri);
     expect(expectedDiagnostics).to.deep.equal(actualDiagnostics);
   }
 });

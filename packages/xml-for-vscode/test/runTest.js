@@ -1,31 +1,21 @@
-import * as path from "path";
-import { runTests } from "vscode-test";
+const { resolve } = require("path");
+const { runTests } = require("vscode-test");
 
 async function main() {
   try {
     // The path to the extension test environment
     // Passed to --extensionTestsEnv
     const extensionTestsEnv = {
-      path: path.resolve(
-        __dirname,
-        "..",
-        "..",
-        "src",
-        "test",
-        "suite",
-        "textFixure"
-      )
+      path: resolve(__dirname, "..", "..", "test", "suite", "textFixure")
     };
-
-    // The path to the extension test script
-    // Passed to --extensionTestsPath
-    const extensionDevelopmentPath = path.resolve(__dirname, "..", "..");
-    console.log(extensionDevelopmentPath);
 
     // The folder containing the Extension Manifest package.json
     // Passed to `--extensionDevelopmentPath`
-    const extensionTestsPath = path.resolve(__dirname, "suite", "index");
-    console.log(extensionTestsPath);
+    const extensionDevelopmentPath = resolve(__dirname, "..");
+
+    // The path to the extension test script
+    // Passed to --extensionTestsPath
+    const extensionTestsPath = resolve(__dirname, "suite", "index");
 
     // Download VS Code, unzip it and run the integration test
     await runTests({

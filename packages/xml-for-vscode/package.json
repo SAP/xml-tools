@@ -9,19 +9,17 @@
     "url": "https://github.com/SAP/xml-tools"
   },
   "engines": {
-    "vscode": "^1.39.0"
+    "vscode": "1.42.1"
   },
   "activationEvents": [
     "onLanguage:xml"
   ],
-  "main": "./out/extension",
+  "main": "lib/extension",
   "scripts": {
     "vscode:prepublish": "npm run update-vscode && cd .. && npm run compile",
-    "postinstall": "vscode-install",
-    "compile": "tsc -b",
-    "watch": "tsc -b -w",
-    "build": "vsce package",
-    "test": "tsc -b && node ./out/test/runTest.js"
+    "ci": "npm-run-all coverage",
+    "test": "node test/runTest.js",
+    "build": "vsce package"
   },
   "dependencies": {
     "@xml-tools/language-server": "1.0.2",
@@ -29,8 +27,8 @@
   },
   "devDependencies": {
     "@types/node": "10.17.15",
+    "@types/vscode": "1.42.0",
     "vscode-test": "1.3.0",
-    "vscode": "1.1.36",
-    "typescript": "3.8.2"
+    "glob": "^7.1.6"
   }
 }
