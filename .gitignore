@@ -64,6 +64,9 @@ typings/
 .idea
 .vscode
 
+# vscode-test
+.vscode-test
+
 # NYC
 .nyc_output
 coverage

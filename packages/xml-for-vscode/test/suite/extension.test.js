@@ -1,8 +1,11 @@
 const { resolve } = require("path");
 const vscode = require("vscode");
 const fs = require("fs").promises;
-const { expect } = require("chai");
 const { deactivate } = require("../../lib/extension");
+const deepEqualInAnyOrder = require("deep-equal-in-any-order");
+const chai = require("chai");
+const { expect } = chai;
+chai.use(deepEqualInAnyOrder);
 
 const SYNTAX_ERROR_MSG = "Syntax error";
 const docPath = resolve(
@@ -122,6 +125,6 @@ describe("XML for VSCode extension", () => {
 
   async function testDiagnostics(docUri, expectedDiagnostics) {
     const actualDiagnostics = vscode.languages.getDiagnostics(docUri);
-    expect(expectedDiagnostics).to.deep.equal(actualDiagnostics);
+    expect(expectedDiagnostics).to.deep.equalInAnyOrder(actualDiagnostics);
   }
 });
