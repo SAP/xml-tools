@@ -24,9 +24,7 @@ describe("XML for VSCode extension", () => {
   });
 
   after(async function() {
-    // Clear the xml document
     await setContent("");
-    // Deactivate extension
     const extensionStatus = await deactivate();
     expect(extensionStatus).to.equal(undefined);
   });

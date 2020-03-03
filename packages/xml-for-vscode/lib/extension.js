@@ -5,9 +5,9 @@ const { SERVER_PATH } = require("@xml-tools/language-server");
 let client;
 
 function activate() {
-  let debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
+  const debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
 
-  let serverOptions = {
+  const serverOptions = {
     run: { module: SERVER_PATH, transport: TransportKind.ipc },
     debug: {
       module: SERVER_PATH,
@@ -34,6 +34,7 @@ function activate() {
 }
 
 function deactivate() {
+  /* istanbul ignore if - scenario that cannot be reached in productive code */
   if (!client) {
     return undefined;
   }
