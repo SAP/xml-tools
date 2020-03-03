@@ -16,7 +16,7 @@
   ],
   "main": "lib/extension",
   "scripts": {
-    "ci": "npm-run-all type-check coverage:*",
+    "ci": "npm-run-all coverage:*",
     "test": "node test/runTest.js",
     "coverage:run": "nyc node test/runTest.js",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100"
