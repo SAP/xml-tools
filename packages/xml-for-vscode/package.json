@@ -3,7 +3,7 @@
   "description": "XML for VSCode",
   "version": "0.0.1",
   "private:": true,
-  "publisher": "SAP SE",
+  "publisher": "SAPSE",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
