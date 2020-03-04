@@ -27,12 +27,12 @@ jobs:
       - run: yarn
       - run: yarn run ci
       - persist_to_workspace:
-          root: "./packages"
+          root: "./packages/xml-for-vscode"
           paths:
             # https://golang.org/pkg/path/filepath/#Match
             - xml-for-vscode-*
 
-  deploy:
+  deploy-npm:
     docker:
       - image: circleci/node:10-browsers
     working_directory: ~/repo
@@ -68,8 +68,11 @@ workflows:
     jobs:
       - build-node13
       - build-node12
-      - build-node10
-      - deploy:
+      - build-node10:
+          filters:
+            tags:
+              only: /^xml-for-vscode@[0-9]+(\.[0-9]+)*/
+      - deploy-npm:
           filters:
             tags:
               only: /^RELEASE/
