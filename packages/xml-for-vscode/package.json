@@ -16,10 +16,11 @@
   ],
   "main": "lib/extension",
   "scripts": {
-    "ci": "npm-run-all coverage:*",
+    "ci": "npm-run-all coverage:* build",
     "test": "node test/runTest.js",
     "coverage:run": "nyc node test/runTest.js",
-    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100"
+    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
+    "build": "vsce package"
   },
   "dependencies": {
     "@xml-tools/language-server": "1.0.2",
