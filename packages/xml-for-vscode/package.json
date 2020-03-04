@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@xml-tools/language-server": "1.0.2",
-    "vscode-languageclient": "6.1.1"
+    "vscode-languageclient": "6.1.0"
   },
   "devDependencies": {
     "@types/vscode": "1.42.0",
