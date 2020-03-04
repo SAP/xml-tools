@@ -26,6 +26,11 @@ jobs:
       - checkout
       - run: yarn
       - run: yarn run ci
+      - persist_to_workspace:
+          root: "./packages"
+          paths:
+            # https://golang.org/pkg/path/filepath/#Match
+            - xml-for-vscode-*
 
   deploy:
     docker:
@@ -44,6 +49,19 @@ jobs:
       - run: git reset --hard
       - run: yarn run lerna:publish
 
+  deploy-extension:
+    docker:
+      - image: circleci/golang:1.13
+    steps:
+      - attach_workspace:
+          at: ./dist
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            go get github.com/tcnksm/ghr
+            VERSION=${CIRCLE_TAG}
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./dist/
+
 workflows:
   version: 2
   build:
@@ -55,5 +73,13 @@ workflows:
           filters:
             tags:
               only: /^RELEASE/
+            branches:
+              ignore: /.*/
+      - deploy-extension:
+          requires:
+            - build-node10
+          filters:
+            tags:
+              only: /^xml-for-vscode@[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
