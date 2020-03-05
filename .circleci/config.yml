@@ -49,7 +49,7 @@ jobs:
       - run: git reset --hard
       - run: yarn run lerna:publish
 
-  deploy-extension:
+  deploy-gh-releases:
     docker:
       - image: circleci/golang:1.13
     steps:
@@ -78,7 +78,7 @@ workflows:
               only: /^RELEASE/
             branches:
               ignore: /.*/
-      - deploy-extension:
+      - deploy-gh-releases:
           requires:
             - build-node10
           filters:
