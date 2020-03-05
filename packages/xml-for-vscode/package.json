@@ -23,7 +23,7 @@
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
     "vsix:prepare": "sh prepare-vsix-package.sh",
     "vsix:package": "vsce package",
-    "vsix:clean": "./clean.sh"
+    "vsix:clean": "sh ./clean.sh"
   },
   "dependencies": {
     "@xml-tools/language-server": "1.0.2",
