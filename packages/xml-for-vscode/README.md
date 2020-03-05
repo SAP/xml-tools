@@ -14,7 +14,7 @@ This Extension is **not** yet released to the VSCode Marketplace.
 It can be downloaded via [Github Releases](https://github.com/SAP/xml-tools/releases/).
 
 - The .vsix archive can be found under the **"xml-for-vscode@x.y.z"** releases.
-  - Replace 'x.y.z` with the desired version number.
+  - Replace `x.y.z` with the desired version number.
 
 ## Usage
 
