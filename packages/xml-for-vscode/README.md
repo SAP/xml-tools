@@ -1,18 +1,26 @@
-# @xml-tools/xml-for-vscode
+# XML-For-VSCode
 
-XML Language Client
+A VSCode Extension for XML files.
+
+## Features
+
+- Syntax Errors Reporting.
+  - With detection of multiple errors in the same document.
+
+## Installation
+
+This Extension is **not** yet released to the VSCode Marketplace.
+
+It can be downloaded via [Github Releases](https://github.com/SAP/xml-tools/releases/).
+
+- The .vsix archive can be found under the **"xml-for-vscode@x.y.z"** releases.
+  - Replace 'x.y.z` with the desired version number.
 
 ## Usage
 
-This VSCode extension - Language Client supports diagnosing of xml files.
-
-It has the following language features:
-
-- Activate: starts the client and launches the server when opening an xml file in the workspace.  
-  Creates file system watcher that notifies the server on any change in xml files in the workspace.
-- Deactivate: called when the extension is deactivated.
-
-It also includes an End-to-End test.
+The Extension will become active when an ".xml" file is opened.
+Both Lexing and Parsing errors will be shown as squiggly red underlines
+and in the problems view.
 
 ## Support
 
