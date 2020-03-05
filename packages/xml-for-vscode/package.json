@@ -2,7 +2,7 @@
   "name": "xml-for-vscode",
   "private": true,
   "description": "XML for VSCode",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "publisher": "SAPSE",
   "license": "Apache-2.0",
   "repository": {
@@ -26,15 +26,15 @@
     "vsix:clean": "sh ./clean.sh"
   },
   "dependencies": {
-    "@xml-tools/language-server": "^1.0.3",
+    "@xml-tools/language-server": "1.0.2",
     "vscode-languageclient": "6.1.0"
   },
   "devDependencies": {
     "@types/vscode": "1.42.0",
-    "deep-equal-in-any-order": "1.0.24",
+    "vscode-test": "1.3.0",
     "glob": "7.1.6",
-    "vsce": "1.74.0",
-    "vscode-test": "1.3.0"
+    "deep-equal-in-any-order": "1.0.24",
+    "vsce": "1.74.0"
   },
   "nyc": {
     "include": [
