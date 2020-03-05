@@ -15,5 +15,5 @@ yarn pack -f xml-tools-parser.tgz
 # install "lerna workspace deps"
 cd ../xml-for-vscode
 ls ../language-server
-npm ci install ../language-server/xml-tools-language-server.tgz
-npm ci install ../parser/xxaml-tools-parser.tgz
+npm install ../language-server/xml-tools-language-server.tgz
+npm install ../parser/xml-tools-parser.tgz
