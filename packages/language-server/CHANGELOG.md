@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/SAP/xml-tools/compare/@xml-tools/language-server@1.0.2...@xml-tools/language-server@1.0.4) (2020-03-08)
+
+### Bug Fixes
+
+- fix README.md ([472301d](https://github.com/SAP/xml-tools/commit/472301d))
+
 ## [1.0.3](https://github.com/SAP/xml-tools/compare/@xml-tools/language-server@1.0.2...@xml-tools/language-server@1.0.3) (2020-03-08)
 
 ### Bug Fixes
