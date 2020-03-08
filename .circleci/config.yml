@@ -43,6 +43,8 @@ jobs:
       # resetting the working tree avoids lerna errors due to unclean working trees
       - run: git reset --hard
       - run: yarn run lerna:publish
+      # 'vsce package' depends upon latest npm artifacts becoming available
+      - run: sleep 90
       - run: cd packages/xml-for-vscode && yarn run vsix:cycle
       - persist_to_workspace:
           root: "./packages/xml-for-vscode"

@@ -67,6 +67,9 @@ typings/
 # vscode-test
 .vscode-test
 
+# VSCode extension build result
+*.vsix
+
 # NYC
 .nyc_output
 coverage
