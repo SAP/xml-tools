@@ -1,4 +1,4 @@
-const { spawnSync } = require("child_process").exec;
+const { spawnSync } = require("child_process");
 
 const circleTag = process.env["CIRCLE_TAG"];
 const isReleaseTag = /^RELEASE$/.test(circleTag);
