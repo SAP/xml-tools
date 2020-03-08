@@ -1,7 +1,7 @@
 const { spawnSync } = require("child_process").exec;
 
 const circleTag = process.env["CIRCLE_TAG"];
-const isReleaseTag = /RELEASE/.test(circleTag);
+const isReleaseTag = /^RELEASE$/.test(circleTag);
 
 if (isReleaseTag) {
   // spawn sync process that does "lerna publish --yes"
