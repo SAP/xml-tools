@@ -73,7 +73,7 @@ workflows:
       - deploy-npm:
           filters:
             tags:
-              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)
+              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)/
             branches:
               ignore: /.*/
       - deploy-gh-releases:
@@ -81,6 +81,6 @@ workflows:
             - deploy-npm
           filters:
             tags:
-              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)
+              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)/
             branches:
               ignore: /.*/
