@@ -9,7 +9,7 @@
   "scripts": {
     "lerna:version": "yarn && lerna version && yarn run cirlce:release",
     "cirlce:release": "git tag -d RELEASE && git tag RELEASE && git push --delete origin RELEASE && git push --tags",
-    "lerna:publish": "lerna publish from-git --yes",
+    "lerna:publish": "node scripts/publish-lerna.js",
     "ci": "npm-run-all format:validate ci:subpackages",
     "format:fix": "prettier --write --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
     "format:validate": "prettier --check --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",

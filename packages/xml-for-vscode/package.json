@@ -17,13 +17,14 @@
   ],
   "main": "lib/extension",
   "scripts": {
-    "ci": "npm-run-all coverage:* vsix:*",
+    "ci": "npm-run-all coverage:*",
     "test": "node test/runTest.js",
     "coverage:run": "nyc node test/runTest.js",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
     "vsix:prepare": "sh prepare-vsix-package.sh",
     "vsix:package": "vsce package",
-    "vsix:clean": "sh ./clean.sh"
+    "vsix:clean": "sh ./clean.sh",
+    "vsix:cycle": "yarn run vsix:prepare && yarn run vsix:package && yarn run vsix:clean"
   },
   "dependencies": {
     "@xml-tools/language-server": "1.0.2",

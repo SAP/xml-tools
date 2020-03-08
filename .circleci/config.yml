@@ -26,11 +26,6 @@ jobs:
       - checkout
       - run: yarn
       - run: yarn run ci
-      - persist_to_workspace:
-          root: "./packages/xml-for-vscode"
-          paths:
-            # https://golang.org/pkg/path/filepath/#Match
-            - xml-for-vscode-*
 
   deploy-npm:
     docker:
@@ -48,6 +43,12 @@ jobs:
       # resetting the working tree avoids lerna errors due to unclean working trees
       - run: git reset --hard
       - run: yarn run lerna:publish
+      - run: cd packages/xml-for-vscode && yarn run vsix:cycle
+      - persist_to_workspace:
+          root: "./packages/xml-for-vscode"
+          paths:
+            # https://golang.org/pkg/path/filepath/#Match
+            - xml-for-vscode-*
 
   deploy-gh-releases:
     docker:
@@ -68,21 +69,18 @@ workflows:
     jobs:
       - build-node13
       - build-node12
-      - build-node10:
-          filters:
-            tags:
-              only: /^xml-for-vscode@[0-9]+(\.[0-9]+)*/
+      - build-node10
       - deploy-npm:
           filters:
             tags:
-              only: /^RELEASE/
+              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)/
             branches:
               ignore: /.*/
       - deploy-gh-releases:
           requires:
-            - build-node10
+            - deploy-npm
           filters:
             tags:
-              only: /^xml-for-vscode@[0-9]+(\.[0-9]+)*/
+              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)/
             branches:
               ignore: /.*/
