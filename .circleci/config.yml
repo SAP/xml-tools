@@ -43,10 +43,9 @@ jobs:
       # resetting the working tree avoids lerna errors due to unclean working trees
       - run: git reset --hard
       - run: yarn run lerna:publish
-      - run: cd packages/xml-for-vscode
-      - run: yarn run vsix:*
+      - run: cd packages/xml-for-vscode && npm-run-all vsix:*
       - persist_to_workspace:
-          root: "."
+          root: "./packages/xml-for-vscode"
           paths:
             # https://golang.org/pkg/path/filepath/#Match
             - xml-for-vscode-*
@@ -74,7 +73,7 @@ workflows:
       - deploy-npm:
           filters:
             tags:
-              only: /^RELEASE/ | /^xml-for-vscode@[0-9]+(\.[0-9]+)*/
+              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)
             branches:
               ignore: /.*/
       - deploy-gh-releases:
@@ -82,6 +81,6 @@ workflows:
             - deploy-npm
           filters:
             tags:
-              only: /^RELEASE/ | /^xml-for-vscode@[0-9]+(\.[0-9]+)*/
+              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)
             branches:
               ignore: /.*/
