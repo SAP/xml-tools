@@ -4,12 +4,18 @@
   "workspaces": {
     "packages": [
       "packages/*"
+    ],
+    "nohoist": [
+      "xml-for-vscode/vscode-languageclient",
+      "xml-for-vscode/vscode-languageclient/**",
+      "xml-for-vscode/@xml-tools/language-server",
+      "xml-for-vscode/@xml-tools/language-server/**"
     ]
   },
   "scripts": {
-    "lerna:version": "yarn && lerna version && yarn run cirlce:release",
-    "cirlce:release": "git tag -d RELEASE && git tag RELEASE && git push --delete origin RELEASE && git push --tags",
-    "lerna:publish": "node scripts/publish-lerna.js",
+    "lerna:version": "lerna version && yarn run cirlce:release",
+    "cirlce:release": "node ./scripts/trigger-release",
+    "lerna:publish": "lerna publish from-git --yes",
     "ci": "npm-run-all format:validate ci:subpackages",
     "format:fix": "prettier --write --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
     "format:validate": "prettier --check --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
@@ -32,7 +38,9 @@
     "typescript": "3.7.5",
     "cz-conventional-changelog": "3.1.0",
     "@commitlint/cli": "8.3.5",
-    "@commitlint/config-conventional": "8.3.4"
+    "@commitlint/config-conventional": "8.3.4",
+    "rimraf": "3.0.2",
+    "simple-git": "1.132.0"
   },
   "prettier": {
     "plugins": [],

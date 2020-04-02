@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build-node13:
     docker:
@@ -29,23 +29,25 @@ jobs:
 
   deploy-npm:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:12-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: yarn --pure-lockfile
+      - run: yarn run ci
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      # To help debug when lerna detects changes to the working tree and fails the publish
+      - run: git status
+      - run: yarn run lerna:publish
+
+  prepare-vsix:
+    docker:
+      - image: circleci/node:12-browsers
     working_directory: ~/repo
     steps:
       - checkout
       - run: yarn
       - run: yarn run ci
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      # To help debug when lerna detects changes to the working tree
-      - run: git status
-      # the yarn.lock and some other generated files may change due to running
-      # the build with the newly commited version numbers
-      # resetting the working tree avoids lerna errors due to unclean working trees
-      - run: git reset --hard
-      - run: yarn run lerna:publish
-      # 'vsce package' depends upon latest npm artifacts becoming available
-      - run: sleep 90
-      - run: cd packages/xml-for-vscode && yarn run vsix:cycle
       - persist_to_workspace:
           root: "./packages/xml-for-vscode"
           paths:
@@ -65,22 +67,31 @@ jobs:
             VERSION=${CIRCLE_TAG}
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./dist/
 
+
 workflows:
   version: 2
-  build:
+  voter:
     jobs:
-      - build-node13
-      - build-node12
       - build-node10
+      - build-node12
+      - build-node13
+  release:
+    jobs:
       - deploy-npm:
           filters:
             tags:
-              only: /(^RELEASE)|(^xml-for-vscode@[0-9]+(.[0-9]+)*)/
+              only: /^RELEASE/
+            branches:
+              ignore: /.*/
+      - prepare-vsix:
+          filters:
+            tags:
+              only: /^xml-for-vscode@[0-9]+(.[0-9]+)*/
             branches:
               ignore: /.*/
       - deploy-gh-releases:
           requires:
-            - deploy-npm
+            - prepare-vsix
           filters:
             tags:
               only: /^xml-for-vscode@[0-9]+(.[0-9]+)*/
