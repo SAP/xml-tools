@@ -28,7 +28,8 @@
     "vscode-languageserver-types": "3.15.1"
   },
   "scripts": {
-    "ci": "npm-run-all type-check coverage",
+    "ci": "npm-run-all clean type-check coverage",
+    "clean": "rimraf ./coverage ./nyc_output",
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage": "nyc mocha \"./test/**/*spec.js\"",
     "type-check": "tsc api.d.ts"

@@ -18,7 +18,8 @@
     "@xml-tools/parser": "^1.0.3"
   },
   "scripts": {
-    "ci": "npm-run-all type-check coverage:*",
+    "ci": "npm-run-all clean type-check coverage:*",
+    "clean": "rimraf ./coverage ./nyc_output",
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage:run": "nyc mocha \"./test/**/*spec.js\"",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
