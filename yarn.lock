@@ -2343,10 +2343,10 @@ deep-eql@^3.0.1:
   dependencies:
     type-detect "^4.0.0"
 
-deep-equal-in-any-order@1.0.24:
-  version "1.0.24"
-  resolved "https://registry.yarnpkg.com/deep-equal-in-any-order/-/deep-equal-in-any-order-1.0.24.tgz#d8873e4d58bf0035c9a2b4dd0eb95262d4c5689d"
-  integrity sha512-pbyzDMzLCfjK8uxkasjk8an4tliCaFobtXmDOuunExS6VtRfkhufGbfj+eArRKoU5y6WqEu/o6KdFCmfUnnymw==
+deep-equal-in-any-order@1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/deep-equal-in-any-order/-/deep-equal-in-any-order-1.0.25.tgz#a95c6475592f1ed2101e188c79e7e5ac5ce6162b"
+  integrity sha512-xNNvhoxAVtslT4MHly+yXOz/tHHkZazDKH0n/WNJOO1Aj+NkjZBlappmh9mAUwFH1f20gCP8yrYvgcIvS4i2AA==
   dependencies:
     lodash "^4.17.15"
     sort-any "^1.1.21"
