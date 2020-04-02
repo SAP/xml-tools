@@ -31,7 +31,7 @@
     "vscode-languageclient": "6.1.0"
   },
   "devDependencies": {
-    "@types/vscode": "1.42.0",
+    "@types/vscode": "1.43.0",
     "deep-equal-in-any-order": "1.0.24",
     "glob": "7.1.6",
     "vsce": "1.74.0",
