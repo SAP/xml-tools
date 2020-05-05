@@ -24,6 +24,7 @@ module.exports = {
           syntax: {
             openName: { image: "to", startOffset: 12, endOffset: 13 },
             closeName: { image: "to", startOffset: 21, endOffset: 22 },
+            isSelfClosing: false,
             openBody: { startOffset: 11, endOffset: 14 },
             closeBody: { startOffset: 19, endOffset: 23 },
             attributesRange: { startOffset: 15, endOffset: 13 }
@@ -59,6 +60,7 @@ module.exports = {
           syntax: {
             openName: { image: "from", startOffset: 38, endOffset: 41 },
             closeName: { image: "from", startOffset: 49, endOffset: 52 },
+            isSelfClosing: false,
             openBody: { startOffset: 37, endOffset: 42 },
             closeBody: { startOffset: 47, endOffset: 53 },
             attributesRange: { startOffset: 43, endOffset: 41 }
@@ -81,6 +83,7 @@ module.exports = {
           syntax: {
             openName: { image: "city", startOffset: 60, endOffset: 63 },
             closeName: { image: "city", startOffset: 69, endOffset: 72 },
+            isSelfClosing: false,
             openBody: { startOffset: 59, endOffset: 64 },
             closeBody: { startOffset: 67, endOffset: 73 },
             attributesRange: { startOffset: 65, endOffset: 63 }
@@ -113,6 +116,7 @@ module.exports = {
       syntax: {
         openName: { image: "note", startOffset: 1, endOffset: 4 },
         closeName: { image: "note", startOffset: 77, endOffset: 80 },
+        isSelfClosing: false,
         openBody: { startOffset: 0, endOffset: 5 },
         closeBody: { startOffset: 75, endOffset: 81 },
         attributesRange: { startOffset: 6, endOffset: 4 }

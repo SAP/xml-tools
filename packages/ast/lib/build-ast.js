@@ -375,8 +375,10 @@ function handleElementOpenCloseBodyRanges(astNode, ctx) {
     /* istanbul ignore else - Defensive Coding */
     if (exists(ctx.START_CLOSE)) {
       openBodyCloseTok = ctx.START_CLOSE[0];
+      astNode.syntax.isSelfClosing = false;
     } else if (exists(ctx.SLASH_CLOSE)) {
       openBodyCloseTok = ctx.SLASH_CLOSE[0];
+      astNode.syntax.isSelfClosing = true;
     }
 
     if (openBodyCloseTok !== undefined) {

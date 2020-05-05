@@ -59,6 +59,7 @@ module.exports = {
           syntax: {
             openName: { image: "f:name", startOffset: 86, endOffset: 91 },
             closeName: { image: "f:name", startOffset: 105, endOffset: 110 },
+            isSelfClosing: false,
             openBody: { startOffset: 85, endOffset: 92 },
             closeBody: { startOffset: 103, endOffset: 111 },
             attributesRange: { startOffset: 93, endOffset: 91 }
@@ -85,6 +86,7 @@ module.exports = {
           syntax: {
             openName: { image: "f:width", startOffset: 118, endOffset: 124 },
             closeName: { image: "f:width", startOffset: 130, endOffset: 136 },
+            isSelfClosing: false,
             openBody: { startOffset: 117, endOffset: 125 },
             closeBody: { startOffset: 128, endOffset: 137 },
             attributesRange: { startOffset: 126, endOffset: 124 }
@@ -111,6 +113,7 @@ module.exports = {
           syntax: {
             openName: { image: "f:length", startOffset: 144, endOffset: 151 },
             closeName: { image: "f:length", startOffset: 157, endOffset: 164 },
+            isSelfClosing: false,
             openBody: { startOffset: 143, endOffset: 152 },
             closeBody: { startOffset: 155, endOffset: 165 },
             attributesRange: { startOffset: 153, endOffset: 151 }
@@ -145,6 +148,7 @@ module.exports = {
               startOffset: 198,
               endOffset: 208
             },
+            isSelfClosing: false,
             openBody: { startOffset: 171, endOffset: 183 },
             closeBody: { startOffset: 196, endOffset: 209 },
             attributesRange: { startOffset: 184, endOffset: 182 }
@@ -182,6 +186,7 @@ module.exports = {
       syntax: {
         openName: { image: "f:table", startOffset: 2, endOffset: 8 },
         closeName: { image: "f:table", startOffset: 213, endOffset: 219 },
+        isSelfClosing: false,
         openBody: { startOffset: 1, endOffset: 79 },
         closeBody: { startOffset: 211, endOffset: 220 },
         attributesRange: { startOffset: 10, endOffset: 78 }
