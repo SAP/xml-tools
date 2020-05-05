@@ -32,6 +32,7 @@ module.exports = {
           syntax: {
             openName: { image: "f:name", startOffset: 25, endOffset: 30 },
             closeName: { image: "f:name", startOffset: 44, endOffset: 49 },
+            isSelfClosing: false,
             openBody: { startOffset: 24, endOffset: 31 },
             closeBody: { startOffset: 42, endOffset: 50 },
             attributesRange: { startOffset: 32, endOffset: 30 }
@@ -55,6 +56,7 @@ module.exports = {
           syntax: {
             openName: { image: "f:width", startOffset: 57, endOffset: 63 },
             closeName: { image: "f:width", startOffset: 69, endOffset: 75 },
+            isSelfClosing: false,
             openBody: { startOffset: 56, endOffset: 64 },
             closeBody: { startOffset: 67, endOffset: 76 },
             attributesRange: { startOffset: 65, endOffset: 63 }
@@ -78,6 +80,7 @@ module.exports = {
           syntax: {
             openName: { image: "f:length", startOffset: 83, endOffset: 90 },
             closeName: { image: "f:length", startOffset: 96, endOffset: 103 },
+            isSelfClosing: false,
             openBody: { startOffset: 82, endOffset: 91 },
             closeBody: { startOffset: 94, endOffset: 104 },
             attributesRange: { startOffset: 92, endOffset: 90 }
@@ -111,6 +114,7 @@ module.exports = {
       syntax: {
         openName: { image: "f:table", startOffset: 2, endOffset: 8 },
         closeName: { image: "f:table", startOffset: 108, endOffset: 114 },
+        isSelfClosing: false,
         openBody: { startOffset: 1, endOffset: 18 },
         closeBody: { startOffset: 106, endOffset: 115 },
         attributesRange: { startOffset: 10, endOffset: 17 }

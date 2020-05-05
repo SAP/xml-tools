@@ -57,6 +57,7 @@ module.exports = {
           syntax: {
             openName: { image: "nest2", startOffset: 42, endOffset: 46 },
             closeName: { image: "nest2", startOffset: 61, endOffset: 65 },
+            isSelfClosing: false,
             openBody: { startOffset: 41, endOffset: 47 },
             closeBody: { startOffset: 59, endOffset: 66 },
             attributesRange: { startOffset: 48, endOffset: 46 }
@@ -90,6 +91,7 @@ module.exports = {
           syntax: {
             openName: { image: "nested3", startOffset: 73, endOffset: 79 },
             closeName: { image: "nested3", startOffset: 94, endOffset: 100 },
+            isSelfClosing: false,
             openBody: { startOffset: 72, endOffset: 90 },
             closeBody: { startOffset: 92, endOffset: 101 },
             attributesRange: { startOffset: 81, endOffset: 89 }
@@ -117,6 +119,7 @@ module.exports = {
       syntax: {
         openName: { image: "top", startOffset: 1, endOffset: 3 },
         closeName: { image: "top", startOffset: 105, endOffset: 107 },
+        isSelfClosing: false,
         openBody: { startOffset: 0, endOffset: 4 },
         closeBody: { startOffset: 103, endOffset: 108 },
         attributesRange: { startOffset: 5, endOffset: 3 }
