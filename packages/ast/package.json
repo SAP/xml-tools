@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/ast",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "description": "XML Ast and Utilities",
   "keywords": [
     "xml",

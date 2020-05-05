@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/simple-schema",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "XML Simple Schema",
   "keywords": [
     "xml",
@@ -11,13 +11,13 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "^4.0.3",
+    "@xml-tools/ast": "^4.1.0",
     "@xml-tools/content-assist": "^3.1.4",
     "lodash": "4.17.15"
   },
   "devDependencies": {
     "@xml-tools/parser": "^1.0.4",
-    "@xml-tools/validation": "^1.0.7"
+    "@xml-tools/validation": "^1.0.8"
   },
   "scripts": {
     "ci": "npm-run-all clean type-check coverage:*",
