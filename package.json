@@ -24,7 +24,7 @@
     "coverage": "lerna run coverage"
   },
   "devDependencies": {
-    "@types/chai": "4.2.9",
+    "@types/chai": "4.2.11",
     "@types/mocha": "7.0.2",
     "@types/node": "10.17.15",
     "chai": "4.2.0",
