@@ -15,7 +15,8 @@ function isXMLNamespaceKey(key, includeEmptyPrefix) {
   if (includeEmptyPrefix === true) {
     return true;
   }
-  const groups = (matchArr.groups && matchArr.groups) || {};
+  /* istanbul ignore next - defensive coding */
+  const groups = matchArr.groups || {};
   // In the case where key === "xmlns:", prefix will be empty and prefixWithColon will not be empty
   return !(groups.prefixWithColon && !groups.prefix);
 }
@@ -28,7 +29,7 @@ function getXMLNamespaceKeyPrefix(key) {
   if (matchArr === null) {
     return undefined;
   }
-  return (matchArr.groups && matchArr.groups && matchArr.groups.prefix) || "";
+  return (matchArr.groups && matchArr.groups.prefix) || "";
 }
 
 module.exports = {
