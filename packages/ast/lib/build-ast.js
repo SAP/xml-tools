@@ -10,7 +10,11 @@ const {
   isArray,
   assign
 } = require("lodash");
-const { findNextTextualToken } = require("@xml-tools/common");
+const {
+  findNextTextualToken,
+  isXMLNamespaceKey,
+  getXMLNamespaceKeyPrefix
+} = require("@xml-tools/common");
 
 const { getAstChildrenReflective } = require("./utils");
 const { DEFAULT_NS } = require("./constants");
@@ -256,13 +260,12 @@ function updateNamespaces(element, prevNamespaces = []) {
     (result, attrib) => {
       /* istanbul ignore else - Defensive Coding, not actually possible branch */
       if (attrib.key !== invalidSyntax) {
-        const nsMatch = /^xmlns(?::([^:]+))?$/.exec(attrib.key);
-        if (nsMatch !== null) {
-          const prefix = nsMatch[1];
+        if (isXMLNamespaceKey(attrib.key, false) === true) {
+          const prefix = getXMLNamespaceKeyPrefix(attrib.key);
           // TODO: Support un-defining namespaces (including the default one)
           if (attrib.value) {
             const uri = attrib.value;
-            if (prefix !== undefined) {
+            if (prefix !== "") {
               result[prefix] = uri;
             } else {
               // default namespace
