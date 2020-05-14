@@ -260,7 +260,10 @@ function updateNamespaces(element, prevNamespaces = []) {
     (result, attrib) => {
       /* istanbul ignore else - Defensive Coding, not actually possible branch */
       if (attrib.key !== invalidSyntax) {
-        if (isXMLNamespaceKey(attrib.key, false) === true) {
+        if (
+          isXMLNamespaceKey({ key: attrib.key, includeEmptyPrefix: false }) ===
+          true
+        ) {
           const prefix = getXMLNamespaceKeyPrefix(attrib.key);
           // TODO: Support un-defining namespaces (including the default one)
           if (attrib.value) {

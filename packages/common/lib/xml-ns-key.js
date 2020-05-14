@@ -4,23 +4,39 @@
 // xmlns attributes explicitly can't contain ":" after the "xmlns:" part.
 const namespaceRegex = /^xmlns(?<prefixWithColon>:(?<prefix>[^:]*))?$/;
 
-function isXMLNamespaceKey(key, includeEmptyPrefix) {
+/**
+ * See comment in api.d.ts.
+ *
+ * @param {string} key
+ * @param {boolean} includeEmptyPrefix
+ * @returns {boolean}
+ */
+function isXMLNamespaceKey({ key, includeEmptyPrefix }) {
   if (typeof key !== "string") {
     return false;
   }
   const matchArr = key.match(namespaceRegex);
+
+  // No match - this is not an xmlns key
   if (matchArr === null) {
     return false;
   }
-  if (includeEmptyPrefix === true) {
-    return true;
-  }
-  /* istanbul ignore next - defensive coding */
-  const groups = matchArr.groups || {};
-  // In the case where key === "xmlns:", prefix will be empty and prefixWithColon will not be empty
-  return !(groups.prefixWithColon && !groups.prefix);
+
+  return !!(
+    includeEmptyPrefix === true ||
+    // "xmlns" case
+    !matchArr.groups.prefixWithColon ||
+    // "xmlns:<prefix>" case
+    matchArr.groups.prefix
+  );
 }
 
+/**
+ * See comment in api.d.ts.
+ *
+ * @param {string} key
+ * @returns {string|undefined}
+ */
 function getXMLNamespaceKeyPrefix(key) {
   if (typeof key !== "string") {
     return undefined;

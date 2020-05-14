@@ -13,13 +13,17 @@ export function findNextTextualToken(
 
 /**
  * Check if an xml attribute key is an xmlns key.
- * @param key - the attribute key
- * @param includeEmptyPrefix - should true be returned when there is no prefix (key === "xmlns:")
+ * Attribute keys which are xmlns keys: "xmlns", "xmlns:core".
+ * Attribute keys which are not xmlns keys: "myattr", "xmlns:with:extra:colon".
+ * "xmlns:" is considered an xmlns key if opts.includeEmptyPrefix is true.
+ *
+ * @param opts.key - the attribute key
+ * @param opts.includeEmptyPrefix - should true be returned when there is no prefix (key === "xmlns:")
  */
-export function isXMLNamespaceKey(
-  key: string,
-  includeEmptyPrefix: boolean
-): boolean;
+export function isXMLNamespaceKey(opts: {
+  key: string;
+  includeEmptyPrefix: boolean;
+}): boolean;
 
 /**
  * Get the attribute name, without its "xmlns:" prefix, from an xmlns attribute key.

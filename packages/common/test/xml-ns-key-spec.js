@@ -4,51 +4,73 @@ const { isXMLNamespaceKey, getXMLNamespaceKeyPrefix } = require("../");
 describe("The XML-Tools Common Utils", () => {
   context("isXMLNamespaceKey", () => {
     it("will return true for attribute name starting with xmlns:", () => {
-      expect(isXMLNamespaceKey("xmlns:a", true)).to.be.true;
-      expect(isXMLNamespaceKey("xmlns:a", false)).to.be.true;
+      expect(isXMLNamespaceKey({ key: "xmlns:a", includeEmptyPrefix: true })).to
+        .be.true;
+      expect(isXMLNamespaceKey({ key: "xmlns:a", includeEmptyPrefix: false }))
+        .to.be.true;
     });
 
     it("will return true for attribute name starting with xmlns: that contains dots", () => {
-      expect(isXMLNamespaceKey("xmlns:a.b.c", true)).to.be.true;
-      expect(isXMLNamespaceKey("xmlns:a.b.c", false)).to.be.true;
+      expect(
+        isXMLNamespaceKey({ key: "xmlns:a.b.c", includeEmptyPrefix: true })
+      ).to.be.true;
+      expect(
+        isXMLNamespaceKey({ key: "xmlns:a.b.c", includeEmptyPrefix: false })
+      ).to.be.true;
     });
 
     it("will return true for the default namespace attribute", () => {
-      expect(isXMLNamespaceKey("xmlns", true)).to.be.true;
-      expect(isXMLNamespaceKey("xmlns", false)).to.be.true;
+      expect(isXMLNamespaceKey({ key: "xmlns", includeEmptyPrefix: true })).to
+        .be.true;
+      expect(isXMLNamespaceKey({ key: "xmlns", includeEmptyPrefix: false })).to
+        .be.true;
     });
 
     it("will return true for xmlns attribute without a name when includeEmptyPrefix is true", () => {
-      expect(isXMLNamespaceKey("xmlns:", true)).to.be.true;
+      expect(isXMLNamespaceKey({ key: "xmlns:", includeEmptyPrefix: true })).to
+        .be.true;
     });
 
     it("will return false for xmlns attribute without a name when includeEmptyPrefix is false", () => {
-      expect(isXMLNamespaceKey("xmlns:", false)).to.be.false;
+      expect(isXMLNamespaceKey({ key: "xmlns:", includeEmptyPrefix: false })).to
+        .be.false;
     });
 
     it("will return false for the non-xmlns attribute", () => {
-      expect(isXMLNamespaceKey("abc", true)).to.be.false;
-      expect(isXMLNamespaceKey("abc", false)).to.be.false;
+      expect(isXMLNamespaceKey({ key: "abc", includeEmptyPrefix: true })).to.be
+        .false;
+      expect(isXMLNamespaceKey({ key: "abc", includeEmptyPrefix: false })).to.be
+        .false;
     });
 
     it("will return false for non-xmlns attribute that starts with xmlns", () => {
-      expect(isXMLNamespaceKey("xmlnst", true)).to.be.false;
-      expect(isXMLNamespaceKey("xmlnst", false)).to.be.false;
+      expect(isXMLNamespaceKey({ key: "xmlnst", includeEmptyPrefix: true })).to
+        .be.false;
+      expect(isXMLNamespaceKey({ key: "xmlnst", includeEmptyPrefix: false })).to
+        .be.false;
     });
 
     it("will return false for attribute name starting with xmlns: that contains additional colons", () => {
-      expect(isXMLNamespaceKey("xmlns:a.b:c", true)).to.be.false;
-      expect(isXMLNamespaceKey("xmlns:a.b:c", false)).to.be.false;
+      expect(
+        isXMLNamespaceKey({ key: "xmlns:a.b:c", includeEmptyPrefix: true })
+      ).to.be.false;
+      expect(
+        isXMLNamespaceKey({ key: "xmlns:a.b:c", includeEmptyPrefix: false })
+      ).to.be.false;
     });
 
     it("will return false for undefined", () => {
-      expect(isXMLNamespaceKey(undefined, true)).to.be.false;
-      expect(isXMLNamespaceKey(undefined, false)).to.be.false;
+      expect(isXMLNamespaceKey({ key: undefined, includeEmptyPrefix: true })).to
+        .be.false;
+      expect(isXMLNamespaceKey({ key: undefined, includeEmptyPrefix: false }))
+        .to.be.false;
     });
 
     it("will return false for null", () => {
-      expect(isXMLNamespaceKey(null, true)).to.be.false;
-      expect(isXMLNamespaceKey(null, false)).to.be.false;
+      expect(isXMLNamespaceKey({ key: null, includeEmptyPrefix: true })).to.be
+        .false;
+      expect(isXMLNamespaceKey({ key: null, includeEmptyPrefix: false })).to.be
+        .false;
     });
   });
 

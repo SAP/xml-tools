@@ -23,7 +23,8 @@ function validateUnknownAttributes(elem, schema) {
     if (attrib.key !== null) {
       if (
         includes(allowedAttribNames, attrib.key) === false &&
-        isXMLNamespaceKey(attrib.key, true) === false
+        isXMLNamespaceKey({ key: attrib.key, includeEmptyPrefix: true }) ===
+          false
       ) {
         issues.push({
           msg: `Unknown Attribute: <${
