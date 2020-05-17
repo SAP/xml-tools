@@ -11,7 +11,7 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "chevrotain": "6.5.0"
+    "chevrotain": "7.0.1"
   },
   "devDependencies": {
     "klaw-sync": "6.0.0"
