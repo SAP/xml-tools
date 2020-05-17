@@ -10,7 +10,7 @@
     "url": "https://github.com/SAP/xml-tools"
   },
   "engines": {
-    "vscode": "^1.42.1"
+    "vscode": "^1.45.0"
   },
   "activationEvents": [
     "onLanguage:xml"
