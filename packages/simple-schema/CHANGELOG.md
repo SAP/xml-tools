@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@2.0.11...@xml-tools/simple-schema@2.1.0) (2020-05-17)
+
+### Features
+
+- **common:** add utility functions for xmlns attributes ([#173](https://github.com/sap/xml-tools/issues/173)) ([20d6c09](https://github.com/sap/xml-tools/commit/20d6c09))
+
 ## [2.0.11](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@2.0.10...@xml-tools/simple-schema@2.0.11) (2020-05-05)
 
 **Note:** Version bump only for package @xml-tools/simple-schema

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.1.0...@xml-tools/ast@4.2.0) (2020-05-17)
+
+### Features
+
+- **common:** add utility functions for xmlns attributes ([#173](https://github.com/sap/xml-tools/issues/173)) ([20d6c09](https://github.com/sap/xml-tools/commit/20d6c09))
+
 # [4.1.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.0.3...@xml-tools/ast@4.1.0) (2020-05-05)
 
 ### Features

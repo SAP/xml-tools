@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/common",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "XML-Tools Common Utilities",
   "keywords": [
     "xml",
@@ -14,7 +14,7 @@
     "lodash": "4.17.15"
   },
   "devDependencies": {
-    "@xml-tools/parser": "^1.0.4"
+    "@xml-tools/parser": "^1.0.5"
   },
   "scripts": {
     "ci": "npm-run-all clean type-check coverage:*",

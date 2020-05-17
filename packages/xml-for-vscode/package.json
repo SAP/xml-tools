@@ -2,7 +2,7 @@
   "name": "xml-for-vscode",
   "private": true,
   "description": "XML for VSCode",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "SAPSE",
   "license": "Apache-2.0",
   "repository": {
@@ -26,7 +26,7 @@
     "bundle": "node ./scripts/bundle-vsix"
   },
   "dependencies": {
-    "@xml-tools/language-server": "^1.0.6",
+    "@xml-tools/language-server": "^1.0.7",
     "vscode-languageclient": "6.1.0"
   },
   "devDependencies": {

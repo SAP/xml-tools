@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/sap/xml-tools/compare/@xml-tools/common@0.0.6...@xml-tools/common@0.1.0) (2020-05-17)
+
+### Features
+
+- **common:** add utility functions for xmlns attributes ([#173](https://github.com/sap/xml-tools/issues/173)) ([20d6c09](https://github.com/sap/xml-tools/commit/20d6c09))
+
 ## [0.0.6](https://github.com/sap/xml-tools/compare/@xml-tools/common@0.0.5...@xml-tools/common@0.0.6) (2020-04-02)
 
 **Note:** Version bump only for package @xml-tools/common
