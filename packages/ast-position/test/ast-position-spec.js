@@ -59,11 +59,11 @@ describe("AST Position visitor", () => {
 
   it("Out of element - before open tag", () => {
     const xmlSnippet = `
-    <mvc:View 
+    ⇶<mvc:View 
       xmlns:mvc="sap.ui.core.mvc" 
       xmlns="sap.m"> 
-      ⇶<List></List>
-      </mvc:View>`;
+      <List></List>
+    </mvc:View>`;
     const astNodeInPosition = getXMLNodeFromVisitor(xmlSnippet);
     expect(astNodeInPosition).to.not.exist;
   });
@@ -73,8 +73,8 @@ describe("AST Position visitor", () => {
     <mvc:View 
       xmlns:mvc="sap.ui.core.mvc" 
       xmlns="sap.m"> 
-      <List></List>⇶
-      </mvc:View>`;
+      <List></List>
+    </mvc:View>⇶`;
     const astNodeInPosition = getXMLNodeFromVisitor(xmlSnippet);
     expect(astNodeInPosition).to.not.exist;
   });
@@ -85,7 +85,7 @@ describe("AST Position visitor", () => {
       xmlns:mvc="sap.ui.core.mvc" 
       xmlns="sap.m"> 
       <List>⇶</List>
-      </mvc:View>`;
+    </mvc:View>`;
     const astNodeInPosition = getXMLNodeFromVisitor(xmlSnippet);
     expect(astNodeInPosition).to.not.exist;
   });
@@ -96,7 +96,7 @@ describe("AST Position visitor", () => {
       xmlns:mvc="sap.ui.core.mvc" 
       xmlns="sap.m"> 
       <List ⇶ showSeparators = "All"></List>
-      </mvc:View>`;
+    </mvc:View>`;
     const astNodeInPosition = getXMLNodeFromVisitor(xmlSnippet);
     expect(astNodeInPosition).to.not.exist;
   });
@@ -107,7 +107,7 @@ describe("AST Position visitor", () => {
       xmlns:mvc="sap.ui.core.mvc" 
       xmlns="sap.m"> 
       <List showSeparators = "All"⇶ busy="false"></List>
-      </mvc:View>`;
+    </mvc:View>`;
     const astNodeInPosition = getXMLNodeFromVisitor(xmlSnippet);
     expect(astNodeInPosition).to.not.exist;
   });
@@ -118,7 +118,7 @@ describe("AST Position visitor", () => {
       xmlns:mvc="sap.ui.core.mvc" 
       xmlns="sap.m"> 
       <List showSeparators =⇶ "All"></List>
-      </mvc:View>`;
+    </mvc:View>`;
     const astNodeInPosition = getXMLNodeFromVisitor(xmlSnippet);
     expect(astNodeInPosition).to.not.exist;
   });
