@@ -1,0 +1,38 @@
+{
+  "name": "@xml-tools/ast-position",
+  "version": "1.0.0",
+  "description": "XML Ast Position APIs",
+  "keywords": [
+    "xml",
+    "position"
+  ],
+  "main": "lib/ast-position.js",
+  "repository": "https://github.com/sap/xml-tools/",
+  "license": "Apache-2.0",
+  "typings": "./api.d.ts",
+  "dependencies": {
+    "@xml-tools/ast": "4.1.0"
+  },
+  "devDependencies": {
+    "vscode-languageserver": "6.1.1"
+  },
+  "scripts": {
+    "ci": "npm-run-all type-check coverage:*",
+    "test": "mocha \"./test/**/*spec.js\"",
+    "coverage:run": "nyc mocha \"./test/**/*spec.js\"",
+    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
+    "type-check": "tsc api.d.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
+}
