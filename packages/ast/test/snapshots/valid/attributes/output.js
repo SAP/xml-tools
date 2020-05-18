@@ -33,6 +33,7 @@ module.exports = {
       syntax: {
         openName: { image: "note", startOffset: 1, endOffset: 4 },
         closeName: { image: "note", startOffset: 32, endOffset: 35 },
+        isSelfClosing: false,
         openBody: { startOffset: 0, endOffset: 29 },
         closeBody: { startOffset: 30, endOffset: 36 },
         attributesRange: { startOffset: 6, endOffset: 28 }

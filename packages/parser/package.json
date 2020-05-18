@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/parser",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "XML Parser Implemented in JavaScript",
   "keywords": [
     "xml",
@@ -11,13 +11,14 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "chevrotain": "6.5.0"
+    "chevrotain": "7.0.1"
   },
   "devDependencies": {
     "klaw-sync": "6.0.0"
   },
   "scripts": {
-    "ci": "npm-run-all type-check coverage:*",
+    "ci": "npm-run-all clean type-check coverage:*",
+    "clean": "rimraf ./coverage ./nyc_output",
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage:run": "nyc mocha \"./test/**/*spec.js\"",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",

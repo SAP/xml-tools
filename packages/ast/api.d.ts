@@ -68,6 +68,17 @@ declare interface XMLElement {
   readonly textContents: XMLTextContent[];
 
   readonly syntax: {
+    // Is the XML Element self closing or with a distinct closing tag.
+    // - e.g: `<foo/>` vs `<foo></foo>`
+    // This value depends on the existence of the self closing "/>" token
+    // versus the regular closing ">" token of the opening tag.
+    // If none of these tokens exist than this property would not be defined.
+    //
+    // - Note that the a missing `closeName` token is not sufficient to conclude
+    //   the element is self closing, e.g when dealing with invalid syntax:
+    //   - `<foo></>`
+    readonly isSelfClosing?: boolean;
+
     // Will only exist if there is a valid "Start Name" for the XML Element
     // - Note this would always exist in a valid XML.
     readonly openName?: XMLToken;

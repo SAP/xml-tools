@@ -12,6 +12,7 @@ module.exports = {
       syntax: {
         openName: { image: "note", startOffset: 40, endOffset: 43 },
         closeName: { image: "note", startOffset: 47, endOffset: 50 },
+        isSelfClosing: false,
         openBody: { startOffset: 39, endOffset: 44 },
         closeBody: { startOffset: 45, endOffset: 51 },
         attributesRange: { startOffset: 45, endOffset: 43 }

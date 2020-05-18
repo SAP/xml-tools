@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/validation",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "XML validation APIs",
   "keywords": [
     "xml",
@@ -11,14 +11,15 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "^4.0.2",
+    "@xml-tools/ast": "^4.2.0",
     "lodash": "4.17.15"
   },
   "devDependencies": {
-    "@xml-tools/parser": "^1.0.3"
+    "@xml-tools/parser": "^1.0.5"
   },
   "scripts": {
-    "ci": "npm-run-all type-check coverage:*",
+    "ci": "npm-run-all clean type-check coverage:*",
+    "clean": "rimraf ./coverage ./nyc_output",
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage:run": "nyc mocha \"./test/**/*spec.js\"",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",

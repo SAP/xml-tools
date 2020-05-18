@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.1.0...@xml-tools/ast@4.2.0) (2020-05-17)
+
+### Features
+
+- **common:** add utility functions for xmlns attributes ([#173](https://github.com/sap/xml-tools/issues/173)) ([20d6c09](https://github.com/sap/xml-tools/commit/20d6c09))
+
+# [4.1.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.0.3...@xml-tools/ast@4.1.0) (2020-05-05)
+
+### Features
+
+- **ast:** added `.syntax.isSelfClosing` property on an XMLElement node ([#164](https://github.com/sap/xml-tools/issues/164)) ([bfc448b](https://github.com/sap/xml-tools/commit/bfc448b))
+
+## [4.0.3](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.0.2...@xml-tools/ast@4.0.3) (2020-04-02)
+
+**Note:** Version bump only for package @xml-tools/ast
+
 ## [4.0.2](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.0.1...@xml-tools/ast@4.0.2) (2020-02-19)
 
 ### Bug Fixes
