@@ -19,11 +19,11 @@ class AstPositionVisitor {
     const value = node.syntax.value;
 
     if (this.isOffsetInRange(key)) {
-      this.astContext = { kind: "XMLKeyAttribute", astNode: node };
+      this.astContext = { kind: "XMLAttributeKey", astNode: node };
     }
 
     if (this.isOffsetInRange(value)) {
-      this.astContext = { kind: "XMLValueAttribute", astNode: node };
+      this.astContext = { kind: "XMLAttributeValue", astNode: node };
     }
   }
 

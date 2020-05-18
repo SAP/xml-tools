@@ -1,4 +1,4 @@
-import { XMLAttribute, XMLElement } from "@xml-tools/ast";
+import { XMLAttribute, XMLElement, XMLDocument } from "@xml-tools/ast";
 
 interface XMLElementOpenName {
   kind: "XMLElementOpenName";
@@ -10,12 +10,22 @@ interface XMLElementCloseName {
   astNode: XMLElement;
 }
 
-interface XMLKeyAttribute {
-  kind: "XMLKeyAttribute";
+interface XMLAttributeKey {
+  kind: "XMLAttributeKey";
   astNode: XMLAttribute;
 }
 
-interface XMLValueAttribute {
-  kind: "XMLValueAttribute";
+interface XMLAttributeValue {
+  kind: "XMLAttributeValue";
   astNode: XMLAttribute;
 }
+
+declare function getAstNodeInPosition(
+  ast: XMLDocument,
+  offset: number
+):
+  | XMLElementOpenName
+  | XMLElementCloseName
+  | XMLAttributeKey
+  | XMLAttributeValue
+  | undefined;
