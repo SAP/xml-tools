@@ -6,7 +6,7 @@
     "xml",
     "position"
   ],
-  "main": "lib/ast-position.js",
+  "main": "lib/api.js",
   "repository": "https://github.com/sap/xml-tools/",
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
