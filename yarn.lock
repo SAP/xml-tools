@@ -1164,6 +1164,22 @@
   resolved "https://registry.yarnpkg.com/@types/vscode/-/vscode-1.45.0.tgz#8a07e740aa1ca7264da8cb17be87b733836d6c01"
   integrity sha512-b0Gyir7sPBCqiKLygAhn/AYVfzWD+SMPkWltBrIuPEyTOxSU1wVApWY/FcxYO2EWTRacoubTl4+gvZf86RkecA==
 
+"@xml-tools/ast@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@xml-tools/ast/-/ast-4.1.0.tgz#2660783c9f9a600ed0c9e33bf8919542fb2be531"
+  integrity sha512-8nErsCzkk8PtRI3XP+FgSs3ZINtlR+Jr39zO73xc23VX8ASaNmdEtRgjWVXHC8aWGU1KAw+BWXmB2fVz19YCXQ==
+  dependencies:
+    "@xml-tools/common" "^0.0.6"
+    "@xml-tools/parser" "^1.0.4"
+    lodash "4.17.15"
+
+"@xml-tools/common@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@xml-tools/common/-/common-0.0.6.tgz#0932d44ecb65fdfea7ac597126b60f9aa37695b0"
+  integrity sha512-d/iouioRW4RXKvzE6RqY5b8ba0RSBeQgFoUrL44MdUzR9JBpdXO3TMLwNYdEKCBJGtCpi7/LiwseBNCGTNIMcw==
+  dependencies:
+    lodash "4.17.15"
+
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"
