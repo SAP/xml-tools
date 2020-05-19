@@ -1,13 +1,22 @@
 {
-  "name": "xml-for-vscode",
-  "private": true,
-  "description": "XML for VSCode",
+  "name": "xml-toolkit",
   "version": "0.1.6",
-  "publisher": "SAPSE",
+  "private": true,
+  "preview": "true",
+  "displayName": "XML Toolkit",
+  "description": "XML Toolkit by SAP OS",
+  "publisher": "SAPOS",
+  "icon": "resources/xml-toolkit.png",
+  "keywords": [
+    "xml"
+  ],
+  "categories": [
+    "Programming Languages"
+  ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SAP/xml-tools"
+    "url": "https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit"
   },
   "engines": {
     "vscode": "^1.45.0"
@@ -18,7 +27,7 @@
   "main": "lib/extension",
   "scripts": {
     "ci": "npm-run-all clean coverage:* bundle",
-    "clean": "rimraf ./coverage ./nyc_output *.vsix",
+    "clean": "rimraf ./coverage ./nyc_output *.vsix NOTICE LICENSE",
     "test": "node test/runTest.js",
     "coverage:run": "nyc node test/runTest.js",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",

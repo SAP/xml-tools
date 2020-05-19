@@ -14,9 +14,7 @@ const git = simpleGit(rootDir);
 async function triggerGHReleasesPublish() {
   const log = await git.log();
   const latestCommit = log.latest;
-  const vscodeExtResult = /xml-for-vscode@\d+(?:\.\d+)*/.exec(
-    latestCommit.body
-  );
+  const vscodeExtResult = /xml-toolkit@\d+(?:\.\d+)*/.exec(latestCommit.body);
   if (vscodeExtResult !== null) {
     const vscodeExtTag = vscodeExtResult[0];
     console.log(`deleting remote tag ${vscodeExtTag}`);

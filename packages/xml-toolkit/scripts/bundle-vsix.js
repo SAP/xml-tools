@@ -16,7 +16,7 @@ const proxyquire = require("proxyquire");
 const { expect } = require("chai");
 const { filter, map, includes, keys, forEach } = require("lodash");
 const { resolve, join, sep, basename } = require("path");
-const { existsSync } = require("fs");
+const { existsSync, copyFileSync } = require("fs");
 const glob = require("glob");
 
 const extensionRootPkg = require("../package.json");
@@ -42,9 +42,10 @@ forEach(extDeps, _ => {
   ).to.include(`${extName}/${_}/**`);
 });
 
-const rootPkgDir = resolve(__dirname, "..");
+const rootMonoRepoDir = resolve(__dirname, "..", "..", "..");
+const rootExtDir = resolve(__dirname, "..");
 const allFolders = glob.sync("**/", {
-  cwd: rootPkgDir,
+  cwd: rootExtDir,
   realpath: true
 });
 
@@ -63,7 +64,7 @@ const onlyProductiveRootNpmPackages = filter(allFolders, _ => {
 // basically the symbolic link gets expended.
 // However need we need link that is relative to the extension's `node_modules`
 // to enable re-building the `node_modules` inside the vsix archive.
-const extFolderName = basename(rootPkgDir);
+const extFolderName = basename(rootExtDir);
 const scopeName = require("../../language-server/package").name.split("/")[0];
 const relativeToExtRootReplacer = [
   "packages",
@@ -94,14 +95,22 @@ const onlyProductiveRootNpmPackagesRelativeToRoot = map(
 // **Hot-Patching** VSCE using proxyquire.
 const getDepsStub = {
   getDependencies: async () =>
-    onlyProductiveRootNpmPackagesRelativeToRoot.concat([rootPkgDir])
+    onlyProductiveRootNpmPackagesRelativeToRoot.concat([rootExtDir])
 };
 const { packageCommand } = proxyquire("vsce/out/package", {
   "./npm": getDepsStub
 });
 
+// Ensure License an Notice files are part of the packaged .vsix
+const noticeRootMonoRepoPath = resolve(rootMonoRepoDir, "NOTICE");
+const licenseRootMonoRepoPath = resolve(rootMonoRepoDir, "LICENSE");
+const noticeExtPath = resolve(rootExtDir, "NOTICE");
+const licenseExtPath = resolve(rootExtDir, "LICENSE");
+copyFileSync(noticeRootMonoRepoPath, noticeExtPath);
+copyFileSync(licenseRootMonoRepoPath, licenseExtPath);
+
 packageCommand({
-  cwd: rootPkgDir,
+  cwd: rootExtDir,
   packagePath: undefined,
   baseContentUrl: undefined,
   baseImagesUrl: undefined,
