@@ -49,10 +49,10 @@ jobs:
       - run: yarn
       - run: yarn run ci
       - persist_to_workspace:
-          root: "./packages/xml-for-vscode"
+          root: "./packages/xml-toolkit"
           paths:
             # https://golang.org/pkg/path/filepath/#Match
-            - xml-for-vscode-*
+            - xml-toolkit-*
 
   deploy-gh-releases:
     docker:
@@ -66,7 +66,6 @@ jobs:
             go get github.com/tcnksm/ghr
             VERSION=${CIRCLE_TAG}
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./dist/
-
 
 workflows:
   version: 2
@@ -86,7 +85,7 @@ workflows:
       - prepare-vsix:
           filters:
             tags:
-              only: /^xml-for-vscode@[0-9]+(.[0-9]+)*/
+              only: /^xml-toolkit@[0-9]+(.[0-9]+)*/
             branches:
               ignore: /.*/
       - deploy-gh-releases:
@@ -94,6 +93,6 @@ workflows:
             - prepare-vsix
           filters:
             tags:
-              only: /^xml-for-vscode@[0-9]+(.[0-9]+)*/
+              only: /^xml-toolkit@[0-9]+(.[0-9]+)*/
             branches:
               ignore: /.*/

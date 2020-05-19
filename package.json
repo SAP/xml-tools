@@ -6,10 +6,10 @@
       "packages/*"
     ],
     "nohoist": [
-      "xml-for-vscode/vscode-languageclient",
-      "xml-for-vscode/vscode-languageclient/**",
-      "xml-for-vscode/@xml-tools/language-server",
-      "xml-for-vscode/@xml-tools/language-server/**"
+      "xml-toolkit/vscode-languageclient",
+      "xml-toolkit/vscode-languageclient/**",
+      "xml-toolkit/@xml-tools/language-server",
+      "xml-toolkit/@xml-tools/language-server/**"
     ]
   },
   "scripts": {
