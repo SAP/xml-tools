@@ -4,8 +4,8 @@
   "private": true,
   "preview": "true",
   "displayName": "XML Toolkit",
-  "description": "XML Toolkit by SAP OS",
-  "publisher": "SAPOS",
+  "description": "XML Toolkit by SAP OSS",
+  "publisher": "SAPOSS",
   "icon": "resources/xml-toolkit.png",
   "keywords": [
     "xml"
