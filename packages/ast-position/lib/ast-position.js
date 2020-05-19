@@ -1,14 +1,16 @@
 class AstPositionVisitor {
   constructor(offset) {
     this.offset = offset;
+    this.position = undefined;
   }
+
   visitXMLElement(node) {
     const openName = node.syntax.openName;
     const closeName = node.syntax.closeName;
     if (this.isOffsetInRange(openName)) {
-      this.astContext = { kind: "XMLElementOpenName", astNode: node };
+      this.position = { kind: "XMLElementOpenName", astNode: node };
     } else if (this.isOffsetInRange(closeName)) {
-      this.astContext = { kind: "XMLElementCloseName", astNode: node };
+      this.position = { kind: "XMLElementCloseName", astNode: node };
     }
   }
 
@@ -17,9 +19,9 @@ class AstPositionVisitor {
     const value = node.syntax.value;
 
     if (this.isOffsetInRange(key)) {
-      this.astContext = { kind: "XMLAttributeKey", astNode: node };
+      this.position = { kind: "XMLAttributeKey", astNode: node };
     } else if (this.isOffsetInRange(value)) {
-      this.astContext = { kind: "XMLAttributeValue", astNode: node };
+      this.position = { kind: "XMLAttributeValue", astNode: node };
     }
   }
 

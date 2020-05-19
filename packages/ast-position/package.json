@@ -11,10 +11,10 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/ast": "4.1.0"
+    "@xml-tools/ast": "^4.2.0"
   },
   "devDependencies": {
-    "vscode-languageserver": "6.1.1"
+    "@xml-tools/parser": "^1.0.5"
   },
   "scripts": {
     "ci": "npm-run-all type-check coverage:*",

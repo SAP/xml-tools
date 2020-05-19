@@ -1,12 +1,17 @@
 const { AstPositionVisitor } = require("./ast-position");
 const { accept } = require("@xml-tools/ast");
 
-function getAstNodeInPosition(ast, offset) {
-  const visitor = new AstPositionVisitor(offset);
-  accept(ast, visitor);
-  return visitor.astContext;
+/**
+ * @param {XMLDocument} xmlDoc
+ * @param {number} offset
+ * @returns {AstPosition | undefined}
+ */
+function astPositionAtOffset(xmlDoc, offset) {
+  const positionVisitor = new AstPositionVisitor(offset);
+  accept(xmlDoc, positionVisitor);
+  return positionVisitor.position;
 }
 
 module.exports = {
-  getAstNodeInPosition: getAstNodeInPosition
+  astPositionAtOffset
 };
