@@ -2,7 +2,6 @@
   "name": "xml-toolkit",
   "version": "0.1.6",
   "private": true,
-  "preview": "true",
   "displayName": "XML Toolkit",
   "description": "XML Toolkit by SAP OSS",
   "publisher": "SAPOSS",

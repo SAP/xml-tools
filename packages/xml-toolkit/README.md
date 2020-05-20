@@ -13,9 +13,9 @@ Click the `install` button on [XML Toolkit VSCode marketplace page](https://mark
 
 ### From Github Releases
 
-The extension can also be downloaded and installed via [Github Releases](https://github.com/SAP/xml-tools/releases/).
+The extension can also be downloaded and installed via [Github Releases](https://github.com/sap/xml-tools/releases).
 
-- The .vsix archive can be found under the **"xml-toolkit@x.y.z"** releases.
+- The .vsix archive can be found under the **"xml-toolkit\@x.y.z"** releases.
   - Replace `x.y.z` with the desired version number.
 - See [VSCode's guide](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix)
   for installing an extension from a .vsix file.
