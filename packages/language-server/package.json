@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/language-server",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "XML language server",
   "keywords": [
     "LSP",
