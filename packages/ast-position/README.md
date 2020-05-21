@@ -19,7 +19,7 @@ With Yarn
 Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 
 Simply import/require the @xml-tools/ast-position package and use the utilities
-as defined in the APIs above.
+as declared in the TypeScript signatures above.
 
 ## Support
 
