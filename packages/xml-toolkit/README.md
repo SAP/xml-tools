@@ -23,7 +23,7 @@ The extension can also be downloaded and installed via [Github Releases](https:/
 ## Usage
 
 The Extension will become active when an ".xml" file is opened.
-Both Lexing and Parsing errors will be shown as squiggly red underlines
+Both lexing and parsing errors will be shown as squiggly red underlines
 and in the problems view.
 
 ## Support
