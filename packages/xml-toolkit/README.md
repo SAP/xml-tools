@@ -9,7 +9,7 @@ This extension enables VS Code developers to detect multiple error types in a si
 
 ### From the VSCode Marketplace
 
-Click the `install` button on [XML Toolkit VSCode marketplace page](https://marketplace.visualstudio.com/items?itemName=SAPOS.xml-toolkit).
+Click the `install` button on [XML Toolkit VSCode marketplace page](https://marketplace.visualstudio.com/items?itemName=SAPOSS.xml-toolkit).
 
 ### From Github Releases
 
@@ -28,7 +28,7 @@ and in the problems view.
 
 ## Support
 
-Please open [issues](https://github.com/SAP/xml-tols/issues) on github.
+Please open [issues](https://github.com/SAP/xml-tools/issues) on github.
 
 ## Contributing
 
