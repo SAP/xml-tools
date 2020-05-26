@@ -47,63 +47,63 @@ const Comment = createToken({
   name: "Comment",
   pattern: /<!--(.|\r?\n)*?-->/,
   // A Comment may span multiple lines.
-  line_breaks: true
+  line_breaks: true,
 });
 
 const CData = createToken({
   name: "CData",
   pattern: /<!\[CDATA\[(.|\r?\n)*?]]>/,
-  line_breaks: true
+  line_breaks: true,
 });
 
 const DocType = createToken({
   name: "DocType",
   pattern: /<!DOCTYPE/,
-  push_mode: "INSIDE"
+  push_mode: "INSIDE",
 });
 
 const IgnoredDTD = createToken({
   name: "DTD",
   pattern: /<!.*?>/,
-  group: Lexer.SKIPPED
+  group: Lexer.SKIPPED,
 });
 
 const EntityRef = createToken({
   name: "EntityRef",
-  pattern: makePattern`&${f.Name};`
+  pattern: makePattern`&${f.Name};`,
 });
 
 const CharRef = createToken({
   name: "CharRef",
-  pattern: /&#\d+;|&#x[a-fA-F0-9]/
+  pattern: /&#\d+;|&#x[a-fA-F0-9]/,
 });
 
 const SEA_WS = createToken({
   name: "SEA_WS",
-  pattern: /( |\t|\n|\r\n)+/
+  pattern: /( |\t|\n|\r\n)+/,
 });
 
 const XMLDeclOpen = createToken({
   name: "XMLDeclOpen",
   pattern: /<\?xml[ \t\r\n]/,
-  push_mode: "INSIDE"
+  push_mode: "INSIDE",
 });
 
 const SLASH_OPEN = createToken({
   name: "SLASH_OPEN",
   pattern: /<\//,
-  push_mode: "INSIDE"
+  push_mode: "INSIDE",
 });
 
 const INVALID_SLASH_OPEN = createToken({
   name: "INVALID_SLASH_OPEN",
   pattern: /<\//,
-  categories: [SLASH_OPEN]
+  categories: [SLASH_OPEN],
 });
 
 const PROCESSING_INSTRUCTION = createToken({
   name: "PROCESSING_INSTRUCTION",
-  pattern: makePattern`<\\?${f.Name}.*\\?>`
+  pattern: makePattern`<\\?${f.Name}.*\\?>`,
 });
 
 const OPEN = createToken({ name: "OPEN", pattern: /</, push_mode: "INSIDE" });
@@ -116,7 +116,7 @@ const OPEN = createToken({ name: "OPEN", pattern: /</, push_mode: "INSIDE" });
 const INVALID_OPEN_INSIDE = createToken({
   name: "INVALID_OPEN_INSIDE",
   pattern: /</,
-  categories: [OPEN]
+  categories: [OPEN],
 });
 
 const TEXT = createToken({ name: "TEXT", pattern: /[^<&]+/ });
@@ -126,20 +126,20 @@ const CLOSE = createToken({ name: "CLOSE", pattern: />/, pop_mode: true });
 const SPECIAL_CLOSE = createToken({
   name: "SPECIAL_CLOSE",
   pattern: /\?>/,
-  pop_mode: true
+  pop_mode: true,
 });
 
 const SLASH_CLOSE = createToken({
   name: "SLASH_CLOSE",
   pattern: /\/>/,
-  pop_mode: true
+  pop_mode: true,
 });
 
 const SLASH = createToken({ name: "SLASH", pattern: /\// });
 
 const STRING = createToken({
   name: "STRING",
-  pattern: /"[^<"]*"|'[^<']*'/
+  pattern: /"[^<"]*"|'[^<']*'/,
 });
 
 const EQUALS = createToken({ name: "EQUALS", pattern: /=/ });
@@ -149,7 +149,7 @@ const Name = createToken({ name: "Name", pattern: makePattern`${f.Name}` });
 const S = createToken({
   name: "S",
   pattern: /[ \t\r\n]/,
-  group: Lexer.SKIPPED
+  group: Lexer.SKIPPED,
 });
 
 const xmlLexerDefinition = {
@@ -168,7 +168,7 @@ const xmlLexerDefinition = {
       SLASH_OPEN,
       PROCESSING_INSTRUCTION,
       OPEN,
-      TEXT
+      TEXT,
     ],
     INSIDE: [
       // Tokens from `OUTSIDE` to improve error recovery behavior
@@ -183,9 +183,9 @@ const xmlLexerDefinition = {
       EQUALS,
       STRING,
       Name,
-      S
-    ]
-  }
+      S,
+    ],
+  },
 };
 
 const xmlLexer = new Lexer(xmlLexerDefinition, {
@@ -197,10 +197,10 @@ const xmlLexer = new Lexer(xmlLexerDefinition, {
 
   // TODO: inspect definitions for XML line terminators
   lineTerminatorCharacters: ["\n"],
-  lineTerminatorsPattern: /\n|\r\n/g
+  lineTerminatorsPattern: /\n|\r\n/g,
 });
 
 module.exports = {
   xmlLexer,
-  tokensDictionary
+  tokensDictionary,
 };

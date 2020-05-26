@@ -19,11 +19,11 @@ function attributeValueCompletion(attributeNode, xssAttribute, prefix = "") {
   if (isRegExp(valueDef)) {
     // No suggestions for regExp value definitions...
   } else if (isArray(valueDef)) {
-    forEach(valueDef, enumVal => {
+    forEach(valueDef, (enumVal) => {
       if (enumVal.startsWith(prefix)) {
         suggestions.push({
           text: enumVal.substring(prefix.length),
-          label: enumVal
+          label: enumVal,
         });
       }
     });
@@ -36,5 +36,5 @@ function attributeValueCompletion(attributeNode, xssAttribute, prefix = "") {
 }
 
 module.exports = {
-  attributeValueCompletion: attributeValueCompletion
+  attributeValueCompletion: attributeValueCompletion,
 };

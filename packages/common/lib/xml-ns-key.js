@@ -50,5 +50,5 @@ function getXMLNamespaceKeyPrefix(key) {
 
 module.exports = {
   isXMLNamespaceKey: isXMLNamespaceKey,
-  getXMLNamespaceKeyPrefix: getXMLNamespaceKeyPrefix
+  getXMLNamespaceKeyPrefix: getXMLNamespaceKeyPrefix,
 };

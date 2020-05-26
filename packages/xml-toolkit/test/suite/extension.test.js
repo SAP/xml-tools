@@ -19,20 +19,20 @@ const docPath = resolve(
 const docUri = vscode.Uri.file(docPath);
 
 describe("XML for VSCode extension", () => {
-  before(async function() {
+  before(async function () {
     await vscode.workspace.openTextDocument(docUri);
     await vscode.window.showTextDocument(docUri);
     // We need to explicitly wait for extension to load
     await sleep(1000);
   });
 
-  after(async function() {
+  after(async function () {
     await setContent("");
     const extensionStatus = await deactivate();
     expect(extensionStatus).to.equal(undefined);
   });
 
-  it("Will show lexing error in problems view", async function() {
+  it("Will show lexing error in problems view", async function () {
     const content = `
       <note!>
         <to>Tove</to>
@@ -47,12 +47,12 @@ describe("XML for VSCode extension", () => {
         message:
           "unexpected character: ->!<- at offset: 12, skipped 1 characters.",
         range: toRange(1, 11, 1, 12),
-        source: SYNTAX_ERROR_MSG
-      }
+        source: SYNTAX_ERROR_MSG,
+      },
     ]);
   });
 
-  it("Will show parsing errors in problems view", async function() {
+  it("Will show parsing errors in problems view", async function () {
     const content = `
       <note>
         <to a=>Tove</to>
@@ -66,18 +66,18 @@ describe("XML for VSCode extension", () => {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(2, 14, 2, 14),
-        source: SYNTAX_ERROR_MSG
+        source: SYNTAX_ERROR_MSG,
       },
       {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> CLOSE <-- but found --> '' <--",
         range: toRange(6, null, 0, 0),
-        source: SYNTAX_ERROR_MSG
-      }
+        source: SYNTAX_ERROR_MSG,
+      },
     ]);
   });
 
-  it("Will show multiple errors in problems view", async function() {
+  it("Will show multiple errors in problems view", async function () {
     const content = `
       <note>
         <to a=>Tove</to>
@@ -91,20 +91,20 @@ describe("XML for VSCode extension", () => {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(2, 14, 2, 14),
-        source: SYNTAX_ERROR_MSG
+        source: SYNTAX_ERROR_MSG,
       },
       {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(3, 16, 3, 16),
-        source: SYNTAX_ERROR_MSG
+        source: SYNTAX_ERROR_MSG,
       },
       {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(4, 19, 4, 19),
-        source: SYNTAX_ERROR_MSG
-      }
+        source: SYNTAX_ERROR_MSG,
+      },
     ]);
   });
 
@@ -120,7 +120,7 @@ describe("XML for VSCode extension", () => {
   }
 
   async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   async function testDiagnostics(docUri, expectedDiagnostics) {

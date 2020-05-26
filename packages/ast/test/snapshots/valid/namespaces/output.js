@@ -5,7 +5,7 @@ module.exports = {
       type: "XMLElement",
       namespaces: {
         f: "https://blah.com/furniture",
-        "::DEFAULT": "https://blah.com/default"
+        "::DEFAULT": "https://blah.com/default",
       },
       name: "table",
       attributes: [
@@ -19,9 +19,9 @@ module.exports = {
             value: {
               image: '"https://blah.com/furniture"',
               startOffset: 18,
-              endOffset: 45
-            }
-          }
+              endOffset: 45,
+            },
+          },
         },
         {
           type: "XMLAttribute",
@@ -33,17 +33,17 @@ module.exports = {
             value: {
               image: '"https://blah.com/default"',
               startOffset: 53,
-              endOffset: 78
-            }
-          }
-        }
+              endOffset: 78,
+            },
+          },
+        },
       ],
       subElements: [
         {
           type: "XMLElement",
           namespaces: {
             f: "https://blah.com/furniture",
-            "::DEFAULT": "https://blah.com/default"
+            "::DEFAULT": "https://blah.com/default",
           },
           name: "name",
           attributes: [],
@@ -52,8 +52,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 93, endOffset: 102 },
-              text: "Some Chair"
-            }
+              text: "Some Chair",
+            },
           ],
           position: { startOffset: 85, endOffset: 111 },
           syntax: {
@@ -62,15 +62,15 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 85, endOffset: 92 },
             closeBody: { startOffset: 103, endOffset: 111 },
-            attributesRange: { startOffset: 93, endOffset: 91 }
+            attributesRange: { startOffset: 93, endOffset: 91 },
           },
-          ns: "f"
+          ns: "f",
         },
         {
           type: "XMLElement",
           namespaces: {
             f: "https://blah.com/furniture",
-            "::DEFAULT": "https://blah.com/default"
+            "::DEFAULT": "https://blah.com/default",
           },
           name: "width",
           attributes: [],
@@ -79,8 +79,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 126, endOffset: 127 },
-              text: "50"
-            }
+              text: "50",
+            },
           ],
           position: { startOffset: 117, endOffset: 137 },
           syntax: {
@@ -89,15 +89,15 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 117, endOffset: 125 },
             closeBody: { startOffset: 128, endOffset: 137 },
-            attributesRange: { startOffset: 126, endOffset: 124 }
+            attributesRange: { startOffset: 126, endOffset: 124 },
           },
-          ns: "f"
+          ns: "f",
         },
         {
           type: "XMLElement",
           namespaces: {
             f: "https://blah.com/furniture",
-            "::DEFAULT": "https://blah.com/default"
+            "::DEFAULT": "https://blah.com/default",
           },
           name: "length",
           attributes: [],
@@ -106,8 +106,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 153, endOffset: 154 },
-              text: "67"
-            }
+              text: "67",
+            },
           ],
           position: { startOffset: 143, endOffset: 165 },
           syntax: {
@@ -116,15 +116,15 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 143, endOffset: 152 },
             closeBody: { startOffset: 155, endOffset: 165 },
-            attributesRange: { startOffset: 153, endOffset: 151 }
+            attributesRange: { startOffset: 153, endOffset: 151 },
           },
-          ns: "f"
+          ns: "f",
         },
         {
           type: "XMLElement",
           namespaces: {
             f: "https://blah.com/furniture",
-            "::DEFAULT": "https://blah.com/default"
+            "::DEFAULT": "https://blah.com/default",
           },
           name: "description",
           attributes: [],
@@ -133,54 +133,54 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 184, endOffset: 195 },
-              text: "Awsome Chair"
-            }
+              text: "Awsome Chair",
+            },
           ],
           position: { startOffset: 171, endOffset: 209 },
           syntax: {
             openName: {
               image: "description",
               startOffset: 172,
-              endOffset: 182
+              endOffset: 182,
             },
             closeName: {
               image: "description",
               startOffset: 198,
-              endOffset: 208
+              endOffset: 208,
             },
             isSelfClosing: false,
             openBody: { startOffset: 171, endOffset: 183 },
             closeBody: { startOffset: 196, endOffset: 209 },
-            attributesRange: { startOffset: 184, endOffset: 182 }
-          }
-        }
+            attributesRange: { startOffset: 184, endOffset: 182 },
+          },
+        },
       ],
       textContents: [
         {
           type: "XMLTextContent",
           position: { startOffset: 80, endOffset: 84 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 112, endOffset: 116 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 138, endOffset: 142 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 166, endOffset: 170 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 210, endOffset: 210 },
-          text: "\n"
-        }
+          text: "\n",
+        },
       ],
       position: { startOffset: 1, endOffset: 220 },
       syntax: {
@@ -189,10 +189,10 @@ module.exports = {
         isSelfClosing: false,
         openBody: { startOffset: 1, endOffset: 79 },
         closeBody: { startOffset: 211, endOffset: 220 },
-        attributesRange: { startOffset: 10, endOffset: 78 }
+        attributesRange: { startOffset: 10, endOffset: 78 },
       },
-      ns: "f"
+      ns: "f",
     },
-    position: { startOffset: 0, endOffset: 221 }
-  }
+    position: { startOffset: 0, endOffset: 221 },
+  },
 };

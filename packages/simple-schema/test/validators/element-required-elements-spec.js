@@ -30,11 +30,11 @@ describe("The XML Simple Schema", () => {
                   required: true,
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(1);
@@ -70,25 +70,25 @@ describe("The XML Simple Schema", () => {
                   required: true,
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   name: "age",
                   required: true,
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(2);
         const messages = map(issues, "msg");
         expect(messages).to.have.members([
           "Missing Required Sub-Element: <name>",
-          "Missing Required Sub-Element: <age>"
+          "Missing Required Sub-Element: <age>",
         ]);
       });
 
@@ -119,18 +119,18 @@ describe("The XML Simple Schema", () => {
                   required: true,
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   name: "age",
                   required: true,
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;

@@ -4,7 +4,7 @@ import {
   XMLAttribute,
   XMLElement,
   XMLTextContent,
-  XMLDocument
+  XMLDocument,
 } from "@xml-tools/ast";
 
 declare function getSuggestions<OUT>(options: {

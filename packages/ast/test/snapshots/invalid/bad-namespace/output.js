@@ -11,8 +11,8 @@ module.exports = {
           position: { startOffset: 10, endOffset: 17 },
           key: "xmlns:f",
           value: null,
-          syntax: { key: { image: "xmlns:f", startOffset: 10, endOffset: 16 } }
-        }
+          syntax: { key: { image: "xmlns:f", startOffset: 10, endOffset: 16 } },
+        },
       ],
       subElements: [
         {
@@ -25,8 +25,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 32, endOffset: 41 },
-              text: "Some Chair"
-            }
+              text: "Some Chair",
+            },
           ],
           position: { startOffset: 24, endOffset: 50 },
           syntax: {
@@ -35,9 +35,9 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 24, endOffset: 31 },
             closeBody: { startOffset: 42, endOffset: 50 },
-            attributesRange: { startOffset: 32, endOffset: 30 }
+            attributesRange: { startOffset: 32, endOffset: 30 },
           },
-          ns: "f"
+          ns: "f",
         },
         {
           type: "XMLElement",
@@ -49,8 +49,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 65, endOffset: 66 },
-              text: "50"
-            }
+              text: "50",
+            },
           ],
           position: { startOffset: 56, endOffset: 76 },
           syntax: {
@@ -59,9 +59,9 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 56, endOffset: 64 },
             closeBody: { startOffset: 67, endOffset: 76 },
-            attributesRange: { startOffset: 65, endOffset: 63 }
+            attributesRange: { startOffset: 65, endOffset: 63 },
           },
-          ns: "f"
+          ns: "f",
         },
         {
           type: "XMLElement",
@@ -73,8 +73,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 92, endOffset: 93 },
-              text: "67"
-            }
+              text: "67",
+            },
           ],
           position: { startOffset: 82, endOffset: 104 },
           syntax: {
@@ -83,32 +83,32 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 82, endOffset: 91 },
             closeBody: { startOffset: 94, endOffset: 104 },
-            attributesRange: { startOffset: 92, endOffset: 90 }
+            attributesRange: { startOffset: 92, endOffset: 90 },
           },
-          ns: "f"
-        }
+          ns: "f",
+        },
       ],
       textContents: [
         {
           type: "XMLTextContent",
           position: { startOffset: 19, endOffset: 23 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 51, endOffset: 55 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 77, endOffset: 81 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 105, endOffset: 105 },
-          text: "\n"
-        }
+          text: "\n",
+        },
       ],
       position: { startOffset: 1, endOffset: 115 },
       syntax: {
@@ -117,10 +117,10 @@ module.exports = {
         isSelfClosing: false,
         openBody: { startOffset: 1, endOffset: 18 },
         closeBody: { startOffset: 106, endOffset: 115 },
-        attributesRange: { startOffset: 10, endOffset: 17 }
+        attributesRange: { startOffset: 10, endOffset: 17 },
       },
-      ns: "f"
+      ns: "f",
     },
-    position: { startOffset: 0, endOffset: 116 }
-  }
+    position: { startOffset: 0, endOffset: 116 },
+  },
 };

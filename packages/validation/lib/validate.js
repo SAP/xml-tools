@@ -5,25 +5,26 @@ function validate(options) {
   const actualOptions = defaultsDeep(options, {
     validators: {
       attribute: [],
-      element: []
-    }
+      element: [],
+    },
   });
 
   let issues = [];
 
   const validateVisitor = {
-    visitXMLElement: function(node) {
-      const newIssues = flatMap(actualOptions.validators.element, validator =>
+    visitXMLElement: function (node) {
+      const newIssues = flatMap(actualOptions.validators.element, (validator) =>
         validator(node)
       );
       issues = issues.concat(newIssues);
     },
-    visitXMLAttribute: function(node) {
-      const newIssues = flatMap(actualOptions.validators.attribute, validator =>
-        validator(node)
+    visitXMLAttribute: function (node) {
+      const newIssues = flatMap(
+        actualOptions.validators.attribute,
+        (validator) => validator(node)
       );
       issues = issues.concat(newIssues);
-    }
+    },
   };
 
   accept(actualOptions.doc, validateVisitor);
@@ -32,5 +33,5 @@ function validate(options) {
 }
 
 module.exports = {
-  validate: validate
+  validate: validate,
 };

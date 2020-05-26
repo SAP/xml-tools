@@ -3,5 +3,5 @@
 const SERVER_PATH = require.resolve("./server.js");
 
 module.exports = {
-  SERVER_PATH: SERVER_PATH
+  SERVER_PATH: SERVER_PATH,
 };

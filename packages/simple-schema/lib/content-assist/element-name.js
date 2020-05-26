@@ -23,7 +23,7 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
   const elementNamespaceUri = elementNode.namespaces[namespacePrefix];
   const possibleElements = filter(
     xssElement.elements,
-    _ =>
+    (_) =>
       has(_, "namespace") === false ||
       (_.namespace && _.namespace === elementNamespaceUri)
   );
@@ -33,10 +33,10 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
     possibleElements
   );
 
-  const suggestions = map(possibleSuggestionsWithoutExistingSingular, _ => {
+  const suggestions = map(possibleSuggestionsWithoutExistingSingular, (_) => {
     return {
       text: _,
-      label: _
+      label: _,
     };
   });
 
@@ -51,7 +51,7 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
       (uri, prefix) => {
         const possibleElements = filter(
           xssElement.elements,
-          element =>
+          (element) =>
             has(element, "namespace") === true && element.namespace === uri
         );
         const possibleSuggestionsWithoutExistingSingular = applicableElements(
@@ -68,7 +68,7 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
       text: prefix,
       label: prefix,
       commitCharacter: ":",
-      isNamespace: true
+      isNamespace: true,
     }));
     return [...namespaceSuggestions, ...suggestions];
   }
@@ -76,13 +76,16 @@ function elementNameCompletion(elementNode, xssElement, prefix = "") {
 }
 
 function applicableElements(xssElements, subElements, possibleElements) {
-  const allPossibleSuggestions = map(possibleElements, element => element.name);
+  const allPossibleSuggestions = map(
+    possibleElements,
+    (element) => element.name
+  );
   const notSingularElem = filter(
     xssElements,
-    element => element.cardinality === "many"
+    (element) => element.cardinality === "many"
   );
-  const notSingularElemNames = map(notSingularElem, element => element.name);
-  const existingElemNames = map(subElements, element => element.name);
+  const notSingularElemNames = map(notSingularElem, (element) => element.name);
+  const existingElemNames = map(subElements, (element) => element.name);
   const existingSingular = difference(existingElemNames, notSingularElemNames);
   return (possibleSuggestionsWithoutExistingSingular = difference(
     allPossibleSuggestions,
@@ -91,5 +94,5 @@ function applicableElements(xssElements, subElements, possibleElements) {
 }
 
 module.exports = {
-  elementNameCompletion: elementNameCompletion
+  elementNameCompletion: elementNameCompletion,
 };

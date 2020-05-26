@@ -29,41 +29,41 @@ describe("The XML Simple Schema", () => {
                   required: false,
                   name: "name",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   cardinality: "single",
                   required: false,
                   name: "age",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   cardinality: "many",
                   required: false,
                   name: "address",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
         expect(suggestions).to.deep.include.members([
           {
             label: "name",
-            text: "name"
+            text: "name",
           },
           {
             label: "age",
-            text: "age"
+            text: "age",
           },
           {
             label: "address",
-            text: "address"
-          }
+            text: "address",
+          },
         ]);
         expect(suggestions).to.have.lengthOf(3);
       });
@@ -93,41 +93,41 @@ describe("The XML Simple Schema", () => {
                   required: false,
                   name: "name",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   cardinality: "single",
                   required: false,
                   name: "age",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   cardinality: "many",
                   required: false,
                   name: "address",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
         expect(suggestions).to.deep.include.members([
           {
             label: "name",
-            text: "name"
+            text: "name",
           },
           {
             label: "age",
-            text: "age"
+            text: "age",
           },
           {
             label: "address",
-            text: "address"
-          }
+            text: "address",
+          },
         ]);
         expect(suggestions).to.have.lengthOf(3);
       });
@@ -158,37 +158,37 @@ describe("The XML Simple Schema", () => {
                   required: false,
                   name: "name",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   cardinality: "single",
                   required: false,
                   name: "age",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   cardinality: "many",
                   required: false,
                   name: "address",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
         expect(suggestions).to.deep.include.members([
           {
             label: "name",
-            text: "name"
+            text: "name",
           },
           {
             label: "address",
-            text: "address"
-          }
+            text: "address",
+          },
         ]);
         expect(suggestions).to.have.lengthOf(2);
       });
@@ -219,33 +219,33 @@ describe("The XML Simple Schema", () => {
                   required: false,
                   name: "name",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   cardinality: "single",
                   required: false,
                   name: "age",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   cardinality: "many",
                   required: false,
                   name: "address",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
         expect(suggestions).to.deep.include.members([
           {
             label: "person",
-            text: "person"
-          }
+            text: "person",
+          },
         ]);
         expect(suggestions).to.have.lengthOf(1);
       });
@@ -264,7 +264,7 @@ describe("The XML Simple Schema", () => {
         name: "people",
         attributes: {},
 
-        elements: {}
+        elements: {},
       };
 
       const suggestions = suggestionsBySchema(xmlText, schema);
@@ -299,7 +299,7 @@ describe("The XML Simple Schema", () => {
                 name: "name",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               friends: {
                 cardinality: "single",
@@ -320,11 +320,11 @@ describe("The XML Simple Schema", () => {
                         name: "name",
                         namespace: "http://namespace.com/2",
                         attributes: {},
-                        elements: {}
-                      }
-                    }
-                  }
-                }
+                        elements: {},
+                      },
+                    },
+                  },
+                },
               },
               age: {
                 cardinality: "single",
@@ -332,7 +332,7 @@ describe("The XML Simple Schema", () => {
                 name: "age",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               address: {
                 cardinality: "many",
@@ -340,11 +340,11 @@ describe("The XML Simple Schema", () => {
                 name: "address",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
-              }
-            }
-          }
-        }
+                elements: {},
+              },
+            },
+          },
+        },
       };
 
       const suggestions = suggestionsBySchema(xmlText, schema);
@@ -353,20 +353,20 @@ describe("The XML Simple Schema", () => {
           text: "abc",
           label: "abc",
           isNamespace: true,
-          commitCharacter: ":"
+          commitCharacter: ":",
         },
         {
           label: "name",
-          text: "name"
+          text: "name",
         },
         {
           label: "age",
-          text: "age"
+          text: "age",
         },
         {
           label: "address",
-          text: "address"
-        }
+          text: "address",
+        },
       ]);
       expect(suggestions).to.have.lengthOf(4);
     });
@@ -398,7 +398,7 @@ describe("The XML Simple Schema", () => {
                 name: "name",
                 namespace: "http://namespace.com/1",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               age: {
                 cardinality: "single",
@@ -406,7 +406,7 @@ describe("The XML Simple Schema", () => {
                 name: "age",
                 namespace: "http://namespace.com/1",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               address: {
                 cardinality: "many",
@@ -414,23 +414,23 @@ describe("The XML Simple Schema", () => {
                 name: "address",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
-              }
-            }
-          }
-        }
+                elements: {},
+              },
+            },
+          },
+        },
       };
 
       const suggestions = suggestionsBySchema(xmlText, schema);
       expect(suggestions).to.deep.include.members([
         {
           label: "name",
-          text: "name"
+          text: "name",
         },
         {
           label: "age",
-          text: "age"
-        }
+          text: "age",
+        },
       ]);
       expect(suggestions).to.have.lengthOf(2);
     });
@@ -462,7 +462,7 @@ describe("The XML Simple Schema", () => {
                 name: "name",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               age: {
                 cardinality: "single",
@@ -470,7 +470,7 @@ describe("The XML Simple Schema", () => {
                 name: "age",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               address: {
                 cardinality: "many",
@@ -478,11 +478,11 @@ describe("The XML Simple Schema", () => {
                 name: "address",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
-              }
-            }
-          }
-        }
+                elements: {},
+              },
+            },
+          },
+        },
       };
 
       const suggestions = suggestionsBySchema(xmlText, schema);
@@ -517,7 +517,7 @@ describe("The XML Simple Schema", () => {
                 name: "name",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               age: {
                 cardinality: "single",
@@ -525,7 +525,7 @@ describe("The XML Simple Schema", () => {
                 name: "age",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               address: {
                 cardinality: "many",
@@ -533,34 +533,34 @@ describe("The XML Simple Schema", () => {
                 name: "address",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
-              }
-            }
-          }
-        }
+                elements: {},
+              },
+            },
+          },
+        },
       };
 
       const suggestions = suggestionsBySchema(xmlText, schema);
       expect(suggestions).to.deep.include.members([
         {
           label: "name",
-          text: "name"
+          text: "name",
         },
         {
           label: "age",
-          text: "age"
+          text: "age",
         },
         {
           label: "address",
-          text: "address"
-        }
+          text: "address",
+        },
       ]);
       expect(suggestions).to.have.lengthOf(3);
       expect(suggestions).to.not.deep.include.members([
         {
           label: "abc",
-          text: "abc"
-        }
+          text: "abc",
+        },
       ]);
     });
 
@@ -592,7 +592,7 @@ describe("The XML Simple Schema", () => {
                 name: "name",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               age: {
                 cardinality: "single",
@@ -600,7 +600,7 @@ describe("The XML Simple Schema", () => {
                 name: "age",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               address: {
                 cardinality: "many",
@@ -608,7 +608,7 @@ describe("The XML Simple Schema", () => {
                 name: "address",
                 namespace: "http://namespace.com/2",
                 attributes: {},
-                elements: {}
+                elements: {},
               },
               friends: {
                 cardinality: "single",
@@ -629,38 +629,38 @@ describe("The XML Simple Schema", () => {
                         name: "name",
                         namespace: "http://namespace.com/2",
                         attributes: {},
-                        elements: {}
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        elements: {},
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       };
 
       const suggestions = suggestionsBySchema(xmlText, schema);
       expect(suggestions).to.deep.include.members([
         {
           label: "name",
-          text: "name"
+          text: "name",
         },
         {
           label: "age",
-          text: "age"
+          text: "age",
         },
         {
           label: "address",
-          text: "address"
-        }
+          text: "address",
+        },
       ]);
       expect(suggestions).to.have.lengthOf(3);
       expect(suggestions).to.not.deep.include.members([
         {
           label: "abc",
-          text: "abc"
-        }
+          text: "abc",
+        },
       ]);
     });
   });

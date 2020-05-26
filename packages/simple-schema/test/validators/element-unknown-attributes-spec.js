@@ -24,12 +24,12 @@ describe("The XML Simple Schema", () => {
               cardinality: "many",
               attributes: {
                 age: {
-                  key: "age"
-                }
+                  key: "age",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(1);
@@ -61,18 +61,18 @@ describe("The XML Simple Schema", () => {
               cardinality: "many",
               attributes: {
                 age: {
-                  key: "age"
+                  key: "age",
                 },
                 firstName: {
-                  key: "firstName"
+                  key: "firstName",
                 },
                 lastName: {
-                  key: "lastName"
-                }
+                  key: "lastName",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(3);
@@ -80,7 +80,7 @@ describe("The XML Simple Schema", () => {
         expect(messages).to.have.members([
           "Unknown Attribute: <one> only [age,firstName,lastName] attributes are allowed",
           "Unknown Attribute: <two> only [age,firstName,lastName] attributes are allowed",
-          "Unknown Attribute: <three> only [age,firstName,lastName] attributes are allowed"
+          "Unknown Attribute: <three> only [age,firstName,lastName] attributes are allowed",
         ]);
       });
 
@@ -103,18 +103,18 @@ describe("The XML Simple Schema", () => {
               attributesType: "closed",
               attributes: {
                 age: {
-                  key: "age"
+                  key: "age",
                 },
                 firstName: {
-                  key: "firstName"
+                  key: "firstName",
                 },
                 lastName: {
-                  key: "lastName"
-                }
+                  key: "lastName",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;
@@ -133,8 +133,8 @@ describe("The XML Simple Schema", () => {
           attributes: {
             description: {
               key: "description",
-              required: false
-            }
+              required: false,
+            },
           },
 
           elements: {
@@ -145,12 +145,12 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 age: {
                   required: true,
-                  key: "age"
-                }
+                  key: "age",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(0);
@@ -168,8 +168,8 @@ describe("The XML Simple Schema", () => {
           attributes: {
             description: {
               key: "description",
-              required: false
-            }
+              required: false,
+            },
           },
 
           elements: {
@@ -180,12 +180,12 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 age: {
                   required: true,
-                  key: "age"
-                }
+                  key: "age",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(0);

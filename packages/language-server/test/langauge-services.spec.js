@@ -4,7 +4,7 @@ const { TextDocument, DiagnosticSeverity } = require("vscode-languageserver");
 
 const {
   validateDocument,
-  SYNTAX_ERROR_MSG
+  SYNTAX_ERROR_MSG,
 } = require("../lib/language-services");
 const { SERVER_PATH } = require("../lib/api");
 
@@ -22,11 +22,11 @@ describe("the XML Language Services", () => {
         message: "Expecting token of type --> OPEN <-- but found --> '>' <--",
         range: {
           start: pos,
-          end: pos
+          end: pos,
         },
         severity: DiagnosticSeverity.Error,
-        source: SYNTAX_ERROR_MSG
-      }
+        source: SYNTAX_ERROR_MSG,
+      },
     ];
     const diagnostics = await validateDocument(doc);
     expect(diagnostics).to.deep.equal(expectedDiagnostics);
@@ -42,20 +42,20 @@ describe("the XML Language Services", () => {
         message: `unexpected character: ->!<- at offset: 5, skipped 1 characters.`,
         range: {
           start: start,
-          end: pos
+          end: pos,
         },
         severity: DiagnosticSeverity.Error,
-        source: SYNTAX_ERROR_MSG
+        source: SYNTAX_ERROR_MSG,
       },
       {
         message: `Expecting token of type --> Name <-- but found --> '>' <--`,
         range: {
           start: pos,
-          end: pos
+          end: pos,
         },
         severity: DiagnosticSeverity.Error,
-        source: SYNTAX_ERROR_MSG
-      }
+        source: SYNTAX_ERROR_MSG,
+      },
     ];
     const diagnostics = await validateDocument(doc);
     expect(diagnostics).to.deep.equal(expectedDiagnostics);

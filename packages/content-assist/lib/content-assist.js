@@ -6,7 +6,7 @@ const {
   flatMap,
   identity,
   last,
-  isEmpty
+  isEmpty,
 } = require("lodash");
 const { BaseXmlCstVisitor } = require("@xml-tools/parser");
 const { findNextTextualToken } = require("@xml-tools/common");
@@ -19,7 +19,7 @@ function computeCompletionSyntacticContext({
   cst,
   ast: docAst,
   offset,
-  tokenVector
+  tokenVector,
 }) {
   const contextVisitor = new SuggestionContextVisitor(
     docAst,
@@ -132,7 +132,7 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
         this.result.providerArgs = {
           element: astNode.parent,
           attribute: astNode,
-          prefix: prefix !== "" ? prefix : undefined
+          prefix: prefix !== "" ? prefix : undefined,
         };
         this.found = true;
       }
@@ -152,7 +152,7 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
         this.result.providerArgs = {
           element: astNode.parent,
           attribute: astNode,
-          prefix: prefix !== "" ? prefix : undefined
+          prefix: prefix !== "" ? prefix : undefined,
         };
         this.found = true;
       }
@@ -237,7 +237,7 @@ function handleNewAttributeKeyScenario(ctx, astNode, tokenVector, visitor) {
     attributesRange.from <= visitor.targetOffset
   ) {
     const isNotInExistingAttribute =
-      find(ctx.attribute, attribCst => {
+      find(ctx.attribute, (attribCst) => {
         const attribLoc = attribCst.location;
         return (
           visitor.targetOffset >= attribLoc.startOffset &&
@@ -252,7 +252,7 @@ function handleNewAttributeKeyScenario(ctx, astNode, tokenVector, visitor) {
       visitor.result.providerArgs = {
         element: astNode,
         attribute: undefined,
-        prefix: undefined
+        prefix: undefined,
       };
       visitor.found = true;
     }
@@ -310,7 +310,7 @@ function handleNewAttributeKeyForPartialElement(
     visitor.result.providerArgs = {
       element: astNode,
       attribute: undefined,
-      prefix: undefined
+      prefix: undefined,
     };
     visitor.found = true;
   }
@@ -339,7 +339,7 @@ function handleElementContentScenario(ctx, astNode, visitor) {
     contentRange.from <= visitor.targetOffset
   ) {
     const allContentChildren = flatMap(ctx.content[0].children, identity);
-    const innerContentPart = find(allContentChildren, subContent => {
+    const innerContentPart = find(allContentChildren, (subContent) => {
       // Handling either CSTNodes or Tokens
       const subContentLoc = subContent.location
         ? subContent.location
@@ -362,7 +362,7 @@ function handleElementContentScenario(ctx, astNode, visitor) {
       visitor.result.providerArgs = {
         element: astNode,
         textContent: undefined,
-        prefix: undefined
+        prefix: undefined,
       };
       visitor.found = true;
     } else if (innerContentPart.name === "chardata") {
@@ -377,7 +377,7 @@ function handleElementContentScenario(ctx, astNode, visitor) {
       visitor.result.providerArgs = {
         element: astNode,
         textContent: textContentsAstNode,
-        prefix: textContentsAstNode.text.substring(0, prefixEnd)
+        prefix: textContentsAstNode.text.substring(0, prefixEnd),
       };
       visitor.found = true;
     }
@@ -393,5 +393,5 @@ function exists(tokArr) {
 }
 
 module.exports = {
-  computeCompletionSyntacticContext: computeCompletionSyntacticContext
+  computeCompletionSyntacticContext: computeCompletionSyntacticContext,
 };

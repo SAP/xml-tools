@@ -23,20 +23,20 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 name: {
                   required: false,
-                  key: "name"
+                  key: "name",
                 },
                 age: {
                   required: false,
-                  key: "age"
+                  key: "age",
                 },
                 address: {
                   required: false,
-                  key: "address"
-                }
+                  key: "address",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -44,18 +44,18 @@ describe("The XML Simple Schema", () => {
           {
             label: "name",
             text: "name",
-            commitCharacter: "="
+            commitCharacter: "=",
           },
           {
             label: "age",
             text: "age",
-            commitCharacter: "="
+            commitCharacter: "=",
           },
           {
             label: "address",
             text: "address",
-            commitCharacter: "="
-          }
+            commitCharacter: "=",
+          },
         ]);
         expect(suggestions).to.have.lengthOf(3);
       });
@@ -79,20 +79,20 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 name: {
                   required: false,
-                  key: "name"
+                  key: "name",
                 },
                 age: {
                   required: false,
-                  key: "age"
+                  key: "age",
                 },
                 address: {
                   required: false,
-                  key: "address"
-                }
+                  key: "address",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -100,18 +100,18 @@ describe("The XML Simple Schema", () => {
           {
             label: "name",
             text: "name",
-            commitCharacter: "="
+            commitCharacter: "=",
           },
           {
             label: "age",
             text: "age",
-            commitCharacter: "="
+            commitCharacter: "=",
           },
           {
             label: "address",
             text: "address",
-            commitCharacter: "="
-          }
+            commitCharacter: "=",
+          },
         ]);
         expect(suggestions).to.have.lengthOf(3);
       });
@@ -126,7 +126,7 @@ describe("The XML Simple Schema", () => {
           name: "people",
           attributes: {},
 
-          elements: {}
+          elements: {},
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -153,20 +153,20 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 name: {
                   required: false,
-                  key: "name"
+                  key: "name",
                 },
                 age: {
                   required: false,
-                  key: "age"
+                  key: "age",
                 },
                 address: {
                   required: false,
-                  key: "address"
-                }
+                  key: "address",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -174,13 +174,13 @@ describe("The XML Simple Schema", () => {
           {
             label: "name",
             text: "name",
-            commitCharacter: "="
+            commitCharacter: "=",
           },
           {
             label: "address",
             text: "address",
-            commitCharacter: "="
-          }
+            commitCharacter: "=",
+          },
         ]);
         expect(suggestions).to.have.lengthOf(2);
       });

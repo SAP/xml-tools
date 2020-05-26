@@ -18,48 +18,48 @@ function removeParentProps(astNode) {
  * @type {XMLAstVisitor}
  */
 const parentRemoverVisitor = {
-  visitXMLDocument: node => {
+  visitXMLDocument: (node) => {
     // top level XML Doc does not have a parent...
   },
-  visitXMLProlog: node => {
+  visitXMLProlog: (node) => {
     delete node.parent;
   },
-  visitXMLElement: node => {
+  visitXMLElement: (node) => {
     delete node.parent;
   },
-  visitXMLAttribute: node => {
+  visitXMLAttribute: (node) => {
     delete node.parent;
   },
-  visitXMLTextContent: node => {
+  visitXMLTextContent: (node) => {
     delete node.parent;
-  }
+  },
 };
 
 /**
  * @type {XMLAstVisitor}
  */
 const positionReducerVisitor = {
-  visitXMLDocument: node => {
+  visitXMLDocument: (node) => {
     reduceNodePoseInfo(node);
   },
-  visitXMLProlog: node => {
+  visitXMLProlog: (node) => {
     reduceNodePoseInfo(node);
   },
-  visitXMLElement: node => {
+  visitXMLElement: (node) => {
     reduceNodePoseInfo(node);
   },
-  visitXMLAttribute: node => {
+  visitXMLAttribute: (node) => {
     reduceNodePoseInfo(node);
   },
-  visitXMLTextContent: node => {
+  visitXMLTextContent: (node) => {
     reduceNodePoseInfo(node);
-  }
+  },
 };
 
 function reduceNodePoseInfo(node) {
   reducePositionInfo(node.position);
 
-  forEach(node.syntax, tok => {
+  forEach(node.syntax, (tok) => {
     reducePositionInfo(tok);
   });
 }
@@ -79,13 +79,13 @@ function assertParentPropsAreValid(astNode) {
  * @type {XMLAstVisitor}
  */
 const parentPropsValidatorVisitor = {
-  visitXMLDocument: node => {
+  visitXMLDocument: (node) => {
     // top level XML Doc does not have a parent...
   },
-  visitXMLProlog: node => {
+  visitXMLProlog: (node) => {
     expect(node.parent.prolog).to.eql(node);
   },
-  visitXMLElement: node => {
+  visitXMLElement: (node) => {
     const parent = node.parent;
     if (parent.type === "XMLDocument") {
       expect(parent.rootElement).to.eql(node);
@@ -93,16 +93,16 @@ const parentPropsValidatorVisitor = {
       expect(parent.subElements).to.include(node);
     }
   },
-  visitXMLAttribute: node => {
+  visitXMLAttribute: (node) => {
     expect(node.parent.attributes).to.include(node);
   },
-  visitXMLTextContent: node => {
+  visitXMLTextContent: (node) => {
     expect(node.parent.textContents).to.include(node);
-  }
+  },
 };
 
 module.exports = {
   modifyAstForAssertions: modifyAstForAssertions,
   positionReducerVisitor: positionReducerVisitor,
-  assertParentPropsAreValid: assertParentPropsAreValid
+  assertParentPropsAreValid: assertParentPropsAreValid,
 };

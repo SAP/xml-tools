@@ -1,6 +1,6 @@
 const {
   executeValidSampleTest,
-  testNameFromDir
+  testNameFromDir,
 } = require("../../../sample-test");
 describe(`${testNameFromDir(__dirname)}`, () => {
   executeValidSampleTest(__dirname);

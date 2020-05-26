@@ -17,12 +17,12 @@ function validateBySchema(xmlText, schema) {
     doc: xmlDoc,
     validators: {
       attribute: [schemaValidators.attribute],
-      element: [schemaValidators.element]
-    }
+      element: [schemaValidators.element],
+    },
   });
   return issues;
 }
 
 module.exports = {
-  validateBySchema: validateBySchema
+  validateBySchema: validateBySchema,
 };

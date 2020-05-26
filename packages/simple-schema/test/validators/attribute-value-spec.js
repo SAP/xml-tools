@@ -19,10 +19,10 @@ describe("The XML Simple Schema", () => {
               private: {
                 required: false,
                 key: "private",
-                value: ["true", "false"]
-              }
+                value: ["true", "false"],
+              },
             },
-            elements: {}
+            elements: {},
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.have.lengthOf(1);
@@ -50,10 +50,10 @@ describe("The XML Simple Schema", () => {
               private: {
                 required: false,
                 key: "private",
-                value: ["true", "false"]
-              }
+                value: ["true", "false"],
+              },
             },
-            elements: {}
+            elements: {},
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.be.empty;
@@ -76,10 +76,10 @@ describe("The XML Simple Schema", () => {
               private: {
                 required: false,
                 key: "private",
-                value: /^(true|false)$/
-              }
+                value: /^(true|false)$/,
+              },
             },
-            elements: {}
+            elements: {},
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.have.lengthOf(1);
@@ -105,10 +105,10 @@ describe("The XML Simple Schema", () => {
               private: {
                 required: false,
                 key: "private",
-                value: /^(true|false)$/
-              }
+                value: /^(true|false)$/,
+              },
             },
-            elements: {}
+            elements: {},
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.be.empty;
@@ -130,10 +130,10 @@ describe("The XML Simple Schema", () => {
               private: {
                 required: false,
                 key: "private",
-                value: ["true", "false"]
-              }
+                value: ["true", "false"],
+              },
             },
-            elements: {}
+            elements: {},
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.be.empty;
@@ -152,10 +152,10 @@ describe("The XML Simple Schema", () => {
             attributes: {
               private: {
                 required: false,
-                key: "private"
-              }
+                key: "private",
+              },
             },
-            elements: {}
+            elements: {},
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.be.empty;
@@ -182,12 +182,12 @@ describe("The XML Simple Schema", () => {
                   age: {
                     required: false,
                     key: "age",
-                    value: "66"
-                  }
+                    value: "66",
+                  },
                 },
-                elements: {}
-              }
-            }
+                elements: {},
+              },
+            },
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.be.empty;
@@ -214,12 +214,12 @@ describe("The XML Simple Schema", () => {
                   age: {
                     required: false,
                     key: "age",
-                    value: "66"
-                  }
+                    value: "66",
+                  },
                 },
-                elements: {}
-              }
-            }
+                elements: {},
+              },
+            },
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.be.empty;
@@ -239,7 +239,7 @@ describe("The XML Simple Schema", () => {
             name: "person",
             attributes: {},
 
-            elements: {}
+            elements: {},
           };
           const issues = validateBySchema(xmlText, schema);
           expect(issues).to.be.empty;

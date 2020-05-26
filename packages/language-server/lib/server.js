@@ -2,7 +2,7 @@ const {
   createConnection,
   ProposedFeatures,
   TextDocuments,
-  TextDocumentSyncKind
+  TextDocumentSyncKind,
 } = require("vscode-languageserver");
 const { TextDocument } = require("vscode-languageserver-textdocument");
 
@@ -14,12 +14,12 @@ const documents = new TextDocuments(TextDocument);
 connection.onInitialize(() => {
   return {
     capabilities: {
-      textDocumentSync: TextDocumentSyncKind.Full
-    }
+      textDocumentSync: TextDocumentSyncKind.Full,
+    },
   };
 });
 
-documents.onDidChangeContent(async event => {
+documents.onDidChangeContent(async (event) => {
   const diagnostics = await validateDocument(event.document);
   connection.sendDiagnostics({ uri: event.document.uri, diagnostics });
 });

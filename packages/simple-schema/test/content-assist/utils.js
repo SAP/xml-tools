@@ -22,15 +22,15 @@ function suggestionsBySchema(xmlText, schema) {
     offset: offset,
     providers: {
       attributeValue: [
-        schemaSuggestionsProviders.schemaAttributeValueCompletion
+        schemaSuggestionsProviders.schemaAttributeValueCompletion,
       ],
       attributeName: [schemaSuggestionsProviders.schemaAttributeNameCompletion],
-      elementName: [schemaSuggestionsProviders.schemaElementNameCompletion]
-    }
+      elementName: [schemaSuggestionsProviders.schemaElementNameCompletion],
+    },
   });
   return suggestions;
 }
 
 module.exports = {
-  suggestionsBySchema: suggestionsBySchema
+  suggestionsBySchema: suggestionsBySchema,
 };

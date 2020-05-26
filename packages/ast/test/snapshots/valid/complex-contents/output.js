@@ -15,14 +15,14 @@ module.exports = {
         isSelfClosing: false,
         openBody: { startOffset: 9, endOffset: 14 },
         closeBody: { startOffset: 15, endOffset: 21 },
-        attributesRange: { startOffset: 15, endOffset: 13 }
-      }
+        attributesRange: { startOffset: 15, endOffset: 13 },
+      },
     },
     position: { startOffset: 0, endOffset: 22 },
     prolog: {
       type: "XMLProlog",
       attributes: [],
-      position: { startOffset: 0, endOffset: 7 }
-    }
-  }
+      position: { startOffset: 0, endOffset: 7 },
+    },
+  },
 };

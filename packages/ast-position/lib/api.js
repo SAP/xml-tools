@@ -13,5 +13,5 @@ function astPositionAtOffset(xmlDoc, offset) {
 }
 
 module.exports = {
-  astPositionAtOffset
+  astPositionAtOffset,
 };

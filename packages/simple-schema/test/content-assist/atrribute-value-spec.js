@@ -24,12 +24,12 @@ describe("The XML Simple Schema", () => {
                 age: {
                   required: false,
                   key: "age",
-                  value: ["66", "67", "666"]
-                }
+                  value: ["66", "67", "666"],
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -37,16 +37,16 @@ describe("The XML Simple Schema", () => {
         expect(suggestions).to.deep.include.members([
           {
             label: "66",
-            text: "66"
+            text: "66",
           },
           {
             label: "67",
-            text: "67"
+            text: "67",
           },
           {
             label: "666",
-            text: "666"
-          }
+            text: "666",
+          },
         ]);
       });
 
@@ -70,12 +70,12 @@ describe("The XML Simple Schema", () => {
                 age: {
                   required: false,
                   key: "age",
-                  value: ["66", "67", "666"]
-                }
+                  value: ["66", "67", "666"],
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -83,16 +83,16 @@ describe("The XML Simple Schema", () => {
         expect(suggestions).to.deep.include.members([
           {
             label: "66",
-            text: "6"
+            text: "6",
           },
           {
             label: "67",
-            text: "7"
+            text: "7",
           },
           {
             label: "666",
-            text: "66"
-          }
+            text: "66",
+          },
         ]);
       });
 
@@ -116,12 +116,12 @@ describe("The XML Simple Schema", () => {
                 age: {
                   required: false,
                   key: "age",
-                  value: /^\d\d$/
-                }
+                  value: /^\d\d$/,
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -147,12 +147,12 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 age: {
                   required: false,
-                  key: "age"
-                }
+                  key: "age",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);
@@ -170,7 +170,7 @@ describe("The XML Simple Schema", () => {
           name: "people",
           attributes: {},
 
-          elements: {}
+          elements: {},
         };
 
         const suggestions = suggestionsBySchema(xmlText, schema);

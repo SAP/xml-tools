@@ -24,12 +24,12 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 age: {
                   required: true,
-                  key: "age"
-                }
+                  key: "age",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(1);
@@ -59,20 +59,20 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 age: {
                   required: true,
-                  key: "age"
+                  key: "age",
                 },
                 firstName: {
                   required: true,
-                  key: "firstName"
+                  key: "firstName",
                 },
                 lastName: {
                   required: true,
-                  key: "lastName"
-                }
+                  key: "lastName",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(3);
@@ -80,7 +80,7 @@ describe("The XML Simple Schema", () => {
         expect(messages).to.have.members([
           "Missing Required Attribute: <age>",
           "Missing Required Attribute: <firstName>",
-          "Missing Required Attribute: <lastName>"
+          "Missing Required Attribute: <lastName>",
         ]);
       });
 
@@ -103,20 +103,20 @@ describe("The XML Simple Schema", () => {
               attributes: {
                 age: {
                   required: true,
-                  key: "age"
+                  key: "age",
                 },
                 firstName: {
                   required: true,
-                  key: "firstName"
+                  key: "firstName",
                 },
                 lastName: {
                   required: true,
-                  key: "lastName"
-                }
+                  key: "lastName",
+                },
               },
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;

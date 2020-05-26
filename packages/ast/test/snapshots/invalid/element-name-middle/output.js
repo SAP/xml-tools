@@ -17,8 +17,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 15, endOffset: 18 },
-              text: "bobi"
-            }
+              text: "bobi",
+            },
           ],
           position: { startOffset: 11, endOffset: 23 },
           syntax: {
@@ -27,8 +27,8 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 11, endOffset: 14 },
             closeBody: { startOffset: 19, endOffset: 23 },
-            attributesRange: { startOffset: 15, endOffset: 13 }
-          }
+            attributesRange: { startOffset: 15, endOffset: 13 },
+          },
         },
         {
           type: "XMLElement",
@@ -40,8 +40,8 @@ module.exports = {
           position: { startOffset: 29, endOffset: 31 },
           syntax: {
             openName: { image: "ad", startOffset: 30, endOffset: 31 },
-            guessedAttributesRange: { startOffset: 33, endOffset: 36 }
-          }
+            guessedAttributesRange: { startOffset: 33, endOffset: 36 },
+          },
         },
         {
           type: "XMLElement",
@@ -53,8 +53,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 43, endOffset: 46 },
-              text: "john"
-            }
+              text: "john",
+            },
           ],
           position: { startOffset: 37, endOffset: 53 },
           syntax: {
@@ -63,8 +63,8 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 37, endOffset: 42 },
             closeBody: { startOffset: 47, endOffset: 53 },
-            attributesRange: { startOffset: 43, endOffset: 41 }
-          }
+            attributesRange: { startOffset: 43, endOffset: 41 },
+          },
         },
         {
           type: "XMLElement",
@@ -76,8 +76,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 65, endOffset: 66 },
-              text: "ny"
-            }
+              text: "ny",
+            },
           ],
           position: { startOffset: 59, endOffset: 73 },
           syntax: {
@@ -86,31 +86,31 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 59, endOffset: 64 },
             closeBody: { startOffset: 67, endOffset: 73 },
-            attributesRange: { startOffset: 65, endOffset: 63 }
-          }
-        }
+            attributesRange: { startOffset: 65, endOffset: 63 },
+          },
+        },
       ],
       textContents: [
         {
           type: "XMLTextContent",
           position: { startOffset: 6, endOffset: 10 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 24, endOffset: 28 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 54, endOffset: 58 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 74, endOffset: 74 },
-          text: "\n"
-        }
+          text: "\n",
+        },
       ],
       position: { startOffset: 0, endOffset: 81 },
       syntax: {
@@ -119,9 +119,9 @@ module.exports = {
         isSelfClosing: false,
         openBody: { startOffset: 0, endOffset: 5 },
         closeBody: { startOffset: 75, endOffset: 81 },
-        attributesRange: { startOffset: 6, endOffset: 4 }
-      }
+        attributesRange: { startOffset: 6, endOffset: 4 },
+      },
     },
-    position: { startOffset: 0, endOffset: 82 }
-  }
+    position: { startOffset: 0, endOffset: 82 },
+  },
 };

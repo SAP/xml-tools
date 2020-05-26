@@ -32,7 +32,7 @@ function validateAttributeValue(attributeNode, xssAttribute) {
         msg: `Expecting Value matching <${valueDef.toString()}> but found <${actualValue}>`,
         node: attributeNode,
         severity: "error",
-        position: errPosition
+        position: errPosition,
       });
     }
   } else if (isArray(valueDef)) {
@@ -41,7 +41,7 @@ function validateAttributeValue(attributeNode, xssAttribute) {
         msg: `Expecting one of <${valueDef.toString()}> but found <${actualValue}>`,
         node: attributeNode,
         severity: "error",
-        position: errPosition
+        position: errPosition,
       });
     }
   } else {
@@ -53,5 +53,5 @@ function validateAttributeValue(attributeNode, xssAttribute) {
 }
 
 module.exports = {
-  validateAttributeValue: validateAttributeValue
+  validateAttributeValue: validateAttributeValue,
 };

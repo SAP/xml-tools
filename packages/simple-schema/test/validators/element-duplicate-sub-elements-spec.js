@@ -30,11 +30,11 @@ describe("The XML Simple Schema", () => {
                   lastName: "name",
                   cardinality: "single",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(2);
@@ -84,17 +84,17 @@ describe("The XML Simple Schema", () => {
                   name: "lastName",
                   cardinality: "single",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   name: "address",
                   cardinality: "single",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(5);
@@ -102,7 +102,7 @@ describe("The XML Simple Schema", () => {
         const countByMessages = countBy(messages, identity);
         expect(countByMessages).to.eql({
           "Duplicate Sub-Element: <lastName> only a single occurrence of this Sub-Element is allowed here.": 3,
-          "Duplicate Sub-Element: <address> only a single occurrence of this Sub-Element is allowed here.": 2
+          "Duplicate Sub-Element: <address> only a single occurrence of this Sub-Element is allowed here.": 2,
         });
       });
 
@@ -133,23 +133,23 @@ describe("The XML Simple Schema", () => {
                   name: "name",
                   cardinality: "single",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   name: "age",
                   cardinality: "single",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   name: "address",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;
@@ -177,9 +177,9 @@ describe("The XML Simple Schema", () => {
               required: false,
               cardinality: "many",
               attributes: {},
-              elements: {}
-            }
-          }
+              elements: {},
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;

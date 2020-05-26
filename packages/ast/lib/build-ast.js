@@ -8,12 +8,12 @@ const {
   sortBy,
   isEmpty,
   isArray,
-  assign
+  assign,
 } = require("lodash");
 const {
   findNextTextualToken,
   isXMLNamespaceKey,
-  getXMLNamespaceKeyPrefix
+  getXMLNamespaceKeyPrefix,
 } = require("@xml-tools/common");
 
 const { getAstChildrenReflective } = require("./utils");
@@ -57,7 +57,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
     const astNode = {
       type: "XMLDocument",
       rootElement: invalidSyntax,
-      position: location
+      position: location,
     };
 
     if (ctx.prolog !== undefined) {
@@ -84,7 +84,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
     const astNode = {
       type: "XMLProlog",
       attributes: [],
-      position: location
+      position: location,
     };
 
     if (ctx.attribute !== undefined) {
@@ -143,7 +143,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       subElements: [],
       textContents: [],
       position: location,
-      syntax: {}
+      syntax: {},
     };
 
     if (ctx.attribute !== undefined) {
@@ -184,7 +184,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
       position: location,
       key: invalidSyntax,
       value: invalidSyntax,
-      syntax: {}
+      syntax: {},
     };
 
     /* istanbul ignore else - Defensive Coding, not actually possible else branch */
@@ -216,7 +216,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
     const astNode = {
       type: "XMLTextContent",
       position: location,
-      text: invalidSyntax
+      text: invalidSyntax,
     };
 
     let allTokens = [];
@@ -247,7 +247,7 @@ const AstBuilder = new CstToAstVisitor();
 
 function setChildrenParent(astParent) {
   const astChildren = getAstChildrenReflective(astParent);
-  forEach(astChildren, child => (child.parent = astParent));
+  forEach(astChildren, (child) => (child.parent = astParent));
 }
 
 /**
@@ -287,7 +287,7 @@ function updateNamespaces(element, prevNamespaces = []) {
   // "newer" (closer scope)  namespaces definitions will overwrite "older" ones.
   element.namespaces = assign(emptyMap, prevNamespaces, currElemNamespaces);
 
-  forEach(element.subElements, subElem =>
+  forEach(element.subElements, (subElem) =>
     updateNamespaces(subElem, element.namespaces)
   );
 }
@@ -303,7 +303,7 @@ function toXMLToken(token) {
     "startLine",
     "endLine",
     "startColumn",
-    "endColumn"
+    "endColumn",
   ]);
 }
 
@@ -390,14 +390,14 @@ function handleElementOpenCloseBodyRanges(astNode, ctx) {
     if (openBodyCloseTok !== undefined) {
       astNode.syntax.openBody = {
         ...startOfXMLToken(ctx.OPEN[0]),
-        ...endOfXMLToken(openBodyCloseTok)
+        ...endOfXMLToken(openBodyCloseTok),
       };
     }
 
     if (exists(ctx.SLASH_OPEN) && exists(ctx.END)) {
       astNode.syntax.closeBody = {
         ...startOfXMLToken(ctx.SLASH_OPEN[0]),
-        ...endOfXMLToken(ctx.END[0])
+        ...endOfXMLToken(ctx.END[0]),
       };
     }
   }
@@ -432,7 +432,7 @@ function handleElementAttributeRanges(astNode, ctx, tokenVector) {
       if (nextTextualToken !== null) {
         astNode.syntax.guessedAttributesRange = {
           startOffset,
-          endOffset: nextTextualToken.endOffset - 1
+          endOffset: nextTextualToken.endOffset - 1,
         };
       }
     }
@@ -440,5 +440,5 @@ function handleElementAttributeRanges(astNode, ctx, tokenVector) {
 }
 
 module.exports = {
-  buildAst: buildAst
+  buildAst: buildAst,
 };

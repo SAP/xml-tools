@@ -13,15 +13,15 @@ module.exports = {
           value: "666",
           syntax: {
             key: { image: "attr1", startOffset: 6, endOffset: 10 },
-            value: { image: '"666"', startOffset: 12, endOffset: 16 }
-          }
+            value: { image: '"666"', startOffset: 12, endOffset: 16 },
+          },
         },
         {
           type: "XMLAttribute",
           position: { startOffset: 18, endOffset: 22 },
           key: "attr2",
           value: null,
-          syntax: { key: { image: "attr2", startOffset: 18, endOffset: 22 } }
+          syntax: { key: { image: "attr2", startOffset: 18, endOffset: 22 } },
         },
         {
           type: "XMLAttribute",
@@ -30,9 +30,9 @@ module.exports = {
           value: "111",
           syntax: {
             key: { image: "attr3", startOffset: 24, endOffset: 28 },
-            value: { image: '"111"', startOffset: 30, endOffset: 34 }
-          }
-        }
+            value: { image: '"111"', startOffset: 30, endOffset: 34 },
+          },
+        },
       ],
       subElements: [],
       textContents: [],
@@ -43,9 +43,9 @@ module.exports = {
         isSelfClosing: false,
         openBody: { startOffset: 0, endOffset: 36 },
         closeBody: { startOffset: 37, endOffset: 43 },
-        attributesRange: { startOffset: 6, endOffset: 35 }
-      }
+        attributesRange: { startOffset: 6, endOffset: 35 },
+      },
     },
-    position: { startOffset: 0, endOffset: 44 }
-  }
+    position: { startOffset: 0, endOffset: 44 },
+  },
 };

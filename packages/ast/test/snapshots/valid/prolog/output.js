@@ -15,8 +15,8 @@ module.exports = {
         isSelfClosing: false,
         openBody: { startOffset: 39, endOffset: 44 },
         closeBody: { startOffset: 45, endOffset: 51 },
-        attributesRange: { startOffset: 45, endOffset: 43 }
-      }
+        attributesRange: { startOffset: 45, endOffset: 43 },
+      },
     },
     position: { startOffset: 0, endOffset: 52 },
     prolog: {
@@ -29,8 +29,8 @@ module.exports = {
           value: "1.0",
           syntax: {
             key: { image: "version", startOffset: 6, endOffset: 12 },
-            value: { image: '"1.0"', startOffset: 14, endOffset: 18 }
-          }
+            value: { image: '"1.0"', startOffset: 14, endOffset: 18 },
+          },
         },
         {
           type: "XMLAttribute",
@@ -39,11 +39,11 @@ module.exports = {
           value: "UTF-8",
           syntax: {
             key: { image: "encoding", startOffset: 20, endOffset: 27 },
-            value: { image: '"UTF-8"', startOffset: 29, endOffset: 35 }
-          }
-        }
+            value: { image: '"UTF-8"', startOffset: 29, endOffset: 35 },
+          },
+        },
       ],
-      position: { startOffset: 0, endOffset: 37 }
-    }
-  }
+      position: { startOffset: 0, endOffset: 37 },
+    },
+  },
 };

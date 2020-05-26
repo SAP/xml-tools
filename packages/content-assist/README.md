@@ -71,13 +71,13 @@ const suggestions = getSuggestions({
         if (element.parent.name === "note" && "address".startsWith(prefix)) {
           suggestions.push({
             text: "address".slice(prefix.length),
-            label: "address"
+            label: "address",
           });
         }
         return suggestions;
-      }
-    ]
-  }
+      },
+    ],
+  },
 });
 
 console.log(suggestions[0].text); // -> dress

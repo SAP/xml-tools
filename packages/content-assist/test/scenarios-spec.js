@@ -20,8 +20,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(element.name).to.eql("person");
                 expect(context).to.eql(999);
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           },
           999
         );
@@ -45,8 +45,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(element.name).to.eql("person");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -63,8 +63,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(element.name).to.eql("person");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -81,8 +81,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(element.name).to.eql("person");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -102,8 +102,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(element.name).to.eql("person");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -119,8 +119,8 @@ describe("The XML Content Assist Capabilities", () => {
           elementContent: [
             ({ element }) => {
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.false;
       });
@@ -145,8 +145,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(element.name).to.eql("age");
                 expect(context).to.eql(666);
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           },
           666
         );
@@ -169,8 +169,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(element.name).to.eql("age");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -191,8 +191,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(element.name).to.be.null;
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -217,8 +217,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.eql(123);
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           },
           123
         );
@@ -242,8 +242,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(prefix).to.be.undefined;
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -265,8 +265,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(prefix).to.eql("eng");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -288,8 +288,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(prefix).to.eql("eng");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -314,8 +314,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.eql("gen");
                 expect(context).to.eql(333);
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           },
           333
         );
@@ -338,8 +338,8 @@ describe("The XML Content Assist Capabilities", () => {
               expect(prefix).to.eql("gen");
               expect(context).to.be.undefined;
               providerCalled = true;
-            }
-          ]
+            },
+          ],
         });
         expect(providerCalled).to.be.true;
       });
@@ -361,8 +361,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -383,8 +383,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -401,8 +401,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -423,8 +423,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -444,8 +444,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -464,8 +464,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -484,8 +484,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -504,8 +504,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -523,8 +523,8 @@ describe("The XML Content Assist Capabilities", () => {
                 expect(prefix).to.be.undefined;
                 expect(context).to.be.undefined;
                 providerCalled = true;
-              }
-            ]
+              },
+            ],
           });
           expect(providerCalled).to.be.true;
         });
@@ -549,6 +549,6 @@ function getSampleSuggestions(sample, providers, context) {
     tokenVector,
     offset: offset,
     providers: providers,
-    context: context
+    context: context,
   });
 }

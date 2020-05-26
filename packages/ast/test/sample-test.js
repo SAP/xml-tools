@@ -6,7 +6,7 @@ const { partialRight } = require("lodash");
 
 const {
   modifyAstForAssertions,
-  assertParentPropsAreValid
+  assertParentPropsAreValid,
 } = require("./utils");
 const { buildAst } = require("../");
 
@@ -37,5 +37,5 @@ function testNameFromDir(dirPath) {
 module.exports = {
   executeValidSampleTest: partialRight(executeSampleTest, true),
   executeInValidSampleTest: partialRight(executeSampleTest, false),
-  testNameFromDir: testNameFromDir
+  testNameFromDir: testNameFromDir,
 };

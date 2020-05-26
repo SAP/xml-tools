@@ -34,7 +34,7 @@ function findElementXssDef(node, schema) {
     return undefined;
   }
   let xssElement = schema;
-  forEach(drop(elementsPath), elemName => {
+  forEach(drop(elementsPath), (elemName) => {
     // traverse subElements
     xssElement = xssElement.elements[elemName];
     if (xssElement === undefined) {
@@ -69,5 +69,5 @@ function getAstNodeAncestors(node) {
 
 module.exports = {
   findAttributeXssDef: findAttributeXssDef,
-  findElementXssDef: findElementXssDef
+  findElementXssDef: findElementXssDef,
 };

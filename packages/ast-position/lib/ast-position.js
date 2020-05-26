@@ -35,5 +35,5 @@ class AstPositionVisitor {
 }
 
 module.exports = {
-  AstPositionVisitor: AstPositionVisitor
+  AstPositionVisitor: AstPositionVisitor,
 };

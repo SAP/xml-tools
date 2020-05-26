@@ -12,10 +12,10 @@ describe("The XML AST Visitor", () => {
 
     let visitedCounter = 0;
     const visitor = {
-      visitXMLElement: function(node) {
+      visitXMLElement: function (node) {
         expect(["to", "from", "note"]).to.include(node.name);
         visitedCounter++;
-      }
+      },
     };
 
     const astNode = getAst(inputText);
@@ -32,13 +32,13 @@ describe("The XML AST Visitor", () => {
 
     let visitedCounter = 0;
     const visitor = {
-      visitXMLTextContent: function(node) {
+      visitXMLTextContent: function (node) {
         // ignore whitespace TextNodes
         if (/^\s+$/.test(node.text) === false) {
           expect(["Bill", "Tim", "note"]).to.include(node.text);
           visitedCounter++;
         }
-      }
+      },
     };
 
     const astNode = getAst(inputText);
@@ -56,10 +56,10 @@ describe("The XML AST Visitor", () => {
 
     let visitedCounter = 0;
     const visitor = {
-      visitXMLAttribute: function(node) {
+      visitXMLAttribute: function (node) {
         expect(["foo", "bar", "version", "encoding"]).to.include(node.key);
         visitedCounter++;
-      }
+      },
     };
 
     const astNode = getAst(inputText);
@@ -75,12 +75,12 @@ describe("The XML AST Visitor", () => {
 
     let visitedCounter = 0;
     const visitor = {
-      visitXMLProlog: function(node) {
+      visitXMLProlog: function (node) {
         expect(node.attributes).to.have.lengthOf(2);
         expect(node.attributes[0].key).to.eql("version");
         expect(node.attributes[1].key).to.eql("encoding");
         visitedCounter++;
-      }
+      },
     };
 
     const astNode = getAst(inputText);
@@ -97,10 +97,10 @@ describe("The XML AST Visitor", () => {
 
     let visitedCounter = 0;
     const visitor = {
-      visitXMLDocument: function(node) {
+      visitXMLDocument: function (node) {
         expect(node.rootElement.name).to.eql("note");
         visitedCounter++;
-      }
+      },
     };
 
     const astNode = getAst(inputText);

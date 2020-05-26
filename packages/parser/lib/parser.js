@@ -6,7 +6,7 @@ class Parser extends CstParser {
     super(t, {
       maxLookahead: 1,
       recoveryEnabled: true,
-      nodeLocationTracking: "full"
+      nodeLocationTracking: "full",
     });
 
     this.deletionRecoveryEnabled = true;
@@ -71,7 +71,7 @@ class Parser extends CstParser {
           ALT: () => {
             $.CONSUME2(t.Name, { LABEL: "System" });
             $.CONSUME(t.STRING, { LABEL: "SystemLiteral" });
-          }
+          },
         },
         {
           GATE: () => $.LA(1).image === "PUBLIC",
@@ -79,8 +79,8 @@ class Parser extends CstParser {
             $.CONSUME3(t.Name, { LABEL: "Public" });
             $.CONSUME2(t.STRING, { LABEL: "PubIDLiteral" });
             $.CONSUME3(t.STRING, { LABEL: "SystemLiteral" });
-          }
-        }
+          },
+        },
       ]);
     });
 
@@ -92,7 +92,7 @@ class Parser extends CstParser {
           { ALT: () => $.SUBRULE($.reference) },
           { ALT: () => $.CONSUME(t.CData) },
           { ALT: () => $.CONSUME(t.PROCESSING_INSTRUCTION) },
-          { ALT: () => $.CONSUME(t.Comment) }
+          { ALT: () => $.CONSUME(t.Comment) },
         ]);
       });
     });
@@ -122,20 +122,20 @@ class Parser extends CstParser {
             $.CONSUME(t.SLASH_OPEN);
             $.CONSUME2(t.Name, { LABEL: "END_NAME" });
             $.CONSUME2(t.CLOSE, { LABEL: "END" });
-          }
+          },
         },
         {
           ALT: () => {
             $.CONSUME(t.SLASH_CLOSE);
-          }
-        }
+          },
+        },
       ]);
     });
 
     $.RULE("reference", () => {
       $.OR([
         { ALT: () => $.CONSUME(t.EntityRef) },
-        { ALT: () => $.CONSUME(t.CharRef) }
+        { ALT: () => $.CONSUME(t.CharRef) },
       ]);
     });
 
@@ -158,7 +158,7 @@ class Parser extends CstParser {
     $.RULE("chardata", () => {
       $.OR([
         { ALT: () => $.CONSUME(t.TEXT) },
-        { ALT: () => $.CONSUME(t.SEA_WS) }
+        { ALT: () => $.CONSUME(t.SEA_WS) },
       ]);
     });
 
@@ -166,7 +166,7 @@ class Parser extends CstParser {
       $.OR([
         { ALT: () => $.CONSUME(t.Comment) },
         { ALT: () => $.CONSUME(t.PROCESSING_INSTRUCTION) },
-        { ALT: () => $.CONSUME(t.SEA_WS) }
+        { ALT: () => $.CONSUME(t.SEA_WS) },
       ]);
     });
 
@@ -189,7 +189,7 @@ class Parser extends CstParser {
     let nextToken = this.LA(1);
     let k = 2;
     while (true) {
-      const foundMatch = allPossibleReSyncTokTypes.find(resyncTokType => {
+      const foundMatch = allPossibleReSyncTokTypes.find((resyncTokType) => {
         const canMatch = tokenMatcher(nextToken, resyncTokType);
         return canMatch;
       });
@@ -206,5 +206,5 @@ class Parser extends CstParser {
 const xmlParser = new Parser();
 
 module.exports = {
-  xmlParser
+  xmlParser,
 };

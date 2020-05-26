@@ -13,9 +13,9 @@ module.exports = {
       cst: cst,
       tokenVector: lexResult.tokens,
       lexErrors: lexResult.errors,
-      parseErrors: xmlParser.errors
+      parseErrors: xmlParser.errors,
     };
   },
 
-  BaseXmlCstVisitor: xmlParser.getBaseCstVisitorConstructor()
+  BaseXmlCstVisitor: xmlParser.getBaseCstVisitorConstructor(),
 };

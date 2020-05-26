@@ -5,5 +5,5 @@ function tokenToOffsetPosition(token) {
 }
 
 module.exports = {
-  tokenToOffsetPosition: tokenToOffsetPosition
+  tokenToOffsetPosition: tokenToOffsetPosition,
 };

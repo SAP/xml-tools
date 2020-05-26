@@ -13,10 +13,10 @@ function validateUnknownSubElements(elem, schema) {
     return [];
   }
 
-  const allowedElemNames = map(schema.elements, _ => _.name);
+  const allowedElemNames = map(schema.elements, (_) => _.name);
 
   const issues = [];
-  forEach(elem.subElements, subElem => {
+  forEach(elem.subElements, (subElem) => {
     if (subElem.name !== null) {
       if (includes(allowedElemNames, subElem.name) === false) {
         issues.push({
@@ -26,7 +26,7 @@ function validateUnknownSubElements(elem, schema) {
           node: subElem,
           severity: "error",
           // safe assumption that we have an `openName` (see above condition)
-          position: tokenToOffsetPosition(subElem.syntax.openName)
+          position: tokenToOffsetPosition(subElem.syntax.openName),
         });
       }
     }
@@ -36,5 +36,5 @@ function validateUnknownSubElements(elem, schema) {
 }
 
 module.exports = {
-  validateUnknownSubElements: validateUnknownSubElements
+  validateUnknownSubElements: validateUnknownSubElements,
 };

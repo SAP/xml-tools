@@ -17,8 +17,8 @@ module.exports = {
             {
               type: "XMLTextContent",
               position: { startOffset: 15, endOffset: 18 },
-              text: "Bill"
-            }
+              text: "Bill",
+            },
           ],
           position: { startOffset: 11, endOffset: 23 },
           syntax: {
@@ -27,8 +27,8 @@ module.exports = {
             isSelfClosing: false,
             openBody: { startOffset: 11, endOffset: 14 },
             closeBody: { startOffset: 19, endOffset: 23 },
-            attributesRange: { startOffset: 15, endOffset: 13 }
-          }
+            attributesRange: { startOffset: 15, endOffset: 13 },
+          },
         },
         {
           type: "XMLElement",
@@ -42,9 +42,9 @@ module.exports = {
               value: "tim",
               syntax: {
                 key: { image: "name", startOffset: 35, endOffset: 38 },
-                value: { image: '"tim"', startOffset: 40, endOffset: 44 }
-              }
-            }
+                value: { image: '"tim"', startOffset: 40, endOffset: 44 },
+              },
+            },
           ],
           subElements: [],
           textContents: [],
@@ -53,26 +53,26 @@ module.exports = {
             openName: { image: "from", startOffset: 30, endOffset: 33 },
             isSelfClosing: true,
             openBody: { startOffset: 29, endOffset: 46 },
-            attributesRange: { startOffset: 35, endOffset: 44 }
-          }
-        }
+            attributesRange: { startOffset: 35, endOffset: 44 },
+          },
+        },
       ],
       textContents: [
         {
           type: "XMLTextContent",
           position: { startOffset: 6, endOffset: 10 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 24, endOffset: 28 },
-          text: "\n    "
+          text: "\n    ",
         },
         {
           type: "XMLTextContent",
           position: { startOffset: 47, endOffset: 47 },
-          text: "\n"
-        }
+          text: "\n",
+        },
       ],
       position: { startOffset: 0, endOffset: 54 },
       syntax: {
@@ -81,9 +81,9 @@ module.exports = {
         isSelfClosing: false,
         openBody: { startOffset: 0, endOffset: 5 },
         closeBody: { startOffset: 48, endOffset: 54 },
-        attributesRange: { startOffset: 6, endOffset: 4 }
-      }
+        attributesRange: { startOffset: 6, endOffset: 4 },
+      },
     },
-    position: { startOffset: 0, endOffset: 55 }
-  }
+    position: { startOffset: 0, endOffset: 55 },
+  },
 };

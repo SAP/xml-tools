@@ -30,11 +30,11 @@ describe("The XML Simple Schema", () => {
                   name: "name",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(1);
@@ -73,24 +73,24 @@ describe("The XML Simple Schema", () => {
                   name: "name",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   name: "age",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.have.lengthOf(2);
         const messages = map(issues, "msg");
         expect(messages).to.have.members([
           "Unknown Sub-Element: <lastName> only [name,age] Sub-Elements are allowed",
-          "Unknown Sub-Element: <address> only [name,age] Sub-Elements are allowed"
+          "Unknown Sub-Element: <address> only [name,age] Sub-Elements are allowed",
         ]);
       });
 
@@ -120,23 +120,23 @@ describe("The XML Simple Schema", () => {
                   name: "name",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   name: "age",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   name: "address",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;
@@ -167,23 +167,23 @@ describe("The XML Simple Schema", () => {
                   name: "name",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 age: {
                   name: "age",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
+                  elements: {},
                 },
                 address: {
                   name: "address",
                   cardinality: "many",
                   attributes: {},
-                  elements: {}
-                }
-              }
-            }
-          }
+                  elements: {},
+                },
+              },
+            },
+          },
         };
         const issues = validateBySchema(xmlText, schema);
         expect(issues).to.be.empty;

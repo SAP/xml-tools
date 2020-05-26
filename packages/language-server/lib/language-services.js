@@ -17,7 +17,7 @@ function lexingErrorToDiagnostic(document, error) {
       document.positionAt(error.offset + error.length)
     ),
     severity: DiagnosticSeverity.Error,
-    source: SYNTAX_ERROR_MSG
+    source: SYNTAX_ERROR_MSG,
   };
 }
 
@@ -33,10 +33,10 @@ function parsingErrorToDiagnostic(document, error) {
       start: document.positionAt(error.token.startOffset),
       end: document.positionAt(
         error.token.endOffset ? error.token.endOffset : 0
-      )
+      ),
     },
     severity: DiagnosticSeverity.Error,
-    source: SYNTAX_ERROR_MSG
+    source: SYNTAX_ERROR_MSG,
   };
 }
 
@@ -49,8 +49,8 @@ async function validateDocument(document) {
   if (document.languageId === "xml") {
     const { lexErrors, parseErrors } = parse(document.getText());
     diagnostics = [
-      ...map(lexErrors, _ => lexingErrorToDiagnostic(document, _)),
-      ...map(parseErrors, _ => parsingErrorToDiagnostic(document, _))
+      ...map(lexErrors, (_) => lexingErrorToDiagnostic(document, _)),
+      ...map(parseErrors, (_) => parsingErrorToDiagnostic(document, _)),
     ];
   }
   return diagnostics;
@@ -58,5 +58,5 @@ async function validateDocument(document) {
 
 module.exports = {
   validateDocument: validateDocument,
-  SYNTAX_ERROR_MSG: SYNTAX_ERROR_MSG
+  SYNTAX_ERROR_MSG: SYNTAX_ERROR_MSG,
 };

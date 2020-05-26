@@ -17,14 +17,14 @@ describe("The XML Validations APIs", () => {
       doc: ast,
       validators: {
         element: [
-          node => {
+          (node) => {
             return [{ msg: node.name }];
-          }
-        ]
-      }
+          },
+        ],
+      },
     });
 
-    const msgNodeNames = map(issues, _ => _.msg);
+    const msgNodeNames = map(issues, (_) => _.msg);
     expect(msgNodeNames).to.have.lengthOf(3);
     expect(msgNodeNames).to.have.members(["note", "to", "from"]);
   });
@@ -42,14 +42,14 @@ describe("The XML Validations APIs", () => {
       doc: ast,
       validators: {
         attribute: [
-          node => {
+          (node) => {
             return [{ msg: node.key }];
-          }
-        ]
-      }
+          },
+        ],
+      },
     });
 
-    const msgNodeNames = map(issues, _ => _.msg);
+    const msgNodeNames = map(issues, (_) => _.msg);
     expect(msgNodeNames).to.have.lengthOf(2);
     expect(msgNodeNames).to.have.members(["clearance", "hidden"]);
   });

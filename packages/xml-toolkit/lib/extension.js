@@ -12,15 +12,15 @@ function activate() {
     debug: {
       module: SERVER_PATH,
       transport: TransportKind.ipc,
-      options: debugOptions
-    }
+      options: debugOptions,
+    },
   };
 
   let clientOptions = {
     documentSelector: [{ scheme: "file", language: "xml" }],
     synchronize: {
-      fileEvents: workspace.createFileSystemWatcher("**/*.xml")
-    }
+      fileEvents: workspace.createFileSystemWatcher("**/*.xml"),
+    },
   };
 
   client = new LanguageClient(
@@ -43,5 +43,5 @@ function deactivate() {
 
 module.exports = {
   activate: activate,
-  deactivate: deactivate
+  deactivate: deactivate,
 };

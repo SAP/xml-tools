@@ -1,23 +1,23 @@
 const { validateAttributeValue } = require("./validators/attribute-value");
 
 const {
-  validateDuplicateSubElements
+  validateDuplicateSubElements,
 } = require("./validators/duplicate-sub-elements");
 
 const {
-  validateRequiredAttributes
+  validateRequiredAttributes,
 } = require("./validators/required-attributes");
 
 const {
-  validateRequiredSubElements
+  validateRequiredSubElements,
 } = require("./validators/required-sub-elements");
 
 const {
-  validateUnknownAttributes
+  validateUnknownAttributes,
 } = require("./validators/unknown-attributes");
 
 const {
-  validateUnknownSubElements
+  validateUnknownSubElements,
 } = require("./validators/unknown-sub-elements");
 
 const { findAttributeXssDef, findElementXssDef } = require("./path");
@@ -28,7 +28,7 @@ function getSchemaValidators(schema) {
 
   return {
     attribute: attributeValidator,
-    element: elementValidator
+    element: elementValidator,
   };
 }
 
@@ -36,7 +36,7 @@ function getSchemaValidators(schema) {
  * @param {SimpleSchema} schema
  */
 function buildAttributeValidator(schema) {
-  return attributeNode => {
+  return (attributeNode) => {
     let issues = [];
     const xssAttributeDef = findAttributeXssDef(attributeNode, schema);
 
@@ -56,7 +56,7 @@ function buildAttributeValidator(schema) {
  * @param {SimpleSchema} schema
  */
 function buildElementValidator(schema) {
-  return elementNode => {
+  return (elementNode) => {
     let issues = [];
     const xssElementDef = findElementXssDef(elementNode, schema);
 
@@ -95,5 +95,5 @@ function buildElementValidator(schema) {
 }
 
 module.exports = {
-  getSchemaValidators: getSchemaValidators
+  getSchemaValidators: getSchemaValidators,
 };

@@ -1,3 +1,3 @@
 module.exports = {
-  DEFAULT_NS: "::DEFAULT"
+  DEFAULT_NS: "::DEFAULT",
 };

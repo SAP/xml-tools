@@ -6,7 +6,7 @@ function run() {
   // Create the mocha test
   const mocha = new Mocha({
     ui: "bdd",
-    timeout: 20000
+    timeout: 20000,
   });
   mocha.useColors(true);
 
@@ -19,11 +19,11 @@ function run() {
       }
 
       // Add files to the test suite
-      files.forEach(f => mocha.addFile(resolve(testsRoot, f)));
+      files.forEach((f) => mocha.addFile(resolve(testsRoot, f)));
 
       try {
         // Run the mocha test
-        mocha.run(failures => {
+        mocha.run((failures) => {
           if (failures > 0) {
             e(new Error(`${failures} tests failed.`));
           } else {
@@ -39,5 +39,5 @@ function run() {
 }
 
 module.exports = {
-  run: run
+  run: run,
 };

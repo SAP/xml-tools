@@ -45,11 +45,11 @@ function accept(node, visitor) {
   }
 
   const astChildren = getAstChildrenReflective(node);
-  forEach(astChildren, childNode => {
+  forEach(astChildren, (childNode) => {
     accept(childNode, visitor);
   });
 }
 
 module.exports = {
-  accept: accept
+  accept: accept,
 };

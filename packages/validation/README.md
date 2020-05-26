@@ -36,24 +36,24 @@ const issues = validate({
   doc: xmlDocAst,
   validators: {
     element: [
-      node => {
+      (node) => {
         if (node.name === "note") {
           const hasFrom = node.subElements.find(
-            subNode => subNode.name === "from"
+            (subNode) => subNode.name === "from"
           );
           if (hasFrom === undefined) {
             return [
               {
                 msg: "A Note Element **must** have a `from` subElement",
-                node: node
-              }
+                node: node,
+              },
             ];
           }
         }
         return [];
-      }
-    ]
-  }
+      },
+    ],
+  },
 });
 
 console.log(issues[0].msg); // -> "A Note Element **must** have a `from` subElement"

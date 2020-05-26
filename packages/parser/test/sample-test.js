@@ -29,5 +29,5 @@ function testNameFromDir(dirPath) {
 module.exports = {
   executeValidSampleTest: partialRight(executeSampleTest, true),
   executeInValidSampleTest: partialRight(executeSampleTest, false),
-  testNameFromDir: testNameFromDir
+  testNameFromDir: testNameFromDir,
 };

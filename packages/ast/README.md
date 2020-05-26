@@ -50,9 +50,9 @@ console.log(xmlDocAst.rootElement.name); // -> note
 // The XML AST structure / traversal method.
 const printVisitor = {
   // Will be invoked once for each Element node in the AST.
-  visitXMLElement: function(node) {
+  visitXMLElement: function (node) {
     console.log(node.name);
-  }
+  },
 
   // An XML AST Visitor may have other methods as well, see the api.d.ts file/
 };

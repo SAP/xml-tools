@@ -11,16 +11,16 @@ module.exports = {
                 image: "<!DOCTYPE",
                 startOffset: 0,
                 endOffset: 8,
-                tokenType: "DocType"
-              }
+                tokenType: "DocType",
+              },
             ],
             Name: [
               {
                 image: "greeting",
                 startOffset: 10,
                 endOffset: 17,
-                tokenType: "Name"
-              }
+                tokenType: "Name",
+              },
             ],
             externalID: [
               {
@@ -31,27 +31,32 @@ module.exports = {
                       image: "SYSTEM",
                       startOffset: 19,
                       endOffset: 24,
-                      tokenType: "Name"
-                    }
+                      tokenType: "Name",
+                    },
                   ],
                   SystemLiteral: [
                     {
                       image: '"hello.dtd"',
                       startOffset: 26,
                       endOffset: 36,
-                      tokenType: "STRING"
-                    }
-                  ]
+                      tokenType: "STRING",
+                    },
+                  ],
                 },
-                location: { startOffset: 19, endOffset: 36 }
-              }
+                location: { startOffset: 19, endOffset: 36 },
+              },
             ],
             CLOSE: [
-              { image: ">", startOffset: 37, endOffset: 37, tokenType: "CLOSE" }
-            ]
+              {
+                image: ">",
+                startOffset: 37,
+                endOffset: 37,
+                tokenType: "CLOSE",
+              },
+            ],
           },
-          location: { startOffset: 0, endOffset: 37 }
-        }
+          location: { startOffset: 0, endOffset: 37 },
+        },
       ],
       misc: [
         {
@@ -62,11 +67,11 @@ module.exports = {
                 image: "\n",
                 startOffset: 38,
                 endOffset: 38,
-                tokenType: "SEA_WS"
-              }
-            ]
+                tokenType: "SEA_WS",
+              },
+            ],
           },
-          location: { startOffset: 38, endOffset: 38 }
+          location: { startOffset: 38, endOffset: 38 },
         },
         {
           name: "misc",
@@ -76,62 +81,72 @@ module.exports = {
                 image: "\n",
                 startOffset: 52,
                 endOffset: 52,
-                tokenType: "SEA_WS"
-              }
-            ]
+                tokenType: "SEA_WS",
+              },
+            ],
           },
-          location: { startOffset: 52, endOffset: 52 }
-        }
+          location: { startOffset: 52, endOffset: 52 },
+        },
       ],
       element: [
         {
           name: "element",
           children: {
             OPEN: [
-              { image: "<", startOffset: 39, endOffset: 39, tokenType: "OPEN" }
+              { image: "<", startOffset: 39, endOffset: 39, tokenType: "OPEN" },
             ],
             Name: [
               {
                 image: "note",
                 startOffset: 40,
                 endOffset: 43,
-                tokenType: "Name"
-              }
+                tokenType: "Name",
+              },
             ],
             START_CLOSE: [
-              { image: ">", startOffset: 44, endOffset: 44, tokenType: "CLOSE" }
+              {
+                image: ">",
+                startOffset: 44,
+                endOffset: 44,
+                tokenType: "CLOSE",
+              },
             ],
             content: [
               {
                 name: "content",
                 children: {},
-                location: { startOffset: null, endOffset: null }
-              }
+                location: { startOffset: null, endOffset: null },
+              },
             ],
             SLASH_OPEN: [
               {
                 image: "</",
                 startOffset: 45,
                 endOffset: 46,
-                tokenType: "SLASH_OPEN"
-              }
+                tokenType: "SLASH_OPEN",
+              },
             ],
             END_NAME: [
               {
                 image: "note",
                 startOffset: 47,
                 endOffset: 50,
-                tokenType: "Name"
-              }
+                tokenType: "Name",
+              },
             ],
             END: [
-              { image: ">", startOffset: 51, endOffset: 51, tokenType: "CLOSE" }
-            ]
+              {
+                image: ">",
+                startOffset: 51,
+                endOffset: 51,
+                tokenType: "CLOSE",
+              },
+            ],
           },
-          location: { startOffset: 39, endOffset: 51 }
-        }
-      ]
+          location: { startOffset: 39, endOffset: 51 },
+        },
+      ],
     },
-    location: { startOffset: 0, endOffset: 52 }
-  }
+    location: { startOffset: 0, endOffset: 52 },
+  },
 };

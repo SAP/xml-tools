@@ -43,5 +43,5 @@ function reduceTokenInfo(tok) {
 }
 
 module.exports = {
-  transformCstForAssertions: transformCstForAssertions
+  transformCstForAssertions: transformCstForAssertions,
 };

@@ -1,6 +1,6 @@
 const { attributeNameCompletion } = require("./content-assist/attribute-name");
 const {
-  attributeValueCompletion
+  attributeValueCompletion,
 } = require("./content-assist/attribute-value");
 const { elementNameCompletion } = require("./content-assist/element-name");
 const { findElementXssDef, findAttributeXssDef } = require("./path");
@@ -13,7 +13,7 @@ function getSchemaSuggestionsProviders(schema) {
   return {
     schemaElementNameCompletion: elementNameProvider,
     schemaAttributeNameCompletion: attributeNameProvider,
-    schemaAttributeValueCompletion: attributeValueProvider
+    schemaAttributeValueCompletion: attributeValueProvider,
   };
 }
 
@@ -58,5 +58,5 @@ function buildAttributeValueProvider(schema) {
 }
 
 module.exports = {
-  getSchemaSuggestionsProviders: getSchemaSuggestionsProviders
+  getSchemaSuggestionsProviders: getSchemaSuggestionsProviders,
 };

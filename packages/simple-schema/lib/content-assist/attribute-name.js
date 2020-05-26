@@ -7,18 +7,18 @@ const { difference, map, filter } = require("lodash");
  * @returns {CompletionSuggestion[]}
  */
 function attributeNameCompletion(elementNode, xssElement, prefix = "") {
-  const possibleSuggestions = map(xssElement.attributes, _ => _.key);
-  const existingAttribNames = map(elementNode.attributes, _ => _.key);
+  const possibleSuggestions = map(xssElement.attributes, (_) => _.key);
+  const existingAttribNames = map(elementNode.attributes, (_) => _.key);
   const possibleNewSuggestions = difference(
     possibleSuggestions,
     existingAttribNames
   );
 
-  const suggestions = map(possibleNewSuggestions, _ => {
+  const suggestions = map(possibleNewSuggestions, (_) => {
     return {
       text: _,
       label: _,
-      commitCharacter: "="
+      commitCharacter: "=",
     };
   });
 
@@ -26,5 +26,5 @@ function attributeNameCompletion(elementNode, xssElement, prefix = "") {
 }
 
 module.exports = {
-  attributeNameCompletion: attributeNameCompletion
+  attributeNameCompletion: attributeNameCompletion,
 };

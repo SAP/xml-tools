@@ -7,13 +7,18 @@ module.exports = {
           name: "element",
           children: {
             OPEN: [
-              { image: "<", startOffset: 0, endOffset: 0, tokenType: "OPEN" }
+              { image: "<", startOffset: 0, endOffset: 0, tokenType: "OPEN" },
             ],
             Name: [
-              { image: "note", startOffset: 1, endOffset: 4, tokenType: "Name" }
+              {
+                image: "note",
+                startOffset: 1,
+                endOffset: 4,
+                tokenType: "Name",
+              },
             ],
             START_CLOSE: [
-              { image: ">", startOffset: 5, endOffset: 5, tokenType: "CLOSE" }
+              { image: ">", startOffset: 5, endOffset: 5, tokenType: "CLOSE" },
             ],
             content: [
               {
@@ -28,11 +33,11 @@ module.exports = {
                             image: "\n    ",
                             startOffset: 6,
                             endOffset: 10,
-                            tokenType: "SEA_WS"
-                          }
-                        ]
+                            tokenType: "SEA_WS",
+                          },
+                        ],
                       },
-                      location: { startOffset: 6, endOffset: 10 }
+                      location: { startOffset: 6, endOffset: 10 },
                     },
                     {
                       name: "chardata",
@@ -42,47 +47,52 @@ module.exports = {
                             image: "\n",
                             startOffset: 57,
                             endOffset: 57,
-                            tokenType: "SEA_WS"
-                          }
-                        ]
+                            tokenType: "SEA_WS",
+                          },
+                        ],
                       },
-                      location: { startOffset: 57, endOffset: 57 }
-                    }
+                      location: { startOffset: 57, endOffset: 57 },
+                    },
                   ],
                   CData: [
                     {
                       image: "<![CDATA[<greeting>Hello, world!</greeting>]]>",
                       startOffset: 11,
                       endOffset: 56,
-                      tokenType: "CData"
-                    }
-                  ]
+                      tokenType: "CData",
+                    },
+                  ],
                 },
-                location: { startOffset: 6, endOffset: 57 }
-              }
+                location: { startOffset: 6, endOffset: 57 },
+              },
             ],
             SLASH_OPEN: [
               {
                 image: "</",
                 startOffset: 58,
                 endOffset: 59,
-                tokenType: "SLASH_OPEN"
-              }
+                tokenType: "SLASH_OPEN",
+              },
             ],
             END_NAME: [
               {
                 image: "note",
                 startOffset: 60,
                 endOffset: 63,
-                tokenType: "Name"
-              }
+                tokenType: "Name",
+              },
             ],
             END: [
-              { image: ">", startOffset: 64, endOffset: 64, tokenType: "CLOSE" }
-            ]
+              {
+                image: ">",
+                startOffset: 64,
+                endOffset: 64,
+                tokenType: "CLOSE",
+              },
+            ],
           },
-          location: { startOffset: 0, endOffset: 64 }
-        }
+          location: { startOffset: 0, endOffset: 64 },
+        },
       ],
       misc: [
         {
@@ -93,14 +103,14 @@ module.exports = {
                 image: "\n",
                 startOffset: 65,
                 endOffset: 65,
-                tokenType: "SEA_WS"
-              }
-            ]
+                tokenType: "SEA_WS",
+              },
+            ],
           },
-          location: { startOffset: 65, endOffset: 65 }
-        }
-      ]
+          location: { startOffset: 65, endOffset: 65 },
+        },
+      ],
     },
-    location: { startOffset: 0, endOffset: 65 }
-  }
+    location: { startOffset: 0, endOffset: 65 },
+  },
 };

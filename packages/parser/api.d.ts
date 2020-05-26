@@ -3,7 +3,7 @@ import {
   ICstVisitor,
   ILexingError,
   IRecognitionException,
-  IToken
+  IToken,
 } from "chevrotain";
 
 export function parse(

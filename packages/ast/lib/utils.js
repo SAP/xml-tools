@@ -21,5 +21,5 @@ function getAstChildrenReflective(astParent) {
 }
 
 module.exports = {
-  getAstChildrenReflective: getAstChildrenReflective
+  getAstChildrenReflective: getAstChildrenReflective,
 };

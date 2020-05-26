@@ -4,7 +4,7 @@ function findNextTextualToken(tokenVector, prevTokenEndOffset) {
   // The TokenVector is sorted, so we could use a BinarySearch to optimize performance
   const prevTokenIdx = findIndex(
     tokenVector,
-    tok => tok.endOffset === prevTokenEndOffset
+    (tok) => tok.endOffset === prevTokenEndOffset
   );
   let nextTokenIdx = prevTokenIdx;
   let found = false;
@@ -29,5 +29,5 @@ function findNextTextualToken(tokenVector, prevTokenEndOffset) {
 }
 
 module.exports = {
-  findNextTextualToken: findNextTextualToken
+  findNextTextualToken: findNextTextualToken,
 };

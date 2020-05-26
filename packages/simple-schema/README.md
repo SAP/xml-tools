@@ -38,8 +38,8 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
           eyeColor: {
             key: "eyeColor",
             required: false,
-            value: ["grey", "blue", "green", "red"]
-          }
+            value: ["grey", "blue", "green", "red"],
+          },
         },
         elements: {
           name: {
@@ -47,11 +47,11 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
             required: true,
             name: "name",
             attributes: {},
-            elements: {}
-          }
-        }
-      }
-    }
+            elements: {},
+          },
+        },
+      },
+    },
   };
   ```
 - A Simple XML Text
@@ -78,8 +78,8 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
     doc: xmlDoc,
     validators: {
       attribute: [schemaValidators.attribute],
-      element: [schemaValidators.element]
-    }
+      element: [schemaValidators.element],
+    },
   });
 
   console.log(issues[0].msg); // Expecting one of <grey,blue,green,red> but found <violet>
@@ -99,11 +99,11 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
     offset: 47, // within the eyeColor quoted value
     providers: {
       attributeValue: [
-        schemaSuggestionsProviders.schemaAttributeValueCompletion
+        schemaSuggestionsProviders.schemaAttributeValueCompletion,
       ],
       attributeName: [schemaSuggestionsProviders.schemaAttributeNameCompletion],
-      elementName: [schemaSuggestionsProviders.schemaElementNameCompletion]
-    }
+      elementName: [schemaSuggestionsProviders.schemaElementNameCompletion],
+    },
   });
 
   console.log(suggestions[0]); // { text: 'grey', label: 'grey' }

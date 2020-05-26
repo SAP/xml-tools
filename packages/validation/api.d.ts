@@ -2,7 +2,7 @@ import {
   XMLAstNode,
   XMLAttribute,
   XMLElement,
-  XMLDocument
+  XMLDocument,
 } from "@xml-tools/ast";
 
 declare type AttributeValidator = (node: XMLAttribute) => ValidationIssue[];

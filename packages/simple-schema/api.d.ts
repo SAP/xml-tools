@@ -2,13 +2,13 @@ import { XMLAstNode, XMLAttribute, XMLElement } from "@xml-tools/ast";
 import {
   ValidationIssue,
   AttributeValidator,
-  ElementValidator
+  ElementValidator,
 } from "@xml-tools/validation";
 import {
   AttributeNameCompletion,
   AttributeValueCompletion,
   ElementContentCompletion,
-  ElementNameCompletion
+  ElementNameCompletion,
 } from "@xml-tools/content-assist";
 
 // Represents the root element in an XML document
