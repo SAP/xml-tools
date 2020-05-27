@@ -14,6 +14,7 @@ It currently contains the following packages:
 
 - [![npm-xml-tools-parser][npm-xml-tools-parser-image]][npm-xml-tools-parser-url] [@xml-tools/parser](./packages/parser) A Fault Tolerant XML Parser which outputs a [Concrete Syntax Tree][cst].
 - [![npm-xml-tools-ast][npm-xml-tools-ast-image]][npm-xml-tools-ast-url] [@xml-tools/ast](./packages/ast) XML [Abstract Syntax Tree][ast].
+- [![npm-xml-tools-ast-position][npm-xml-tools-ast-position-image]][npm-xml-tools-ast-position-url] [@xml-tools/ast](./packages/ast-position) XML Abstract Syntax Tree position utilities.
 - [![npm-xml-tools-content-assist][npm-xml-tools-content-assist-image]][npm-xml-tools-content-assist-url] [@xml-tools/content-assist](./packages/content-assist) Extensible Content Assist APIs for XML.
 - [![npm-xml-tools-validation][npm-xml-tools-validation-image]][npm-xml-tools-validation-url] [@xml-tools/validation](./packages/validation) Extensible Validation APIs for XML.
 - [![npm-xml-tools-simple-schema][npm-xml-tools-simple-schema-image]][npm-xml-tools-simple-schema-url] [@xml-tools/simple-schema](./packages/simple-schema) Simple XML Schema represented as a JavaScript object literal.
@@ -24,6 +25,8 @@ It currently contains the following packages:
 [npm-xml-tools-parser-url]: https://www.npmjs.com/package/@xml-tools/parser
 [npm-xml-tools-ast-image]: https://img.shields.io/npm/v/@xml-tools/ast.svg
 [npm-xml-tools-ast-url]: https://www.npmjs.com/package/@xml-tools/ast
+[npm-xml-tools-ast-position-image]: https://img.shields.io/npm/v/@xml-tools/ast-position.svg
+[npm-xml-tools-ast-position-url]: https://www.npmjs.com/package/@xml-tools/ast-position
 [npm-xml-tools-content-assist-image]: https://img.shields.io/npm/v/@xml-tools/content-assist.svg
 [npm-xml-tools-content-assist-url]: https://www.npmjs.com/package/@xml-tools/content-assist
 [npm-xml-tools-validation-image]: https://img.shields.io/npm/v/@xml-tools/validation.svg
