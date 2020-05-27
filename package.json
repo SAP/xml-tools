@@ -16,17 +16,21 @@
     "lerna:version": "lerna version && yarn run cirlce:release",
     "cirlce:release": "node ./scripts/trigger-release",
     "lerna:publish": "lerna publish from-git --yes",
-    "ci": "npm-run-all format:validate ci:subpackages",
+    "ci": "npm-run-all format:validate ci:subpackages coverage:merge",
     "format:fix": "prettier --write --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
     "format:validate": "prettier --check --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
     "ci:subpackages": "lerna run ci",
     "test": "lerna run test",
-    "coverage": "lerna run coverage"
+    "coverage": "lerna run coverage",
+    "coverage:merge": "node ./scripts/merge-coverage"
   },
   "devDependencies": {
     "@types/chai": "4.2.11",
     "@types/mocha": "7.0.2",
     "@types/node": "10.17.15",
+    "coveralls": "3.1.0",
+    "make-dir": "3.1.0",
+    "glob": "7.1.6",
     "chai": "4.2.0",
     "husky": "4.2.5",
     "lerna": "3.22.0",
