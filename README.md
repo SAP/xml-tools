@@ -1,7 +1,8 @@
 [![CircleCI](https://circleci.com/gh/SAP/xml-tools.svg?style=svg)](https://circleci.com/gh/SAP/xml-tools)
+[![Coverage Status](https://coveralls.io/repos/github/SAP/xml-tools/badge.svg?branch=master)](https://coveralls.io/github/SAP/xml-tools?branch=master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Commitizen friendly](https://api.dependabot.com/badges/status?host=github&repo=SAP/xml-tools)](https://dependabot.com/)
+[![dependentbot](https://api.dependabot.com/badges/status?host=github&repo=SAP/xml-tools)](https://dependabot.com/)
 
 # XML-Tools
 
