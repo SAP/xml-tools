@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/ast",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "XML Ast and Utilities",
   "keywords": [
     "xml",
@@ -11,8 +11,8 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@xml-tools/common": "^0.1.0",
-    "@xml-tools/parser": "^1.0.5",
+    "@xml-tools/common": "^0.1.1",
+    "@xml-tools/parser": "^1.0.6",
     "lodash": "4.17.15"
   },
   "devDependencies": {

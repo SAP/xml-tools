@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/sap/xml-tools/compare/@xml-tools/parser@1.0.5...@xml-tools/parser@1.0.6) (2020-06-18)
+
+**Note:** Version bump only for package @xml-tools/parser
+
 ## [1.0.5](https://github.com/sap/xml-tools/compare/@xml-tools/parser@1.0.4...@xml-tools/parser@1.0.5) (2020-05-17)
 
 **Note:** Version bump only for package @xml-tools/parser
