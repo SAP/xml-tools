@@ -23,15 +23,16 @@
   "activationEvents": [
     "onLanguage:xml"
   ],
-  "main": "lib/extension",
+  "main": "./lib/extension",
   "scripts": {
-    "ci": "npm-run-all clean coverage:* bundle",
-    "clean": "rimraf ./coverage ./nyc_output *.vsix NOTICE LICENSE",
+    "ci": "npm-run-all clean coverage:* bundle package",
+    "clean": "rimraf ./dist ./coverage ./nyc_output *.vsix NOTICE LICENSE",
     "test": "node test/runTest.js",
     "coverage:run": "nyc node test/runTest.js",
     "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
     "vsix:prepare": "sh prepare-vsix-package.sh",
-    "bundle": "node ./scripts/bundle-vsix"
+    "bundle": "webpack --mode production",
+    "package": "node ./scripts/package-vsix"
   },
   "dependencies": {
     "@xml-tools/language-server": "^1.0.8",
@@ -40,10 +41,10 @@
   "devDependencies": {
     "@types/vscode": "1.45.0",
     "deep-equal-in-any-order": "1.0.27",
-    "glob": "7.1.6",
     "proxyquire": "2.1.3",
-    "vsce": "1.74.0",
-    "vscode-test": "1.4.0"
+    "vsce": "1.77.0",
+    "vscode-test": "1.4.0",
+    "lodash": "4.17.15"
   },
   "nyc": {
     "include": [

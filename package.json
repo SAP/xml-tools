@@ -6,8 +6,6 @@
       "packages/*"
     ],
     "nohoist": [
-      "xml-toolkit/vscode-languageclient",
-      "xml-toolkit/vscode-languageclient/**",
       "xml-toolkit/@xml-tools/language-server",
       "xml-toolkit/@xml-tools/language-server/**"
     ]
@@ -22,7 +20,8 @@
     "ci:subpackages": "lerna run ci",
     "test": "lerna run test",
     "coverage": "lerna run coverage",
-    "coverage:merge": "node ./scripts/merge-coverage"
+    "coverage:merge": "node ./scripts/merge-coverage",
+    "clean": "lerna run clean"
   },
   "devDependencies": {
     "@types/chai": "4.2.11",
@@ -44,7 +43,10 @@
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "rimraf": "3.0.2",
-    "simple-git": "1.132.0"
+    "simple-git": "1.132.0",
+    "fs-extra": "9.0.1",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11"
   },
   "prettier": {
     "plugins": [],
