@@ -28,11 +28,12 @@
     "vscode-languageserver-types": "3.15.1"
   },
   "scripts": {
-    "ci": "npm-run-all clean type-check coverage",
-    "clean": "rimraf ./coverage ./nyc_output",
+    "ci": "npm-run-all clean type-check coverage bundle",
+    "clean": "rimraf ./dist ./coverage ./nyc_output",
     "test": "mocha \"./test/**/*spec.js\"",
     "coverage": "nyc mocha \"./test/**/*spec.js\"",
-    "type-check": "tsc api.d.ts"
+    "type-check": "tsc api.d.ts",
+    "bundle": "webpack --mode production"
   },
   "publishConfig": {
     "access": "public"

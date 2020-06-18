@@ -1,13 +1,17 @@
-# this package's dev artifacts
+
+# We are bundling our extension so no need to include the dependencies separately.
+node_modules
+
+# Except a **subset** language-server package which is executed as a separate process
+# Note only one star (*) is expended in these dirs.
+!**/@xml-tools/language-server/*
+!**/@xml-tools/language-server/dist/*
+
+# For debugging of bundled language-server in production (source maps)
+!**/@xml-tools/language-server/lib/**
+
+# The VSCode Extension's dev artifacts
 coverage/**
 .nyc_output/**
 test/**
-
-# linked mono-repo dev artifacts
-# we are explicitly ignoring these development artifacts
-# because the extension is built as part of the mono-repo CI
-# and the mono-repo deps are "consumed" via yarn workspace symbolic links and not
-# via npmjs.com (which should not contain these artifacts anyhow).
-**/@xml-tools/*/coverage/**
-**/@xml-tools/*/.nyc_output/**
-**/@xml-tools/*/test/**
+scripts
