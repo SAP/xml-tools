@@ -43,7 +43,7 @@
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "rimraf": "3.0.2",
-    "simple-git": "1.132.0",
+    "simple-git": "2.9.0",
     "fs-extra": "9.0.1",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11"
