@@ -57,14 +57,35 @@ describe("The XML AST Visitor", () => {
     let visitedCounter = 0;
     const visitor = {
       visitXMLAttribute: function (node) {
-        expect(["foo", "bar", "version", "encoding"]).to.include(node.key);
+        expect(["foo", "bar"]).to.include(node.key);
         visitedCounter++;
       },
     };
 
     const astNode = getAst(inputText);
     accept(astNode, visitor);
-    expect(visitedCounter).to.eql(4);
+    expect(visitedCounter).to.eql(2);
+  });
+
+  it("can traverse AST Prolog Attributes", () => {
+    const inputText = `<?xml version="1.0" encoding="UTF-8"?>
+    <note>
+      <to foo="123">Bill</to>
+      <from bar="456">Tim</from>
+    </note>
+    `;
+
+    let visitedCounter = 0;
+    const visitor = {
+      visitXMLPrologAttribute: function (node) {
+        expect(["version", "encoding"]).to.include(node.key);
+        visitedCounter++;
+      },
+    };
+
+    const astNode = getAst(inputText);
+    accept(astNode, visitor);
+    expect(visitedCounter).to.eql(2);
   });
 
   it("can traverse AST Prolog", () => {

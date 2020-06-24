@@ -39,7 +39,7 @@ declare interface XMLProlog {
   readonly type: "XMLProlog";
   readonly parent: XMLDocument;
 
-  readonly attributes: XMLAttribute[];
+  readonly attributes: XMLPrologAttribute[];
 
   readonly position: SourcePosition;
 }
@@ -135,9 +135,8 @@ declare interface XMLTextContent {
   readonly position: SourcePosition;
 }
 
-declare interface XMLAttribute {
-  readonly type: "XMLAttribute";
-  readonly parent: XMLElement;
+declare interface XMLAttributeBase {
+  readonly type: string;
 
   readonly key: string | InvalidSyntax;
   // Semantic Value: Would not include the quotes!
@@ -149,6 +148,22 @@ declare interface XMLAttribute {
     readonly value?: XMLToken;
   };
   readonly position: SourcePosition;
+}
+
+declare interface XMLAttribute extends XMLAttributeBase {
+  readonly type: "XMLAttribute";
+  readonly parent: XMLElement;
+}
+
+/**
+ * XMLPrologAttribute is virtually identical to a regular `XMLAttribute`.
+ * However it was moved to a separate interface to allow consistent handling of the `parent`
+ * property in `XMLAttribute`, as 99.9% of the time the edge case of a parent being an XMLProlog
+ * is not relevant.
+ */
+declare interface XMLPrologAttribute extends XMLAttributeBase {
+  readonly type: "XMLPrologAttribute";
+  readonly parent: XMLProlog;
 }
 
 declare interface SourceRange {
@@ -172,6 +187,7 @@ declare interface XMLToken extends SourcePosition {
 declare type XMLAstNode =
   | XMLDocument
   | XMLProlog
+  | XMLPrologAttribute
   | XMLElement
   | XMLAttribute
   | XMLTextContent;
@@ -191,6 +207,7 @@ declare function accept(node: XMLAstNode, visitor: XMLAstVisitor): void;
 declare interface XMLAstVisitor {
   visitXMLDocument?(node: XMLDocument): void;
   visitXMLProlog?(node: XMLProlog): void;
+  visitXMLPrologAttribute?(node: XMLPrologAttribute): void;
   visitXMLElement?(node: XMLElement): void;
   visitXMLAttribute?(node: XMLAttribute): void;
   visitXMLTextContent?(node: XMLTextContent): void;

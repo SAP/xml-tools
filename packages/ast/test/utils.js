@@ -24,6 +24,9 @@ const parentRemoverVisitor = {
   visitXMLProlog: (node) => {
     delete node.parent;
   },
+  visitXMLPrologAttribute: (node) => {
+    delete node.parent;
+  },
   visitXMLElement: (node) => {
     delete node.parent;
   },
@@ -43,6 +46,9 @@ const positionReducerVisitor = {
     reduceNodePoseInfo(node);
   },
   visitXMLProlog: (node) => {
+    reduceNodePoseInfo(node);
+  },
+  visitXMLPrologAttribute: (node) => {
     reduceNodePoseInfo(node);
   },
   visitXMLElement: (node) => {

@@ -21,6 +21,12 @@ function accept(node, visitor) {
       }
       break;
     }
+    case "XMLPrologAttribute": {
+      if (isFunction(visitor.visitXMLPrologAttribute)) {
+        visitor.visitXMLPrologAttribute(node);
+      }
+      break;
+    }
     case "XMLElement": {
       if (isFunction(visitor.visitXMLElement)) {
         visitor.visitXMLElement(node);
