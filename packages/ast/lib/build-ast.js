@@ -43,17 +43,18 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
     this.tokenVector = tokenVector;
   }
 
-  visit(cstNode) {
-    return super.visit(cstNode, cstNode.location);
+  visit(cstNode, params = {}) {
+    return super.visit(cstNode, { location: cstNode.location, ...params });
   }
 
   /**
    * @param ctx {DocumentCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
    *
    * @returns {XMLDocument}
    */
-  document(ctx, location) {
+  document(ctx, { location }) {
     const astNode = {
       type: "XMLDocument",
       rootElement: invalidSyntax,
@@ -78,9 +79,10 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
 
   /**
    * @param ctx {PrologCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
    */
-  prolog(ctx, location) {
+  prolog(ctx, { location }) {
     const astNode = {
       type: "XMLProlog",
       attributes: [],
@@ -88,7 +90,9 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
     };
 
     if (ctx.attribute !== undefined) {
-      astNode.attributes = map(ctx.attribute, this.visit.bind(this));
+      astNode.attributes = map(ctx.attribute, (_) =>
+        this.visit(_, { isPrologParent: true })
+      );
     }
 
     setChildrenParent(astNode);
@@ -110,11 +114,12 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
 
   /**
    * @param ctx {ContentCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
    *
    * @return {{elements, textContents}}
    */
-  content(ctx, location) {
+  content(ctx, { location }) {
     let elements = [];
     let textContents = [];
 
@@ -131,9 +136,10 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
 
   /**
    * @param ctx {ElementCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
    */
-  element(ctx, location) {
+  element(ctx, { location }) {
     const astNode = {
       type: "XMLElement",
       // Avoid Accidental Keys in this map
@@ -167,20 +173,23 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
 
   /**
    * @param ctx {ReferenceCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
    */
   /* istanbul ignore next - place holder*/
-  reference(ctx, location) {
+  reference(ctx, { location }) {
     // Irrelevant for the AST at this time
   }
 
   /**
    * @param ctx {AttributeCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
+   * @param opts.isPrologParent {boolean}
    */
-  attribute(ctx, location) {
+  attribute(ctx, { location, isPrologParent }) {
     const astNode = {
-      type: "XMLAttribute",
+      type: isPrologParent ? "XMLPrologAttribute" : "XMLAttribute",
       position: location,
       key: invalidSyntax,
       value: invalidSyntax,
@@ -210,9 +219,10 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
 
   /**
    * @param ctx {ChardataCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
    */
-  chardata(ctx, location) {
+  chardata(ctx, { location }) {
     const astNode = {
       type: "XMLTextContent",
       position: location,
@@ -235,10 +245,11 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
 
   /**
    * @param ctx {MiscCtx}
-   * @param location {SourcePosition}
+   * @param opts {Object}
+   * @param opts.location {SourcePosition}
    */
   /* istanbul ignore next - place holder*/
-  misc(ctx, location) {
+  misc(ctx, { location }) {
     // Irrelevant for the AST at this time
   }
 }

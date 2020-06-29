@@ -1,14 +1,10 @@
-const { drop, dropRight, map, forEach, last, first } = require("lodash");
+const { drop, map, forEach, first } = require("lodash");
 
 /**
  * @param {XMLAttribute} attribNode
  * @param {SimpleSchema} schema
  */
 function findAttributeXssDef(attribNode, schema) {
-  // Currently No support for Prolog Attributes in Simple XML Schema
-  if (attribNode.parent && attribNode.parent.type === "XMLProlog") {
-    return undefined;
-  }
   const xssElement = findElementXssDef(attribNode.parent, schema);
 
   let xssAttribute = undefined;

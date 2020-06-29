@@ -23,7 +23,7 @@ module.exports = {
       type: "XMLProlog",
       attributes: [
         {
-          type: "XMLAttribute",
+          type: "XMLPrologAttribute",
           position: { startOffset: 6, endOffset: 18 },
           key: "version",
           value: "1.0",
@@ -33,7 +33,7 @@ module.exports = {
           },
         },
         {
-          type: "XMLAttribute",
+          type: "XMLPrologAttribute",
           position: { startOffset: 20, endOffset: 35 },
           key: "encoding",
           value: "UTF-8",
