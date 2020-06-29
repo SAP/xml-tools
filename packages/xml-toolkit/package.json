@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "private": true,
   "displayName": "XML Toolkit",
-  "description": "XML Toolkit by SAP OSS",
+  "description": "Language Support for XML",
   "publisher": "SAPOSS",
   "icon": "resources/xml-toolkit.png",
   "keywords": [

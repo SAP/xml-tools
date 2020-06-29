@@ -1,9 +1,19 @@
 # XML Toolkit
 
-## Description
+A VSCode extension providing XML language editor support.
 
-The XML Toolkit extension validates the syntax of XML files.
-This extension enables VS Code developers to detect multiple error types in a single file.
+## Features
+
+### XML Syntax validations
+
+#### Preview
+
+![](./resources/preview-syntax-validation.png)
+
+#### Description
+
+The syntax validations use a fault tolerant parser thus enabling
+the detection of **multiple** syntax errors.
 
 ## Installation
 
