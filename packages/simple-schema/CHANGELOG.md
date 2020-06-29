@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@2.1.1...@xml-tools/simple-schema@3.0.0) (2020-06-29)
+
+### Features
+
+- **ast:** attribute inside a prolog are now of XMLPrologAttribute type ([#208](https://github.com/sap/xml-tools/issues/208)) ([a303db5](https://github.com/sap/xml-tools/commit/a303db5))
+
+### BREAKING CHANGES
+
+- **ast:** Vistors that need to handle attributes inside prolog must now implement the `visitPrologAttribute` method.
+
 ## [2.1.1](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@2.1.0...@xml-tools/simple-schema@2.1.1) (2020-06-18)
 
 **Note:** Version bump only for package @xml-tools/simple-schema
