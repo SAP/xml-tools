@@ -12,7 +12,7 @@
   "typings": "./api.d.ts",
   "dependencies": {
     "@xml-tools/ast": "^5.0.0",
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   },
   "devDependencies": {
     "@xml-tools/parser": "^1.0.7"
