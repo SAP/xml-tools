@@ -8,7 +8,7 @@ A VSCode extension providing XML language editor support.
 
 #### Preview
 
-![](./resources/preview-syntax-validation.png)
+![](https://gitcdn.xyz/repo/SAP/xml-tools/master/packages/xml-toolkit/resources/readme/preview-syntax-validation.png)
 
 #### Description
 
