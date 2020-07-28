@@ -14,7 +14,7 @@ It currently contains the following packages:
 
 - [![npm-xml-tools-parser][npm-xml-tools-parser-image]][npm-xml-tools-parser-url] [@xml-tools/parser](./packages/parser) A Fault Tolerant XML Parser which outputs a [Concrete Syntax Tree][cst].
 - [![npm-xml-tools-ast][npm-xml-tools-ast-image]][npm-xml-tools-ast-url] [@xml-tools/ast](./packages/ast) XML [Abstract Syntax Tree][ast].
-- [![npm-xml-tools-ast-position][npm-xml-tools-ast-position-image]][npm-xml-tools-ast-position-url] [@xml-tools/ast](./packages/ast-position) XML Abstract Syntax Tree position utilities.
+- [![npm-xml-tools-ast-position][npm-xml-tools-ast-position-image]][npm-xml-tools-ast-position-url] [@xml-tools/ast-position](./packages/ast-position) XML Abstract Syntax Tree position utilities.
 - [![npm-xml-tools-content-assist][npm-xml-tools-content-assist-image]][npm-xml-tools-content-assist-url] [@xml-tools/content-assist](./packages/content-assist) Extensible Content Assist APIs for XML.
 - [![npm-xml-tools-validation][npm-xml-tools-validation-image]][npm-xml-tools-validation-url] [@xml-tools/validation](./packages/validation) Extensible Validation APIs for XML.
 - [![npm-xml-tools-simple-schema][npm-xml-tools-simple-schema-image]][npm-xml-tools-simple-schema-url] [@xml-tools/simple-schema](./packages/simple-schema) Simple XML Schema represented as a JavaScript object literal.
