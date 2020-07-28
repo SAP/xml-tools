@@ -14,7 +14,7 @@
   "dependencies": {
     "@xml-tools/common": "^0.1.2",
     "@xml-tools/parser": "^1.0.7",
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   },
   "scripts": {
     "ci": "npm-run-all clean type-check coverage:*",
