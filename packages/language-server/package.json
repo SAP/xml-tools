@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@xml-tools/parser": "^1.0.7",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "vscode-languageserver": "6.1.1",
     "vscode-languageserver-textdocument": "1.0.1"
   },
