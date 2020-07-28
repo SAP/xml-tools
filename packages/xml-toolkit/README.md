@@ -11,7 +11,7 @@ the detection of **multiple** syntax errors.
 
 #### Preview
 
-![](https://gitcdn.xyz/repo/SAP/xml-tools/master/packages/xml-toolkit/resources/readme/preview-syntax-validation.png)
+![](https://raw.githubusercontent.com/SAP/xml-tools/master/packages/xml-toolkit/resources/readme/preview-syntax-validation.png)
 
 ## Installation
 
