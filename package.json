@@ -41,7 +41,7 @@
     "typescript": "3.9.7",
     "cz-conventional-changelog": "3.2.0",
     "@commitlint/cli": "9.0.1",
-    "@commitlint/config-conventional": "9.0.1",
+    "@commitlint/config-conventional": "9.1.1",
     "rimraf": "3.0.2",
     "simple-git": "2.15.0",
     "fs-extra": "9.0.1",
