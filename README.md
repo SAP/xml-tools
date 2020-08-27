@@ -3,6 +3,7 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![dependentbot](https://api.dependabot.com/badges/status?host=github&repo=SAP/xml-tools)](https://dependabot.com/)
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/xml-tools)](https://api.reuse.software/info/github.com/SAP/xml-tools)
 
 # XML-Tools
 
@@ -45,11 +46,6 @@ Please open [issues](https://github.com/SAP/xml-tools/issues) on github.
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-## License
-
-Copyright (c) 2019-2020 SAP SE or an SAP affiliate company. All rights reserved.
-This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the [LICENSE file](./LICENSE).
 
 [mono-repo]: https://github.com/babel/babel/blob/master/doc/design/monorepo.md
 [xml]: https://github.com/babel/babel/blob/master/doc/design/monorepo.md
