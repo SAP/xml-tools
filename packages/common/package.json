@@ -16,7 +16,7 @@
     "api.d.ts"
   ],
   "dependencies": {
-    "lodash": "4.17.19"
+    "lodash": "4.17.20"
   },
   "devDependencies": {
     "@xml-tools/parser": "^1.0.7"
