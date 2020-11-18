@@ -1,0 +1,30 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: sunday
+    time: "10:00"
+    timezone: Etc/UCT
+  ignore:
+  - dependency-name: simple-git
+    versions:
+    - ">= 2.5.a"
+    - "< 2.6"
+  - dependency-name: "@types/node"
+    versions:
+    - ">= 12.12.a"
+    - "< 12.13"
+  - dependency-name: "@types/node"
+    versions:
+    - ">= 13.a"
+    - "< 14"
+  - dependency-name: "@types/node"
+    versions:
+    - ">= 14.a"
+    - "< 15"
+  - dependency-name: "@types/vscode"
+    versions:
+    - ">= 1.43.a"
+    - "< 1.44"
