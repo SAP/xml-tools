@@ -1,4 +1,4 @@
-const { difference, map, filter } = require("lodash");
+const { difference, map } = require("lodash");
 
 /**
  * @param {XMLElement} elementNode
