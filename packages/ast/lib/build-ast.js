@@ -34,6 +34,7 @@ function buildAst(docCst, tokenVector) {
   return xmlDocAst;
 }
 
+/* eslint-disable no-unused-vars -- consistent signatures in visitor methods even if they are empty placeholders */
 class CstToAstVisitor extends BaseXmlCstVisitor {
   constructor() {
     super();
@@ -253,6 +254,7 @@ class CstToAstVisitor extends BaseXmlCstVisitor {
     // Irrelevant for the AST at this time
   }
 }
+/* eslint-enable no-unused-vars -- see matching disable comment */
 
 const AstBuilder = new CstToAstVisitor();
 

@@ -1,4 +1,4 @@
-const { values, reduce, has, isArray } = require("lodash");
+const { reduce, has, isArray } = require("lodash");
 
 function getAstChildrenReflective(astParent) {
   const astChildren = reduce(

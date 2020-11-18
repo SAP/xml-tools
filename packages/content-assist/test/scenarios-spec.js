@@ -117,6 +117,7 @@ describe("The XML Content Assist Capabilities", () => {
         let providerCalled = false;
         getSampleSuggestions(sample, {
           elementContent: [
+            // eslint-disable-next-line no-unused-vars -- match the type of `ElementContentCompletion` for consistency
             ({ element }) => {
               providerCalled = true;
             },

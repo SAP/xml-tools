@@ -184,10 +184,11 @@ class Parser extends CstParser {
   // https://github.com/SAP/chevrotain/issues/1055
   /* istanbul ignore next - should be tested as part of Chevrotain */
   findReSyncTokenType() {
-    var allPossibleReSyncTokTypes = this.flattenFollowSet();
+    const allPossibleReSyncTokTypes = this.flattenFollowSet();
     // this loop will always terminate as EOF is always in the follow stack and also always (virtually) in the input
     let nextToken = this.LA(1);
     let k = 2;
+    /* eslint-disable-next-line no-constant-condition -- see above comment */
     while (true) {
       const foundMatch = allPossibleReSyncTokTypes.find((resyncTokType) => {
         const canMatch = tokenMatcher(nextToken, resyncTokType);
