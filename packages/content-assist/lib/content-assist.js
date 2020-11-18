@@ -30,6 +30,7 @@ function computeCompletionSyntacticContext({
   return contextVisitor.result;
 }
 
+/* eslint-disable no-unused-vars -- consistent signatures in visitor methods even if they are empty placeholders */
 class SuggestionContextVisitor extends BaseXmlCstVisitor {
   constructor(docAst, offset, tokenVector) {
     super();
@@ -171,6 +172,7 @@ class SuggestionContextVisitor extends BaseXmlCstVisitor {
   /* istanbul ignore next - place holder*/
   misc(ctx, astNode) {}
 }
+/* eslint-enable no-unused-vars -- see matching pair above */
 
 function handleElementNameWithoutPrefixScenario(ctx, astNode, visitor) {
   /* istanbul ignore else - Very difficult to reproduce specific partial CSTs */

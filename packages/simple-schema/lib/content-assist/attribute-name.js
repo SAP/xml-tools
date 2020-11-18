@@ -1,4 +1,4 @@
-const { difference, map, filter } = require("lodash");
+const { difference, map } = require("lodash");
 
 /**
  * @param {XMLElement} elementNode
@@ -6,7 +6,7 @@ const { difference, map, filter } = require("lodash");
  *
  * @returns {CompletionSuggestion[]}
  */
-function attributeNameCompletion(elementNode, xssElement, prefix = "") {
+function attributeNameCompletion(elementNode, xssElement) {
   const possibleSuggestions = map(xssElement.attributes, (_) => _.key);
   const existingAttribNames = map(elementNode.attributes, (_) => _.key);
   const possibleNewSuggestions = difference(

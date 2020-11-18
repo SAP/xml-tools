@@ -10,14 +10,11 @@ function modifyAstForAssertions(astNode) {
   accept(astNode, positionReducerVisitor);
 }
 
-function removeParentProps(astNode) {
-  accept(astNode, parentRemoverVisitor);
-}
-
 /**
  * @type {XMLAstVisitor}
  */
 const parentRemoverVisitor = {
+  /* eslint-disable-next-line no-unused-vars -- consistent signatures in visitor methods even if they are empty placeholders */
   visitXMLDocument: (node) => {
     // top level XML Doc does not have a parent...
   },
@@ -85,6 +82,7 @@ function assertParentPropsAreValid(astNode) {
  * @type {XMLAstVisitor}
  */
 const parentPropsValidatorVisitor = {
+  /* eslint-disable-next-line no-unused-vars -- consistent signatures in visitor methods even if they are empty placeholders */
   visitXMLDocument: (node) => {
     // top level XML Doc does not have a parent...
   },
