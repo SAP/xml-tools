@@ -26,7 +26,8 @@
     "@xml-tools/parser": "^1.0.7",
     "lodash": "4.17.20",
     "vscode-languageserver": "6.1.1",
-    "vscode-languageserver-textdocument": "1.0.1"
+    "vscode-languageserver-textdocument": "1.0.1",
+    "@sap/swa-for-sapbas-vsx": "1.1.5"
   },
   "devDependencies": {
     "chevrotain": "^7.0.1",
