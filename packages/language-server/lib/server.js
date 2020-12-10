@@ -12,7 +12,22 @@ const { setGlobalSWA, getSWA } = require("./swa");
 const connection = createConnection(ProposedFeatures.all);
 const documents = new TextDocuments(TextDocument);
 
-connection.onInitialize(() => {
+connection.onInitialize((params) => {
+  if (params && params.initializationOptions) {
+    const { publisher, name } = params.initializationOptions;
+    if (publisher !== undefined && name !== undefined) {
+      // Currently ("@sap/swa-for-sapbas-vsx": "1.1.5") would not perform any usage analytics
+      // when running inside an Language Server process which was initialized from VSCode.
+      // It would only run in BAS.
+      const swa = new SWATracker(publisher, name, (err) => {
+        // Currently this would get sent to the client's output channel when
+        // running via the UI5-Lang-Assistant VSCode ext.
+        console.error(err);
+      });
+      setGlobalSWA(swa);
+    }
+  }
+
   return {
     capabilities: {
       textDocumentSync: TextDocumentSyncKind.Full,
@@ -26,19 +41,9 @@ documents.onDidChangeContent(async (event) => {
 
   if (diagnostics.length > 0) {
     // The language server (currently) only exposes **syntactic** XML diagnostics.
-    getSWA().track("Syntax Issues Detected", [{ number: diagnostics.length }]);
+    getSWA().track("Syntax Issues Detected", [diagnostics.length]);
   }
 });
 
 documents.listen(connection);
 connection.listen();
-
-connection.onRequest("initSWA", (publisher, extName) => {
-  // The SWA
-  const swa = new SWATracker(publisher, extName, (err) => {
-    // Currently this would get sent to the client's output channel when
-    // running via the UI5-Lang-Assistant VSCode ext.
-    console.error(err);
-  });
-  setGlobalSWA(swa);
-});
