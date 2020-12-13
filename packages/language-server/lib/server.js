@@ -38,10 +38,19 @@ connection.onInitialize((params) => {
 documents.onDidChangeContent(async (event) => {
   const diagnostics = await validateDocument(event.document);
   connection.sendDiagnostics({ uri: event.document.uri, diagnostics });
-
-  if (diagnostics.length > 0) {
-    // The language server (currently) only exposes **syntactic** XML diagnostics.
-    getSWA().track("Syntax Issues Detected", [diagnostics.length]);
+  // We are only interested in "real" issues detected, and the first time a document is opened
+  // is our best approximation. The issue we are trying to workout is that this many syntax errors
+  // would be "detected" while a document is being edited, so they are not really meaningful...
+  const isFirstTimeOpened =
+    (event && event.document && event.document.version) === 1;
+  if (diagnostics.length > 0 && isFirstTimeOpened) {
+    try {
+      const fileUri = event.document.uri ? event.document.uri : "NO_URI";
+      // The language server (currently) only exposes **syntactic** XML diagnostics.
+      getSWA().track("Syntax Issues Detected", [fileUri, diagnostics.length]);
+    } catch (e) {
+      console.error(`Error during usage analytics:\n\t${e.message}`);
+    }
   }
 });
 
