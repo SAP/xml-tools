@@ -73,7 +73,5 @@ declare function getSchemaSuggestionsProviders(
   // schemaElementContentCompletion: ElementContentCompletion;
   schemaElementNameCompletion: ElementNameCompletion<CompletionSuggestion>;
   schemaAttributeNameCompletion: AttributeNameCompletion<CompletionSuggestion>;
-  schemaAttributeValueCompletion: AttributeValueCompletion<
-    CompletionSuggestion
-  >;
+  schemaAttributeValueCompletion: AttributeValueCompletion<CompletionSuggestion>;
 };
