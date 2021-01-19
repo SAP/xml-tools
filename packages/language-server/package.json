@@ -29,7 +29,7 @@
     "vscode-languageserver-textdocument": "1.0.1"
   },
   "devDependencies": {
-    "chevrotain": "^7.0.1",
+    "chevrotain": "^7.1.0",
     "vscode-languageserver-types": "3.16.0"
   },
   "scripts": {

@@ -16,7 +16,7 @@
     "api.d.ts"
   ],
   "dependencies": {
-    "chevrotain": "7.0.1"
+    "chevrotain": "^7.1.0"
   },
   "devDependencies": {
     "klaw-sync": "6.0.0"
