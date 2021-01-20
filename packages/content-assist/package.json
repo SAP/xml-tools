@@ -12,6 +12,7 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "files": [
+    "lib",
     ".reuse",
     "LICENSES",
     "api.d.ts"
