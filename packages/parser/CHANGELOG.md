@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9](https://github.com/sap/xml-tools/compare/@xml-tools/parser@1.0.8...@xml-tools/parser@1.0.9) (2021-01-20)
+
+### Bug Fixes
+
+- missing lib folder in npm packages ([ffed3c2](https://github.com/sap/xml-tools/commit/ffed3c2c54c70aea8b9ded0d53786382bc190cc5))
+
 ## [1.0.8](https://github.com/sap/xml-tools/compare/@xml-tools/parser@1.0.7...@xml-tools/parser@1.0.8) (2021-01-20)
 
 **Note:** Version bump only for package @xml-tools/parser

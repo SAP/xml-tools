@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@3.0.1...@xml-tools/simple-schema@3.0.2) (2021-01-20)
+
+### Bug Fixes
+
+- missing lib folder in npm packages ([ffed3c2](https://github.com/sap/xml-tools/commit/ffed3c2c54c70aea8b9ded0d53786382bc190cc5))
+
 ## [3.0.1](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@3.0.0...@xml-tools/simple-schema@3.0.1) (2021-01-20)
 
 **Note:** Version bump only for package @xml-tools/simple-schema

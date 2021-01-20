@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/ast",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "XML Ast and Utilities",
   "keywords": [
     "xml",
@@ -16,8 +16,8 @@
     "api.d.ts"
   ],
   "dependencies": {
-    "@xml-tools/common": "^0.1.3",
-    "@xml-tools/parser": "^1.0.8",
+    "@xml-tools/common": "^0.1.4",
+    "@xml-tools/parser": "^1.0.9",
     "lodash": "4.17.20"
   },
   "devDependencies": {

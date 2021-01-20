@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/ast-position",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "XML Ast Position APIs",
   "keywords": [
     "xml",
@@ -17,10 +17,10 @@
     "api.d.ts"
   ],
   "dependencies": {
-    "@xml-tools/ast": "^5.0.1"
+    "@xml-tools/ast": "^5.0.2"
   },
   "devDependencies": {
-    "@xml-tools/parser": "^1.0.8"
+    "@xml-tools/parser": "^1.0.9"
   },
   "scripts": {
     "ci": "npm-run-all type-check coverage:*",

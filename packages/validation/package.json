@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/validation",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "XML validation APIs",
   "keywords": [
     "xml",
@@ -17,11 +17,11 @@
     "api.d.ts"
   ],
   "dependencies": {
-    "@xml-tools/ast": "^5.0.1",
+    "@xml-tools/ast": "^5.0.2",
     "lodash": "4.17.20"
   },
   "devDependencies": {
-    "@xml-tools/parser": "^1.0.8"
+    "@xml-tools/parser": "^1.0.9"
   },
   "scripts": {
     "ci": "npm-run-all clean type-check coverage:*",
