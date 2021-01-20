@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/sap/xml-tools/compare/@xml-tools/ast@5.0.0...@xml-tools/ast@5.0.1) (2021-01-20)
+
+**Note:** Version bump only for package @xml-tools/ast
+
 # [5.0.0](https://github.com/sap/xml-tools/compare/@xml-tools/ast@4.2.1...@xml-tools/ast@5.0.0) (2020-06-29)
 
 ### Features
