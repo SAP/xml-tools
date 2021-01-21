@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/sap/xml-tools/compare/@xml-tools/ast@5.0.2...@xml-tools/ast@5.0.3) (2021-01-21)
+
+### Bug Fixes
+
+- missing lib folder in ast package ([c61d703](https://github.com/sap/xml-tools/commit/c61d70320bdc13800402082aeaac42a1fd92cc68))
+
 ## [5.0.2](https://github.com/sap/xml-tools/compare/@xml-tools/ast@5.0.1...@xml-tools/ast@5.0.2) (2021-01-20)
 
 **Note:** Version bump only for package @xml-tools/ast
