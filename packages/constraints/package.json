@@ -1,0 +1,46 @@
+{
+  "name": "@xml-tools/constraints",
+  "version": "1.0.0",
+  "description": "XML constraints validations",
+  "keywords": [
+    "xml",
+    "validation"
+  ],
+  "main": "lib/api.js",
+  "repository": "https://github.com/sap/xml-tools/",
+  "license": "Apache-2.0",
+  "typings": "./api.d.ts",
+  "files": [
+    "lib",
+    ".reuse",
+    "LICENSES",
+    "api.d.ts"
+  ],
+  "dependencies": {
+    "@xml-tools/validation": "^1.0.14",
+    "lodash": "4.17.20"
+  },
+  "devDependencies": {
+    "@xml-tools/ast": "^5.0.3"
+  },
+  "scripts": {
+    "ci": "npm-run-all clean type-check coverage:*",
+    "clean": "rimraf ./coverage ./nyc_output",
+    "test": "mocha \"./test/**/*spec.js\"",
+    "coverage:run": "nyc mocha \"./test/**/*spec.js\"",
+    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
+    "type-check": "tsc api.d.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
+}
