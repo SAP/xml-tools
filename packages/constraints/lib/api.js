@@ -1,7 +1,7 @@
 const { validate } = require("@xml-tools/validation");
 const {
   validateUniqueAttributeKeys,
-} = require("./constraints/non-unique-attribute-keys");
+} = require("./constraints/unique-attribute-keys");
 const {
   validateTagClosingNameMatch,
 } = require("./constraints/tag-closing-name-match");
