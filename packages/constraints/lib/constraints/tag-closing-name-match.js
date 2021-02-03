@@ -1,5 +1,3 @@
-const {} = require("lodash");
-
 /**
  * @param {XMLElement} elem
  * @returns {ValidationIssue[]}
