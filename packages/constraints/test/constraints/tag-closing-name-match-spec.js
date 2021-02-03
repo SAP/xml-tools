@@ -53,16 +53,27 @@ describe("tag closing name constraint", () => {
       const element = document.rootElement;
       const result = validateTagClosingNameMatch(element);
 
-      expect(result).to.have.lengthOf(1);
-      expect(result[0]).to.deep.equal({
-        msg: 'closing tag: "note-typo must match opening tag: "note"',
-        severity: "error",
-        node: element,
-        position: {
-          startOffset: element.syntax.closeName.startOffset,
-          endOffset: element.syntax.closeName.endOffset,
+      expect(result).to.have.lengthOf(2);
+      expect(result).to.deep.include.members([
+        {
+          msg: 'opening tag: "note" must match closing tag: "note-typo"',
+          severity: "error",
+          node: element,
+          position: {
+            startOffset: element.syntax.openName.startOffset,
+            endOffset: element.syntax.openName.endOffset,
+          },
         },
-      });
+        {
+          msg: 'closing tag: "note-typo" must match opening tag: "note"',
+          severity: "error",
+          node: element,
+          position: {
+            startOffset: element.syntax.closeName.startOffset,
+            endOffset: element.syntax.closeName.endOffset,
+          },
+        },
+      ]);
     });
   });
 });
