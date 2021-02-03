@@ -5,7 +5,7 @@ const {
   validateTagClosingNameMatch,
 } = require("../../lib/constraints/tag-closing-name-match");
 
-describe("tag closing name Constraint", () => {
+describe("tag closing name constraint", () => {
   context("no issues", () => {
     it("will not detect any issues for valid XML", () => {
       const xmlText = `
@@ -41,7 +41,7 @@ describe("tag closing name Constraint", () => {
   });
 
   context("positive constraint checks", () => {
-    it("detects an mis-aligned closing tag", () => {
+    it("detects a mis-aligned closing tag", () => {
       const xmlText = `
         <note>
           <to>Bill</to>
