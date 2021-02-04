@@ -26,7 +26,20 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 A simple usage example:
 
 ```javascript
-// TBD
+const { parse } = require("@xml-tools/parser");
+const { buildAst } = require("@xml-tools/ast");
+const { checkConstraints } = require("@xml-tools/constraints");
+
+const xmlText = `
+        <note>
+          <to>Bill</to>
+          <from>Tim</from>
+        </note-typo>`;
+
+const { cst, tokenVector } = parse(xmlText);
+const document = buildAst(cst, tokenVector);
+const validationIssues = checkConstraints(document);
+console.log(validationIssues[0].msg); // --> 'opening tag: "note" must match closing tag: "note-typo"
 ```
 
 ## Support
