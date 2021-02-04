@@ -9,6 +9,11 @@ The XML toolkit is a VSCode extension that provides XML language editor support.
 The syntax validations use a fault-tolerant parser. This enables
 the detection of **multiple** syntax errors.
 
+### XML Well-formed validations
+
+- Unique Attribute Names.
+- Tag open/close names are aligned.
+
 #### Preview
 
 ![](https://raw.githubusercontent.com/SAP/xml-tools/master/packages/xml-toolkit/resources/readme/preview-syntax-validation.png)
