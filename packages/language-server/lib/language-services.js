@@ -72,8 +72,8 @@ function toDiagnosticSeverity(issueSeverity) {
       return DiagnosticSeverity.Warning;
     case "info":
       return DiagnosticSeverity.Information;
+    /* istanbul ignore next -- runtime check */
     default:
-      /* istanbul ignore next -- runtime check */
       throw Error("Non Exhaustive Match");
   }
 }

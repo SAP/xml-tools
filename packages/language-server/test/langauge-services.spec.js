@@ -2,6 +2,8 @@ const { resolve } = require("path");
 const { expect } = require("chai");
 const { TextDocument, DiagnosticSeverity } = require("vscode-languageserver");
 
+const { toDiagnosticSeverity } = require("../lib/language-services");
+
 const {
   validateDocument,
   SYNTAX_ERROR_MSG,
@@ -105,6 +107,24 @@ describe("the XML Language Services", () => {
     const doc = createTextDocument("txt", ">");
     const diagnostics = await validateDocument(doc);
     expect(diagnostics).to.deep.equal([]);
+  });
+
+  context("severity transformations", () => {
+    it("will transform `error` severity correctly", () => {
+      expect(toDiagnosticSeverity("error")).to.equal(DiagnosticSeverity.Error);
+    });
+
+    it("will transform `warning` severity correctly", () => {
+      expect(toDiagnosticSeverity("warning")).to.equal(
+        DiagnosticSeverity.Warning
+      );
+    });
+
+    it("will transform `info` severity correctly", () => {
+      expect(toDiagnosticSeverity("info")).to.equal(
+        DiagnosticSeverity.Information
+      );
+    });
   });
 });
 
