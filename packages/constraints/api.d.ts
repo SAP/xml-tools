@@ -1,7 +1,7 @@
 import { ValidationIssue } from "@xml-tools/validation";
 
 /**
- * detects XML constraints issues (e.g none well-formed XML)
+ * detects XML constraints issues (e.g non well-formed XML)
  * - https://www.w3.org/TR/xml/#sec-starttags
  *   - see: "Well-formedness constraint: Unique Att Spec".
  */

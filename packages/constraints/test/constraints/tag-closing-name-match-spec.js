@@ -24,12 +24,42 @@ describe("tag closing name constraint", () => {
   });
 
   context("unable to validate", () => {
-    it("will not detect any issues when the tag name is missing", () => {
+    it("will not detect any issues when the opening tag name is missing", () => {
       const xmlText = `
         <>
           <to>Bill</to>
           <from>Tim</from>
         </note>`;
+
+      const { cst, tokenVector } = parse(xmlText);
+      const document = buildAst(cst, tokenVector);
+      const element = document.rootElement;
+      const result = validateTagClosingNameMatch(element);
+
+      expect(result).to.be.empty;
+    });
+
+    it("will not detect any issues when the closing tag name is missing", () => {
+      const xmlText = `
+        <note>
+          <to>Bill</to>
+          <from>Tim</from>
+        </>`;
+
+      const { cst, tokenVector } = parse(xmlText);
+      const document = buildAst(cst, tokenVector);
+      const element = document.rootElement;
+      const result = validateTagClosingNameMatch(element);
+
+      expect(result).to.be.empty;
+    });
+
+    it("will not detect any issues when both tag names are missing", () => {
+      const xmlText = `
+        <>
+          <to>Bill</to>
+          <from>Tim</from>
+        </>`;
 
       const { cst, tokenVector } = parse(xmlText);
       const document = buildAst(cst, tokenVector);
