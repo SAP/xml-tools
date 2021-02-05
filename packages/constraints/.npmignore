@@ -1,0 +1,10 @@
+# NYC
+.nyc_output
+nyc.config.js
+coverage
+
+# tests
+test
+
+# contributing
+CONTRIBUTING.md

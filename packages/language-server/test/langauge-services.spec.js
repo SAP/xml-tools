@@ -2,6 +2,8 @@ const { resolve } = require("path");
 const { expect } = require("chai");
 const { TextDocument, DiagnosticSeverity } = require("vscode-languageserver");
 
+const { toDiagnosticSeverity } = require("../lib/language-services");
+
 const {
   validateDocument,
   SYNTAX_ERROR_MSG,
@@ -61,10 +63,68 @@ describe("the XML Language Services", () => {
     expect(diagnostics).to.deep.equal(expectedDiagnostics);
   });
 
+  it("will detect a well-formedness issue in an xml document", async () => {
+    const xmlSnippet = "<a></bc>";
+    const doc = createTextDocument("xml", xmlSnippet);
+
+    const diagnostics = await validateDocument(doc);
+    expect(diagnostics).to.have.lengthOf(2);
+    expect(diagnostics).to.deep.include.members([
+      {
+        message: 'opening tag: "a" must match closing tag: "bc"',
+        range: {
+          start: {
+            line: 0,
+            character: xmlSnippet.indexOf("a"),
+          },
+          end: {
+            line: 0,
+            character: xmlSnippet.indexOf("a"),
+          },
+        },
+        severity: 1,
+        source: "well-formedness",
+      },
+      {
+        message: 'closing tag: "bc" must match opening tag: "a"',
+        range: {
+          start: {
+            line: 0,
+            character: xmlSnippet.indexOf("bc"),
+          },
+          end: {
+            line: 0,
+            character: xmlSnippet.indexOf("bc") + 1,
+          },
+        },
+        severity: 1,
+        source: "well-formedness",
+      },
+    ]);
+  });
+
   it("will not detect any error in a none XML document", async () => {
     const doc = createTextDocument("txt", ">");
     const diagnostics = await validateDocument(doc);
     expect(diagnostics).to.deep.equal([]);
+  });
+
+  context("severity transformations", () => {
+    it("will transform `error` severity correctly", () => {
+      expect(toDiagnosticSeverity("error")).to.equal(DiagnosticSeverity.Error);
+    });
+
+    it("will transform `warning` severity correctly", () => {
+      expect(toDiagnosticSeverity("warning")).to.equal(
+        DiagnosticSeverity.Warning
+      );
+    });
+
+    it("will transform `info` severity correctly", () => {
+      expect(toDiagnosticSeverity("info")).to.equal(
+        DiagnosticSeverity.Information
+      );
+    });
   });
 });
 
