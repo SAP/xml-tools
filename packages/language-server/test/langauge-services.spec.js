@@ -131,6 +131,17 @@ describe("the XML Language Services", () => {
       );
     });
   });
+
+  context("custom diagnostic `source` support", () => {
+    it("will use the `consumer` option in `validateDocument` as the diagnostics `source` prop", async () => {
+      const doc = createTextDocument("xml", ">");
+      const diagnostics = await validateDocument(doc, {
+        consumer: "my xml eclipse plugin",
+      });
+      expect(diagnostics).to.have.lengthOf(1);
+      expect(diagnostics[0].source).to.equal("my xml eclipse plugin");
+    });
+  });
 });
 
 /**
