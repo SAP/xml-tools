@@ -2122,10 +2122,10 @@ cheerio@^1.0.0-rc.1:
     parse5 "^6.0.0"
     parse5-htmlparser2-tree-adapter "^6.0.0"
 
-chevrotain@7.1.0, chevrotain@^7.0.1:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/chevrotain/-/chevrotain-7.1.0.tgz#a88d437e9950f66a452c3a575b764a01d0c8f189"
-  integrity sha512-msTqYIGb+8z4UpNxliBlowlfFJtBQjTSdnOWgMD/llcE5cQHDbFMjHGdCMJSsPG/Op89c6/ERCmYku4UHDhHVA==
+chevrotain@7.1.1, chevrotain@^7.0.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/chevrotain/-/chevrotain-7.1.1.tgz#5122814eafd1585a9601f9180a7be9c42d5699c6"
+  integrity sha512-wy3mC1x4ye+O+QkEinVJkPf5u2vsrDIYW9G7ZuwFl6v/Yu0LwUuT2POsb+NUWApebyxfkQq6+yDfRExbnI5rcw==
   dependencies:
     regexp-to-ast "0.5.0"
 
