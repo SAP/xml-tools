@@ -7,7 +7,6 @@ const chai = require("chai");
 const { expect } = chai;
 chai.use(deepEqualInAnyOrder);
 
-const SYNTAX_ERROR_MSG = "Syntax error";
 const docPath = resolve(
   __dirname,
   "..",
@@ -47,7 +46,7 @@ describe("XML for VSCode extension", () => {
         message:
           "unexpected character: ->!<- at offset: 12, skipped 1 characters.",
         range: toRange(1, 11, 1, 12),
-        source: SYNTAX_ERROR_MSG,
+        source: "XML Toolkit",
       },
     ]);
   });
@@ -66,13 +65,13 @@ describe("XML for VSCode extension", () => {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(2, 14, 2, 14),
-        source: SYNTAX_ERROR_MSG,
+        source: "XML Toolkit",
       },
       {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> CLOSE <-- but found --> '' <--",
         range: toRange(6, null, 0, 0),
-        source: SYNTAX_ERROR_MSG,
+        source: "XML Toolkit",
       },
     ]);
   });
@@ -91,19 +90,19 @@ describe("XML for VSCode extension", () => {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(2, 14, 2, 14),
-        source: SYNTAX_ERROR_MSG,
+        source: "XML Toolkit",
       },
       {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(3, 16, 3, 16),
-        source: SYNTAX_ERROR_MSG,
+        source: "XML Toolkit",
       },
       {
         severity: vscode.DiagnosticSeverity.Error,
         message: "Expecting token of type --> STRING <-- but found --> '>' <--",
         range: toRange(4, 19, 4, 19),
-        source: SYNTAX_ERROR_MSG,
+        source: "XML Toolkit",
       },
     ]);
   });

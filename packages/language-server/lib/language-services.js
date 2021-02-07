@@ -75,7 +75,7 @@ function toDiagnosticSeverity(issueSeverity) {
 /**
  * @param {TextDocument} document
  * @param {object} opts
- * @param {string} opts.consumerName
+ * @param {string} opts.consumer
  *
  * @returns {import("vscode-languageserver-types").Diagnostic[]}
  */
@@ -97,7 +97,7 @@ async function validateDocument(document, opts) {
     ];
   }
 
-  forEach(diagnostics, (_) => (_.source = opts.consumerName));
+  forEach(diagnostics, (_) => (_.source = opts.consumer));
 
   return diagnostics;
 }

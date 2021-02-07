@@ -12,13 +12,13 @@ const { DEFAULT_CONSUMER_NAME } = require("./constants");
 const connection = createConnection(ProposedFeatures.all);
 const documents = new TextDocuments(TextDocument);
 
-let consumerName;
+let consumer;
 
 connection.onInitialize((params) => {
-  if (has(params, "initializationOptions.consumerName")) {
-    consumerName = params.initializationOptions.consumerName;
+  if (has(params, "initializationOptions.consumer")) {
+    consumer = params.initializationOptions.consumer;
   } else {
-    consumerName = DEFAULT_CONSUMER_NAME;
+    consumer = DEFAULT_CONSUMER_NAME;
   }
 
   return {
@@ -29,7 +29,7 @@ connection.onInitialize((params) => {
 });
 
 documents.onDidChangeContent(async (event) => {
-  const diagnostics = await validateDocument(event.document, { consumerName });
+  const diagnostics = await validateDocument(event.document, { consumer });
   connection.sendDiagnostics({ uri: event.document.uri, diagnostics });
 });
 

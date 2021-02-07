@@ -28,7 +28,7 @@ describe("the XML Language Services", () => {
       },
     ];
     const diagnostics = await validateDocument(doc, {
-      consumerName: DEFAULT_CONSUMER_NAME,
+      consumer: DEFAULT_CONSUMER_NAME,
     });
     expect(diagnostics).to.deep.equal(expectedDiagnostics);
   });
@@ -59,7 +59,7 @@ describe("the XML Language Services", () => {
       },
     ];
     const diagnostics = await validateDocument(doc, {
-      consumerName: DEFAULT_CONSUMER_NAME,
+      consumer: DEFAULT_CONSUMER_NAME,
     });
     expect(diagnostics).to.deep.equal(expectedDiagnostics);
   });
@@ -69,7 +69,7 @@ describe("the XML Language Services", () => {
     const doc = createTextDocument("xml", xmlSnippet);
 
     const diagnostics = await validateDocument(doc, {
-      consumerName: DEFAULT_CONSUMER_NAME,
+      consumer: DEFAULT_CONSUMER_NAME,
     });
     expect(diagnostics).to.have.lengthOf(2);
     expect(diagnostics).to.deep.include.members([
@@ -109,7 +109,7 @@ describe("the XML Language Services", () => {
   it("will not detect any error in a none XML document", async () => {
     const doc = createTextDocument("txt", ">");
     const diagnostics = await validateDocument(doc, {
-      consumerName: DEFAULT_CONSUMER_NAME,
+      consumer: DEFAULT_CONSUMER_NAME,
     });
     expect(diagnostics).to.deep.equal([]);
   });

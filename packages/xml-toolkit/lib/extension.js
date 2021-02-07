@@ -29,7 +29,7 @@ async function activate(context) {
    * @type {import("@xml-tools/language-server).ServerInitializationOptions}
    */
   const initializationOptions = {
-    consumerName: meta.displayName,
+    consumer: meta.displayName,
   };
 
   let clientOptions = {
