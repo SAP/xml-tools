@@ -48,7 +48,8 @@ function constraintIssueToDiagnostic(document, issue) {
     message: issue.msg,
     range: {
       start: document.positionAt(issue.position.startOffset),
-      end: document.positionAt(issue.position.endOffset),
+      // Chevrotain Token positions are non-inclusive for endOffsets
+      end: document.positionAt(issue.position.endOffset + 1),
     },
     severity: toDiagnosticSeverity(issue.severity),
   };
