@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.0.5...xml-toolkit@1.1.0) (2021-02-09)
+
+### Bug Fixes
+
+- use extension name as diagnostic source ([#297](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/issues/297)) ([f6d7dc4](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/commit/f6d7dc42a05c4e1d7c9ab3f1fbe35ecb1eb820fa))
+
+### Features
+
+- well formed constraints validations ([#293](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/issues/293)) ([8a9d535](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/commit/8a9d535e95a52b9dfc1068d2e203b09bd08e1066)), closes [#13](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/issues/13) [#14](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/issues/14)
+
 ## [1.0.5](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.0.4...xml-toolkit@1.0.5) (2021-01-20)
 
 **Note:** Version bump only for package xml-toolkit

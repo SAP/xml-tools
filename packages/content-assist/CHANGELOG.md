@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.10](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@3.1.9...@xml-tools/content-assist@3.1.10) (2021-02-09)
+
+**Note:** Version bump only for package @xml-tools/content-assist
+
 ## [3.1.9](https://github.com/sap/xml-tools/compare/@xml-tools/content-assist@3.1.8...@xml-tools/content-assist@3.1.9) (2021-01-20)
 
 ### Bug Fixes

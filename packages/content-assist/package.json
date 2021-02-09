@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/content-assist",
-  "version": "3.1.9",
+  "version": "3.1.10",
   "description": "XML Content Assist APIs",
   "keywords": [
     "xml",
@@ -18,8 +18,8 @@
     "api.d.ts"
   ],
   "dependencies": {
-    "@xml-tools/common": "^0.1.4",
-    "@xml-tools/parser": "^1.0.9",
+    "@xml-tools/common": "^0.1.5",
+    "@xml-tools/parser": "^1.0.10",
     "lodash": "4.17.20"
   },
   "scripts": {

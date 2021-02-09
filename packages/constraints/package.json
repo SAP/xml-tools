@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/constraints",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "XML constraints validations",
   "keywords": [
     "xml",
@@ -17,11 +17,11 @@
     "api.d.ts"
   ],
   "dependencies": {
-    "@xml-tools/validation": "^1.0.14",
+    "@xml-tools/validation": "^1.0.15",
     "lodash": "4.17.20"
   },
   "devDependencies": {
-    "@xml-tools/ast": "^5.0.3"
+    "@xml-tools/ast": "^5.0.4"
   },
   "scripts": {
     "ci": "npm-run-all clean type-check coverage:*",

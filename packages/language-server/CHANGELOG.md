@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/SAP/xml-tools/compare/@xml-tools/language-server@1.0.12...@xml-tools/language-server@1.1.0) (2021-02-09)
+
+### Bug Fixes
+
+- use extension name as diagnostic source ([#297](https://github.com/SAP/xml-tools/issues/297)) ([f6d7dc4](https://github.com/SAP/xml-tools/commit/f6d7dc42a05c4e1d7c9ab3f1fbe35ecb1eb820fa))
+
+### Features
+
+- well formed constraints validations ([#293](https://github.com/SAP/xml-tools/issues/293)) ([8a9d535](https://github.com/SAP/xml-tools/commit/8a9d535e95a52b9dfc1068d2e203b09bd08e1066)), closes [#13](https://github.com/SAP/xml-tools/issues/13) [#14](https://github.com/SAP/xml-tools/issues/14)
+
 ## [1.0.12](https://github.com/SAP/xml-tools/compare/@xml-tools/language-server@1.0.11...@xml-tools/language-server@1.0.12) (2021-01-20)
 
 ### Bug Fixes
