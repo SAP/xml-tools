@@ -74,7 +74,7 @@ describe("the XML Language Services", () => {
     expect(diagnostics).to.have.lengthOf(2);
     expect(diagnostics).to.deep.include.members([
       {
-        message: 'opening tag: "a" must match closing tag: "bc"',
+        message: 'tags mismatch: "a" must match closing tag: "bc"',
         range: {
           start: {
             line: 0,
@@ -82,14 +82,14 @@ describe("the XML Language Services", () => {
           },
           end: {
             line: 0,
-            character: xmlSnippet.indexOf("a"),
+            character: xmlSnippet.indexOf("a") + 1,
           },
         },
         severity: 1,
         source: "XML LS",
       },
       {
-        message: 'closing tag: "bc" must match opening tag: "a"',
+        message: 'tags mismatch: "bc" must match opening tag: "a"',
         range: {
           start: {
             line: 0,
@@ -97,7 +97,7 @@ describe("the XML Language Services", () => {
           },
           end: {
             line: 0,
-            character: xmlSnippet.indexOf("bc") + 1,
+            character: xmlSnippet.indexOf("bc") + 2,
           },
         },
         severity: 1,
