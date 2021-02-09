@@ -19,7 +19,7 @@ function validateUniqueAttributeKeys(elem) {
     // for attributes with valid keys
     const keyToken = _.syntax.key;
     return {
-      msg: `duplicate attribute key: "${_.key}"`,
+      msg: `duplicate attribute: "${_.key}"`,
       node: _,
       severity: "error",
       position: {

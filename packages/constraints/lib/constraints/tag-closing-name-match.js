@@ -18,7 +18,7 @@ function validateTagClosingNameMatch(elem) {
   } else {
     return [
       {
-        msg: `opening tag: "${openTagToken.image}" must match closing tag: "${closeTagToken.image}"`,
+        msg: `tags mismatch: "${openTagToken.image}" must match closing tag: "${closeTagToken.image}"`,
         node: elem,
         severity: "error",
         position: {
@@ -27,7 +27,7 @@ function validateTagClosingNameMatch(elem) {
         },
       },
       {
-        msg: `closing tag: "${closeTagToken.image}" must match opening tag: "${openTagToken.image}"`,
+        msg: `tags mismatch: "${closeTagToken.image}" must match opening tag: "${openTagToken.image}"`,
         node: elem,
         severity: "error",
         position: {
