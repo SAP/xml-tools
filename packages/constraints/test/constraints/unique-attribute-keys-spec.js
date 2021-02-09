@@ -43,7 +43,7 @@ describe("unique attribute keys constraint", () => {
       expect(result).to.have.lengthOf(2);
       expect(result).to.deep.include.members([
         {
-          msg: 'duplicate attribute key: "name"',
+          msg: 'duplicate attribute: "name"',
           severity: "error",
           node: donaldNameAttrib,
           position: {
@@ -52,7 +52,7 @@ describe("unique attribute keys constraint", () => {
           },
         },
         {
-          msg: 'duplicate attribute key: "name"',
+          msg: 'duplicate attribute: "name"',
           severity: "error",
           node: bambaNameAttrib,
           position: {

@@ -86,7 +86,7 @@ describe("tag closing name constraint", () => {
       expect(result).to.have.lengthOf(2);
       expect(result).to.deep.include.members([
         {
-          msg: 'opening tag: "note" must match closing tag: "note-typo"',
+          msg: 'tags mismatch: "note" must match closing tag: "note-typo"',
           severity: "error",
           node: element,
           position: {
@@ -95,7 +95,7 @@ describe("tag closing name constraint", () => {
           },
         },
         {
-          msg: 'closing tag: "note-typo" must match opening tag: "note"',
+          msg: 'tags mismatch: "note-typo" must match opening tag: "note"',
           severity: "error",
           node: element,
           position: {

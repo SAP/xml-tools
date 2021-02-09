@@ -18,7 +18,7 @@ describe("the constraints sub-package apis", () => {
     expect(validationIssues).to.have.lengthOf(2);
     expect(validationIssues).to.deep.include.members([
       {
-        msg: 'opening tag: "note" must match closing tag: "note-typo"',
+        msg: 'tags mismatch: "note" must match closing tag: "note-typo"',
         severity: "error",
         node: element,
         position: {
@@ -27,7 +27,7 @@ describe("the constraints sub-package apis", () => {
         },
       },
       {
-        msg: 'closing tag: "note-typo" must match opening tag: "note"',
+        msg: 'tags mismatch: "note-typo" must match opening tag: "note"',
         severity: "error",
         node: element,
         position: {
