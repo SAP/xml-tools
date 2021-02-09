@@ -1,13 +1,10 @@
 const { resolve } = require("path");
 const { expect } = require("chai");
 const { TextDocument, DiagnosticSeverity } = require("vscode-languageserver");
-
+const { DEFAULT_CONSUMER_NAME } = require("../lib/constants");
 const { toDiagnosticSeverity } = require("../lib/language-services");
 
-const {
-  validateDocument,
-  SYNTAX_ERROR_MSG,
-} = require("../lib/language-services");
+const { validateDocument } = require("../lib/language-services");
 const { SERVER_PATH } = require("../lib/api");
 
 describe("the XML Language Services", () => {
@@ -27,10 +24,12 @@ describe("the XML Language Services", () => {
           end: pos,
         },
         severity: DiagnosticSeverity.Error,
-        source: SYNTAX_ERROR_MSG,
+        source: "XML LS",
       },
     ];
-    const diagnostics = await validateDocument(doc);
+    const diagnostics = await validateDocument(doc, {
+      consumer: DEFAULT_CONSUMER_NAME,
+    });
     expect(diagnostics).to.deep.equal(expectedDiagnostics);
   });
 
@@ -47,7 +46,7 @@ describe("the XML Language Services", () => {
           end: pos,
         },
         severity: DiagnosticSeverity.Error,
-        source: SYNTAX_ERROR_MSG,
+        source: "XML LS",
       },
       {
         message: `Expecting token of type --> Name <-- but found --> '>' <--`,
@@ -56,10 +55,12 @@ describe("the XML Language Services", () => {
           end: pos,
         },
         severity: DiagnosticSeverity.Error,
-        source: SYNTAX_ERROR_MSG,
+        source: "XML LS",
       },
     ];
-    const diagnostics = await validateDocument(doc);
+    const diagnostics = await validateDocument(doc, {
+      consumer: DEFAULT_CONSUMER_NAME,
+    });
     expect(diagnostics).to.deep.equal(expectedDiagnostics);
   });
 
@@ -67,7 +68,9 @@ describe("the XML Language Services", () => {
     const xmlSnippet = "<a></bc>";
     const doc = createTextDocument("xml", xmlSnippet);
 
-    const diagnostics = await validateDocument(doc);
+    const diagnostics = await validateDocument(doc, {
+      consumer: DEFAULT_CONSUMER_NAME,
+    });
     expect(diagnostics).to.have.lengthOf(2);
     expect(diagnostics).to.deep.include.members([
       {
@@ -83,7 +86,7 @@ describe("the XML Language Services", () => {
           },
         },
         severity: 1,
-        source: "well-formedness",
+        source: "XML LS",
       },
       {
         message: 'closing tag: "bc" must match opening tag: "a"',
@@ -98,14 +101,16 @@ describe("the XML Language Services", () => {
           },
         },
         severity: 1,
-        source: "well-formedness",
+        source: "XML LS",
       },
     ]);
   });
 
   it("will not detect any error in a none XML document", async () => {
     const doc = createTextDocument("txt", ">");
-    const diagnostics = await validateDocument(doc);
+    const diagnostics = await validateDocument(doc, {
+      consumer: DEFAULT_CONSUMER_NAME,
+    });
     expect(diagnostics).to.deep.equal([]);
   });
 
@@ -124,6 +129,17 @@ describe("the XML Language Services", () => {
       expect(toDiagnosticSeverity("info")).to.equal(
         DiagnosticSeverity.Information
       );
+    });
+  });
+
+  context("custom diagnostic `source` support", () => {
+    it("will use the `consumer` option in `validateDocument` as the diagnostics `source` prop", async () => {
+      const doc = createTextDocument("xml", ">");
+      const diagnostics = await validateDocument(doc, {
+        consumer: "my xml eclipse plugin",
+      });
+      expect(diagnostics).to.have.lengthOf(1);
+      expect(diagnostics[0].source).to.equal("my xml eclipse plugin");
     });
   });
 });

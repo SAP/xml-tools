@@ -1,11 +1,8 @@
 const { DiagnosticSeverity, Range } = require("vscode-languageserver");
-const { map } = require("lodash");
+const { map, forEach } = require("lodash");
 const { parse } = require("@xml-tools/parser");
 const { buildAst } = require("@xml-tools/ast");
 const { checkConstraints } = require("@xml-tools/constraints");
-
-const SYNTAX_ERROR_MSG = "Syntax error";
-const XML_WELL_FORMEDNESS = "well-formedness";
 
 /**
  * @param {TextDocument} document
@@ -20,7 +17,6 @@ function lexingErrorToDiagnostic(document, error) {
       document.positionAt(error.offset + error.length)
     ),
     severity: DiagnosticSeverity.Error,
-    source: SYNTAX_ERROR_MSG,
   };
 }
 
@@ -39,7 +35,6 @@ function parsingErrorToDiagnostic(document, error) {
       ),
     },
     severity: DiagnosticSeverity.Error,
-    source: SYNTAX_ERROR_MSG,
   };
 }
 
@@ -56,7 +51,6 @@ function constraintIssueToDiagnostic(document, issue) {
       end: document.positionAt(issue.position.endOffset),
     },
     severity: toDiagnosticSeverity(issue.severity),
-    source: XML_WELL_FORMEDNESS,
   };
 }
 
@@ -80,9 +74,12 @@ function toDiagnosticSeverity(issueSeverity) {
 
 /**
  * @param {TextDocument} document
+ * @param {object} opts
+ * @param {string} opts.consumer
+ *
  * @returns {import("vscode-languageserver-types").Diagnostic[]}
  */
-async function validateDocument(document) {
+async function validateDocument(document, opts) {
   let diagnostics = [];
   if (document.languageId === "xml") {
     const { cst, tokenVector, lexErrors, parseErrors } = parse(
@@ -99,11 +96,13 @@ async function validateDocument(document) {
       ),
     ];
   }
+
+  forEach(diagnostics, (_) => (_.source = opts.consumer));
+
   return diagnostics;
 }
 
 module.exports = {
   validateDocument: validateDocument,
   toDiagnosticSeverity: toDiagnosticSeverity,
-  SYNTAX_ERROR_MSG: SYNTAX_ERROR_MSG,
 };

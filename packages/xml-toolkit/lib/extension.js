@@ -1,10 +1,15 @@
+const { readFile: readFileCallback } = require("fs");
+const { resolve } = require("path");
+const { promisify } = require("util");
 const { workspace } = require("vscode");
 const { LanguageClient, TransportKind } = require("vscode-languageclient");
 const { SERVER_PATH } = require("@xml-tools/language-server");
 
+const readFile = promisify(readFileCallback);
+
 let client;
 
-function activate() {
+async function activate(context) {
   const debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
 
   const serverOptions = {
@@ -16,11 +21,23 @@ function activate() {
     },
   };
 
+  const meta = JSON.parse(
+    await readFile(resolve(context.extensionPath, "package.json"), "utf8")
+  );
+
+  /**
+   * @type {import("@xml-tools/language-server).ServerInitializationOptions}
+   */
+  const initializationOptions = {
+    consumer: meta.displayName,
+  };
+
   let clientOptions = {
     documentSelector: [{ scheme: "file", language: "xml" }],
     synchronize: {
       fileEvents: workspace.createFileSystemWatcher("**/*.xml"),
     },
+    initializationOptions: initializationOptions,
   };
 
   client = new LanguageClient(
