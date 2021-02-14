@@ -4,5 +4,5 @@ Upstream-Contact: Shachar Soel <shachar.soel@sap.com>
 Source: https://github.com/SAP/xml-tools
 
 Files: *
-Copyright: 2019-2020 SAP SE or an SAP affiliate company and XML Tools contributors
+Copyright: 2019-2021 SAP SE or an SAP affiliate company and XML Tools contributors
 License: Apache-2.0
