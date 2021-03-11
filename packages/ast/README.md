@@ -33,8 +33,8 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 A simple usage example:
 
 ```javascript
-const { parse } = require("xml-tools/parser");
-const { buildAst, accept } = require("xml-tools/ast");
+const { parse } = require("@xml-tools/parser");
+const { buildAst, accept } = require("@xml-tools/ast");
 
 const xmlText = `<note>
                      <to>Bill</to>
