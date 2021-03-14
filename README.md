@@ -19,6 +19,7 @@ It currently contains the following packages:
 - [![npm-xml-tools-ast-position][npm-xml-tools-ast-position-image]][npm-xml-tools-ast-position-url] [@xml-tools/ast-position](./packages/ast-position) XML Abstract Syntax Tree position utilities.
 - [![npm-xml-tools-content-assist][npm-xml-tools-content-assist-image]][npm-xml-tools-content-assist-url] [@xml-tools/content-assist](./packages/content-assist) Extensible Content Assist APIs for XML.
 - [![npm-xml-tools-validation][npm-xml-tools-validation-image]][npm-xml-tools-validation-url] [@xml-tools/validation](./packages/validation) Extensible Validation APIs for XML.
+- [![npm-xml-tools-constraints][npm-xml-tools-constraints-image]][npm-xml-tools-constraints-url] [@xml-tools/constraints](./packages/constraints) Validations for XML constraints.
 - [![npm-xml-tools-simple-schema][npm-xml-tools-simple-schema-image]][npm-xml-tools-simple-schema-url] [@xml-tools/simple-schema](./packages/simple-schema) Simple XML Schema represented as a JavaScript object literal.
 - [![npm-xml-tools-language-server][npm-xml-tools-language-server-image]][npm-xml-tools-language-server-url] [@xml-tools/language-server](./packages/language-server) XML Language Server.
 - [![npm-xml-tools-common][npm-xml-tools-common-image]][npm-xml-tools-common-url] [@xml-tools/common](./packages/common) Shared Utilities for xml-tools packages.
@@ -33,6 +34,8 @@ It currently contains the following packages:
 [npm-xml-tools-content-assist-url]: https://www.npmjs.com/package/@xml-tools/content-assist
 [npm-xml-tools-validation-image]: https://img.shields.io/npm/v/@xml-tools/validation.svg
 [npm-xml-tools-validation-url]: https://www.npmjs.com/package/@xml-tools/validation
+[npm-xml-tools-constraints-url]: https://www.npmjs.com/package/@xml-tools/constraints
+[npm-xml-tools-constraints-image]: https://img.shields.io/npm/v/@xml-tools/constraints.svg
 [npm-xml-tools-simple-schema-image]: https://img.shields.io/npm/v/@xml-tools/simple-schema.svg
 [npm-xml-tools-simple-schema-url]: https://www.npmjs.com/package/@xml-tools/simple-schema
 [npm-xml-tools-language-server-image]: https://img.shields.io/npm/v/@xml-tools/language-server.svg
