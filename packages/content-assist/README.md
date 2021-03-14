@@ -42,9 +42,9 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 A simple usage example:
 
 ```javascript
-const { parse } = require("xml-tools/parser");
-const { buildAst } = require("xml-tools/ast");
-const { getSuggestions } = require("xml-tools/content-assist");
+const { parse } = require("@xml-tools/parser");
+const { buildAst } = require("@xml-tools/ast");
+const { getSuggestions } = require("@xml-tools/content-assist");
 
 const xmlText = `<note>
                      <to>Bill</to>

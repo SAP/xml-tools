@@ -31,7 +31,7 @@ Please see the [TypeScript Definitions](./api.d.ts) for full API details.
 A simple usage example:
 
 ```javascript
-const { parse } = require("xml-tools/parser");
+const { parse } = require("@xml-tools/parser");
 
 const xmlText = `<note>
                      <to>Bill</to>
