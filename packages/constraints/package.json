@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "@xml-tools/validation": "^1.0.15",
-    "lodash": "4.17.20"
+    "lodash": "4.17.21"
   },
   "devDependencies": {
     "@xml-tools/ast": "^5.0.4"
