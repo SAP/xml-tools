@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.1.0...xml-toolkit@1.1.1) (2021-06-03)
+
+**Note:** Version bump only for package xml-toolkit
+
 # [1.1.0](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.0.5...xml-toolkit@1.1.0) (2021-02-09)
 
 ### Bug Fixes

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.16](https://github.com/sap/xml-tools/compare/@xml-tools/validation@1.0.15...@xml-tools/validation@1.0.16) (2021-06-03)
+
+**Note:** Version bump only for package @xml-tools/validation
+
 ## [1.0.15](https://github.com/sap/xml-tools/compare/@xml-tools/validation@1.0.14...@xml-tools/validation@1.0.15) (2021-02-09)
 
 **Note:** Version bump only for package @xml-tools/validation
