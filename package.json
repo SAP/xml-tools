@@ -11,9 +11,9 @@
     ]
   },
   "scripts": {
-    "lerna:version": "lerna version && yarn run cirlce:release",
-    "cirlce:release": "node ./scripts/trigger-release",
-    "lerna:publish": "lerna publish from-git --yes",
+    "release:version": "lerna version && yarn run release:trigger",
+    "release:trigger": "node ./scripts/trigger-release",
+    "release:publish": "lerna publish from-git --yes",
     "ci": "npm-run-all format:validate lint:validate ci:subpackages coverage:merge legal:*",
     "format:fix": "prettier --write --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
     "format:validate": "prettier --check --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",

@@ -59,7 +59,7 @@ jobs:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       # To help debug when lerna detects changes to the working tree and fails the publish
       - run: git status
-      - run: yarn run lerna:publish
+      - run: yarn run release:publish --no-verify-access
 
   prepare-vsix:
     docker:
