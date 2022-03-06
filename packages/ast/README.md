@@ -58,7 +58,7 @@ const printVisitor = {
 };
 
 // Invoking the Visitor
-accept(xmlDocAst, printVisitor); // -> note, Bill, Tim
+accept(xmlDocAst, printVisitor); // -> note, to, from
 ```
 
 ## Support
