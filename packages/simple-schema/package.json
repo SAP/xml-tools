@@ -19,7 +19,7 @@
   "dependencies": {
     "@xml-tools/ast": "^5.0.5",
     "@xml-tools/content-assist": "^3.1.11",
-    "lodash": "4.17.21"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@xml-tools/parser": "^1.0.11",
