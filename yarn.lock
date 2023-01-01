@@ -2674,13 +2674,13 @@ deep-eql@^3.0.1:
   dependencies:
     type-detect "^4.0.0"
 
-deep-equal-in-any-order@1.0.28:
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/deep-equal-in-any-order/-/deep-equal-in-any-order-1.0.28.tgz#2b002827e03b9e6b048692baf7faa0a07d3dd1d8"
-  integrity sha512-qq3jffpGmAG9kGpZGKusjRwoGxmFgIqNW076HQmV9rNdrFsgTcpuCyp6dBhzdVCWgQDkgRmvZLYAilV4u2BsfQ==
+deep-equal-in-any-order@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/deep-equal-in-any-order/-/deep-equal-in-any-order-2.0.2.tgz#7cad8fef37afe54364dac2e39a9f412df946ced6"
+  integrity sha512-w3AcXmiVQ7J/F1ySul/ydPgymvj5HH0WIyt986f7qsYvn6LiNJ+bsl4/pQgElVzw/w8sn/+/NlI791I+uUbitQ==
   dependencies:
     lodash.mapvalues "^4.6.0"
-    sort-any "^1.1.21"
+    sort-any "^2.0.0"
 
 deep-is@^0.1.3:
   version "0.1.3"
@@ -4874,7 +4874,7 @@ lodash.truncate@^4.4.2:
   resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
   integrity sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=
 
-lodash@4.17.21, lodash@^4.17.12, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.7.0:
+lodash@4.17.21, lodash@^4.17.12, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -6929,12 +6929,12 @@ socks@^2.3.3:
     ip "^1.1.5"
     smart-buffer "^4.1.0"
 
-sort-any@^1.1.21:
-  version "1.1.23"
-  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-1.1.23.tgz#d16c0e6d69de03a1ef6a9d4064d14ee1c42ac210"
-  integrity sha512-aY92w1RkjIyJd1l+O4btCwfAIfZm2r+zA6+cfKbKUO5D5MEZlqY27B7QyHHIsEShBsvx+Ur1Oq3v/gfR6wxD/w==
+sort-any@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-2.0.0.tgz#62a5409c9905c9483f03e41e17f46cc451aa7c55"
+  integrity sha512-T9JoiDewQEmWcnmPn/s9h/PH9t3d/LSWi0RgVmXSuDYeZXTZOZ1/wrK2PHaptuR1VXe3clLLt0pD6sgVOwjNEA==
   dependencies:
-    lodash "^4.17.15"
+    lodash "^4.17.21"
 
 sort-keys@^2.0.0:
   version "2.0.0"
