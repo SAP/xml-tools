@@ -36,7 +36,7 @@
     "eslint-plugin-eslint-comments": "3.2.0",
     "coveralls": "3.1.0",
     "make-dir": "3.1.0",
-    "glob": "7.1.6",
+    "glob": "10.3.4",
     "chai": "4.3.4",
     "husky": "4.3.8",
     "lerna": "4.0.0",
