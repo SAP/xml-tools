@@ -11,6 +11,8 @@ All contributors must sign the DCO
 
 This is managed automatically via https://cla-assistant.io/ pull request voter.
 
+## [Guideline for AI-generated code contributions to SAP Open Source Software Projects](https://github.com/SAP/.github/blob/main/CONTRIBUTING_USING_GENAI.md)
+
 ## Development Environment
 
 ### pre-requisites
