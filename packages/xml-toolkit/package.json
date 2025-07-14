@@ -1,6 +1,6 @@
 {
   "name": "xml-toolkit",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "displayName": "XML Toolkit",
   "description": "Language Support for XML",
