@@ -71,16 +71,17 @@ jobs:
 
   deploy-gh-releases:
     docker:
-      - image: cimg/go:1.13
+      - image: cimg/go:1.21
     steps:
       - attach_workspace:
           at: ./dist
       - run:
           name: "Publish Release on GitHub"
           command: |
-            go get github.com/tcnksm/ghr
+            export GO111MODULE=on
+            go install github.com/tcnksm/ghr@latest
             VERSION=${CIRCLE_TAG}
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./dist/
+            ~/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./dist/
 
 workflows:
   version: 2
