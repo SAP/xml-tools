@@ -1,18 +1,8 @@
 version: 2.1
 jobs:
-  build-node12:
+  build-node18:
     docker:
-      - image: cimg/node:12.13-browsers
-    working_directory: ~/repo
-    steps:
-      - run: sudo apt-get install libxss1
-      - checkout
-      - run: yarn
-      - run: yarn run ci
-
-  build-node14:
-    docker:
-      - image: cimg/node:14.19-browsers
+      - image: cimg/node:18.20-browsers
     working_directory: ~/repo
     steps:
       - run: sudo apt-get install libxss1
@@ -25,9 +15,9 @@ jobs:
             COVERALLS_SERVICE_NAME: circle-ci
             COVERALLS_GIT_BRANCH: ${CIRCLE_BRANCH}
 
-  build-node16:
+  build-node20:
     docker:
-      - image: cimg/node:16.15-browsers
+      - image: cimg/node:20.11-browsers
     working_directory: ~/repo
     steps:
       - run: sudo apt-get install libxss1
@@ -37,19 +27,22 @@ jobs:
 
   compliance:
     docker:
-      - image: cimg/python:3.6
+      - image: cimg/python:3.10
     working_directory: ~/workdir
     steps:
       - checkout
       - run:
+          name: upgrade pip
+          command: python -m pip install --upgrade pip
+      - run:
           name: compliance check
           command: |
-            pip3 install --user reuse
+            pip install --user reuse
             ~/.local/bin/reuse lint
 
   deploy-npm:
     docker:
-      - image: cimg/node:12.13-browsers
+      - image: cimg/node:18.20-browsers
     working_directory: ~/repo
     steps:
       - run: sudo apt-get install libxss1
@@ -63,7 +56,7 @@ jobs:
 
   prepare-vsix:
     docker:
-      - image: cimg/node:12.13-browsers
+      - image: cimg/node:18.20-browsers
     working_directory: ~/repo
     steps:
       - run: sudo apt-get install libxss1
@@ -93,9 +86,8 @@ workflows:
   version: 2
   voter:
     jobs:
-      - build-node12
-      - build-node14
-      - build-node16
+      - build-node18
+      - build-node20
       - compliance
   release:
     jobs:
