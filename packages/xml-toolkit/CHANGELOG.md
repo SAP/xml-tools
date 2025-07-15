@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.2.0...xml-toolkit@1.2.1) (2025-07-15)
+
+### Bug Fixes
+
+- updating xml-toolkit README.md file ([#458](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/issues/458)) ([2283302](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/commit/2283302fae161106299179e5aa8822a9bc7010bc))
+
 # [1.2.0](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.1.1...xml-toolkit@1.2.0) (2025-07-14)
 
 ### Features
