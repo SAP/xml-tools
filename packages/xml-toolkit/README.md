@@ -41,7 +41,7 @@ and in the Problems view.
 
 ## Support
 
-You can open [issues](https://github.com/SAP/xml-tools/issues) on Github.
+You can open [issues](https://github.com/SAP/xml-tools/issues) on GitHub.
 
 ## Contributing
 
