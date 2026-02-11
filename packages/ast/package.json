@@ -19,7 +19,7 @@
   "dependencies": {
     "@xml-tools/common": "^0.1.6",
     "@xml-tools/parser": "^1.0.11",
-    "lodash": "4.17.21"
+    "lodash": "4.17.23"
   },
   "devDependencies": {
     "klaw-sync": "6.0.0"

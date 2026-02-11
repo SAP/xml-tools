@@ -27,7 +27,7 @@
   "dependencies": {
     "@xml-tools/constraints": "^1.1.1",
     "@xml-tools/parser": "^1.0.11",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "vscode-languageserver": "7.0.0",
     "vscode-languageserver-textdocument": "1.0.1"
   },
