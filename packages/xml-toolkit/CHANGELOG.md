@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.2.1...xml-toolkit@1.3.0) (2026-02-11)
+
+### Features
+
+- update lodash dependency to version 4.17.23 ([#461](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/issues/461)) ([23a319d](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/commit/23a319d6ed42a4a3885ec5748eb127147a8960bc))
+
 ## [1.2.1](https://github.com/SAP/xml-tools/tree/master/packages/xml-toolkit/compare/xml-toolkit@1.2.0...xml-toolkit@1.2.1) (2025-07-15)
 
 ### Bug Fixes

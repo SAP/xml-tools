@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@3.0.5...@xml-tools/simple-schema@3.1.0) (2026-02-11)
+
+### Features
+
+- update lodash dependency to version 4.17.23 ([#461](https://github.com/sap/xml-tools/issues/461)) ([23a319d](https://github.com/sap/xml-tools/commit/23a319d6ed42a4a3885ec5748eb127147a8960bc))
+
 ## [3.0.5](https://github.com/sap/xml-tools/compare/@xml-tools/simple-schema@3.0.4...@xml-tools/simple-schema@3.0.5) (2021-06-03)
 
 **Note:** Version bump only for package @xml-tools/simple-schema

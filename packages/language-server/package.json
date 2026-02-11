@@ -1,6 +1,6 @@
 {
   "name": "@xml-tools/language-server",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "XML language server",
   "keywords": [
     "LSP",
@@ -25,7 +25,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@xml-tools/constraints": "^1.1.1",
+    "@xml-tools/constraints": "^1.2.0",
     "@xml-tools/parser": "^1.0.11",
     "lodash": "4.17.23",
     "vscode-languageserver": "7.0.0",

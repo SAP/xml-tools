@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/SAP/xml-tools/compare/@xml-tools/language-server@1.1.1...@xml-tools/language-server@1.2.0) (2026-02-11)
+
+### Features
+
+- update lodash dependency to version 4.17.23 ([#461](https://github.com/SAP/xml-tools/issues/461)) ([23a319d](https://github.com/SAP/xml-tools/commit/23a319d6ed42a4a3885ec5748eb127147a8960bc))
+
 ## [1.1.1](https://github.com/SAP/xml-tools/compare/@xml-tools/language-server@1.1.0...@xml-tools/language-server@1.1.1) (2021-06-03)
 
 **Note:** Version bump only for package @xml-tools/language-server
