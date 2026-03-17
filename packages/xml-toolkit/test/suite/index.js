@@ -7,8 +7,8 @@ function run() {
   const mocha = new Mocha({
     ui: "bdd",
     timeout: 20000,
+    color: true,
   });
-  mocha.useColors(true);
 
   const testsRoot = resolve(__dirname);
 
