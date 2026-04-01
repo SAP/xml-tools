@@ -103,7 +103,8 @@ const INVALID_SLASH_OPEN = createToken({
 
 const PROCESSING_INSTRUCTION = createToken({
   name: "PROCESSING_INSTRUCTION",
-  pattern: makePattern`<\\?${f.Name}.*\\?>`,
+  pattern: makePattern`<\\?${f.Name}(?:.|\\r?\\n)*?\\?>`,
+  line_breaks: true,
 });
 
 const OPEN = createToken({ name: "OPEN", pattern: /</, push_mode: "INSIDE" });
