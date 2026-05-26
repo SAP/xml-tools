@@ -129,4 +129,53 @@ describe("The XML Parser", () => {
     const lexAndParseResult = parse(inputText);
     expect(lexAndParseResult.parseErrors).to.be.empty;
   });
+
+  it("should tokenize processing instructions in sibling elements separately", () => {
+    const inputText =
+      '<list><value id="all"><label>All</label></value><value id="one-one"><?group one?><label>One</label></value><value id="one-two"><?group one?><label>Two</label></value><value id="two-one"><?group two?><label>One</label></value><value id="two-two"><?group two?><label>Two</label></value></list>';
+    const { lexErrors, parseErrors, tokenVector } = parse(inputText);
+    const processingInstructionImages = tokenVector.reduce(
+      (images, token) =>
+        token.tokenType.name === "PROCESSING_INSTRUCTION"
+          ? [...images, token.image]
+          : images,
+      []
+    );
+
+    expect(lexErrors).to.be.empty;
+    expect(parseErrors).to.be.empty;
+    expect(processingInstructionImages).to.deep.equal([
+      "<?group one?>",
+      "<?group one?>",
+      "<?group two?>",
+      "<?group two?>",
+    ]);
+  });
+
+  it("should tokenize multiline processing instructions with LF and CRLF", () => {
+    [
+      { lineEnding: "\n", expected: "<?group\n    one?>" },
+      { lineEnding: "\r\n", expected: "<?group\r\n    one?>" },
+    ].forEach(({ lineEnding, expected }) => {
+      const inputText = `<list>
+  <value id="moon-alpha">
+    <?group
+    one?>
+    <label>Moon Boots</label>
+  </value>
+</list>`.replace(/\n/g, lineEnding);
+      const { lexErrors, parseErrors, tokenVector } = parse(inputText);
+      const processingInstructionImages = tokenVector.reduce(
+        (images, token) =>
+          token.tokenType.name === "PROCESSING_INSTRUCTION"
+            ? [...images, token.image]
+            : images,
+        []
+      );
+
+      expect(lexErrors).to.be.empty;
+      expect(parseErrors).to.be.empty;
+      expect(processingInstructionImages).to.deep.equal([expected]);
+    });
+  });
 });
