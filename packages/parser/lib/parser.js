@@ -14,6 +14,15 @@ class Parser extends CstParser {
     const $ = this;
 
     $.RULE("document", () => {
+      $.OPTION3({
+        GATE: () =>
+          tokenMatcher($.LA(1), t.SEA_WS) &&
+          tokenMatcher($.LA(2), t.XMLDeclOpen),
+        DEF: () => {
+          $.CONSUME(t.SEA_WS);
+        },
+      });
+
       $.OPTION(() => {
         $.SUBRULE($.prolog);
       });

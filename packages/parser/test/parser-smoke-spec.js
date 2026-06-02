@@ -129,4 +129,15 @@ describe("The XML Parser", () => {
     const lexAndParseResult = parse(inputText);
     expect(lexAndParseResult.parseErrors).to.be.empty;
   });
+
+  it("can parse XML with whitespace before the prolog", () => {
+    const inputText =
+      '\n\n<?xml version="1.0" encoding="utf-8" ?>\n' +
+      "<component>\n" +
+      "</component>";
+
+    const lexAndParseResult = parse(inputText);
+    expect(lexAndParseResult.lexErrors).to.be.empty;
+    expect(lexAndParseResult.parseErrors).to.be.empty;
+  });
 });
