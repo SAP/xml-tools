@@ -18,7 +18,7 @@ export function buildAst(
  * Note that:
  *
  * - This data structure is immutable.
- * - The AST is is a "pure data structure"
+ * - The AST is a "pure data structure"
  *     there are no methods directly on the nodes, instead utilities are provided
  *     as external functions.
  * - The AST does not contain the full syntactic information, which means
