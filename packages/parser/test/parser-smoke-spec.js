@@ -129,4 +129,15 @@ describe("The XML Parser", () => {
     const lexAndParseResult = parse(inputText);
     expect(lexAndParseResult.parseErrors).to.be.empty;
   });
+
+  it("can parse XML with a leading byte order mark", () => {
+    const inputText = "\uFEFF<root><child /></root>";
+
+    const lexAndParseResult = parse(inputText);
+
+    expect(lexAndParseResult.lexErrors).to.be.empty;
+    expect(lexAndParseResult.parseErrors).to.be.empty;
+    expect(lexAndParseResult.tokenVector[0].image).to.equal("<");
+    expect(lexAndParseResult.tokenVector[0].startOffset).to.equal(1);
+  });
 });

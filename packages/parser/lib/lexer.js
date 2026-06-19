@@ -83,6 +83,12 @@ const SEA_WS = createToken({
   pattern: /( |\t|\n|\r\n)+/,
 });
 
+const ByteOrderMark = createToken({
+  name: "ByteOrderMark",
+  pattern: /\uFEFF/,
+  group: Lexer.SKIPPED,
+});
+
 const XMLDeclOpen = createToken({
   name: "XMLDeclOpen",
   pattern: /<\?xml[ \t\r\n]/,
@@ -164,6 +170,7 @@ const xmlLexerDefinition = {
       EntityRef,
       CharRef,
       SEA_WS,
+      ByteOrderMark,
       XMLDeclOpen,
       SLASH_OPEN,
       PROCESSING_INSTRUCTION,
