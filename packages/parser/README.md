@@ -43,6 +43,47 @@ const { cst, lexErrors, parseErrors } = parse(xmlText);
 console.log(cst.children["element"][0].children["Name"][0].image); // -> note
 ```
 
+### CST Structure
+
+The parser outputs a Concrete Syntax Tree (CST) using **Chevrotain**. 
+
+For example, given the following XML input:
+```xml
+<xs:element name="api" />
+```
+
+The resulting `cst` object for the document has the following structure:
+```json
+{
+  "name": "document",
+  "children": {
+    "element": [
+      {
+        "name": "element",
+        "children": {
+          "OPEN": [{ "image": "<" }],
+          "Name": [{ "image": "xs:element" }],
+          "attribute": [
+            {
+              "name": "attribute",
+              "children": {
+                "Name": [{ "image": "name" }],
+                "EQUALS": [{ "image": "=" }],
+                "STRING": [{ "image": "\"api\"" }]
+              }
+            }
+          ],
+          "SLASH_CLOSE": [{ "image": "/>" }]
+        }
+      }
+    ]
+  }
+}
+```
+
+Every property in `children` is an array containing the matched tokens (`IToken`) or nested rule nodes (`CstNode`). For full details on all available node structures (such as `prolog`, `docTypeDecl`, and `content`), see the [TypeScript Definitions](./api.d.ts).
+
+
 ## Support
 
 Please open [issues](https://github.com/SAP/xml-tols/issues) on github.
