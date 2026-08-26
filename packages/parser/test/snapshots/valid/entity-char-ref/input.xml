@@ -1,5 +1,6 @@
 <note>
     &to;
     &#1234;
+    &#x123ABC;
     <from>Tim</from>
 </note>
