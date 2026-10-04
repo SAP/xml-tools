@@ -38,18 +38,18 @@ yarn run release:version  # bump versions via Lerna (follow CLI prompts)
 
 Yarn workspaces monorepo. All packages live under `packages/`:
 
-| Package | Description |
-|---|---|
-| `@xml-tools/parser` | Fault-tolerant XML parser; outputs a Concrete Syntax Tree (CST) |
-| `@xml-tools/ast` | Converts the CST to an Abstract Syntax Tree (AST) |
-| `@xml-tools/ast-position` | Utilities for mapping source positions to AST nodes |
-| `@xml-tools/content-assist` | Extensible content assist (auto-complete) API for XML |
-| `@xml-tools/validation` | Extensible validation API for XML |
-| `@xml-tools/constraints` | Built-in XML constraint validations |
-| `@xml-tools/simple-schema` | Simple XML schema as a plain JavaScript object literal |
-| `@xml-tools/language-server` | XML Language Server (LSP) built on the above libraries |
-| `@xml-tools/common` | Shared utilities used across packages |
-| `xml-toolkit` | VS Code extension — XML language editor support (syntax validation, content assist, hover, go-to-definition) |
+| Package                      | Description                                                                                                  |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `@xml-tools/parser`          | Fault-tolerant XML parser; outputs a Concrete Syntax Tree (CST)                                              |
+| `@xml-tools/ast`             | Converts the CST to an Abstract Syntax Tree (AST)                                                            |
+| `@xml-tools/ast-position`    | Utilities for mapping source positions to AST nodes                                                          |
+| `@xml-tools/content-assist`  | Extensible content assist (auto-complete) API for XML                                                        |
+| `@xml-tools/validation`      | Extensible validation API for XML                                                                            |
+| `@xml-tools/constraints`     | Built-in XML constraint validations                                                                          |
+| `@xml-tools/simple-schema`   | Simple XML schema as a plain JavaScript object literal                                                       |
+| `@xml-tools/language-server` | XML Language Server (LSP) built on the above libraries                                                       |
+| `@xml-tools/common`          | Shared utilities used across packages                                                                        |
+| `xml-toolkit`                | VS Code extension — XML language editor support (syntax validation, content assist, hover, go-to-definition) |
 
 ## Key Dependencies
 
@@ -74,5 +74,6 @@ yarn snapshots:update      # update snapshots (per sub-package — review diffs 
 CircleCI pipeline (`.circleci/`). Releases use [Lerna](https://lerna.js.org/) independent mode — each package has its own version. The `RELEASE` tag build on CircleCI publishes changed packages to npm.
 
 Release steps:
+
 1. `yarn run release:version` — Lerna bumps versions and generates changelogs
 2. Push the `RELEASE` tag; CircleCI publishes to npm via `yarn run release:publish`
