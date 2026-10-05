@@ -58,7 +58,7 @@ Yarn workspaces monorepo. All packages live under `packages/`:
 
 ## Testing
 
-[Mocha](https://mochajs.org/) + [Istanbul/nyc](https://istanbul.js.org/) for unit tests and coverage. Several packages use **snapshot testing** for serialized CST/AST output — snapshots live alongside test files and must be manually reviewed when updated.
+[Mocha](https://mochajs.org/) + [Istanbul/nyc](https://istanbul.js.org/) for unit tests and coverage. Two packages (`@xml-tools/parser` and `@xml-tools/ast`) use **snapshot testing** for serialized CST/AST output — snapshots live alongside test files and must be manually reviewed when updated.
 
 ```sh
 yarn test                  # run all tests (root)
