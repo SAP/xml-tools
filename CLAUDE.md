@@ -19,12 +19,12 @@ yarn lint:validate    # ESLint check
 yarn format:validate  # Prettier check
 ```
 
-### Per sub-package (run inside `packages/<name>/`)
+### Per sub-package (run inside `packages/<name>/`; available scripts vary by package)
 
 ```sh
 yarn test             # run tests for this package
-yarn coverage:run     # run tests with coverage for this package
-yarn snapshots:update # update snapshot test fixtures (review diffs carefully)
+yarn coverage:run     # run coverage where the package defines this script
+yarn snapshots:update # update parser/AST snapshots only (review diffs carefully)
 yarn ci               # full CI build for this package only
 ```
 
@@ -63,8 +63,8 @@ Yarn workspaces monorepo. All packages live under `packages/`:
 ```sh
 yarn test                  # run all tests (root)
 yarn coverage              # run tests with merged coverage (root)
-yarn coverage:run          # run tests with coverage (per sub-package)
-yarn snapshots:update      # update snapshots (per sub-package — review diffs before committing)
+yarn coverage:run          # run coverage where defined by the package
+yarn snapshots:update      # update parser/AST snapshots only (review diffs before committing)
 ```
 
 100% test coverage is enforced for all productive code.
