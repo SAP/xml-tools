@@ -14,7 +14,7 @@ XML-Tools is a Yarn monorepo of libraries and tooling for XML editor services. T
 yarn                  # install all dependencies
 yarn ci               # full CI build (lint + test + coverage across all packages)
 yarn test             # run all tests
-yarn coverage         # run tests with merged coverage report
+yarn coverage         # run coverage for language-server only (only package with a root-level `coverage` script)
 yarn lint:validate    # ESLint check
 yarn format:validate  # Prettier check
 ```
@@ -49,7 +49,7 @@ Yarn workspaces monorepo. All packages live under `packages/`:
 | `@xml-tools/simple-schema`   | Simple XML schema as a plain JavaScript object literal                                                       |
 | `@xml-tools/language-server` | XML Language Server (LSP) built on the above libraries                                                       |
 | `@xml-tools/common`          | Shared utilities used across packages                                                                        |
-| `xml-toolkit`                | VS Code extension — XML language editor support (syntax validation, content assist, hover, go-to-definition) |
+| `xml-toolkit`                | VS Code extension — XML language editor support (syntax validation and diagnostics only; does not provide content assist, hover, or go-to-definition) |
 
 ## Key Dependencies
 
@@ -62,18 +62,17 @@ Yarn workspaces monorepo. All packages live under `packages/`:
 
 ```sh
 yarn test                  # run all tests (root)
-yarn coverage              # run tests with merged coverage (root)
-yarn coverage:run          # run coverage where defined by the package
-yarn snapshots:update      # update parser/AST snapshots only (review diffs before committing)
+yarn coverage              # run coverage for language-server only (use coverage:run inside each package for others)
+yarn coverage:run          # run tests with coverage (per sub-package only — no root equivalent)
+yarn snapshots:update      # update snapshots (per sub-package in packages/parser or packages/ast only — no root script)
 ```
 
 100% test coverage is enforced for all productive code.
 
 ## CI/CD
 
-CircleCI pipeline (`.circleci/`). Releases use [Lerna](https://lerna.js.org/) independent mode — each package has its own version. The `RELEASE` tag build on CircleCI publishes changed packages to npm.
+CircleCI pipeline (`.circleci/`). Releases use [Lerna](https://lerna.js.org/) independent mode — each package has its own version.
 
 Release steps:
 
-1. `yarn run release:version` — Lerna bumps versions and generates changelogs
-2. Push the `RELEASE` tag; CircleCI publishes to npm via `yarn run release:publish`
+1. `yarn run release:version` — Lerna bumps versions, generates changelogs, then automatically runs `release:trigger` which deletes and force-pushes the `RELEASE` tag to origin, triggering CircleCI publication. **This initiates npm publishing immediately — do not run without intent to release.**
