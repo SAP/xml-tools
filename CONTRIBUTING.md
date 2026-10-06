@@ -54,7 +54,7 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 [istanbul]: https://istanbul.js.org/
 
 - To run the tests run `yarn test` in either the top level package or a specific subpackage.
-- To run the tests with a coverage report run `yarn coverage` in the top level package, or `yarn coverage:run` in a specific subpackage.
+- To run the tests with a coverage report run `yarn coverage:run` in a specific subpackage. Note: `yarn coverage` at the repository root only covers `@xml-tools/language-server` — it does not aggregate coverage across all packages.
 
 ### Test Snapshots Updating
 

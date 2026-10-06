@@ -38,17 +38,17 @@ yarn run release:version  # bump versions via Lerna (follow CLI prompts)
 
 Yarn workspaces monorepo. All packages live under `packages/`:
 
-| Package                      | Description                                                                                                  |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `@xml-tools/parser`          | Fault-tolerant XML parser; outputs a Concrete Syntax Tree (CST)                                              |
-| `@xml-tools/ast`             | Converts the CST to an Abstract Syntax Tree (AST)                                                            |
-| `@xml-tools/ast-position`    | Utilities for mapping source positions to AST nodes                                                          |
-| `@xml-tools/content-assist`  | Extensible content assist (auto-complete) API for XML                                                        |
-| `@xml-tools/validation`      | Extensible validation API for XML                                                                            |
-| `@xml-tools/constraints`     | Built-in XML constraint validations                                                                          |
-| `@xml-tools/simple-schema`   | Simple XML schema as a plain JavaScript object literal                                                       |
-| `@xml-tools/language-server` | XML Language Server (LSP) built on the above libraries                                                       |
-| `@xml-tools/common`          | Shared utilities used across packages                                                                        |
+| Package                      | Description                                                                                                                                           |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@xml-tools/parser`          | Fault-tolerant XML parser; outputs a Concrete Syntax Tree (CST)                                                                                       |
+| `@xml-tools/ast`             | Converts the CST to an Abstract Syntax Tree (AST)                                                                                                     |
+| `@xml-tools/ast-position`    | Utilities for mapping source positions to AST nodes                                                                                                   |
+| `@xml-tools/content-assist`  | Extensible content assist (auto-complete) API for XML                                                                                                 |
+| `@xml-tools/validation`      | Extensible validation API for XML                                                                                                                     |
+| `@xml-tools/constraints`     | Built-in XML constraint validations                                                                                                                   |
+| `@xml-tools/simple-schema`   | Simple XML schema as a plain JavaScript object literal                                                                                                |
+| `@xml-tools/language-server` | XML Language Server (LSP) built on the above libraries                                                                                                |
+| `@xml-tools/common`          | Shared utilities used across packages                                                                                                                 |
 | `xml-toolkit`                | VS Code extension — XML language editor support (syntax validation and diagnostics only; does not provide content assist, hover, or go-to-definition) |
 
 ## Key Dependencies
@@ -67,7 +67,7 @@ yarn coverage:run          # run tests with coverage (per sub-package only — n
 yarn snapshots:update      # update snapshots (per sub-package in packages/parser or packages/ast only — no root script)
 ```
 
-100% test coverage is enforced for all productive code.
+Coverage enforcement varies by package — most packages run `nyc` with thresholds, but `@xml-tools/language-server` runs `nyc mocha` without `check-coverage` (`packages/language-server/package.json:scripts.coverage`), so its coverage is reported but not enforced.
 
 ## CI/CD
 
@@ -75,4 +75,4 @@ CircleCI pipeline (`.circleci/`). Releases use [Lerna](https://lerna.js.org/) in
 
 Release steps:
 
-1. `yarn run release:version` — Lerna bumps versions, generates changelogs, then automatically runs `release:trigger` which deletes and force-pushes the `RELEASE` tag to origin, triggering CircleCI publication. **This initiates npm publishing immediately — do not run without intent to release.**
+1. `yarn run release:version` — Lerna bumps versions, generates changelogs, then automatically runs `release:trigger` which: (a) deletes and force-pushes the `RELEASE` tag to origin, triggering CircleCI npm publication; and (b) deletes and re-pushes the `xml-toolkit@<version>` tag to work around a CircleCI/GitHub bug where pushing many tags at once fails to trigger tag builds, thereby triggering the GitHub Release. **This initiates npm publishing immediately — do not run without intent to release.**
