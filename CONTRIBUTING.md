@@ -67,7 +67,7 @@ Except that in our use case we test serialized data structures related to XML ra
 
 Packages which utilize the snapshot testing methodoly will have a `snapshots:update` script in their package.json
 
-- To update all the snapshots run: `yarn snapshots:update`.
+- To update snapshots run `yarn snapshots:update` inside `packages/parser` or `packages/ast` (there is no root-level script for this).
 - The above script is also needed when adding a new test case input and creating it initial expected value.
 
 Obviously we should not blindly update the snapshots to make the tests pass.
@@ -76,7 +76,7 @@ have occurred to the expected output...
 
 ### Test Coverage
 
-100%\* Test Coverage is enforced for all productive code in this mono repo.
+100%\* Test Coverage is enforced for all productive code in this mono repo, with one exception: `@xml-tools/language-server` runs `nyc mocha` without `check-coverage`, so its coverage is reported but not enforced by CI.
 
 - Specific statements/functions may be [excluded][ignore_coverage] from the report but the reason for that must
   specified in the source code.
