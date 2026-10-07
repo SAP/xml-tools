@@ -76,7 +76,7 @@ have occurred to the expected output...
 
 ### Test Coverage
 
-100%\* Test Coverage is enforced for all productive code in this mono repo, with one exception: `@xml-tools/language-server` runs `nyc mocha` without `check-coverage`, so its coverage is reported but not enforced by CI.
+100%\* Test Coverage is enforced for all productive code in this mono repo.
 
 - Specific statements/functions may be [excluded][ignore_coverage] from the report but the reason for that must
   specified in the source code.

@@ -67,7 +67,7 @@ yarn coverage:run          # run tests with coverage (per sub-package only — n
 yarn snapshots:update      # update snapshots (per sub-package in packages/parser or packages/ast only — no root script)
 ```
 
-Coverage enforcement varies by package — most packages run `nyc` with thresholds, but `@xml-tools/language-server` runs `nyc mocha` without `check-coverage` (`packages/language-server/package.json:scripts.coverage`), so its coverage is reported but not enforced.
+100% test coverage is enforced for all productive code (via `nyc.config.js` in each package).
 
 ## CI/CD
 
