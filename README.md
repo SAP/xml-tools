@@ -23,6 +23,7 @@ It currently contains the following packages:
 - [![npm-xml-tools-simple-schema][npm-xml-tools-simple-schema-image]][npm-xml-tools-simple-schema-url] [@xml-tools/simple-schema](./packages/simple-schema) Simple XML Schema represented as a JavaScript object literal.
 - [![npm-xml-tools-language-server][npm-xml-tools-language-server-image]][npm-xml-tools-language-server-url] [@xml-tools/language-server](./packages/language-server) XML Language Server.
 - [![npm-xml-tools-common][npm-xml-tools-common-image]][npm-xml-tools-common-url] [@xml-tools/common](./packages/common) Shared Utilities for xml-tools packages.
+- [xml-toolkit](./packages/xml-toolkit) VS Code extension providing XML language editor support (syntax validation and diagnostics).
 
 [npm-xml-tools-parser-image]: https://img.shields.io/npm/v/@xml-tools/parser.svg
 [npm-xml-tools-parser-url]: https://www.npmjs.com/package/@xml-tools/parser

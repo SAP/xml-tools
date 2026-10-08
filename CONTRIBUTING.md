@@ -54,7 +54,7 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 [istanbul]: https://istanbul.js.org/
 
 - To run the tests run `yarn test` in either the top level package or a specific subpackage.
-- To run the tests with a coverage report run `yarn coverage:run` in either the top level package or a specific subpackage.
+- To run the tests with a coverage report run `yarn coverage:run` in a specific subpackage. Note: `yarn coverage` at the repository root only covers `@xml-tools/language-server` — it does not aggregate coverage across all packages.
 
 ### Test Snapshots Updating
 
@@ -67,7 +67,7 @@ Except that in our use case we test serialized data structures related to XML ra
 
 Packages which utilize the snapshot testing methodoly will have a `snapshots:update` script in their package.json
 
-- To update all the snapshots run: `yarn snapshots:update`.
+- To update snapshots run `yarn snapshots:update` inside `packages/parser` or `packages/ast` (there is no root-level script for this).
 - The above script is also needed when adding a new test case input and creating it initial expected value.
 
 Obviously we should not blindly update the snapshots to make the tests pass.
