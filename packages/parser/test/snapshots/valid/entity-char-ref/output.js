@@ -72,14 +72,28 @@ module.exports = {
                       children: {
                         SEA_WS: [
                           {
-                            image: "\n",
-                            startOffset: 48,
-                            endOffset: 48,
+                            image: "\n    ",
+                            startOffset: 42,
+                            endOffset: 46,
                             tokenType: "SEA_WS",
                           },
                         ],
                       },
-                      location: { startOffset: 48, endOffset: 48 },
+                      location: { startOffset: 42, endOffset: 46 },
+                    },
+                    {
+                      name: "chardata",
+                      children: {
+                        SEA_WS: [
+                          {
+                            image: "\n",
+                            startOffset: 63,
+                            endOffset: 63,
+                            tokenType: "SEA_WS",
+                          },
+                        ],
+                      },
+                      location: { startOffset: 63, endOffset: 63 },
                     },
                   ],
                   reference: [
@@ -111,6 +125,20 @@ module.exports = {
                       },
                       location: { startOffset: 20, endOffset: 26 },
                     },
+                    {
+                      name: "reference",
+                      children: {
+                        CharRef: [
+                          {
+                            image: "&#x123ABC;",
+                            startOffset: 32,
+                            endOffset: 41,
+                            tokenType: "CharRef",
+                          },
+                        ],
+                      },
+                      location: { startOffset: 32, endOffset: 41 },
+                    },
                   ],
                   element: [
                     {
@@ -119,24 +147,24 @@ module.exports = {
                         OPEN: [
                           {
                             image: "<",
-                            startOffset: 32,
-                            endOffset: 32,
+                            startOffset: 47,
+                            endOffset: 47,
                             tokenType: "OPEN",
                           },
                         ],
                         Name: [
                           {
                             image: "from",
-                            startOffset: 33,
-                            endOffset: 36,
+                            startOffset: 48,
+                            endOffset: 51,
                             tokenType: "Name",
                           },
                         ],
                         START_CLOSE: [
                           {
                             image: ">",
-                            startOffset: 37,
-                            endOffset: 37,
+                            startOffset: 52,
+                            endOffset: 52,
                             tokenType: "CLOSE",
                           },
                         ],
@@ -151,77 +179,77 @@ module.exports = {
                                     TEXT: [
                                       {
                                         image: "Tim",
-                                        startOffset: 38,
-                                        endOffset: 40,
+                                        startOffset: 53,
+                                        endOffset: 55,
                                         tokenType: "TEXT",
                                       },
                                     ],
                                   },
-                                  location: { startOffset: 38, endOffset: 40 },
+                                  location: { startOffset: 53, endOffset: 55 },
                                 },
                               ],
                             },
-                            location: { startOffset: 38, endOffset: 40 },
+                            location: { startOffset: 53, endOffset: 55 },
                           },
                         ],
                         SLASH_OPEN: [
                           {
                             image: "</",
-                            startOffset: 41,
-                            endOffset: 42,
+                            startOffset: 56,
+                            endOffset: 57,
                             tokenType: "SLASH_OPEN",
                           },
                         ],
                         END_NAME: [
                           {
                             image: "from",
-                            startOffset: 43,
-                            endOffset: 46,
+                            startOffset: 58,
+                            endOffset: 61,
                             tokenType: "Name",
                           },
                         ],
                         END: [
                           {
                             image: ">",
-                            startOffset: 47,
-                            endOffset: 47,
+                            startOffset: 62,
+                            endOffset: 62,
                             tokenType: "CLOSE",
                           },
                         ],
                       },
-                      location: { startOffset: 32, endOffset: 47 },
+                      location: { startOffset: 47, endOffset: 62 },
                     },
                   ],
                 },
-                location: { startOffset: 6, endOffset: 48 },
+                location: { startOffset: 6, endOffset: 63 },
               },
             ],
             SLASH_OPEN: [
               {
                 image: "</",
-                startOffset: 49,
-                endOffset: 50,
+                startOffset: 64,
+                endOffset: 65,
                 tokenType: "SLASH_OPEN",
               },
             ],
             END_NAME: [
               {
                 image: "note",
-                startOffset: 51,
-                endOffset: 54,
+                startOffset: 66,
+                endOffset: 69,
                 tokenType: "Name",
               },
             ],
             END: [
               {
                 image: ">",
-                startOffset: 55,
-                endOffset: 55,
+                startOffset: 70,
+                endOffset: 70,
                 tokenType: "CLOSE",
               },
             ],
           },
-          location: { startOffset: 0, endOffset: 55 },
+          location: { startOffset: 0, endOffset: 70 },
         },
       ],
       misc: [
@@ -231,16 +259,16 @@ module.exports = {
             SEA_WS: [
               {
                 image: "\n",
-                startOffset: 56,
-                endOffset: 56,
+                startOffset: 71,
+                endOffset: 71,
                 tokenType: "SEA_WS",
               },
             ],
           },
-          location: { startOffset: 56, endOffset: 56 },
+          location: { startOffset: 71, endOffset: 71 },
         },
       ],
     },
-    location: { startOffset: 0, endOffset: 56 },
+    location: { startOffset: 0, endOffset: 71 },
   },
 };
