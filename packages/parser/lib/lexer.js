@@ -75,7 +75,7 @@ const EntityRef = createToken({
 
 const CharRef = createToken({
   name: "CharRef",
-  pattern: /&#\d+;|&#x[a-fA-F0-9]/,
+  pattern: /&#\d+;|&#x[a-fA-F0-9]+;/,
 });
 
 const SEA_WS = createToken({
