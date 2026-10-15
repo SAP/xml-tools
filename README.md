@@ -1,3 +1,6 @@
+> [!WARNING]
+> **This repository has moved to [SAP/app-studio-toolkit/projects/xml-tools](https://github.com/SAP/app-studio-toolkit/tree/main/projects/xml-tools).**
+
 [![CircleCI](https://circleci.com/gh/SAP/xml-tools.svg?style=svg)](https://circleci.com/gh/SAP/xml-tools)
 [![Coverage Status](https://coveralls.io/repos/github/SAP/xml-tools/badge.svg?branch=master)](https://coveralls.io/github/SAP/xml-tools?branch=master)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/SAP/xml-tools.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/SAP/xml-tools/context:javascript)
